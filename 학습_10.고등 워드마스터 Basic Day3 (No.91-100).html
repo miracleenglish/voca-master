@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>학습_10. 고등 워드마스터 Basic Day3 (No.91-100)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Apple SD Gothic Neo',sans-serif;background:#f0f4f8;color:#2d3a4a;min-height:100vh}
+header{background:#fff;padding:14px 24px;border-bottom:2px solid #d0dcea;display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(0,0,0,.07)}
+header h1{font-size:15px;color:#2a6db5;font-weight:700}
+.badge{background:#e8f0fb;color:#5080b0;font-size:12px;padding:3px 10px;border-radius:20px}
+.tabs{display:flex;background:#fff;padding:0 10px;gap:2px;border-bottom:2px solid #d0dcea;overflow-x:auto;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.tab-btn{padding:10px 13px;font-size:13px;font-weight:600;color:#8090a8;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
+.tab-btn:hover{color:#4070b0}
+.tab-btn.active{color:#2a6db5;border-bottom-color:#2a6db5}
+.panel{display:none;padding:20px 18px;max-width:820px;margin:0 auto}
+.panel.active{display:block}
+.panel-title{font-size:17px;font-weight:700;color:#2a6db5;margin-bottom:5px}
+.panel-desc{font-size:13px;color:#8090a8;margin-bottom:16px;line-height:1.6}
+.ro-desc{font-size:15px;font-weight:700;color:#2d3a4a;margin-bottom:16px;line-height:1.6}
+.ro-q{font-size:13px;color:#3a4a60;font-weight:700;margin-bottom:9px}
+.passage-box{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:22px;margin-bottom:16px;line-height:2.1;font-size:16px;color:#2d3a4a;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.p-title{font-size:13px;color:#8090a8;margin-bottom:10px;font-style:italic;font-weight:600}
+.hl{color:#c05010;font-weight:700}
+.ctrl-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn{padding:9px 18px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-play{background:#2a6db5;color:#fff}.btn-play:hover{background:#3580cc}
+.btn-stop{background:#c0392b;color:#fff}.btn-stop:hover{background:#e74c3c}
+.btn-sm{background:#fff;color:#4070b0;border:1px solid #b0c8e8;padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-sm:hover{background:#e8f0fb}
+.btn-sm.sel{background:#dceeff;border-color:#2a6db5;color:#2a6db5}
+.spd-label{font-size:12px;color:#8090a8}
+.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:16px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}
+.now-box .lbl{color:#5090c0;font-size:12px;font-weight:700;margin-right:8px}
+.sent-list{display:flex;flex-direction:column;gap:8px}
+.sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:border-color .2s}
+.sent-card.playing{border-color:#2a6db5;background:#f0f7ff}
+.s-num{min-width:27px;height:27px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
+.s-num:hover{background:#c0dcf0}
+.s-num.playing{background:#2a6db5;color:#fff}
+.s-txt{font-size:15px;color:#2d3a4a;line-height:1.6;flex:1}
+.shadow-box{background:#fff;border:1px solid #d0dcea;border-radius:14px;padding:44px 24px;text-align:center;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.shadow-box .mic{font-size:52px;margin-bottom:14px}
+.sh-status{font-size:17px;color:#3060a0;font-weight:700}
+.sh-hint{font-size:13px;color:#a0b0c0;margin-top:8px}
+.prog-row{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:#d0dcea;transition:background .3s}
+.prog-dot.done{background:#2a6db5}
+.prog-dot.cur{background:#e07030;transform:scale(1.3)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:11px;margin-bottom:18px}
+.flip-card{height:120px;perspective:800px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .4s}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:13px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.flip-front{background:#fff;border:2px solid #d0dcea}
+.flip-back{background:#2a6db5;color:#fff;transform:rotateY(180deg)}
+.f-word{font-size:18px;font-weight:700;color:#1a3a60}
+.f-pos{font-size:11px;color:#8090a8;margin-top:3px}
+.f-snd{font-size:17px;margin-top:6px;color:#2a6db5}
+.f-mean{font-size:14px;font-weight:600}
+.f-ex{font-size:11px;margin-top:5px;color:#cce0ff;line-height:1.4}
+.sec-title{font-size:13px;font-weight:700;color:#5080a0;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid #d0dcea}
+.idiom-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.idiom-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:13px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.idiom-phrase{font-size:15px;font-weight:700;color:#2a6db5}
+.idiom-mean{font-size:14px;color:#3a4a60;margin-top:3px}
+.idiom-ex{font-size:13px;color:#8090a8;font-style:italic;margin-top:4px}
+.dict-list{display:flex;flex-direction:column;gap:10px}
+.dict-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:13px 15px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.d-num{min-width:34px;height:34px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
+.d-num:hover{background:#c0dcf0}
+.d-num.pd{background:#2a6db5;color:#fff}
+.d-hint{font-size:13px;color:#a0b0c0;font-style:italic}
+.quiz-wrap{display:flex;flex-direction:column;gap:16px}
+.q-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.q-num{font-size:13px;font-weight:700;color:#5080a0;margin-bottom:6px}
+.q-text{font-size:15px;color:#2d3a4a;line-height:1.6;margin-bottom:4px}
+.q-ko{font-size:13px;color:#3a4a6a;font-style:italic;font-weight:500;margin-bottom:12px}
+.blank-span{display:inline-block;width:110px;height:1.2em;border-bottom:2.5px solid #2a6db5;vertical-align:middle;margin:0 4px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{background:#f4f8fc;border:1px solid #d0dcea;border-radius:8px;padding:9px 12px;font-size:14px;color:#2d3a4a;cursor:pointer;text-align:left;transition:all .15s}
+.opt:hover{background:#e0f0ff;border-color:#90b8e0}
+.opt.ok{background:#e8f8ee;border-color:#4caf50;color:#1a6030;font-weight:700}
+.opt.ng{background:#fdecea;border-color:#e74c3c;color:#8a1a1a}
+.opt:disabled{cursor:default}
+.exp{display:none;margin-top:11px;background:#f8fafc;border-left:3px solid #2a6db5;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#3a4a60;line-height:1.7}
+.exp.show{display:block}
+.exp-lbl{color:#5060a0;font-style:italic;margin-bottom:3px;font-weight:600}
+.chip-area{display:flex;flex-wrap:wrap;gap:7px;padding:9px;border:1px dashed #b0c8e0;border-radius:8px;min-height:44px;background:#fafcff;margin-bottom:9px}
+.chip{background:#e0ecf8;color:#1a3a60;padding:6px 13px;border-radius:20px;font-size:14px;cursor:pointer;transition:all .15s;user-select:none;font-weight:500}
+.chip:hover{background:#c0d8f0}
+.chip.used{opacity:.3;cursor:default}
+.ans-area{min-height:40px;padding:8px 12px;border:1px solid #c0d8ea;border-radius:8px;margin-bottom:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff}
+.ans-chip{background:#2a6db5;color:#fff;padding:5px 12px;border-radius:20px;font-size:14px;cursor:pointer;font-weight:500}
+.ans-chip:hover{background:#1a5090}
+.ro-result{font-size:13px;font-weight:700;min-height:20px;margin-top:4px}
+.ro-result.ok{color:#27a060}
+.ro-result.ng{color:#c0392b}
+.score-bar{background:#fff;border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;border:1px solid #d0dcea;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sc-item{font-size:14px;color:#6080a0}
+.sc-item strong{color:#c05010;font-size:18px}
+.btn-reset{margin-left:auto;background:#e8f0fb;color:#4070b0;border:none;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer}
+.btn-reset:hover{background:#d0e4f8}
+@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>고등 워드마스터 Basic &nbsp;|&nbsp; Day3 (No.91–100)</h1>
+  <span class="badge">단어장 · 집중듣기 · 따라말하기 · 낭독 · 받아쓰기 · 4지선다 · 재배열</span>
+</header>
+<div class="tabs">
+  <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
+  <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
+  <button class="tab-btn" onclick="goTab('shadow',this)">③ 따라말하기</button>
+  <button class="tab-btn" onclick="goTab('read',this)">④ 낭독</button>
+  <button class="tab-btn" onclick="goTab('dict',this)">⑤ 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('quiz',this)">⑥ 4지선다</button>
+  <button class="tab-btn" onclick="goTab('reorder',this)">⑦ 문장재배열</button>
+</div>
+
+<div id="panel-vocab" class="panel active">
+  <div class="panel-title">① 단어장</div>
+  <div class="panel-desc">카드를 클릭하면 한글 뜻이 보입니다. 🔊를 클릭하면 발음을 들을 수 있어요.</div>
+  <div class="sec-title">📌 핵심 단어 (No.91–100)</div>
+  <div class="vocab-grid" id="vc-core"></div>
+  <div class="sec-title">📖 본문 추가 어휘</div>
+  <div class="vocab-grid" id="vc-extra"></div>
+  <div class="sec-title">🔗 본문 숙어</div>
+  <div class="idiom-list" id="idiom-list"></div>
+</div>
+<div id="panel-listen" class="panel">
+  <div class="panel-title">② 집중듣기</div>
+  <div class="panel-desc">전체 지문을 자연스럽게 들으며 내용을 파악하세요.</div>
+  <div class="passage-box" id="passage"></div>
+  <div class="ctrl-bar">
+    <button class="btn btn-play" onclick="playAll('listen')">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+    <span class="spd-label">속도</span>
+    <button class="btn-sm" onclick="setSpd(0.75,this)">느리게</button>
+    <button class="btn-sm sel" onclick="setSpd(0.8,this)">보통</button>
+    <button class="btn-sm" onclick="setSpd(1.1,this)">빠르게</button>
+  </div>
+  <div class="now-box" id="listen-now"><span class="lbl">재생중</span>–</div>
+  <div class="sent-list" id="listen-list"></div>
+</div>
+<div id="panel-shadow" class="panel">
+  <div class="panel-title">③ 따라말하기 <small style="font-size:12px;color:#8090a8;">(섀도잉)</small></div>
+  <div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
+  <div class="shadow-box">
+    <div class="mic">🎙️</div>
+    <div class="sh-status" id="sh-status">재생 버튼을 눌러 시작하세요</div>
+    <div class="sh-hint" id="sh-hint">문장이 나오는 즉시 바로 따라 말하세요</div>
+    <div class="prog-row" id="sh-prog"></div>
+  </div>
+  <div class="ctrl-bar" style="justify-content:center">
+    <button class="btn btn-play" onclick="playAll('shadow')">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  </div>
+</div>
+<div id="panel-read" class="panel">
+  <div class="panel-title">④ 낭독</div>
+  <div class="panel-desc">한 문장을 듣고 충분한 여백 동안 소리 내어 따라 읽으세요.</div>
+  <div class="ctrl-bar">
+    <button class="btn btn-play" onclick="playAll('read')">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  </div>
+  <div class="now-box" id="read-now"><span class="lbl">재생중</span>–</div>
+  <div class="sent-list" id="read-list"></div>
+</div>
+<div id="panel-dict" class="panel">
+  <div class="panel-title">⑤ 받아쓰기</div>
+  <div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
+  <div class="ctrl-bar">
+    <span class="spd-label">재생 속도</span>
+    <button class="btn-sm sel" id="ds-normal" onclick="setDspd(0.9,'normal')">보통</button>
+    <button class="btn-sm" id="ds-slow" onclick="setDspd(0.7,'slow')">느리게</button>
+  </div>
+  <div class="dict-list" id="dict-list"></div>
+</div>
+<div id="panel-quiz" class="panel">
+  <div class="panel-title">⑥ 4지선다</div>
+  <div class="panel-desc">빈칸에 알맞은 단어를 고르세요. 답을 선택하면 해설이 바로 나옵니다.</div>
+  <div class="score-bar">
+    <div class="sc-item">맞은 수 <strong id="mc-ok">0</strong></div>
+    <div class="sc-item">/ <strong id="mc-tot">0</strong>문항</div>
+    <button class="btn-reset" onclick="resetMC()">↺ 다시 풀기</button>
+  </div>
+  <div class="quiz-wrap" id="mc-wrap"></div>
+</div>
+<div id="panel-reorder" class="panel">
+  <div class="panel-title">⑦ 문장재배열</div>
+  <div class="ro-desc">조각을 클릭해 올바른 순서로 문장을 완성하세요.</div>
+  <div class="score-bar">
+    <div class="sc-item">맞은 수 <strong id="ro-ok">0</strong></div>
+    <div class="sc-item">/ <strong id="ro-tot">0</strong>문항</div>
+    <button class="btn-reset" onclick="resetRO()">↺ 다시 풀기</button>
+  </div>
+  <div class="quiz-wrap" id="ro-wrap"></div>
+</div>
+
+<script>
+const TARGET=['revise','mark','negative','official','search','benefit','profit','damage','amaze','opportunity'];
+
+const SENTS=[
+  "This field trip is a great opportunity to learn about nature outside the classroom.",
+  "Students who revise their notes regularly tend to perform better on tests.",
+  "A teacher's mark on your work can help you understand where to improve.",
+  "Try to stay positive and avoid having a negative thought before a big test.",
+  "The official announcement of the exam schedule surprised many students.",
+  "Drinking enough water every day can benefit your skin and your energy levels.",
+  "Some students search for ways to make studying more enjoyable and effective.",
+  "Dropping your phone on the floor can damage the screen easily.",
+  "The results of the science experiment amazed the whole class.",
+  "Joining a school club is a great opportunity to make new friends."
+];
+
+const VOCAB_CORE=[
+  {w:'revise',      pos:'v.',  m:'개정하다, 정정하다',          ex:'You should revise your essay before handing it in.'},
+  {w:'mark',        pos:'v/n.',m:'표시하다, 채점하다 / 표시, 흔적', ex:'The teacher marked the homework carefully.'},
+  {w:'negative',    pos:'adj.',m:'부정적인, 음성의',            ex:'Try to avoid negative thinking.'},
+  {w:'official',    pos:'adj.',m:'공식적인, 공무의, 정식의',    ex:'The official results will be announced tomorrow.'},
+  {w:'search',      pos:'v/n.',m:'찾다, 검색하다 / 수색, 검색', ex:'She searched the internet for more information.'},
+  {w:'benefit',     pos:'n/v.',m:'이익, 혜택 / 이롭다',        ex:'Exercise has many benefits for your health.'},
+  {w:'profit',      pos:'n/v.',m:'이익, 수익 / 이익을 얻다',   ex:'The shop made a large profit during the holiday.'},
+  {w:'damage',      pos:'n/v.',m:'손상, 피해 / 손상을 입히다', ex:'The storm caused a lot of damage to the buildings.'},
+  {w:'amaze',       pos:'v.',  m:'(대단히) 놀라게 하다',        ex:'Her performance amazed the entire audience.'},
+  {w:'opportunity', pos:'n.',  m:'기회, 가망',                  ex:'This internship is a great opportunity for you.'},
+];
+
+const VOCAB_EXTRA=[
+  {w:'criticism',   pos:'n.',  m:'비판, 비평',    ex:'She took the criticism positively.'},
+  {w:'announcement',pos:'n.',  m:'발표, 공지',    ex:'The announcement surprised everyone.'},
+  {w:'vocabulary',  pos:'n.',  m:'어휘(력)',      ex:'Reading helps build your vocabulary.'},
+  {w:'experiment',  pos:'n.',  m:'실험',          ex:'The science experiment went well.'},
+  {w:'enjoyable',   pos:'adj.',m:'즐거운, 유쾌한',ex:'The class was very enjoyable.'},
+  {w:'effective',   pos:'adj.',m:'효과적인',      ex:'This is an effective way to study.'},
+];
+
+const IDIOMS=[
+  {phrase:'make the most of', mean:'~을 최대한 활용하다',    ex:'Make the most of every learning opportunity.'},
+  {phrase:'search for',       mean:'~을 찾다, 검색하다',     ex:'She searched for answers to the difficult questions.'},
+  {phrase:'stay up (late)',   mean:'(늦게까지) 깨어있다',    ex:"Don't stay up too late before an exam."},
+  {phrase:'tend to',          mean:'~하는 경향이 있다',      ex:'Students who study daily tend to do well in exams.'},
+  {phrase:'learn from',       mean:'~에서 배우다',           ex:'We should always learn from our mistakes.'},
+];
+
+// 정답 배분: ①3 ②3 ③2 ④2
+const MC=[
+  {q:"Don't miss this __________ to meet the visiting professor after the lecture.",
+   blank:'opportunity', answer_idx:1,
+   opts:['mark','opportunity','profit','benefit'],
+   ko:'강의 후 방문 교수님을 만날 이 기회를 놓치지 마라.',
+   exp:'opportunity = 기회. "miss an opportunity"는 기회를 놓친다는 관용 표현입니다. ①mark(표시)·③profit(이익)·④benefit(혜택)은 "miss this ___ to meet"과 어울리지 않습니다.'},
+  {q:'She decided to __________ her essay before submitting it to make sure there were no errors.',
+   blank:'revise', answer_idx:3,
+   opts:['search','damage','mark','revise'],
+   ko:'오류가 없는지 확인하기 위해 그녀는 제출 전에 에세이를 수정하기로 했다.',
+   exp:'revise = 수정하다. "make sure there were no errors" 맥락에서 수정(revise)이 가장 정확합니다. ①search·②damage는 맥락에 맞지 않고, ③mark(채점하다)는 주로 교사가 남의 글을 채점할 때 씁니다.'},
+  {q:'The teacher will __________ our test papers and return them by Friday.',
+   blank:'mark', answer_idx:0,
+   opts:['mark','revise','search','damage'],
+   ko:'선생님은 우리 시험지를 채점하고 금요일까지 돌려줄 것이다.',
+   exp:'mark = 채점하다. "mark test papers"는 교사가 시험지를 채점한다는 자연스러운 표현입니다. ②revise는 주로 학생이 자신의 글을 고칠 때 쓰이고, ③search·④damage는 맥락에 맞지 않습니다.'},
+  {q:'Constant __________ feedback can make students lose confidence over time.',
+   blank:'negative', answer_idx:2,
+   opts:['official','positive','negative','amazing'],
+   ko:'지속적인 부정적 피드백은 시간이 지나면서 학생들이 자신감을 잃게 만들 수 있다.',
+   exp:'negative = 부정적인. "negative feedback"은 자신감을 잃게 만든다는 맥락에 자연스럽습니다. ①official은 맥락과 다르고, ②positive(긍정적인)·④amazing(놀라운)은 자신감 상실의 원인이 되지 않습니다.'},
+  {q:'The __________ results of the competition will be posted on the school website tomorrow.',
+   blank:'official', answer_idx:1,
+   opts:['negative','official','profitable','revised'],
+   ko:'대회의 공식 결과가 내일 학교 웹사이트에 게시될 것이다.',
+   exp:'official = 공식적인. "official results"는 공식 발표되는 결과를 뜻하는 자연스러운 표현입니다. ①negative·③profitable·④revised는 이 맥락에 맞지 않습니다.'},
+  {q:'Regular exercise can greatly __________ both your physical and mental health.',
+   blank:'benefit', answer_idx:0,
+   opts:['benefit','damage','search','amaze'],
+   ko:'규칙적인 운동은 신체적·정신적 건강 모두에 크게 도움이 될 수 있다.',
+   exp:'benefit = 이롭다, 도움이 되다. "benefit your health"는 건강에 이롭다는 관용 표현입니다. ②damage(손상시키다)는 반대 의미, ③search·④amaze는 건강과의 맥락에 맞지 않습니다.'},
+  {q:'She spent the whole afternoon __________ for information about the topic online.',
+   blank:'searching', answer_idx:2,
+   opts:['revising','marking','searching','damaging'],
+   ko:'그녀는 오후 내내 온라인에서 그 주제에 관한 정보를 검색하며 보냈다.',
+   exp:'search = 찾다, 검색하다. "search for information"은 정보를 검색한다는 관용 표현입니다. ①revising·②marking·④damaging은 "for information"과 자연스럽게 연결되지 않습니다.'},
+  {q:'The flood caused serious __________ to many homes in the area.',
+   blank:'damage', answer_idx:3,
+   opts:['profit','benefit','opportunity','damage'],
+   ko:'홍수가 그 지역의 많은 가정에 심각한 피해를 입혔다.',
+   exp:'damage = 손상, 피해. "cause damage to"는 ~에 피해를 입힌다는 관용 표현입니다. ①profit·②benefit은 반대 의미, ③opportunity(기회)는 flood 맥락과 모순됩니다.'},
+  {q:"The magician's tricks completely __________ everyone in the audience.",
+   blank:'amazed', answer_idx:1,
+   opts:['benefited','amazed','profited','damaged'],
+   ko:'마술사의 묘기가 관객 모두를 완전히 놀라게 했다.',
+   exp:'amaze = 놀라게 하다. "amazed everyone"은 모두를 깜짝 놀라게 한다는 자연스러운 표현입니다. ①benefited·③profited는 맥락에 맞지 않고, ④damaged(손상시켰다)는 반대 맥락입니다.'},
+  {q:'The company made a large __________ after launching its new product last year.',
+   blank:'profit', answer_idx:0,
+   opts:['profit','benefit','damage','opportunity'],
+   ko:'그 회사는 작년에 신제품을 출시한 후 큰 이익을 냈다.',
+   exp:'profit = 이익, 수익. "make a profit"은 이익을 낸다는 비즈니스 관용 표현입니다. ②benefit은 "make a benefit"으로 쓰이지 않으며, ③damage·④opportunity는 맥락에 맞지 않습니다.'},
+];
+
+const RO=[
+  {pieces:['This field trip is a great opportunity','/ to learn about nature','/ outside the classroom.'],
+   ko:'이 현장 학습은 교실 밖에서 자연에 대해 배울 수 있는 좋은 기회이다.'},
+  {pieces:['Students who revise their notes regularly','/ tend to perform better','/ on tests.'],
+   ko:'노트를 규칙적으로 복습하는 학생들은 시험에서 더 잘하는 경향이 있다.'},
+  {pieces:['Try to stay positive','/ and avoid having a negative thought','/ before a big test.'],
+   ko:'큰 시험 전에 긍정적으로 있으려 하고 부정적인 생각을 피해라.'},
+  {pieces:['Drinking enough water every day','/ can benefit your skin','/ and your energy levels.'],
+   ko:'매일 충분한 물을 마시는 것은 피부와 에너지 수준에 이로울 수 있다.'},
+  {pieces:['Joining a school club','/ is a great opportunity','/ to make new friends.'],
+   ko:'학교 동아리에 가입하는 것은 새 친구를 사귀는 좋은 기회이다.'},
+];
+
+let spd=0.8,dspd=0.9,stopReq=false,mcOk=0,roOk=0,roAns=[];
+const syn=window.speechSynthesis;
+
+function goTab(name,btn){stopAll();document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('panel-'+name).classList.add('active');btn.classList.add('active')}
+function hl(t){TARGET.forEach(w=>{const re=new RegExp('\\b('+w+'[sd]?|'+w.replace(/e$/,'ing')+'|'+w.replace(/e$/,'ed')+'|'+w+'d)\\b','gi');t=t.replace(re,m=>'<span class="hl">'+m+'</span>')});return t}
+function buildVocab(){buildGrid('vc-core',VOCAB_CORE);buildGrid('vc-extra',VOCAB_EXTRA);const il=document.getElementById('idiom-list');il.innerHTML='';IDIOMS.forEach(id=>{const c=document.createElement('div');c.className='idiom-card';c.innerHTML=`<div class="idiom-phrase">${id.phrase}</div><div class="idiom-mean">→ ${id.mean}</div><div class="idiom-ex">${id.ex}</div>`;il.appendChild(c)})}
+function buildGrid(id,list){const g=document.getElementById(id);g.innerHTML='';list.forEach(v=>{const c=document.createElement('div');c.className='flip-card';c.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="f-word">${v.w}</div><div class="f-pos">${v.pos}</div><div class="f-snd" onclick="event.stopPropagation();spkW('${v.w}')">🔊</div></div><div class="flip-back"><div class="f-mean">${v.m}</div><div class="f-ex">${v.ex}</div></div></div>`;c.onclick=()=>{const was=c.classList.contains('flipped');c.classList.toggle('flipped');was?spkW(v.w):spkKo(v.m)};g.appendChild(c)})}
+function buildPassage(){document.getElementById('passage').innerHTML='<div class="p-title">Making the Most of Every Chance</div>'+SENTS.map(s=>hl(s)).join(' ')}
+function buildSentList(cid,mode){const c=document.getElementById(cid);c.innerHTML='';SENTS.forEach((s,i)=>{const card=document.createElement('div');card.className='sent-card';card.id=mode+'-card-'+i;const num=document.createElement('div');num.className='s-num';num.id=mode+'-num-'+i;num.textContent=i+1;num.onclick=()=>spkOne(s,i,mode);const txt=document.createElement('div');txt.className='s-txt';txt.innerHTML=hl(s);card.appendChild(num);card.appendChild(txt);c.appendChild(card)})}
+function buildProg(){const p=document.getElementById('sh-prog');p.innerHTML='';SENTS.forEach((_,i)=>{const d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d)})}
+function spk(t,r){return new Promise(re=>{syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;u.onend=re;u.onerror=re;syn.speak(u)})}
+function wait(ms){return new Promise(r=>setTimeout(r,ms))}
+function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u)}
+function spkKo(t){syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=0.9;syn.speak(u)}
+function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|not|who)\b/i.test(s)}
+function shadowGap(s){return isComplex(s)?1800:1200}
+function readGap(s){return isComplex(s)?7000:5000}
+function setAct(m,i,on){const c=document.getElementById(m+'-card-'+i);const n=document.getElementById(m+'-num-'+i);if(!c||!n)return;c.classList.toggle('playing',on);n.classList.toggle('playing',on)}
+function setNow(id,i){const el=document.getElementById(id);if(!el)return;el.innerHTML=i<0?'<span class="lbl">재생중</span>–':'<span class="lbl">S'+(i+1)+'</span>'+hl(SENTS[i])}
+async function spkOne(text,i,mode){stopAll();await wait(100);stopReq=false;setAct(mode,i,true);setNow(mode+'-now',i);await spk(text,mode==='dict'?dspd:spd);setAct(mode,i,false);setNow(mode+'-now',-1)}
+async function playAll(mode){
+  stopAll();await wait(150);stopReq=false;
+  if(mode==='shadow'){
+    document.getElementById('sh-status').textContent='재생 중...';
+    for(let i=0;i<SENTS.length;i++){
+      if(stopReq)break;
+      document.querySelectorAll('.prog-dot').forEach(d=>d.classList.remove('cur'));
+      const pd=document.getElementById('pd-'+i);if(pd)pd.classList.add('cur');
+      document.getElementById('sh-hint').textContent='문장 '+(i+1)+' / '+SENTS.length+' — 바로 따라 말하세요!';
+      await spk(SENTS[i],0.8);
+      if(pd){pd.classList.remove('cur');pd.classList.add('done')}
+      if(stopReq)break;
+      await wait(shadowGap(SENTS[i]));
+    }
+    document.getElementById('sh-status').textContent=stopReq?'정지되었습니다.':'완료! 수고했어요 👏';
+    document.getElementById('sh-hint').textContent='';return;
+  }
+  for(let i=0;i<SENTS.length;i++){
+    if(stopReq)break;
+    setAct(mode,i,true);setNow(mode+'-now',i);
+    await spk(SENTS[i],spd);setAct(mode,i,false);
+    if(stopReq)break;
+    await wait(mode==='read'?readGap(SENTS[i]):250);
+  }
+  setNow(mode+'-now',-1);
+}
+function stopAll(){stopReq=true;syn.cancel();['listen','read'].forEach(m=>{SENTS.forEach((_,i)=>setAct(m,i,false));setNow(m+'-now',-1)});document.querySelectorAll('.prog-dot').forEach(d=>d.classList.remove('cur'))}
+function setSpd(rate,btn){spd=rate;document.querySelectorAll('.ctrl-bar .btn-sm').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel')}
+function setDspd(rate,key){dspd=rate;['normal','slow'].forEach(k=>document.getElementById('ds-'+k).classList.remove('sel'));document.getElementById('ds-'+key).classList.add('sel')}
+function buildDict(){const c=document.getElementById('dict-list');c.innerHTML='';SENTS.forEach((s,i)=>{const card=document.createElement('div');card.className='dict-card';const num=document.createElement('div');num.className='d-num';num.id='dn-'+i;num.textContent=i+1;num.onclick=()=>{document.querySelectorAll('.d-num').forEach(n=>n.classList.remove('pd'));num.classList.add('pd');syn.cancel();const u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=dspd;u.onend=()=>num.classList.remove('pd');syn.speak(u)};const hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';card.appendChild(num);card.appendChild(hint);c.appendChild(card)})}
+function buildMC(){
+  const c=document.getElementById('mc-wrap');c.innerHTML='';
+  document.getElementById('mc-tot').textContent=MC.length;
+  const nums=['①','②','③','④'];
+  MC.forEach((q,qi)=>{
+    const card=document.createElement('div');card.className='q-card';
+    card.innerHTML='<div class="q-num">['+(qi+1)+'번]</div><div class="q-text">'+q.q.replace('__________','<span class="blank-span"></span>')+'</div><div class="q-ko">'+q.ko+'</div>';
+    const opts=document.createElement('div');opts.className='opts';
+    q.opts.forEach((opt,oi)=>{
+      const btn=document.createElement('button');btn.className='opt';btn.innerHTML=nums[oi]+' '+opt;
+      btn.onclick=()=>{if(btn.disabled)return;opts.querySelectorAll('.opt').forEach(b=>b.disabled=true);if(oi===q.answer_idx){btn.classList.add('ok');mcOk++;document.getElementById('mc-ok').textContent=mcOk}else{btn.classList.add('ng');opts.querySelectorAll('.opt')[q.answer_idx].classList.add('ok')}card.querySelector('.exp').classList.add('show')};
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    const exp=document.createElement('div');exp.className='exp';exp.innerHTML='<div class="exp-lbl">📝 해설</div>'+q.exp;
+    card.appendChild(exp);c.appendChild(card);
+  });
+}
+function resetMC(){mcOk=0;document.getElementById('mc-ok').textContent=0;buildMC()}
+function buildRO(){
+  const c=document.getElementById('ro-wrap');c.innerHTML='';
+  document.getElementById('ro-tot').textContent=RO.length;
+  roAns=RO.map(()=>[]);
+  RO.forEach((item,si)=>{
+    const card=document.createElement('div');card.className='q-card';
+    const qt=document.createElement('div');qt.className='ro-q';
+    qt.innerHTML='<span style="color:#c05010;font-weight:700;">[' +(si+1)+'번]</span> 조각을 올바른 순서로 클릭하세요.<br><span style="font-size:13px;color:#2a6db5;font-weight:600;">💬 '+item.ko+'</span>';
+    card.appendChild(qt);
+    const ca=document.createElement('div');ca.className='chip-area';ca.id='ca-'+si;
+    const aa=document.createElement('div');aa.className='ans-area';aa.id='aa-'+si;
+    const rs=document.createElement('div');rs.className='ro-result';rs.id='rs-'+si;
+    [...item.pieces].sort(()=>Math.random()-0.5).forEach((p,pi)=>{const ch=document.createElement('div');ch.className='chip';ch.id='ch-'+si+'-'+pi;ch.textContent=p;ch.onclick=()=>{if(ch.classList.contains('used'))return;ch.classList.add('used');roAns[si].push({w:p,id:ch.id});renderRO(si,aa,rs,item)};ca.appendChild(ch)});
+    card.appendChild(ca);card.appendChild(aa);card.appendChild(rs);
+    const rb=document.createElement('button');rb.className='btn-sm';rb.style.marginTop='8px';rb.textContent='↺ 초기화';rb.onclick=()=>{roAns[si]=[];ca.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('used'));aa.innerHTML='';rs.textContent='';rs.className='ro-result'};card.appendChild(rb);c.appendChild(card);
+  });
+}
+function renderRO(si,aa,rs,item){
+  aa.innerHTML='';
+  roAns[si].forEach((it,idx)=>{const ac=document.createElement('div');ac.className='ans-chip';ac.textContent=it.w;ac.onclick=()=>{const ch=document.getElementById(it.id);if(ch)ch.classList.remove('used');roAns[si].splice(idx,1);renderRO(si,aa,rs,item)};aa.appendChild(ac)});
+  if(roAns[si].length===item.pieces.length){if(roAns[si].map(i=>i.w).join(' / ')===item.pieces.join(' / ')){rs.textContent='✓ 정답입니다!';rs.className='ro-result ok';roOk++;document.getElementById('ro-ok').textContent=roOk}else{rs.innerHTML='✗ 다시 확인해 보세요.<br><span style="color:#5070a0;font-size:12px;">정답: '+item.pieces.join(' ')+'</span>';rs.className='ro-result ng'}}else{rs.textContent='';rs.className='ro-result'}
+}
+function resetRO(){roOk=0;document.getElementById('ro-ok').textContent=0;buildRO()}
+
+buildVocab();buildPassage();buildSentList('listen-list','listen');buildSentList('read-list','read');buildProg();buildDict();buildMC();buildRO();
+</script>
+</body>
+</html>
