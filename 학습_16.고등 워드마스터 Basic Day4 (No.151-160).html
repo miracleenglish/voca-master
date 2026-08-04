@@ -339,7 +339,26 @@ function buildProg(){const p=document.getElementById('sh-prog');p.innerHTML='';S
 function spk(t,r){return new Promise(re=>{syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;u.onend=re;u.onerror=re;syn.speak(u)})}
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u)}
-function spkKo(t){syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=0.9;syn.speak(u)}
+function cleanKo(t){
+  let s = t.replace(/\s*\/\s*/g, ', ');
+  s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
+  s = s.replace(/\(([^)]*)\)/g,'$1 ');
+  s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
+  s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
+  return s;
+}
+function spkKo(t){
+  syn.cancel();
+  let s = cleanKo(t);
+  const short = s.length <= 4;
+  if(short){ s = ' ' + s + ' '; }
+  setTimeout(() => {
+    const u = new SpeechSynthesisUtterance(s);
+    u.lang = 'ko-KR';
+    u.rate = short ? 0.78 : 0.85;
+    syn.speak(u);
+  }, 100);
+}
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|to|who|before)\b/i.test(s)}
 function shadowGap(s){return isComplex(s)?1800:1200}
 function readGap(s){return isComplex(s)?7000:5000}
