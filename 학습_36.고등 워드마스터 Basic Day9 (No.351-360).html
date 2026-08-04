@@ -216,7 +216,26 @@ function buildProg(){var p=document.getElementById('sh-prog');p.innerHTML='';SEN
 function spk(t,r){return new Promise(function(res){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;u.onend=res;u.onerror=res;syn.speak(u);});}
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
 function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u);}
-function spkKo(t){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=0.9;syn.speak(u);}
+function cleanKo(t){
+  var s = t.replace(/\s*\/\s*/g, ', ');
+  s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
+  s = s.replace(/\(([^)]*)\)/g,'$1 ');
+  s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
+  s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
+  return s;
+}
+function spkKo(t){
+  syn.cancel();
+  var s = cleanKo(t);
+  var short = s.length <= 4;
+  if(short){ s = ' ' + s + ' '; }
+  setTimeout(function(){
+    var u = new SpeechSynthesisUtterance(s);
+    u.lang = 'ko-KR';
+    u.rate = short ? 0.78 : 0.85;
+    syn.speak(u);
+  }, 100);
+}
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|who)\b/i.test(s);}
 function shadowGap(s){return isComplex(s)?1800:1200;}
 function readGap(s){return isComplex(s)?7000:5000;}
