@@ -3,126 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>보카 마스터 | 고등 워드마스터 Basic</title>
+<title>보카 마스터 | 미라클 영어 스터디</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-    background: #f4f6fa;
-    color: #1a2233;
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  :root{
+    --navy:#1a2842;--navy2:#2a3d5c;
+    --bg:#f4f6fa;--card:#fff;--text:#1a2233;--muted:#8291ab;--border:#e2e7f0;
+    --blue:#3f6fd6;--blue-dark:#2a52ad;--blue-light:#EAF0FD;
+    --green:#2E9E5B;--green-dark:#1E7A44;--green-light:#E8F7EF;
+    --orange:#E8720C;--orange-dark:#A04500;--orange-light:#FEF0E6;
   }
-  header {
-    background: linear-gradient(135deg, #1a2842, #2a3d5c);
-    color: #fff;
-    padding: 40px 20px 32px;
-    text-align: center;
-  }
-  header .brand {
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #9db4d9;
-    margin-bottom: 8px;
-  }
-  header h1 {
-    font-size: 30px;
-    margin-bottom: 8px;
-  }
-  header p {
-    color: #c7d3e8;
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .stat-box {
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 12px 24px;
-    min-width: 90px;
-  }
-  .stat-box .stat-num {
-    font-size: 22px;
-    font-weight: 700;
-  }
-  .stat-box .stat-label {
-    font-size: 12px;
-    color: #a9bcdc;
-    margin-top: 2px;
-  }
-  main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 28px 20px 60px;
-  }
-  .day-section {
-    margin-bottom: 28px;
-  }
-  .day-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #2a3d5c;
-    margin-bottom: 10px;
-    padding-left: 4px;
-    border-left: 4px solid #3f6fd6;
-    padding-left: 10px;
-  }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 10px;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border: 1px solid #e2e7f0;
-    border-radius: 10px;
-    padding: 14px 8px;
-    text-decoration: none;
-    color: #1a2233;
-    transition: all 0.15s ease;
-  }
-  .card:hover {
-    border-color: #3f6fd6;
-    box-shadow: 0 4px 12px rgba(63,111,214,0.18);
-    transform: translateY(-2px);
-  }
-  .card .num {
-    font-size: 18px;
-    font-weight: 800;
-    color: #3f6fd6;
-  }
-  .card .range {
-    font-size: 11px;
-    color: #8291ab;
-    margin-top: 4px;
-  }
-  footer {
-    text-align: center;
-    padding: 24px;
-    color: #8291ab;
-    font-size: 12px;
-  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Nunito','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:36px 20px 28px;text-align:center;}
+  header .brand{font-size:12px;letter-spacing:2px;opacity:.65;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;}
+  header h1{font-size:28px;font-weight:900;margin-bottom:6px;}
+  header .tagline{font-size:13px;opacity:.8;font-family:'Noto Sans KR',sans-serif;}
+  .stats-row{display:flex;justify-content:center;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .stat{background:rgba(255,255,255,.1);border-radius:12px;padding:8px 18px;text-align:center;}
+  .stat .n{font-size:20px;font-weight:900;}
+  .stat .l{font-size:11px;opacity:.75;font-family:'Noto Sans KR',sans-serif;margin-top:1px;}
+
+  .guide-banner{max-width:1100px;margin:18px auto 0;padding:0 20px;}
+  .guide-inner{background:#fff;border-radius:14px;padding:13px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:13px;font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.6;}
+
+  /* 상위탭: 교재 선택 */
+  .series-wrap{max-width:1100px;margin:20px auto 0;padding:0 20px;}
+  .series-group-label{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1px;margin:14px 0 6px 2px;font-family:'Noto Sans KR',sans-serif;}
+  .series-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
+  .series-bar::-webkit-scrollbar{display:none;}
+  .series-btn{border:2.5px solid var(--border);background:#fff;border-radius:16px;padding:12px 16px;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;text-align:center;flex-shrink:0;min-width:118px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .series-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1);}
+  .series-btn .sb-icon{font-size:20px;margin-bottom:4px;}
+  .series-btn .sb-name{font-size:12px;font-weight:800;color:var(--text);display:block;white-space:nowrap;}
+  .series-btn .sb-sub{font-size:10px;color:var(--muted);display:block;margin-top:2px;white-space:nowrap;}
+
+  .series-btn.hs{border-color:var(--blue);}
+  .series-btn.hs.active,.series-btn.hs:hover{background:var(--blue);border-color:var(--blue);}
+  .series-btn.hs.active .sb-name,.series-btn.hs.active .sb-sub,.series-btn.hs:hover .sb-name,.series-btn.hs:hover .sb-sub{color:#fff;}
+
+  .series-btn.ms{border-color:var(--green);}
+  .series-btn.ms.active,.series-btn.ms:hover{background:var(--green);border-color:var(--green);}
+  .series-btn.ms.active .sb-name,.series-btn.ms.active .sb-sub,.series-btn.ms:hover .sb-name,.series-btn.ms:hover .sb-sub{color:#fff;}
+
+  .series-btn.es{border-color:var(--orange);}
+  .series-btn.es.active,.series-btn.es:hover{background:var(--orange);border-color:var(--orange);}
+  .series-btn.es.active .sb-name,.series-btn.es.active .sb-sub,.series-btn.es:hover .sb-name,.series-btn.es:hover .sb-sub{color:#fff;}
+
+  .series-btn.coming{opacity:.5;cursor:not-allowed;background:#F0F4F8;}
+  .series-btn.coming:hover{transform:none;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .series-btn.coming .sb-name{color:var(--muted);}
+
+  main{max-width:1100px;margin:0 auto;padding:20px 20px 60px;}
+  .series-panel{display:none;}
+  .series-panel.show{display:block;}
+
+  .series-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+  .series-head h2{font-size:18px;font-weight:900;color:var(--navy);}
+  .series-head .lv{font-size:12px;color:var(--muted);font-family:'Noto Sans KR',sans-serif;background:#fff;border:1px solid var(--border);padding:4px 10px;border-radius:99px;}
+
+  .day-section{margin-bottom:26px;}
+  .day-title{font-size:15px;font-weight:800;color:var(--navy2);margin-bottom:10px;padding-left:10px;border-left:4px solid var(--blue);}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
+  .card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 8px;text-decoration:none;color:var(--text);transition:all .15s ease;}
+  .card:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(63,111,214,.18);transform:translateY(-2px);}
+  .card .num{font-size:18px;font-weight:800;color:var(--blue);}
+  .card .range{font-size:11px;color:var(--muted);margin-top:4px;}
+
+  .ms-title{border-left-color:var(--green);} .ms-num{color:var(--green);}
+  .es-title{border-left-color:var(--orange);} .es-num{color:var(--orange);}
+
+  .coming-box{background:#fff;border:1.5px dashed var(--border);border-radius:16px;padding:48px 20px;text-align:center;color:var(--muted);font-family:'Noto Sans KR',sans-serif;}
+  .coming-box .ci{font-size:34px;margin-bottom:10px;}
+  .coming-box .ct{font-size:15px;font-weight:800;color:var(--text);margin-bottom:6px;}
+  .coming-box .cd{font-size:12.5px;line-height:1.7;}
+
+  footer{text-align:center;padding:26px;color:var(--muted);font-size:12px;font-family:'Noto Sans KR',sans-serif;}
 </style>
 </head>
 <body>
 <header>
   <div class="brand">미라클 영어 스터디</div>
   <h1>📚 보카 마스터</h1>
-  <p>고등 워드마스터 Basic · No.1~1200 전체 학습</p>
-  <div class="stats">
-    <div class="stat-box"><div class="stat-num">120</div><div class="stat-label">세트</div></div>
-    <div class="stat-box"><div class="stat-num">1,200</div><div class="stat-label">단어</div></div>
-    <div class="stat-box"><div class="stat-num">28</div><div class="stat-label">Day</div></div>
+  <div class="tagline">교재를 선택하고 세트를 눌러 학습을 시작하세요</div>
+  <div class="stats-row">
+    <div class="stat"><div class="n">9</div><div class="l">교재</div></div>
+    <div class="stat"><div class="n">120</div><div class="l">완성 세트</div></div>
+    <div class="stat"><div class="n">1,200</div><div class="l">완성 단어</div></div>
   </div>
 </header>
+
+<div class="guide-banner">
+  <div class="guide-inner">
+    <span>💡</span>
+    <span>아래에서 교재를 선택하면 해당 교재의 학습 세트 목록이 펼쳐져요. 준비중인 교재는 곧 추가될 예정입니다.</span>
+  </div>
+</div>
+
+<div class="series-wrap">
+  <div class="series-group-label">고등 시리즈</div>
+  <div class="series-bar">
+    <button class="series-btn hs active" onclick="showSeries('hs-basic', this)">
+      <div class="sb-icon">📘</div><span class="sb-name">워드마스터 Basic</span><span class="sb-sub">No.1~1200 · 120세트</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📗</div><span class="sb-name">수능 2000</span><span class="sb-sub">준비중</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📙</div><span class="sb-name">컴플릿</span><span class="sb-sub">준비중</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📕</div><span class="sb-name">숙어 1000</span><span class="sb-sub">준비중</span>
+    </button>
+  </div>
+
+  <div class="series-group-label">중등 시리즈</div>
+  <div class="series-bar">
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📒</div><span class="sb-name">워드마스터 베이직</span><span class="sb-sub">준비중</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📗</div><span class="sb-name">워드마스터 실력</span><span class="sb-sub">준비중</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📙</div><span class="sb-name">워드마스터 고난도</span><span class="sb-sub">준비중</span>
+    </button>
+  </div>
+
+  <div class="series-group-label">초등 시리즈</div>
+  <div class="series-bar">
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📔</div><span class="sb-name">워드마스터 베이직</span><span class="sb-sub">준비중</span>
+    </button>
+    <button class="series-btn coming" disabled title="준비중">
+      <div class="sb-icon">📓</div><span class="sb-name">워드마스터 컴플릿</span><span class="sb-sub">준비중</span>
+    </button>
+  </div>
+</div>
+
 <main>
+<div id="hs-basic" class="series-panel show">
+  <div class="series-head">
+    <h2>고등 워드마스터 Basic · No.1~1200</h2>
+    <span class="lv">난이도: 초등6~중1~2 (쉬운~보통)</span>
+  </div>
+
       <div class="day-section">
         <h2 class="day-title">Day 1</h2>
         <div class="card-grid">
@@ -264,15 +290,15 @@
           <span class="num">27</span>
           <span class="range">No.261-270</span>
         </a>
+        <a class="card" href="학습_28.고등 워드마스터 Basic Day8 (No.271-280).html">
+          <span class="num">28</span>
+          <span class="range">No.271-280</span>
+        </a>
         </div>
       </div>
       <div class="day-section">
         <h2 class="day-title">Day 8</h2>
         <div class="card-grid">
-        <a class="card" href="학습_28.고등 워드마스터 Basic Day8 (No.271-280).html">
-          <span class="num">28</span>
-          <span class="range">No.271-280</span>
-        </a>
         <a class="card" href="학습_29.고등 워드마스터 Basic Day8 (No.281-290).html">
           <span class="num">29</span>
           <span class="range">No.281-290</span>
@@ -386,11 +412,6 @@
           <span class="num">50</span>
           <span class="range">No.491-500</span>
         </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 14</h2>
-        <div class="card-grid">
         <a class="card" href="학습_51.고등 워드마스터 Basic Day14 (No.501-510).html">
           <span class="num">51</span>
           <span class="range">No.501-510</span>
@@ -399,6 +420,11 @@
           <span class="num">52</span>
           <span class="range">No.511-520</span>
         </a>
+        </div>
+      </div>
+      <div class="day-section">
+        <h2 class="day-title">Day 14</h2>
+        <div class="card-grid">
         <a class="card" href="학습_53.고등 워드마스터 Basic Day14 (No.521-530).html">
           <span class="num">53</span>
           <span class="range">No.521-530</span>
@@ -474,15 +500,15 @@
           <span class="num">67</span>
           <span class="range">No.661-670</span>
         </a>
+        <a class="card" href="학습_68.고등 워드마스터 Basic Day18 (No.671-680).html">
+          <span class="num">68</span>
+          <span class="range">No.671-680</span>
+        </a>
         </div>
       </div>
       <div class="day-section">
         <h2 class="day-title">Day 18</h2>
         <div class="card-grid">
-        <a class="card" href="학습_68.고등 워드마스터 Basic Day18 (No.671-680).html">
-          <span class="num">68</span>
-          <span class="range">No.671-680</span>
-        </a>
         <a class="card" href="학습_69.고등 워드마스터 Basic Day18 (No.681-690).html">
           <span class="num">69</span>
           <span class="range">No.681-690</span>
@@ -495,15 +521,15 @@
           <span class="num">71</span>
           <span class="range">No.701-710</span>
         </a>
+        <a class="card" href="학습_72.고등 워드마스터 Basic Day19 (No.711-720).html">
+          <span class="num">72</span>
+          <span class="range">No.711-720</span>
+        </a>
         </div>
       </div>
       <div class="day-section">
         <h2 class="day-title">Day 19</h2>
         <div class="card-grid">
-        <a class="card" href="학습_72.고등 워드마스터 Basic Day19 (No.711-720).html">
-          <span class="num">72</span>
-          <span class="range">No.711-720</span>
-        </a>
         <a class="card" href="학습_73.고등 워드마스터 Basic Day19 (No.721-730).html">
           <span class="num">73</span>
           <span class="range">No.721-730</span>
@@ -688,6 +714,11 @@
           <span class="num">108</span>
           <span class="range">No.1071-1080</span>
         </a>
+        </div>
+      </div>
+      <div class="day-section">
+        <h2 class="day-title">Day 28</h2>
+        <div class="card-grid">
         <a class="card" href="학습_109.고등 워드마스터 Basic Day27 (No.1081-1090).html">
           <span class="num">109</span>
           <span class="range">No.1081-1090</span>
@@ -707,7 +738,7 @@
         </div>
       </div>
       <div class="day-section">
-        <h2 class="day-title">Day 28</h2>
+        <h2 class="day-title">Day 29</h2>
         <div class="card-grid">
         <a class="card" href="학습_113.고등 워드마스터 Basic Day28 (No.1121-1130).html">
           <span class="num">113</span>
@@ -725,6 +756,11 @@
           <span class="num">116</span>
           <span class="range">No.1151-1160</span>
         </a>
+        </div>
+      </div>
+      <div class="day-section">
+        <h2 class="day-title">Day 30</h2>
+        <div class="card-grid">
         <a class="card" href="학습_117.고등 워드마스터 Basic Day28 (No.1161-1170).html">
           <span class="num">117</span>
           <span class="range">No.1161-1170</span>
@@ -743,7 +779,20 @@
         </a>
         </div>
       </div>
+</div>
 </main>
+
 <footer>미라클 영어 스터디 · 보카 마스터</footer>
+
+<script>
+function showSeries(id, btn){
+  document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.querySelectorAll('.series-panel').forEach(p => p.classList.remove('show'));
+  const el = document.getElementById(id);
+  if(el) el.classList.add('show');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
 </body>
 </html>
