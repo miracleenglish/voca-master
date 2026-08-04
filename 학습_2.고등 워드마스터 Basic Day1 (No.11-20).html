@@ -382,7 +382,22 @@ function buildProg(){
 function spk(text,rate){return new Promise(r=>{syn.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;u.onend=r;u.onerror=r;syn.speak(u);})}
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u)}
-function spkKo(t){syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=0.9;syn.speak(u)}
+function cleanKo(t){
+  let s=t.split('/')[0];
+  s=s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
+  s=s.replace(/\(([^)]*)\)/g,'$1 ');
+  s=s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
+  return s;
+}
+function spkKo(t){
+  syn.cancel();
+  let s=cleanKo(t);
+  const short=s.length<=4;
+  if(short){s=' '+s+' ';}
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(s);u.lang='ko-KR';u.rate=short?0.78:0.85;syn.speak(u);
+  },100);
+}
 
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|so that|although)\b/i.test(s)}
 function shadowGap(s){return isComplex(s)?1800:1200}
