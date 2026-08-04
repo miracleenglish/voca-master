@@ -326,7 +326,7 @@ function spk(t,r){return new Promise(re=>{syn.cancel();const u=new SpeechSynthes
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u)}
 function cleanKo(t){
-  let s = t.split('/')[0];
+  let s = t.replace(/\s*\/\s*/g, ', ');
   s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
   s = s.replace(/\(([^)]*)\)/g,'$1 ');
   s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');

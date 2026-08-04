@@ -383,7 +383,7 @@ function spk(text,rate){return new Promise(r=>{syn.cancel();const u=new SpeechSy
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u)}
 function cleanKo(t){
-  let s=t.split('/')[0];
+  let s = t.replace(/\s*\/\s*/g, ', ');
   s=s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
   s=s.replace(/\(([^)]*)\)/g,'$1 ');
   s=s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();

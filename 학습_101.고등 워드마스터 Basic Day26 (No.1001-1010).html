@@ -221,7 +221,7 @@ function spk(t,r){return new Promise(function(res){syn.cancel();var u=new Speech
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
 function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u);}
 function cleanKo(t){
-  var s=t.split('/')[0];
+  var s = t.replace(/\s*\/\s*/g, ', ');
   s=s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
   s=s.replace(/\(([^)]*)\)/g,'$1 ');
   s=s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
