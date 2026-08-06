@@ -100,13 +100,13 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 .sc-item strong{color:#c05010;font-size:18px}
 .btn-reset{margin-left:auto;background:#e8f0fb;color:#4070b0;border:none;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer}
 .btn-reset:hover{background:#d0e4f8}
-@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}</style>
+@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}.tts-tune b{color:#5a4400}.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}.tts-tune button:hover{background:#ffdd80}.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}</style>
 </head>
 <body>
 <header>
   <h1>고등 워드마스터 Basic &nbsp;|&nbsp; Day11 (No.411&ndash;420)</h1>
   <span class="badge">단어장 &middot; 집중듣기 &middot; 따라말하기 &middot; 낭독 &middot; 받아쓰기 &middot; 4지선다 &middot; 재배열</span>
-</header>
+</header><div class="tts-tune"><b>🔊 내 기기 음성 속도 미세조정</b><button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button><span id="ttOffsetLabel">기본</span><button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button><button class="tt-reset" onclick="resetTtsOffset()">초기화</button></div>
 <div class="tabs">
   <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
   <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
@@ -195,7 +195,7 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   </div>
   <div class="quiz-wrap" id="ro-wrap"></div>
 </div>
-<script>
+<script>function isMobileTTS(){if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))return true;if(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)return true;return false;}function adjRate(r){if(!isMobileTTS())return r;if(r<=0.75)return Math.max(0.3,r-0.4);if(r<1)return Math.max(0.45,r-0.25);return Math.max(0.7,r-0.3);}var ttsOffset=parseFloat(localStorage.getItem('wm_ttsOffset'))||0;function updateTtOffsetLabel(){var el=document.getElementById('ttOffsetLabel');if(!el)return;el.textContent=ttsOffset===0?'기본':(ttsOffset>0?'+':'')+ttsOffset.toFixed(2);}function adjustTtsOffset(delta){ttsOffset=Math.round((ttsOffset+delta)*100)/100;if(ttsOffset>0.4)ttsOffset=0.4;if(ttsOffset<-0.4)ttsOffset=-0.4;localStorage.setItem('wm_ttsOffset',ttsOffset);updateTtOffsetLabel();}function resetTtsOffset(){ttsOffset=0;localStorage.setItem('wm_ttsOffset',0);updateTtOffsetLabel();}function userRate(r){var v=adjRate(r)+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}updateTtOffsetLabel();
 var TITLE="Everyday Moments";
 var TARGET=["massive", "analogy", "wound", "cause", "consequence", "election", "trace", "wire", "restore", "cognitive", "traced", "restored", "wounded", "caused"];
 var SENTS=["A massive crowd gathered in the park for the weekend music festival.", "The teacher used an analogy to explain how the heart works like a pump.", "He got a small wound on his knee when he fell off his bicycle.", "Staying up too late can cause tiredness and poor focus at school.", "One consequence of skipping breakfast is feeling hungry before lunch.", "The class held an election to choose a new student council president.", "She traced the route on the map by following the marks left behind.", "The art teacher showed us how to bend wire into different shapes.", "He restored the old bicycle by cleaning it and painting it red.", "Reading aloud every day can support a child's cognitive development."];
@@ -213,29 +213,11 @@ function buildGrid(id,list){var g=document.getElementById(id);g.innerHTML='';lis
 function buildPassage(){document.getElementById('passage').innerHTML='<div class="p-title">'+TITLE+'</div>'+SENTS.map(function(s){return hl(s);}).join(' ');}
 function buildSentList(cid,mode){var con=document.getElementById(cid);con.innerHTML='';SENTS.forEach(function(s,i){var card=document.createElement('div');card.className='sent-card';card.id=mode+'-card-'+i;var num=document.createElement('div');num.className='s-num';num.id=mode+'-num-'+i;num.textContent=i+1;num.addEventListener('click',function(){spkOne(s,i,mode);});var txt=document.createElement('div');txt.className='s-txt';txt.innerHTML=hl(s);card.appendChild(num);card.appendChild(txt);con.appendChild(card);});}
 function buildProg(){var p=document.getElementById('sh-prog');p.innerHTML='';SENTS.forEach(function(_,i){var d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d);});}
-function spk(t,r){return new Promise(function(res){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;u.onend=res;u.onerror=res;syn.speak(u);});}
+function spk(t,r){return new Promise(function(res){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=userRate(r);u.onend=res;u.onerror=res;syn.speak(u);});}
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
-function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u);}
-function cleanKo(t){
-  var s = t.replace(/\s*\/\s*/g, ', ');
-  s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
-  s = s.replace(/\(([^)]*)\)/g,'$1 ');
-  s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
-  s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
-  return s;
-}
-function spkKo(t){
-  syn.cancel();
-  var s = cleanKo(t);
-  var short = s.length <= 4;
-  if(short){ s = ' ' + s + ' '; }
-  setTimeout(function(){
-    var u = new SpeechSynthesisUtterance(s);
-    u.lang = 'ko-KR';
-    u.rate = short ? 0.78 : 0.85;
-    syn.speak(u);
-  }, 100);
-}
+function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);}
+function cleanKo(t){var s = t.replace(/\s*\(cf\.[^)]*\)/gi, '');s = s.replace(/\s*\/\s*/g, ', ');s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');s = s.replace(/\(([^)]*)\)/g,'$1 ');s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();return s;}
+function spkKo(t){syn.cancel();var s = cleanKo(t);var short = s.length <= 4;if(short){ s = ' ' + s + ' '; }setTimeout(function(){var u = new SpeechSynthesisUtterance(s);u.lang = 'ko-KR';u.rate = userRate(short ? 0.78 : 0.85);syn.speak(u);}, 100);}
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|who)\b/i.test(s);}
 function shadowGap(s){return isComplex(s)?1800:1200;}
 function readGap(s){return isComplex(s)?7000:5000;}
@@ -252,7 +234,7 @@ async function playAll(mode){
 function stopAll(){stopReq=true;syn.cancel();['listen','read'].forEach(function(m){SENTS.forEach(function(_,i){setAct(m,i,false);});setNow(m+'-now',-1);});document.querySelectorAll('.prog-dot').forEach(function(d){d.classList.remove('cur');});}
 function setSpd(rate,btn){spd=rate;document.querySelectorAll('.ctrl-bar .btn-sm').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');}
 function setDspd(rate,key){dspd=rate;['normal','slow'].forEach(function(k){document.getElementById('ds-'+k).classList.remove('sel');});document.getElementById('ds-'+key).classList.add('sel');}
-function buildDict(){var con=document.getElementById('dict-list');con.innerHTML='';SENTS.forEach(function(s,i){var card=document.createElement('div');card.className='dict-card';var num=document.createElement('div');num.className='d-num';num.id='dn-'+i;num.textContent=i+1;num.addEventListener('click',function(){document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});num.classList.add('pd');syn.cancel();var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=dspd;u.onend=function(){num.classList.remove('pd');};syn.speak(u);});var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';card.appendChild(num);card.appendChild(hint);con.appendChild(card);});}
+function buildDict(){var con=document.getElementById('dict-list');con.innerHTML='';SENTS.forEach(function(s,i){var card=document.createElement('div');card.className='dict-card';var num=document.createElement('div');num.className='d-num';num.id='dn-'+i;num.textContent=i+1;num.addEventListener('click',function(){document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});num.classList.add('pd');syn.cancel();var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=userRate(dspd);u.onend=function(){num.classList.remove('pd');};syn.speak(u);});var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';card.appendChild(num);card.appendChild(hint);con.appendChild(card);});}
 function buildMC(){var con=document.getElementById('mc-wrap');con.innerHTML='';document.getElementById('mc-tot').textContent=MC.length;var nums=['①','②','③','④'];MC.forEach(function(q,qi){var card=document.createElement('div');card.className='q-card';var qnum=document.createElement('div');qnum.className='q-num';qnum.textContent='['+(qi+1)+'번]';var qtxt=document.createElement('div');qtxt.className='q-text';qtxt.innerHTML=q.q.replace('__________','<span class="blank-span"></span>');var qko=document.createElement('div');qko.className='q-ko';qko.textContent=q.ko;card.appendChild(qnum);card.appendChild(qtxt);card.appendChild(qko);var opts=document.createElement('div');opts.className='opts';var exp=document.createElement('div');exp.className='exp';var expLbl=document.createElement('div');expLbl.className='exp-lbl';expLbl.textContent='📝 해설';exp.appendChild(expLbl);exp.appendChild(document.createTextNode(q.exp));q.opts.forEach(function(opt,oi){var btn=document.createElement('button');btn.className='opt';btn.textContent=nums[oi]+' '+opt;btn.addEventListener('click',function(){if(btn.disabled)return;opts.querySelectorAll('.opt').forEach(function(b){b.disabled=true;});if(oi===q.answer_idx){btn.classList.add('ok');mcOk++;document.getElementById('mc-ok').textContent=mcOk;}else{btn.classList.add('ng');opts.querySelectorAll('.opt')[q.answer_idx].classList.add('ok');}exp.classList.add('show');});opts.appendChild(btn);});card.appendChild(opts);card.appendChild(exp);con.appendChild(card);});}
 function resetMC(){mcOk=0;document.getElementById('mc-ok').textContent=0;buildMC();}
 function buildRO(){var con=document.getElementById('ro-wrap');con.innerHTML='';document.getElementById('ro-tot').textContent=RO.length;roAns=RO.map(function(){return [];});RO.forEach(function(item,si){var card=document.createElement('div');card.className='q-card';var qt=document.createElement('div');qt.className='ro-q';qt.innerHTML='<span style="color:#c05010;font-weight:700;">[' +(si+1)+'번]</span> 조각을 올바른 순서로 클릭하세요.<br><span style="font-size:13px;color:#2a6db5;font-weight:600;">💬 '+item.ko+'</span>';card.appendChild(qt);var ca=document.createElement('div');ca.className='chip-area';ca.id='ca-'+si;var aa=document.createElement('div');aa.className='ans-area';aa.id='aa-'+si;var rs=document.createElement('div');rs.className='ro-result';rs.id='rs-'+si;var shuffled=item.pieces.slice().sort(function(){return Math.random()-0.5;});shuffled.forEach(function(p,pi){var ch=document.createElement('div');ch.className='chip';ch.id='ch-'+si+'-'+pi;ch.textContent=p;ch.addEventListener('click',function(){if(ch.classList.contains('used'))return;ch.classList.add('used');roAns[si].push({w:p,id:ch.id});renderRO(si,aa,rs,item);});ca.appendChild(ch);});card.appendChild(ca);card.appendChild(aa);card.appendChild(rs);var rb=document.createElement('button');rb.className='btn-sm';rb.style.marginTop='8px';rb.textContent='↺ 초기화';rb.addEventListener('click',function(){roAns[si]=[];ca.querySelectorAll('.chip').forEach(function(ch){ch.classList.remove('used');});aa.innerHTML='';rs.textContent='';rs.className='ro-result';});card.appendChild(rb);con.appendChild(card);});}

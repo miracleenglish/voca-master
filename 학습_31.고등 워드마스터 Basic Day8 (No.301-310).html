@@ -102,13 +102,13 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 .btn-reset{margin-left:auto;background:#e8f0fb;color:#4070b0;border:none;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer}
 .btn-reset:hover{background:#d0e4f8}
 @media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}
-</style>
+.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}.tts-tune b{color:#5a4400}.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}.tts-tune button:hover{background:#ffdd80}.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}</style>
 </head>
 <body>
 <header>
   <h1>고등 워드마스터 Basic &nbsp;|&nbsp; Day8 (No.301&ndash;310)</h1>
   <span class="badge">단어장 &middot; 집중듣기 &middot; 따라말하기 &middot; 낭독 &middot; 받아쓰기 &middot; 4지선다 &middot; 재배열</span>
-</header>
+</header><div class="tts-tune"><b>🔊 내 기기 음성 속도 미세조정</b><button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button><span id="ttOffsetLabel">기본</span><button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button><button class="tt-reset" onclick="resetTtsOffset()">초기화</button></div>
 <div class="tabs">
   <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
   <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
@@ -197,7 +197,7 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   </div>
   <div class="quiz-wrap" id="ro-wrap"></div>
 </div>
-<script>
+<script>function isMobileTTS(){if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))return true;if(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)return true;return false;}function adjRate(r){if(!isMobileTTS())return r;if(r<=0.75)return Math.max(0.3,r-0.4);if(r<1)return Math.max(0.45,r-0.25);return Math.max(0.7,r-0.3);}var ttsOffset=parseFloat(localStorage.getItem('wm_ttsOffset'))||0;function updateTtOffsetLabel(){var el=document.getElementById('ttOffsetLabel');if(!el)return;el.textContent=ttsOffset===0?'기본':(ttsOffset>0?'+':'')+ttsOffset.toFixed(2);}function adjustTtsOffset(delta){ttsOffset=Math.round((ttsOffset+delta)*100)/100;if(ttsOffset>0.4)ttsOffset=0.4;if(ttsOffset<-0.4)ttsOffset=-0.4;localStorage.setItem('wm_ttsOffset',ttsOffset);updateTtOffsetLabel();}function resetTtsOffset(){ttsOffset=0;localStorage.setItem('wm_ttsOffset',0);updateTtOffsetLabel();}function userRate(r){var v=adjRate(r)+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}updateTtOffsetLabel();
 var SENTS=[
   "My mom gave me tips on how to be more economic when shopping.",
   "Everyone in our household has a different chore to do each week.",
@@ -356,29 +356,11 @@ function buildProg(){
   SENTS.forEach(function(_,i){var d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d);});
 }
 
-function spk(t,r){return new Promise(function(res){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;u.onend=res;u.onerror=res;syn.speak(u);});}
+function spk(t,r){return new Promise(function(res){syn.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=userRate(r);u.onend=res;u.onerror=res;syn.speak(u);});}
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
-function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;syn.speak(u);}
-function cleanKo(t){
-  var s = t.replace(/\s*\/\s*/g, ', ');
-  s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
-  s = s.replace(/\(([^)]*)\)/g,'$1 ');
-  s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
-  s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
-  return s;
-}
-function spkKo(t){
-  syn.cancel();
-  var s = cleanKo(t);
-  var short = s.length <= 4;
-  if(short){ s = ' ' + s + ' '; }
-  setTimeout(function(){
-    var u = new SpeechSynthesisUtterance(s);
-    u.lang = 'ko-KR';
-    u.rate = short ? 0.78 : 0.85;
-    syn.speak(u);
-  }, 100);
-}
+function spkW(w){syn.cancel();var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);}
+function cleanKo(t){var s = t.replace(/\s*\(cf\.[^)]*\)/gi, '');s = s.replace(/\s*\/\s*/g, ', ');s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');s = s.replace(/\(([^)]*)\)/g,'$1 ');s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();return s;}
+function spkKo(t){syn.cancel();var s = cleanKo(t);var short = s.length <= 4;if(short){ s = ' ' + s + ' '; }setTimeout(function(){var u = new SpeechSynthesisUtterance(s);u.lang = 'ko-KR';u.rate = userRate(short ? 0.78 : 0.85);syn.speak(u);}, 100);}
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|how)\b/i.test(s);}
 function shadowGap(s){return isComplex(s)?1800:1200;}
 function readGap(s){return isComplex(s)?7000:5000;}
@@ -426,7 +408,7 @@ function buildDict(){
     num.addEventListener('click',function(){
       document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});
       num.classList.add('pd');syn.cancel();
-      var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=dspd;
+      var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=userRate(dspd);
       u.onend=function(){num.classList.remove('pd');};syn.speak(u);
     });
     var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
