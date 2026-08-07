@@ -378,7 +378,7 @@ const RO=[
 // ══════ 상태 ══════
 let spd=0.8, dspd=0.9, stopReq=false;
 let mcOk=0, roOk=0, roAns=[];
-var _rawSyn=window.speechSynthesis;var syn=_rawSyn?{cancel:function(){try{_rawSyn.cancel();}catch(e){}},speak:function(u){try{_rawSyn.speak(u);}catch(e){}},getVoices:function(){try{return _rawSyn.getVoices()||[];}catch(e){return [];}}}:{cancel:function(){},speak:function(){},getVoices:function(){return [];}};if(typeof SpeechSynthesisUtterance==='undefined'){window.SpeechSynthesisUtterance=function(t){this.text=t;this.lang='';this.rate=1;};}
+var _rawSyn=window.speechSynthesis;var syn=_rawSyn?{cancel:function(){try{_rawSyn.cancel();}catch(e){}},speak:function(u){try{_rawSyn.speak(u);}catch(e){}},getVoices:function(){try{return _rawSyn.getVoices()||[];}catch(e){return [];}}}:{cancel:function(){},speak:function(){},getVoices:function(){return [];}};if(typeof SpeechSynthesisUtterance==='undefined'){window.SpeechSynthesisUtterance=function(t){this.text=t;this.lang='';this.rate=1;};}try{if(_rawSyn&&_rawSyn.getVoices&&_rawSyn.getVoices().length===0&&_rawSyn.addEventListener){_rawSyn.addEventListener('voiceschanged',function(){},{once:true});_rawSyn.getVoices();}}catch(e){}
 
 // ══════ 탭 ══════
 function goTab(name,btn){
