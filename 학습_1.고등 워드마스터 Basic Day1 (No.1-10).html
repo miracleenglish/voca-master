@@ -464,9 +464,9 @@ function buildProg(){
 }
 
 // ══════ TTS ══════
-function spk(text,rate){return new Promise(r=>{syn.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=userRate(rate);u.onend=r;u.onerror=r;syn.speak(u);})}
+function spk(text,rate){return new Promise(r=>{syn.cancel();setTimeout(function(){const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=userRate(rate);u.onend=r;u.onerror=r;syn.speak(u);},100);})}
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
-function spkW(w){syn.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u)}
+function spkW(w){syn.cancel();setTimeout(function(){const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u)},100);}
 function cleanKo(t){let s = t.replace(/\s*\(cf\.[^)]*\)/gi, '');s = s.replace(/\s*\/\s*/g, ', ');s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');s = s.replace(/\(([^)]*)\)/g,'$1 ');s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();return s;}function spkKo(t){syn.cancel();let s = cleanKo(t);const short = s.length <= 4;if(short){ s = ' ' + s + ' '; }setTimeout(() => {const u = new SpeechSynthesisUtterance(s);u.lang = 'ko-KR';u.rate = userRate(short ? 0.78 : 0.85);syn.speak(u);}, 100);}
 
 function setAct(mode,i,on){
@@ -558,9 +558,9 @@ function buildDict(){
     num.textContent=i+1;
     num.onclick=()=>{
       document.querySelectorAll('.d-num').forEach(n=>n.classList.remove('pd'));
-      num.classList.add('pd');syn.cancel();
+      num.classList.add('pd');syn.cancel();setTimeout(function(){
       const u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=userRate(dspd);
-      u.onend=()=>num.classList.remove('pd');syn.speak(u);
+      u.onend=()=>num.classList.remove('pd');syn.speak(u);},100);
     };
     const hint=document.createElement('div');hint.className='d-hint';
     hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
