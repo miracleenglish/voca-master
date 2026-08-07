@@ -316,7 +316,7 @@ const RO=[
 ];
 
 let spd=0.8,dspd=0.9,stopReq=false,mcOk=0,roOk=0,roAns=[];
-const syn=window.speechSynthesis;
+var _rawSyn=window.speechSynthesis;var syn=_rawSyn?{cancel:function(){try{_rawSyn.cancel();}catch(e){}},speak:function(u){try{_rawSyn.speak(u);}catch(e){}},getVoices:function(){try{return _rawSyn.getVoices()||[];}catch(e){return [];}}}:{cancel:function(){},speak:function(){},getVoices:function(){return [];}};if(typeof SpeechSynthesisUtterance==='undefined'){window.SpeechSynthesisUtterance=function(t){this.text=t;this.lang='';this.rate=1;};}
 
 function goTab(name,btn){stopAll();document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('panel-'+name).classList.add('active');btn.classList.add('active')}
 function hl(t){
