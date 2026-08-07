@@ -29,7 +29,7 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 .btn-sm:hover{background:#e8f0fb}
 .btn-sm.sel{background:#dceeff;border-color:#2a6db5;color:#2a6db5}
 .spd-label{font-size:12px;color:#8090a8}
-.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:16px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}
+.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:16px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}.now-box .now-txt{flex:1}
 .now-box .lbl{color:#5090c0;font-size:12px;font-weight:700;margin-right:8px}
 .sent-list{display:flex;flex-direction:column;gap:8px}
 .sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:border-color .2s}
@@ -365,7 +365,7 @@ function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|
 function shadowGap(s){return isComplex(s)?1800:1200;}
 function readGap(s){return isComplex(s)?7000:5000;}
 function setAct(m,i,on){var c=document.getElementById(m+'-card-'+i);var n=document.getElementById(m+'-num-'+i);if(!c||!n)return;c.classList.toggle('playing',on);n.classList.toggle('playing',on);}
-function setNow(id,i){var el=document.getElementById(id);if(!el)return;el.innerHTML=i<0?'<span class="lbl">재생중</span>&ndash;':'<span class="lbl">S'+(i+1)+'</span>'+hl(SENTS[i]);}
+function setNow(id,i){var el=document.getElementById(id);if(!el)return;el.innerHTML=i<0?'<span class="lbl">재생중</span><span class="now-txt">&ndash;</span>':'<span class="lbl">S'+(i+1)+'</span><span class="now-txt">'+hl(SENTS[i])+'</span>';}
 
 async function spkOne(text,i,mode){stopAll();await wait(100);stopReq=false;setAct(mode,i,true);setNow(mode+'-now',i);await spk(text,mode==='dict'?dspd:spd);setAct(mode,i,false);setNow(mode+'-now',-1);}
 
