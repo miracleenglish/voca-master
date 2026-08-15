@@ -35,9 +35,11 @@
   /* 상위탭: 교재 선택 */
   .series-wrap{max-width:1120px;margin:22px auto 0;padding:0 20px;}
   .series-group-label{font-size:13.5px;font-weight:800;color:var(--muted);letter-spacing:1px;margin:24px 0 12px 4px;font-family:'Noto Sans KR',sans-serif;text-transform:uppercase;}
-  .series-bar{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;}
-  .series-bar::-webkit-scrollbar{display:none;}
-  .series-btn{border:2px solid transparent;background:#fff;border-radius:18px;padding:16px 20px;cursor:pointer;transition:all .18s ease;font-family:'Noto Sans KR',sans-serif;text-align:left;flex-shrink:0;min-width:180px;box-shadow:0 3px 12px rgba(35,41,70,.05);display:flex;align-items:center;gap:12px;}
+  .series-bar{display:flex;flex-wrap:wrap;gap:12px;padding-bottom:2px;}
+  .series-btn{min-width:0;flex:1 1 calc(25% - 9px);}
+  @media (max-width:820px){ .series-btn{flex-basis:calc(50% - 6px);} }
+  @media (max-width:480px){ .series-btn{flex-basis:100%;} }
+  .series-btn{border:2px solid transparent;background:#fff;border-radius:18px;padding:16px 20px;cursor:pointer;transition:all .18s ease;font-family:'Noto Sans KR',sans-serif;text-align:left;box-shadow:0 3px 12px rgba(35,41,70,.05);display:flex;align-items:center;gap:12px;}
   .series-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(35,41,70,.1);}
   .series-btn .sb-icon{font-size:22px;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--blue-light);}
   .series-btn .sb-text{display:flex;flex-direction:column;gap:2px;}
@@ -124,6 +126,12 @@
     <button class="series-btn hs active" onclick="showSeries('hs-basic', this)">
       <div class="sb-icon">📘</div><div class="sb-text"><span class="sb-name">워드마스터 Basic</span><span class="sb-sub">No.1~1200 · 120세트</span></div>
     </button>
+    <button class="series-btn px" onclick="showSeries('hs-polyext', this)">
+      <div class="sb-icon">🔀</div><div class="sb-text"><span class="sb-name">Basic 다의어확장</span><span class="sb-sub">385개 의미 · 20세트</span></div>
+    </button>
+    <button class="series-btn pk" onclick="showSeries('hs-synant', this)">
+      <div class="sb-icon">🔁</div><div class="sb-text"><span class="sb-name">Basic 동의어·반의어확장</span><span class="sb-sub">287개 관계 · 12세트</span></div>
+    </button>
     <button class="series-btn hs" onclick="showSeries('hs-suneung', this)">
       <div class="sb-icon">📗</div><div class="sb-text"><span class="sb-name">수능 2000</span><span class="sb-sub">No.1~2000 · 200세트</span></div>
     </button>
@@ -132,12 +140,6 @@
     </button>
     <button class="series-btn coming" disabled title="준비중">
       <div class="sb-icon">📕</div><div class="sb-text"><span class="sb-name">숙어 1000</span><span class="sb-sub">준비중</span></div>
-    </button>
-    <button class="series-btn px" onclick="showSeries('hs-polyext', this)">
-      <div class="sb-icon">🔀</div><div class="sb-text"><span class="sb-name">Basic 다의어확장</span><span class="sb-sub">385개 의미 · 20세트</span></div>
-    </button>
-    <button class="series-btn pk" onclick="showSeries('hs-synant', this)">
-      <div class="sb-icon">🔁</div><div class="sb-text"><span class="sb-name">Basic 동의어·반의어확장</span><span class="sb-sub">287개 관계 · 12세트</span></div>
     </button>
   </div>
 
