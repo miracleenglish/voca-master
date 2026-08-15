@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>(function(){var ua=navigator.userAgent||'';if(/KAKAOTALK/i.test(ua)){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href);return;}if(/NAVER|Instagram|FBAN|FBAV|Line\//i.test(ua)){window.addEventListener('DOMContentLoaded',function(){var b=document.createElement('div');b.style.cssText='position:fixed;top:0;left:0;right:0;background:#fff3cd;color:#7a5900;padding:10px 14px;font-size:13px;text-align:center;z-index:99999;border-bottom:2px solid #e8b93b;font-family:sans-serif;';b.innerHTML='🔊 이 앱 안에서는 소리가 안 나올 수 있어요. 우측 상단 메뉴에서 <b>다른 브라우저로 열기</b>를 눌러주세요.';document.body.insertBefore(b,document.body.firstChild);});}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다의어확장_15.고등 워드마스터 Basic 확장 (원본109 전반 — rate/fine/term/press/condition, 20개 의미)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Apple SD Gothic Neo',sans-serif;background:#f0f4f8;color:#2d3a4a;min-height:100vh}
+header{background:#fff;padding:14px 24px;border-bottom:2px solid #d0dcea;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{font-size:15px;color:#2a6db5;font-weight:700}
+.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 18px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}
+.tts-tune b{color:#5a4400}
+.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}
+.tts-tune button:hover{background:#ffdd80}
+.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}
+.tabs{display:flex;background:#fff;padding:0 10px;gap:2px;border-bottom:2px solid #d0dcea;overflow-x:auto}
+.tab-btn{padding:10px 13px;font-size:13px;font-weight:600;color:#8090a8;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tab-btn:hover{color:#4070b0}
+.tab-btn.active{color:#2a6db5;border-bottom-color:#2a6db5}
+.panel{display:none;padding:20px 18px;max-width:820px;margin:0 auto}
+.panel.active{display:block}
+.panel-title{font-size:17px;font-weight:700;color:#2a6db5;margin-bottom:5px}
+.panel-desc{font-size:13px;color:#8090a8;margin-bottom:16px;line-height:1.6}
+.group-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.group-main{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.group-main .w{font-size:19px;font-weight:800;color:#1a3a60}
+.group-main .p{font-size:12px;color:#a0a8b8}
+.group-m{font-size:13px;color:#5080a0;margin-bottom:10px}
+.group-ex{font-size:13px;color:#6090b0;font-style:italic;margin-bottom:12px;padding-left:10px;border-left:3px solid #d0e4f5}
+.rel-list{display:flex;flex-direction:column;gap:8px}
+.rel-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#f4f8fc;border-radius:8px;flex-wrap:wrap}
+.rel-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;color:#fff;flex-shrink:0}
+.rel-tag.syn{background:#2E9E5B}
+.rel-tag.ant{background:#c05010}
+.rel-tag.der{background:#3f6fd6}
+.rel-tag.spell{background:#a04500}
+.rel-tag.mean{background:#7050b0}
+.rel-w{font-weight:700;color:#1a3a60;font-size:14.5px}
+.rel-p{font-size:11px;color:#a0a8b8}
+.rel-m{font-size:12.5px;color:#5a6a80;flex-basis:100%;padding-left:2px}
+.play-btn{background:#e0ecf8;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;color:#2a6db5;font-size:12px;flex-shrink:0}
+.play-btn:hover{background:#c0dcf0}
+.sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;margin-bottom:9px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sent-card.playing{border-color:#2a6db5;background:#f0f7ff}
+.s-txt{font-size:14.5px;color:#2d3a4a;line-height:1.55;flex:1}
+.s-num{min-width:27px;height:27px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.s-num.playing{background:#2a6db5;color:#fff}
+.s-w{color:#c05010;font-weight:700}
+.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:15px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}
+.now-box .now-txt{flex:1}
+.ctrl-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn{padding:9px 18px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-primary{background:#2a6db5;color:#fff}
+.btn-primary:hover{background:#1e5490}
+.btn-stop{background:#c05010;color:#fff}
+.btn-stop:hover{background:#a04000}
+.spd-label{font-size:12px;color:#8090a8;margin-left:6px}
+.spd-btn{padding:6px 12px;border-radius:6px;border:1.5px solid #d0dcea;background:#fff;font-size:12px;cursor:pointer;color:#4070b0}
+.spd-btn.sel{background:#2a6db5;color:#fff;border-color:#2a6db5}
+.lvl-bar{display:flex;gap:8px;margin-bottom:14px}
+.lvl-btn{padding:7px 16px;border-radius:99px;border:1.5px solid #d0dcea;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#5a6a80}
+.lvl-btn.sel{background:#e0ecf8;border-color:#2a6db5;color:#2a6db5}
+.shadow-box{background:#fff;border:1px solid #d0dcea;border-radius:14px;padding:44px 24px;text-align:center;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mic{font-size:52px;margin-bottom:14px}
+.sh-status{font-size:17px;color:#3060a0;font-weight:700}
+.sh-hint{font-size:13px;color:#a0b0c0;margin-top:8px}
+.prog-row{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:#d0dcea;transition:background .3s}
+.prog-dot.cur{background:#e07030;transform:scale(1.3)}
+.prog-dot.done{background:#2a6db5}
+.q-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:18px;margin-bottom:14px}
+.q-num{font-size:12px;color:#8090a8;font-weight:700;margin-bottom:6px}
+.q-text{font-size:15.5px;color:#1a3a60;margin-bottom:4px;font-weight:600}
+.q-ko{font-size:14px;color:#1a2a4a;font-style:italic;font-weight:700;margin-bottom:12px}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q-opt{padding:10px 14px;border:1.5px solid #d0dcea;border-radius:8px;background:#fff;font-size:13.5px;cursor:pointer;text-align:left;color:#2d3a4a}
+.q-opt:hover{border-color:#4070b0}
+.q-opt.correct{background:#e8f7ef;border-color:#2E9E5B;color:#1E7A44;font-weight:700}
+.q-opt.wrong{background:#fdeee8;border-color:#c05010;color:#a04500}
+.q-feedback{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.7;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#e8f7ef;color:#1E7A44;border:1px solid #b8e4c8}
+.q-feedback.no{background:#fdeee8;color:#a04500;border:1px solid #f0c8a8}
+.q-feedback .fb-title{font-weight:800;margin-bottom:4px;font-size:13.5px}
+.score-bar{display:flex;align-items:center;gap:14px;margin-bottom:16px;background:#fff;padding:12px 18px;border-radius:10px;border:1px solid #d0dcea}
+.sc-item{font-size:13px;color:#5a6a80}
+.sc-item strong{color:#2a6db5;font-size:16px}
+.btn-reset{margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid #d0dcea;background:#fff;font-size:12.5px;cursor:pointer;color:#5a6a80}
+</style>
+</head>
+<body>
+<header>
+  <h1>고등 워드마스터 Basic 확장 &nbsp;|&nbsp; 다의어확장 15번 (원본109 전반 · rate/fine/term/press/condition)</h1>
+</header>
+<div class="tts-tune">
+  <b>🔊 내 기기 음성 속도 미세조정</b>
+  <button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button>
+  <span id="ttOffsetLabel">기본</span>
+  <button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button>
+  <button class="tt-reset" onclick="resetTtsOffset()">초기화</button>
+</div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
+  <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
+  <button class="tab-btn" onclick="goTab('shadow',this)">③ 따라말하기</button>
+  <button class="tab-btn" onclick="goTab('read',this)">④ 낭독</button>
+  <button class="tab-btn" onclick="goTab('dict',this)">⑤ 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('match',this)">⑥ 의미판별퀴즈A</button>
+  <button class="tab-btn" onclick="goTab('form',this)">⑦ 의미판별퀴즈B</button>
+</div>
+<div class="panel active" id="panel-vocab">
+<div class="panel-title">① 단어장 (다의어별 의미)</div>
+<div class="panel-desc">한 단어가 가진 여러 뜻을 ①②③...순서로 모두 살펴보세요. 옆의 No.는 고등 워드마스터 Basic 원본 번호예요. 🔊를 누르면 영어 단어와 한글 뜻을 순서대로 들을 수 있어요.</div>
+<div class="sec-title" style="font-size:13px;font-weight:700;color:#5080a0;margin-bottom:10px;">📌 다의어확장 15번 · 5개 단어 · 총 20가지 의미 (원본 No.1081&ndash;1098)</div>
+<div id="vocab-list"></div>
+</div>
+<div class="panel" id="panel-listen">
+<div class="panel-title">② 집중듣기</div>
+<div class="panel-desc">각 의미별 예문을 들어보세요. 난이도를 선택할 수 있어요.</div>
+<div class="lvl-bar" id="listen-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('listen','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('listen','B',this)">B (심화)</button>
+</div>
+<div class="now-box" id="listen-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
+<div class="ctrl-bar">
+  <button class="btn btn-primary" onclick="playAll('listen')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  <span class="spd-label">속도</span>
+  <button class="spd-btn" onclick="setSpd(0.75,this,'listen')">느리게</button>
+  <button class="spd-btn sel" onclick="setSpd(0.8,this,'listen')">보통</button>
+  <button class="spd-btn" onclick="setSpd(1.1,this,'listen')">빠르게</button>
+</div>
+<div id="listen-list"></div>
+</div>
+<div class="panel" id="panel-shadow">
+<div class="panel-title">③ 따라말하기</div>
+<div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
+<div class="lvl-bar" id="shadow-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('shadow','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('shadow','B',this)">B (심화)</button>
+</div>
+<div class="shadow-box">
+  <div class="mic">🎙️</div>
+  <div class="sh-status" id="sh-status">재생 버튼을 눌러 시작하세요</div>
+  <div class="sh-hint" id="sh-hint">문장이 나오는 즉시 바로 따라 말하세요</div>
+  <div class="prog-row" id="sh-prog"></div>
+</div>
+<div class="ctrl-bar" style="justify-content:center">
+  <button class="btn btn-primary" onclick="playAll('shadow')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+</div>
+</div>
+<div class="panel" id="panel-read">
+<div class="panel-title">④ 낭독</div>
+<div class="panel-desc">한 문장을 듣고 충분한 여백 동안 소리 내어 따라 읽으세요.</div>
+<div class="lvl-bar" id="read-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('read','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('read','B',this)">B (심화)</button>
+</div>
+<div class="now-box" id="read-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
+<div class="ctrl-bar">
+  <button class="btn btn-primary" onclick="playAll('read')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  <span class="spd-label">속도</span>
+  <button class="spd-btn" onclick="setSpd(0.75,this,'read')">느리게</button>
+  <button class="spd-btn sel" onclick="setSpd(0.8,this,'read')">보통</button>
+  <button class="spd-btn" onclick="setSpd(1.1,this,'read')">빠르게</button>
+</div>
+<div id="read-list"></div>
+</div>
+<div class="panel" id="panel-dict">
+<div class="panel-title">⑤ 받아쓰기</div>
+<div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
+<div class="lvl-bar" id="dict-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('dict','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('dict','B',this)">B (심화)</button>
+</div>
+<div id="dict-list"></div>
+</div>
+<div class="panel" id="panel-match">
+<div class="panel-title">⑥ 의미 판별 퀴즈 A</div>
+<div class="panel-desc">빈칸에 들어갈 단어와 그 단어의 의미가 올바르게 짝지어진 선택지를 고르세요. 정답이 아닌 단어들도 실제로 존재하는 단어와 뜻이지만, 이 빈칸에는 어울리지 않아요.</div>
+<div class="score-bar"><div class="sc-item">맞은 수 <strong id="match-ok">0</strong></div><div class="sc-item">/ <strong id="match-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('match')">↺ 다시 풀기</button></div>
+<div id="match-wrap"></div>
+</div>
+<div class="panel" id="panel-form">
+<div class="panel-title">⑦ 의미 판별 퀴즈 B</div>
+<div class="panel-desc">빈칸에 들어갈 단어와 그 단어의 의미가 올바르게 짝지어진 선택지를 고르세요. (2세트)</div>
+<div class="score-bar"><div class="sc-item">맞은 수 <strong id="form-ok">0</strong></div><div class="sc-item">/ <strong id="form-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('form')">↺ 다시 풀기</button></div>
+<div id="form-wrap"></div>
+</div>
+<script>
+
+var WORD_GROUPS=[{"main": "rate", "pos": "n./v.", "orig_no": 1081, "m": "총 4가지 의미", "exA": "The school reported an unusually high attendance rate this semester.", "koA": "학교는 이번 학기 이례적으로 높은 출석률을 보고했다.", "rels": [{"type": "①", "word": "rate", "pos": "n.", "m": "비율", "exA": "The school reported an unusually high attendance rate this semester.", "koA": "학교는 이번 학기 이례적으로 높은 출석률을 보고했다.", "exB": "According to the office's official records, the school reported an unusually high attendance rate throughout this entire semester.", "koB": "행정실의 공식 기록에 따르면, 학교는 이번 학기 전체에 걸쳐 이례적으로 높은 출석률을 보고했다."}, {"type": "②", "word": "rate", "pos": "n.", "m": "속도", "exA": "The train slowed its rate as it approached the crowded station.", "koA": "기차는 붐비는 역에 다가가면서 속도를 늦췄다.", "exB": "As it carefully approached the unusually crowded station platform, the train gradually slowed its rate to a gentle crawl.", "koB": "이례적으로 붐비는 역 승강장에 신중하게 다가가면서, 기차는 서서히 속도를 부드러운 기어가는 수준으로 늦췄다."}, {"type": "③", "word": "rate", "pos": "n.", "m": "요금", "exA": "Hotel rates tend to rise sharply during the summer holidays.", "koA": "호텔 요금은 여름 휴가철 동안 급격히 오르는 경향이 있다.", "exB": "According to travel experts, hotel rates in this popular coastal city tend to rise sharply during the busy summer holidays.", "koB": "여행 전문가들에 따르면, 이 인기 있는 해안 도시의 호텔 요금은 바쁜 여름 휴가철 동안 급격히 오르는 경향이 있다."}, {"type": "④", "word": "rate", "pos": "v.", "m": "평가하다", "exA": "Critics rated the small independent film surprisingly highly.", "koA": "평론가들은 그 작은 독립 영화를 놀랍도록 높게 평가했다.", "exB": "To everyone's genuine surprise, several respected critics rated the small, low-budget independent film surprisingly and consistently highly.", "koB": "모두를 진심으로 놀라게 하며, 존경받는 여러 평론가들이 작고 저예산인 독립 영화를 놀랍도록 그리고 일관되게 높게 평가했다."}]}, {"main": "fine", "pos": "n./v./a.", "orig_no": 1085, "m": "총 5가지 의미", "exA": "He paid a small fine for returning the library book late.", "koA": "그는 도서관 책을 늦게 반납한 것에 대해 작은 벌금을 냈다.", "rels": [{"type": "①", "word": "fine", "pos": "n.", "m": "벌금", "exA": "He paid a small fine for returning the library book late.", "koA": "그는 도서관 책을 늦게 반납한 것에 대해 작은 벌금을 냈다.", "exB": "Slightly embarrassed, he quietly paid a small fine at the front desk for returning the library book several days late.", "koB": "약간 부끄러워하며, 그는 도서관 책을 며칠 늦게 반납한 것에 대해 안내데스크에서 조용히 작은 벌금을 냈다."}, {"type": "②", "word": "fine", "pos": "v.", "m": "벌금을 부과하다", "exA": "The city decided to fine drivers who parked in the bus lane.", "koA": "그 도시는 버스 전용차로에 주차한 운전자들에게 벌금을 부과하기로 결정했다.", "exB": "After receiving numerous complaints, the city council finally decided to strictly fine any drivers who parked illegally in the bus lane.", "koB": "수많은 불만을 접수한 후, 시의회는 마침내 버스 전용차로에 불법 주차한 운전자들에게 엄격하게 벌금을 부과하기로 결정했다."}, {"type": "③", "word": "fine", "pos": "a.", "m": "훌륭한, 좋은", "exA": "They enjoyed a fine meal at the small family-owned restaurant.", "koA": "그들은 작은 가족 운영 식당에서 훌륭한 식사를 즐겼다.", "exB": "On their last night in town, they thoroughly enjoyed a genuinely fine meal at the cozy, family-owned restaurant.", "koB": "마을에서의 마지막 밤, 그들은 아늑하고 가족이 운영하는 식당에서 진정으로 훌륭한 식사를 마음껏 즐겼다."}, {"type": "④", "word": "fine", "pos": "a.", "m": "고운, 미세한", "exA": "A layer of fine dust covered every surface in the old attic.", "koA": "미세한 먼지 층이 오래된 다락방의 모든 표면을 덮고 있었다.", "exB": "After years of being untouched, a thick layer of fine gray dust covered nearly every surface in the old attic.", "koB": "몇 년간 손대지 않은 후, 미세한 회색 먼지의 두꺼운 층이 오래된 다락방의 거의 모든 표면을 덮고 있었다."}, {"type": "⑤", "word": "fine", "pos": "a.", "m": "(날씨가) 맑은[좋은]", "exA": "They decided to have the picnic outdoors since the weather was fine.", "koA": "날씨가 좋았기 때문에 그들은 야외에서 소풍을 하기로 결정했다.", "exB": "Since the weather forecast promised a genuinely fine, sunny afternoon, they happily decided to have the picnic outdoors.", "koB": "일기예보가 진정으로 맑고 화창한 오후를 약속했기 때문에, 그들은 기쁘게 야외에서 소풍을 하기로 결정했다."}]}, {"main": "term", "pos": "n.", "orig_no": 1090, "m": "총 5가지 의미", "exA": "The mayor was elected to serve a four-year term.", "koA": "시장은 4년 임기를 수행하도록 선출되었다.", "rels": [{"type": "①", "word": "term", "pos": "n.", "m": "기간", "exA": "The mayor was elected to serve a four-year term.", "koA": "시장은 4년 임기를 수행하도록 선출되었다.", "exB": "After a closely contested election, the new mayor was officially elected to serve a full four-year term.", "koB": "치열하게 경쟁한 선거 끝에, 새 시장은 공식적으로 4년 임기 전체를 수행하도록 선출되었다."}, {"type": "②", "word": "term", "pos": "n.", "m": "학기", "exA": "Final exams are scheduled for the last week of the term.", "koA": "기말고사는 학기 마지막 주로 예정되어 있다.", "exB": "According to the official school calendar, final exams are scheduled for the very last week of the current term.", "koB": "공식 학교 일정에 따르면, 기말고사는 현재 학기의 마지막 주로 예정되어 있다."}, {"type": "③", "word": "term", "pos": "n.", "m": "용어", "exA": "The teacher explained a difficult scientific term with a simple diagram.", "koA": "선생님은 어려운 과학 용어를 간단한 도표로 설명했다.", "exB": "To help everyone understand, the patient teacher carefully explained the difficult scientific term using a simple, clear diagram.", "koB": "모두가 이해하도록 돕기 위해, 인내심 있는 선생님은 간단하고 명확한 도표를 사용해 어려운 과학 용어를 신중하게 설명했다."}, {"type": "④", "word": "term", "pos": "n.", "m": "사이, 관계 (~s)", "exA": "The two neighbors have been on good terms since they resolved the dispute.", "koA": "그 두 이웃은 분쟁을 해결한 이후 좋은 사이를 유지하고 있다.", "exB": "Ever since they finally resolved their small disagreement, the two neighbors have remained genuinely on good terms.", "koB": "작은 의견 차이를 마침내 해결한 이후로, 그 두 이웃은 진정으로 좋은 사이를 유지하고 있다."}, {"type": "⑤", "word": "term", "pos": "n.", "m": "조건 (~s)", "exA": "Both companies finally agreed on the terms of the new contract.", "koA": "두 회사는 마침내 새 계약의 조건에 합의했다.", "exB": "After weeks of careful negotiation, both companies finally agreed on every single term of the new business contract.", "koB": "몇 주간의 신중한 협상 끝에, 두 회사는 마침내 새 사업 계약의 모든 개별 조건에 합의했다."}]}, {"main": "press", "pos": "v./n.", "orig_no": 1095, "m": "총 3가지 의미", "exA": "She had to press the button twice before the elevator finally arrived.", "koA": "그녀는 엘리베이터가 마침내 도착하기 전에 버튼을 두 번 눌러야 했다.", "rels": [{"type": "①", "word": "press", "pos": "v.", "m": "누르다", "exA": "She had to press the button twice before the elevator finally arrived.", "koA": "그녀는 엘리베이터가 마침내 도착하기 전에 버튼을 두 번 눌러야 했다.", "exB": "Growing slightly impatient, she had to press the elevator button twice more before it finally arrived on her floor.", "koB": "약간 조바심을 내며, 그녀는 엘리베이터가 마침내 그녀의 층에 도착하기 전에 버튼을 두 번 더 눌러야 했다."}, {"type": "②", "word": "press", "pos": "v.", "m": "강요하다, 재촉하다", "exA": "The reporter pressed the mayor for a clear answer during the interview.", "koA": "기자는 인터뷰 동안 시장에게 명확한 답변을 재촉했다.", "exB": "Despite several attempts to change the subject, the persistent reporter continued to press the mayor for a genuinely clear answer.", "koB": "주제를 바꾸려는 몇 번의 시도에도 불구하고, 끈질긴 기자는 계속해서 시장에게 진정으로 명확한 답변을 재촉했다."}, {"type": "③", "word": "press", "pos": "n.", "m": "언론, 출판", "exA": "The local press covered the small charity event in great detail.", "koA": "지역 언론은 그 작은 자선 행사를 매우 상세하게 취재했다.", "exB": "Surprisingly, the local press covered the small, community-based charity event in remarkably great detail.", "koB": "놀랍게도, 지역 언론은 지역 사회 기반의 작은 자선 행사를 놀랍도록 상세하게 취재했다."}]}, {"main": "condition", "pos": "n.", "orig_no": 1098, "m": "총 3가지 의미", "exA": "The old bicycle was still in surprisingly good condition.", "koA": "그 오래된 자전거는 여전히 놀랍도록 좋은 상태였다.", "rels": [{"type": "①", "word": "condition", "pos": "n.", "m": "상태", "exA": "The old bicycle was still in surprisingly good condition.", "koA": "그 오래된 자전거는 여전히 놀랍도록 좋은 상태였다.", "exB": "Despite sitting untouched in the garage for years, the old bicycle was still, quite surprisingly, in remarkably good condition.", "koB": "몇 년 동안 차고에 손대지 않은 채 있었음에도, 그 오래된 자전거는 여전히, 꽤 놀랍게도, 놀랍도록 좋은 상태였다."}, {"type": "②", "word": "condition", "pos": "n.", "m": "환경, 상황", "exA": "Workers demanded better condition in the crowded warehouse.", "koA": "근로자들은 붐비는 창고에서 더 나은 환경을 요구했다.", "exB": "After months of quiet frustration, the tired warehouse workers finally demanded genuinely better working condition in the crowded space.", "koB": "몇 달간의 조용한 좌절 끝에, 지친 창고 근로자들은 마침내 붐비는 공간에서 진정으로 더 나은 근무 환경을 요구했다."}, {"type": "③", "word": "condition", "pos": "n.", "m": "조건, 조항", "exA": "One important condition of the scholarship was maintaining a high grade point average.", "koA": "그 장학금의 한 가지 중요한 조건은 높은 평점을 유지하는 것이었다.", "exB": "Among several requirements, one particularly important condition of the competitive scholarship was maintaining a consistently high grade point average.", "koB": "여러 요건 중, 그 경쟁이 치열한 장학금의 특히 중요한 조건 하나는 꾸준히 높은 평점을 유지하는 것이었다."}]}];
+var MATCH_MC=[{"word": "rate", "meaning": "rate (비율)", "q": "The survey found that the graduation __________ had improved over five years.", "ko": "설문조사는 졸업률이 5년에 걸쳐 향상되었다는 것을 발견했다.", "opts": ["rate (속도)", "dominate (지배하다, 우세하다)", "rate (비율)", "consequence (결과, 영향(력), 중요함)"], "answer_idx": 2, "opt_meanings": ["rate (속도)", "dominate (지배하다, 우세하다)", "rate (비율)", "consequence (결과, 영향(력), 중요함)"]}, {"word": "rate", "meaning": "rate (속도)", "q": "He jogged at a steady __________ to avoid running out of energy too soon.", "ko": "그는 너무 빨리 에너지가 고갈되는 것을 피하기 위해 일정한 속도로 조깅했다.", "opts": ["rate (비율)", "eager (열망하는, 열심인)", "rate (속도)", "negotiate (협상[교섭]하다, 타결하다)"], "answer_idx": 2, "opt_meanings": ["rate (비율)", "eager (열망하는, 열심인)", "rate (속도)", "negotiate (협상[교섭]하다, 타결하다)"]}, {"word": "rate", "meaning": "rate (요금)", "q": "Airlines often lower their __________ during the slow winter months.", "ko": "항공사들은 종종 한산한 겨울철 동안 요금을 낮춘다.", "opts": ["rate (평가하다)", "rate (요금)", "bias (편견, 편향)", "translate (번역하다)"], "answer_idx": 1, "opt_meanings": ["rate (평가하다)", "rate (요금)", "bias (편견, 편향)", "translate (번역하다)"]}, {"word": "rate", "meaning": "rate (평가하다)", "q": "Viewers __________ the finale as one of the best episodes of the season.", "ko": "시청자들은 그 최종회를 시즌 최고의 에피소드 중 하나로 평가했다.", "opts": ["rate (비율)", "rate (평가하다)", "fright (놀람, 두려움)", "effect (효과, 영향, 결과)"], "answer_idx": 1, "opt_meanings": ["rate (비율)", "rate (평가하다)", "fright (놀람, 두려움)", "effect (효과, 영향, 결과)"]}, {"word": "fine", "meaning": "fine (벌금)", "q": "She was shocked by the size of the parking __________ on her windshield.", "ko": "그녀는 앞유리에 붙은 주차 벌금의 액수에 충격을 받았다.", "opts": ["fine (벌금)", "fine (벌금을 부과하다)", "disturb (방해하다, 어지럽히다)", "successive (잇따른, 연속하는)"], "answer_idx": 0, "opt_meanings": ["fine (벌금)", "fine (벌금을 부과하다)", "disturb (방해하다, 어지럽히다)", "successive (잇따른, 연속하는)"]}, {"word": "fine", "meaning": "fine (벌금을 부과하다)", "q": "Officials threatened to __________ any factory that violated pollution limits.", "ko": "당국은 오염 기준을 위반하는 공장에 벌금을 부과하겠다고 위협했다.", "opts": ["fine ((날씨가) 맑은[좋은])", "modify (수정하다, 변형하다)", "fine (벌금을 부과하다)", "neutral (중립의, 중성의)"], "answer_idx": 2, "opt_meanings": ["fine ((날씨가) 맑은[좋은])", "modify (수정하다, 변형하다)", "fine (벌금을 부과하다)", "neutral (중립의, 중성의)"]}, {"word": "fine", "meaning": "fine (훌륭한, 좋은)", "q": "The museum's new exhibit featured several __________ examples of ancient pottery.", "ko": "박물관의 새 전시는 고대 도자기의 여러 훌륭한 사례를 특징으로 했다.", "opts": ["fine (훌륭한, 좋은)", "fine (벌금)", "education (교육, 훈련)", "infection (감염, 전염)"], "answer_idx": 0, "opt_meanings": ["fine (훌륭한, 좋은)", "fine (벌금)", "education (교육, 훈련)", "infection (감염, 전염)"]}, {"word": "fine", "meaning": "fine (고운, 미세한)", "q": "A __________ mist settled over the valley just before sunrise.", "ko": "일출 직전 계곡 위로 미세한 안개가 내려앉았다.", "opts": ["fine ((날씨가) 맑은[좋은])", "academic (학업의, 학구적인)", "fine (고운, 미세한)", "approach (접근하다)"], "answer_idx": 2, "opt_meanings": ["fine ((날씨가) 맑은[좋은])", "academic (학업의, 학구적인)", "fine (고운, 미세한)", "approach (접근하다)"]}, {"word": "fine", "meaning": "fine ((날씨가) 맑은[좋은])", "q": "Since the weather stayed __________ all week, the festival went smoothly.", "ko": "날씨가 일주일 내내 맑았기 때문에, 축제는 순조롭게 진행되었다.", "opts": ["fine (벌금)", "adopt (채택하다, 입양하다)", "fine ((날씨가) 맑은[좋은])", "nutrient (영양소, 영양분)"], "answer_idx": 2, "opt_meanings": ["fine (벌금)", "adopt (채택하다, 입양하다)", "fine ((날씨가) 맑은[좋은])", "nutrient (영양소, 영양분)"]}, {"word": "term", "meaning": "term (기간)", "q": "The senator is currently serving her second __________ in office.", "ko": "그 상원의원은 현재 재임 두 번째 임기를 수행하고 있다.", "opts": ["term (학기)", "term (기간)", "principle (원칙, 원리, 신념)", "gratitude (감사)"], "answer_idx": 1, "opt_meanings": ["term (학기)", "term (기간)", "principle (원칙, 원리, 신념)", "gratitude (감사)"]}];
+var FORM_MC=[{"word": "term", "meaning": "term (학기)", "q": "Registration for the spring __________ begins next Monday.", "ko": "봄학기 등록은 다음 주 월요일에 시작된다.", "opts": ["term (조건 (~s))", "obstacle (장애(물))", "diagnose (진단하다)", "term (학기)"], "answer_idx": 3, "opt_meanings": ["term (조건 (~s))", "obstacle (장애(물))", "diagnose (진단하다)", "term (학기)"]}, {"word": "term", "meaning": "term (용어)", "q": "The professor introduced a new __________ that confused most of the class.", "ko": "교수는 반의 대부분을 혼란스럽게 만든 새 용어를 소개했다.", "opts": ["term (사이, 관계 (~s))", "external (외부의)", "conclude (결론을 내리다, 끝내다)", "term (용어)"], "answer_idx": 3, "opt_meanings": ["term (사이, 관계 (~s))", "external (외부의)", "conclude (결론을 내리다, 끝내다)", "term (용어)"]}, {"word": "term", "meaning": "term (사이, 관계 (~s))", "q": "After the argument, the roommates were no longer on friendly __________.", "ko": "말다툼 후, 룸메이트들은 더 이상 우호적인 사이가 아니었다.", "opts": ["term (학기)", "deposit (예금하다, 맡기다)", "relief (안도, 구조, 완화)", "term (사이, 관계 (~s))"], "answer_idx": 3, "opt_meanings": ["term (학기)", "deposit (예금하다, 맡기다)", "relief (안도, 구조, 완화)", "term (사이, 관계 (~s))"]}, {"word": "term", "meaning": "term (조건 (~s))", "q": "They renegotiated the __________ of the lease before signing again.", "ko": "그들은 다시 서명하기 전에 임대 조건을 재협상했다.", "opts": ["term (조건 (~s))", "term (기간)", "suitable (적절한, 적합한)", "bleed (피를 흘리다, 출혈하다)"], "answer_idx": 0, "opt_meanings": ["term (조건 (~s))", "term (기간)", "suitable (적절한, 적합한)", "bleed (피를 흘리다, 출혈하다)"]}, {"word": "press", "meaning": "press (누르다)", "q": "You need to __________ firmly on the wound to stop the bleeding.", "ko": "출혈을 멈추려면 상처를 단단히 눌러야 한다.", "opts": ["press (언론, 출판)", "disadvantage (단점, 약점, 불이익)", "press (누르다)", "correct (맞는, 올바른)"], "answer_idx": 2, "opt_meanings": ["press (언론, 출판)", "disadvantage (단점, 약점, 불이익)", "press (누르다)", "correct (맞는, 올바른)"]}, {"word": "press", "meaning": "press (강요하다, 재촉하다)", "q": "Fans continued to __________ the singer for details about the new album.", "ko": "팬들은 새 앨범에 대한 세부사항을 알려달라고 가수를 계속 재촉했다.", "opts": ["press (누르다)", "emission (배출, 방출, 배출물)", "press (강요하다, 재촉하다)", "victim (희생, 희생자)"], "answer_idx": 2, "opt_meanings": ["press (누르다)", "emission (배출, 방출, 배출물)", "press (강요하다, 재촉하다)", "victim (희생, 희생자)"]}, {"word": "press", "meaning": "press (언론, 출판)", "q": "The scandal attracted intense attention from the national __________.", "ko": "그 스캔들은 전국 언론으로부터 강렬한 관심을 끌었다.", "opts": ["press (강요하다, 재촉하다)", "draw ((선으로) 그리다)", "charge (요금을 청구하다)", "press (언론, 출판)"], "answer_idx": 3, "opt_meanings": ["press (강요하다, 재촉하다)", "draw ((선으로) 그리다)", "charge (요금을 청구하다)", "press (언론, 출판)"]}, {"word": "condition", "meaning": "condition (상태)", "q": "The used car was sold in nearly perfect __________.", "ko": "그 중고차는 거의 완벽한 상태로 팔렸다.", "opts": ["condition (환경, 상황)", "insurance (보험)", "condition (상태)", "amuse (즐겁게 하다)"], "answer_idx": 2, "opt_meanings": ["condition (환경, 상황)", "insurance (보험)", "condition (상태)", "amuse (즐겁게 하다)"]}, {"word": "condition", "meaning": "condition (환경, 상황)", "q": "Farmers struggled with the harsh __________ caused by the ongoing drought.", "ko": "농부들은 지속되는 가뭄으로 인한 가혹한 환경과 씨름했다.", "opts": ["condition (상태)", "condition (환경, 상황)", "share (나누다, 공유하다)", "rise (오르다, 올라가다)"], "answer_idx": 1, "opt_meanings": ["condition (상태)", "condition (환경, 상황)", "share (나누다, 공유하다)", "rise (오르다, 올라가다)"]}, {"word": "condition", "meaning": "condition (조건, 조항)", "q": "Attendance was one __________ for receiving the participation certificate.", "ko": "출석은 참가 증명서를 받기 위한 조건 중 하나였다.", "opts": ["condition (조건, 조항)", "condition (환경, 상황)", "pupil (학생, 눈동자)", "credit (신용, 입금, 학점)"], "answer_idx": 0, "opt_meanings": ["condition (조건, 조항)", "condition (환경, 상황)", "pupil (학생, 눈동자)", "credit (신용, 입금, 학점)"]}];
+
+// ===== 모바일 안전장치 (v18 표준 패턴) =====
+var _rawSyn=window.speechSynthesis;
+var syn=_rawSyn?{
+  cancel:function(){try{_rawSyn.cancel();}catch(e){}},
+  speak:function(u){try{_rawSyn.speak(u);}catch(e){}},
+  getVoices:function(){try{return _rawSyn.getVoices()||[];}catch(e){return [];}}
+}:{cancel:function(){},speak:function(){},getVoices:function(){return [];}};
+if(typeof SpeechSynthesisUtterance==='undefined'){window.SpeechSynthesisUtterance=function(t){this.text=t;this.lang='';this.rate=1;};}
+try{if(_rawSyn&&_rawSyn.getVoices&&_rawSyn.getVoices().length===0&&_rawSyn.addEventListener){_rawSyn.addEventListener('voiceschanged',function(){},{once:true});_rawSyn.getVoices();}}catch(e){}
+
+// ===== 기기별 속도 보정 (v12 표준 패턴) =====
+function isMobileTTS(){
+  if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))return true;
+  if(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)return true;
+  return false;
+}
+function adjRate(r){
+  if(!isMobileTTS())return r;
+  if(r<=0.75)return Math.max(0.3,r-0.4);
+  if(r<1)return Math.max(0.45,r-0.25);
+  return Math.max(0.7,r-0.3);
+}
+var ttsOffset=0;try{ttsOffset=parseFloat(localStorage.getItem('wm_ttsOffset'))||0;}catch(e){}
+function updateTtOffsetLabel(){var el=document.getElementById('ttOffsetLabel');if(!el)return;el.textContent=ttsOffset===0?'기본':(ttsOffset>0?'+':'')+ttsOffset.toFixed(2);}
+function adjustTtsOffset(delta){ttsOffset=Math.round((ttsOffset+delta)*100)/100;if(ttsOffset>0.4)ttsOffset=0.4;if(ttsOffset<-0.4)ttsOffset=-0.4;try{localStorage.setItem('wm_ttsOffset',ttsOffset);}catch(e){}updateTtOffsetLabel();}
+function resetTtsOffset(){ttsOffset=0;try{localStorage.setItem('wm_ttsOffset',0);}catch(e){}updateTtOffsetLabel();}
+function userRate(r){var v=adjRate(r)+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}
+
+// ===== 복잡 문장 판별 및 간격 (v13 확정값) =====
+function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|who|since|throughout|such as)\b/i.test(s);}
+function shadowGap(s){return isComplex(s)?2500:1800;}
+function readGap(s,lvl){var g=isComplex(s)?10500:6500;if(lvl==='B')g=Math.max(g,8500);return g;}
+
+// ===== 한글 발음 정리 (v19: 다의어 숫자 앞뒤 여백 + ~ 조사보정 추가) =====
+function cleanKo(t){
+  var s=t.replace(/\s*\(cf\.[^)]*\)/gi,'');
+  s=s.replace(/\s*\/\s*/g,', ');
+  // ~ + 조사를 "무엇" + 올바른 조사로 치환 (조사 불일치 자동 보정 포함)
+  s=s.replace(/~(를|을)/g,'무엇을');
+  s=s.replace(/~(는|은)/g,'무엇은');
+  s=s.replace(/~(가|이)/g,'무엇이');
+  s=s.replace(/~(와|과)/g,'무엇과');
+  s=s.replace(/~(로|으로)/g,'무엇으로');
+  s=s.replace(/~/g,'무엇');
+  s=s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
+  s=s.replace(/\(([^)]*)\)/g,'$1 ');
+  // 다의어 번호(①②③④⑤) 앞뒤에 공백을 넣어 끊어 읽히게 함
+  s=s.replace(/([①②③④⑤])/g,' $1 ');
+  s=s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
+  s=s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
+  return s;
+}
+function spkKo(t){
+  syn.cancel();
+  var s=cleanKo(t);
+  var short=s.length<=4;
+  if(short){s=' '+s+' ';}
+  setTimeout(function(){
+    var u=new SpeechSynthesisUtterance(s);
+    u.lang='ko-KR';
+    u.rate=short?0.78:0.85;
+    syn.speak(u);
+  },100);
+}
+
+function spk(t,r){return new Promise(function(res){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=userRate(r||0.8);u.onend=res;u.onerror=res;syn.speak(u);},100);});}
+function spkW(w){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);},100);}
+function spkWordThenMeaning(word,meaning){
+  syn.cancel();
+  setTimeout(function(){
+    var u=new SpeechSynthesisUtterance(word);
+    u.lang='en-US';u.rate=userRate(0.85);
+    u.onend=function(){ spkKo(meaning); };
+    syn.speak(u);
+  },100);
+}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+// ===== 탭 전환 =====
+var stopReq=false;
+function stopAll(){stopReq=true;syn.cancel();document.querySelectorAll('.prog-dot').forEach(function(d){d.classList.remove('cur');});}
+function goTab(n,b){stopAll();document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});document.getElementById('panel-'+n).classList.add('active');b.classList.add('active');}
+
+function relTagClass(type){
+  if(type==='동의어') return 'syn';
+  if(type==='반의어') return 'ant';
+  if(type==='철자주의') return 'spell';
+  if(/^[①②③④⑤⑥⑦⑧]$/.test(type)) return 'mean';
+  return 'der';
+}
+
+// ===== ① 단어장(관계형) =====
+function buildVocab(){
+  var con=document.getElementById('vocab-list');con.innerHTML='';
+  WORD_GROUPS.forEach(function(g){
+    var card=document.createElement('div');card.className='group-card';
+    var mainRow=document.createElement('div');mainRow.className='group-main';
+    var w=document.createElement('span');w.className='w';w.textContent=g.main;
+    var p=document.createElement('span');p.className='p';p.textContent=g.pos+'  [No.'+g.orig_no+']';
+    mainRow.appendChild(w);mainRow.appendChild(p);
+    var m=document.createElement('div');m.className='group-m';m.textContent=g.m;
+    var ex=document.createElement('div');ex.className='group-ex';ex.textContent=g.exA+'  ('+g.koA+')';
+    card.appendChild(mainRow);card.appendChild(m);card.appendChild(ex);
+    var relList=document.createElement('div');relList.className='rel-list';
+    g.rels.forEach(function(r){
+      var item=document.createElement('div');item.className='rel-item';
+      var tag=document.createElement('span');tag.className='rel-tag '+relTagClass(r.type);tag.textContent=r.type;
+      var rw=document.createElement('span');rw.className='rel-w';rw.textContent=r.word;
+      var rp=document.createElement('span');rp.className='rel-p';rp.textContent=r.pos;
+      var rbtn=document.createElement('button');rbtn.className='play-btn';rbtn.textContent='🔊';
+      rbtn.addEventListener('click',function(e){e.stopPropagation();spkWordThenMeaning(r.word,r.m);});
+      var rm=document.createElement('div');rm.className='rel-m';rm.textContent=r.m;
+      item.appendChild(tag);item.appendChild(rw);item.appendChild(rp);item.appendChild(rbtn);item.appendChild(rm);
+      relList.appendChild(item);
+    });
+    card.appendChild(relList);
+    con.appendChild(card);
+  });
+}
+
+// ===== ②④ 집중듣기/낭독 공용 (문장 리스트 표시) =====
+var LVL={listen:'A',shadow:'A',read:'A',dict:'A'};
+var SPD={listen:0.8,read:0.8};
+
+function flatItems(){
+  var arr=[];
+  WORD_GROUPS.forEach(function(g){
+    g.rels.forEach(function(r){
+      arr.push({main:g.main,type:r.type,word:r.word,pos:r.pos,m:r.m,exA:r.exA,koA:r.koA,exB:r.exB,koB:r.koB});
+    });
+  });
+  return arr;
+}
+var FLAT=flatItems();
+
+function setLvl(tab,lvl,btn){
+  LVL[tab]=lvl;
+  var bar=btn.closest('.lvl-bar');
+  bar.querySelectorAll('.lvl-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+  if(tab==='dict') buildDict();
+  else if(tab==='listen'||tab==='read') buildList(tab);
+}
+function setSpd(r,btn,tab){
+  SPD[tab]=r;
+  var bar=btn.closest('.ctrl-bar');
+  bar.querySelectorAll('.spd-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+}
+
+function shortGloss(m){
+  var s=m.replace(/^[①②③④⑤⑥⑦⑧]\s*/,'');
+  s=s.split(',')[0].split('/')[0].trim();
+  return s;
+}
+function buildList(tab){
+  var con=document.getElementById(tab+'-list');con.innerHTML='';
+  var lvl=LVL[tab];
+  FLAT.forEach(function(it,i){
+    var sent=lvl==='A'?it.exA:it.exB;
+    var card=document.createElement('div');card.className='sent-card';card.id=tab+'-card-'+i;
+    var num=document.createElement('div');num.className='s-num';num.id=tab+'-num-'+i;num.textContent=i+1;
+    num.addEventListener('click',function(){spkOne(tab,i,sent);});
+    var txt=document.createElement('div');txt.className='s-txt';
+    txt.innerHTML='<span class="s-w">'+it.word+'('+shortGloss(it.m)+')</span> — '+sent;
+    card.appendChild(num);card.appendChild(txt);con.appendChild(card);
+  });
+}
+
+function setAct(tab,i,on){
+  var num=document.getElementById(tab+'-num-'+i);var card=document.getElementById(tab+'-card-'+i);
+  if(!num||!card)return;
+  if(on){num.classList.add('playing');card.classList.add('playing');}
+  else{num.classList.remove('playing');card.classList.remove('playing');}
+}
+function setNow(tab,i){
+  var el=document.getElementById(tab+'-now');if(!el)return;
+  if(i<0){el.innerHTML='<span class="now-txt">문장을 선택하면 여기에 표시돼요</span>';return;}
+  var it=FLAT[i];var lvl=LVL[tab];var sent=lvl==='A'?it.exA:it.exB;
+  el.innerHTML='<span class="now-txt"><b>'+it.word+'('+shortGloss(it.m)+')</b> — '+sent+'</span>';
+}
+async function spkOne(tab,i,sent){
+  stopAll();await wait(100);stopReq=false;
+  setAct(tab,i,true);setNow(tab,i);
+  var rate=SPD[tab]||0.8;
+  await spk(sent,rate);
+  setAct(tab,i,false);setNow(tab,-1);
+}
+
+// ===== ③ 따라말하기 진행 점(dot) 빌드 =====
+function buildProg(){
+  var p=document.getElementById('sh-prog');if(!p)return;
+  p.innerHTML='';
+  FLAT.forEach(function(_,i){
+    var d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d);
+  });
+}
+
+async function playAll(tab){
+  stopAll();await wait(150);stopReq=false;
+  var lvl=LVL[tab];
+
+  if(tab==='shadow'){
+    document.getElementById('sh-status').textContent='재생 중...';
+    for(var i=0;i<FLAT.length;i++){
+      if(stopReq)break;
+      var sent=lvl==='A'?FLAT[i].exA:FLAT[i].exB;
+      document.querySelectorAll('.prog-dot').forEach(function(d){d.classList.remove('cur');});
+      var pd=document.getElementById('pd-'+i);if(pd)pd.classList.add('cur');
+      document.getElementById('sh-hint').textContent='문장 '+(i+1)+' / '+FLAT.length+' — 바로 따라 말하세요!';
+      await spk(sent,0.8);
+      if(pd){pd.classList.remove('cur');pd.classList.add('done');}
+      if(stopReq)break;
+      await wait(shadowGap(sent));
+    }
+    document.getElementById('sh-status').textContent=stopReq?'정지되었습니다.':'완료! 수고했어요 👏';
+    document.getElementById('sh-hint').textContent='';
+    return;
+  }
+
+  for(var i=0;i<FLAT.length;i++){
+    if(stopReq)break;
+    var sent=lvl==='A'?FLAT[i].exA:FLAT[i].exB;
+    setAct(tab,i,true);setNow(tab,i);
+    var rate=SPD[tab]||0.8;
+    await spk(sent,rate);
+    setAct(tab,i,false);
+    if(stopReq)break;
+    await wait(tab==='read'?readGap(sent,lvl):250);
+  }
+  setNow(tab,-1);
+}
+
+// ===== ⑤ 받아쓰기 — 정답 단어를 화면에 노출하지 않음 =====
+function buildDict(){
+  var con=document.getElementById('dict-list');con.innerHTML='';
+  var lvl=LVL.dict;
+  FLAT.forEach(function(it,i){
+    var sent=lvl==='A'?it.exA:it.exB;
+    var card=document.createElement('div');card.className='sent-card';
+    var num=document.createElement('div');num.className='s-num';num.id='dn-'+i;num.textContent=i+1;
+    num.addEventListener('click',function(){document.querySelectorAll('.s-num').forEach(function(n){n.classList.remove('playing');});num.classList.add('playing');syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(sent);u.lang='en-US';u.rate=userRate(0.8);u.onend=function(){num.classList.remove('playing');};syn.speak(u);},100);});
+    var hint=document.createElement('div');hint.className='s-txt';
+    hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
+    card.appendChild(num);card.appendChild(hint);con.appendChild(card);
+  });
+}
+
+// ===== ⑥⑦ 퀴즈 공용 — 정답/오답 텍스트 해설 포함 =====
+var qState={match:{},form:{}};
+function buildQuiz(tab,data){
+  var wrap=document.getElementById(tab+'-wrap');wrap.innerHTML='';
+  document.getElementById(tab+'-tot').textContent=data.length;
+  qState[tab]={answered:{},ok:0};
+  data.forEach(function(q,i){
+    var card=document.createElement('div');card.className='q-card';
+    var qn=document.createElement('div');qn.className='q-num';qn.textContent=(i+1)+'번';
+    var qt=document.createElement('div');qt.className='q-text';qt.textContent=q.q;
+    var opts=document.createElement('div');opts.className='q-opts';
+    var fb=document.createElement('div');fb.className='q-feedback';
+    q.opts.forEach(function(opt,oi){
+      var b=document.createElement('button');b.className='q-opt';b.textContent=opt;
+      b.addEventListener('click',function(){
+        if(qState[tab].answered[i])return;
+        qState[tab].answered[i]=true;
+        var isCorrect=(oi===q.answer_idx);
+        if(isCorrect){b.classList.add('correct');qState[tab].ok++;}
+        else{b.classList.add('wrong');opts.children[q.answer_idx].classList.add('correct');}
+        document.getElementById(tab+'-ok').textContent=qState[tab].ok;
+
+        var ansOpt=q.opts[q.answer_idx];
+        fb.className='q-feedback show '+(isCorrect?'ok':'no');
+        var html='';
+        html+='<div class="fb-title">'+(isCorrect?'✅ 정답입니다!':'❌ 오답입니다.')+'</div>';
+        html+='💬 문장 해석: '+q.ko+'<br>';
+        html+='정답은 <b>'+ansOpt+'</b>입니다.';
+        var wrongParts=[];
+        q.opts.forEach(function(o,oi2){
+          if(oi2!==q.answer_idx){
+            wrongParts.push(o);
+          }
+        });
+        if(wrongParts.length){
+          html+='<br>'+wrongParts.join(', ')+'은(는) 이 문장의 빈칸에 어울리지 않습니다.';
+        }
+        fb.innerHTML=html;
+      });
+      opts.appendChild(b);
+    });
+    card.appendChild(qn);card.appendChild(qt);card.appendChild(opts);card.appendChild(fb);
+    wrap.appendChild(card);
+  });
+}
+function resetQuiz(tab){
+  document.getElementById(tab+'-ok').textContent='0';
+  buildQuiz(tab, tab==='match'?MATCH_MC:FORM_MC);
+}
+
+// ===== 초기화 =====
+buildVocab();
+buildList('listen');buildList('read');
+buildProg();
+buildDict();
+buildQuiz('match',MATCH_MC);
+buildQuiz('form',FORM_MC);
+updateTtOffsetLabel();
+
+</script>
+</body></html>

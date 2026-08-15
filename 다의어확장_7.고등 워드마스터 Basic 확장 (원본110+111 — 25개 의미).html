@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>(function(){var ua=navigator.userAgent||'';if(/KAKAOTALK/i.test(ua)){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href);return;}if(/NAVER|Instagram|FBAN|FBAV|Line\//i.test(ua)){window.addEventListener('DOMContentLoaded',function(){var b=document.createElement('div');b.style.cssText='position:fixed;top:0;left:0;right:0;background:#fff3cd;color:#7a5900;padding:10px 14px;font-size:13px;text-align:center;z-index:99999;border-bottom:2px solid #e8b93b;font-family:sans-serif;';b.innerHTML='🔊 이 앱 안에서는 소리가 안 나올 수 있어요. 우측 상단 메뉴에서 <b>다른 브라우저로 열기</b>를 눌러주세요.';document.body.insertBefore(b,document.body.firstChild);});}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다의어확장_7.고등 워드마스터 Basic 확장 (원본110+111 — feature/critical/personal 등, 25개 의미)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Apple SD Gothic Neo',sans-serif;background:#f0f4f8;color:#2d3a4a;min-height:100vh}
+header{background:#fff;padding:14px 24px;border-bottom:2px solid #d0dcea;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{font-size:15px;color:#2a6db5;font-weight:700}
+.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 18px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}
+.tts-tune b{color:#5a4400}
+.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}
+.tts-tune button:hover{background:#ffdd80}
+.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}
+.tabs{display:flex;background:#fff;padding:0 10px;gap:2px;border-bottom:2px solid #d0dcea;overflow-x:auto}
+.tab-btn{padding:10px 13px;font-size:13px;font-weight:600;color:#8090a8;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tab-btn:hover{color:#4070b0}
+.tab-btn.active{color:#2a6db5;border-bottom-color:#2a6db5}
+.panel{display:none;padding:20px 18px;max-width:820px;margin:0 auto}
+.panel.active{display:block}
+.panel-title{font-size:17px;font-weight:700;color:#2a6db5;margin-bottom:5px}
+.panel-desc{font-size:13px;color:#8090a8;margin-bottom:16px;line-height:1.6}
+.group-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.group-main{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.group-main .w{font-size:19px;font-weight:800;color:#1a3a60}
+.group-main .p{font-size:12px;color:#a0a8b8}
+.group-m{font-size:13px;color:#5080a0;margin-bottom:10px}
+.group-ex{font-size:13px;color:#6090b0;font-style:italic;margin-bottom:12px;padding-left:10px;border-left:3px solid #d0e4f5}
+.rel-list{display:flex;flex-direction:column;gap:8px}
+.rel-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#f4f8fc;border-radius:8px;flex-wrap:wrap}
+.rel-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;color:#fff;flex-shrink:0}
+.rel-tag.syn{background:#2E9E5B}
+.rel-tag.ant{background:#c05010}
+.rel-tag.der{background:#3f6fd6}
+.rel-tag.spell{background:#a04500}
+.rel-tag.mean{background:#7050b0}
+.rel-w{font-weight:700;color:#1a3a60;font-size:14.5px}
+.rel-p{font-size:11px;color:#a0a8b8}
+.rel-m{font-size:12.5px;color:#5a6a80;flex-basis:100%;padding-left:2px}
+.play-btn{background:#e0ecf8;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;color:#2a6db5;font-size:12px;flex-shrink:0}
+.play-btn:hover{background:#c0dcf0}
+.sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;margin-bottom:9px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sent-card.playing{border-color:#2a6db5;background:#f0f7ff}
+.s-txt{font-size:14.5px;color:#2d3a4a;line-height:1.55;flex:1}
+.s-num{min-width:27px;height:27px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.s-num.playing{background:#2a6db5;color:#fff}
+.s-w{color:#c05010;font-weight:700}
+.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:15px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}
+.now-box .now-txt{flex:1}
+.ctrl-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn{padding:9px 18px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-primary{background:#2a6db5;color:#fff}
+.btn-primary:hover{background:#1e5490}
+.btn-stop{background:#c05010;color:#fff}
+.btn-stop:hover{background:#a04000}
+.spd-label{font-size:12px;color:#8090a8;margin-left:6px}
+.spd-btn{padding:6px 12px;border-radius:6px;border:1.5px solid #d0dcea;background:#fff;font-size:12px;cursor:pointer;color:#4070b0}
+.spd-btn.sel{background:#2a6db5;color:#fff;border-color:#2a6db5}
+.lvl-bar{display:flex;gap:8px;margin-bottom:14px}
+.lvl-btn{padding:7px 16px;border-radius:99px;border:1.5px solid #d0dcea;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#5a6a80}
+.lvl-btn.sel{background:#e0ecf8;border-color:#2a6db5;color:#2a6db5}
+.shadow-box{background:#fff;border:1px solid #d0dcea;border-radius:14px;padding:44px 24px;text-align:center;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mic{font-size:52px;margin-bottom:14px}
+.sh-status{font-size:17px;color:#3060a0;font-weight:700}
+.sh-hint{font-size:13px;color:#a0b0c0;margin-top:8px}
+.prog-row{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:#d0dcea;transition:background .3s}
+.prog-dot.cur{background:#e07030;transform:scale(1.3)}
+.prog-dot.done{background:#2a6db5}
+.q-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:18px;margin-bottom:14px}
+.q-num{font-size:12px;color:#8090a8;font-weight:700;margin-bottom:6px}
+.q-text{font-size:15.5px;color:#1a3a60;margin-bottom:4px;font-weight:600}
+.q-ko{font-size:14px;color:#1a2a4a;font-style:italic;font-weight:700;margin-bottom:12px}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q-opt{padding:10px 14px;border:1.5px solid #d0dcea;border-radius:8px;background:#fff;font-size:13.5px;cursor:pointer;text-align:left;color:#2d3a4a}
+.q-opt:hover{border-color:#4070b0}
+.q-opt.correct{background:#e8f7ef;border-color:#2E9E5B;color:#1E7A44;font-weight:700}
+.q-opt.wrong{background:#fdeee8;border-color:#c05010;color:#a04500}
+.q-feedback{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.7;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#e8f7ef;color:#1E7A44;border:1px solid #b8e4c8}
+.q-feedback.no{background:#fdeee8;color:#a04500;border:1px solid #f0c8a8}
+.q-feedback .fb-title{font-weight:800;margin-bottom:4px;font-size:13.5px}
+.score-bar{display:flex;align-items:center;gap:14px;margin-bottom:16px;background:#fff;padding:12px 18px;border-radius:10px;border:1px solid #d0dcea}
+.sc-item{font-size:13px;color:#5a6a80}
+.sc-item strong{color:#2a6db5;font-size:16px}
+.btn-reset{margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid #d0dcea;background:#fff;font-size:12.5px;cursor:pointer;color:#5a6a80}
+</style>
+</head>
+<body>
+<header>
+  <h1>고등 워드마스터 Basic 확장 &nbsp;|&nbsp; 다의어확장 7번 (원본110+111 · feature/critical/inspire/personal/conscience 등)</h1>
+</header>
+<div class="tts-tune">
+  <b>🔊 내 기기 음성 속도 미세조정</b>
+  <button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button>
+  <span id="ttOffsetLabel">기본</span>
+  <button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button>
+  <button class="tt-reset" onclick="resetTtsOffset()">초기화</button>
+</div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
+  <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
+  <button class="tab-btn" onclick="goTab('shadow',this)">③ 따라말하기</button>
+  <button class="tab-btn" onclick="goTab('read',this)">④ 낭독</button>
+  <button class="tab-btn" onclick="goTab('dict',this)">⑤ 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('match',this)">⑥ 의미판별퀴즈A</button>
+  <button class="tab-btn" onclick="goTab('form',this)">⑦ 의미판별퀴즈B</button>
+</div>
+<div class="panel active" id="panel-vocab">
+<div class="panel-title">① 단어장 (다의어별 의미)</div>
+<div class="panel-desc">한 단어가 가진 여러 뜻을 ①②③...순서로 모두 살펴보세요. 옆의 No.는 고등 워드마스터 Basic 원본 번호예요. 🔊를 누르면 영어 단어와 한글 뜻을 순서대로 들을 수 있어요.</div>
+<div class="sec-title" style="font-size:13px;font-weight:700;color:#5080a0;margin-bottom:10px;">📌 다의어확장 7번 · 20개 단어 · 총 25가지 의미 (원본 No.1091&ndash;1110)</div>
+<div id="vocab-list"></div>
+</div>
+<div class="panel" id="panel-listen">
+<div class="panel-title">② 집중듣기</div>
+<div class="panel-desc">각 의미별 예문을 들어보세요. 난이도를 선택할 수 있어요.</div>
+<div class="lvl-bar" id="listen-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('listen','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('listen','B',this)">B (심화)</button>
+</div>
+<div class="now-box" id="listen-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
+<div class="ctrl-bar">
+  <button class="btn btn-primary" onclick="playAll('listen')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  <span class="spd-label">속도</span>
+  <button class="spd-btn" onclick="setSpd(0.75,this,'listen')">느리게</button>
+  <button class="spd-btn sel" onclick="setSpd(0.8,this,'listen')">보통</button>
+  <button class="spd-btn" onclick="setSpd(1.1,this,'listen')">빠르게</button>
+</div>
+<div id="listen-list"></div>
+</div>
+<div class="panel" id="panel-shadow">
+<div class="panel-title">③ 따라말하기</div>
+<div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
+<div class="lvl-bar" id="shadow-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('shadow','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('shadow','B',this)">B (심화)</button>
+</div>
+<div class="shadow-box">
+  <div class="mic">🎙️</div>
+  <div class="sh-status" id="sh-status">재생 버튼을 눌러 시작하세요</div>
+  <div class="sh-hint" id="sh-hint">문장이 나오는 즉시 바로 따라 말하세요</div>
+  <div class="prog-row" id="sh-prog"></div>
+</div>
+<div class="ctrl-bar" style="justify-content:center">
+  <button class="btn btn-primary" onclick="playAll('shadow')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+</div>
+</div>
+<div class="panel" id="panel-read">
+<div class="panel-title">④ 낭독</div>
+<div class="panel-desc">한 문장을 듣고 충분한 여백 동안 소리 내어 따라 읽으세요.</div>
+<div class="lvl-bar" id="read-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('read','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('read','B',this)">B (심화)</button>
+</div>
+<div class="now-box" id="read-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
+<div class="ctrl-bar">
+  <button class="btn btn-primary" onclick="playAll('read')">▶ 전체 재생</button>
+  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  <span class="spd-label">속도</span>
+  <button class="spd-btn" onclick="setSpd(0.75,this,'read')">느리게</button>
+  <button class="spd-btn sel" onclick="setSpd(0.8,this,'read')">보통</button>
+  <button class="spd-btn" onclick="setSpd(1.1,this,'read')">빠르게</button>
+</div>
+<div id="read-list"></div>
+</div>
+<div class="panel" id="panel-dict">
+<div class="panel-title">⑤ 받아쓰기</div>
+<div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
+<div class="lvl-bar" id="dict-lvl">
+  <button class="lvl-btn sel" onclick="setLvl('dict','A',this)">A (쉬운)</button>
+  <button class="lvl-btn" onclick="setLvl('dict','B',this)">B (심화)</button>
+</div>
+<div id="dict-list"></div>
+</div>
+<div class="panel" id="panel-match">
+<div class="panel-title">⑥ 의미 판별 퀴즈 A</div>
+<div class="panel-desc">빈칸에 들어갈 단어와 그 단어의 의미가 올바르게 짝지어진 선택지를 고르세요. 정답이 아닌 단어들도 실제로 존재하는 단어와 뜻이지만, 이 빈칸에는 어울리지 않아요.</div>
+<div class="score-bar"><div class="sc-item">맞은 수 <strong id="match-ok">0</strong></div><div class="sc-item">/ <strong id="match-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('match')">↺ 다시 풀기</button></div>
+<div id="match-wrap"></div>
+</div>
+<div class="panel" id="panel-form">
+<div class="panel-title">⑦ 의미 판별 퀴즈 B</div>
+<div class="panel-desc">빈칸에 들어갈 단어와 그 단어의 의미가 올바르게 짝지어진 선택지를 고르세요. (2세트)</div>
+<div class="score-bar"><div class="sc-item">맞은 수 <strong id="form-ok">0</strong></div><div class="sc-item">/ <strong id="form-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('form')">↺ 다시 풀기</button></div>
+<div id="form-wrap"></div>
+</div>
+<script>
+
+var WORD_GROUPS=[{"main": "feature", "pos": "n./v.", "orig_no": 1091, "m": "총 4가지 의미", "exA": "A large stage was the main feature of the renovated auditorium.", "koA": "큰 무대는 개조된 강당의 주된 특징이었다.", "rels": [{"type": "①", "word": "feature", "pos": "n.", "m": "특징", "exA": "A large stage was the main feature of the renovated auditorium.", "koA": "큰 무대는 개조된 강당의 주된 특징이었다.", "exB": "After months of renovation, a genuinely large new stage became the main feature of the completely renovated auditorium.", "koB": "몇 달간의 개조 끝에, 진정으로 큰 새 무대는 완전히 개조된 강당의 주된 특징이 되었다."}, {"type": "②", "word": "feature", "pos": "v.", "m": "~을 특징으로 하다", "exA": "This week's broadcast will feature interviews with three club leaders.", "koA": "이번 주 방송은 세 명의 동아리 회장 인터뷰를 특징으로 할 것이다.", "exB": "To celebrate club week, this Friday's special broadcast will proudly feature short interviews with three different club leaders.", "koB": "동아리 주간을 기념하여, 이번 주 금요일의 특별 방송은 세 명의 서로 다른 동아리 회장의 짧은 인터뷰를 자랑스럽게 특징으로 할 것이다."}, {"type": "③", "word": "feature", "pos": "n.", "m": "이목구비", "exA": "The cartoon exaggerated the character's features for comic effect.", "koA": "그 만화는 코믹한 효과를 위해 캐릭터의 이목구비를 과장했다.", "exB": "For a purely comic effect, the student-made cartoon deliberately exaggerated the main character's features quite dramatically.", "koB": "순전히 코믹한 효과를 위해, 학생이 만든 만화는 주인공의 이목구비를 상당히 극적으로 의도적으로 과장했다."}, {"type": "④", "word": "feature", "pos": "n.", "m": "특집 기사[방송]", "exA": "The team planned a special feature about the upcoming sports day.", "koA": "팀은 다가오는 체육대회에 관한 특별 특집 방송을 계획했다.", "exB": "Excited about the event, the broadcasting team carefully planned a special feature entirely about the upcoming school sports day.", "koB": "그 행사에 들떠서, 방송팀은 다가오는 학교 체육대회에 관한 특별 특집 방송을 신중하게 계획했다."}]}, {"main": "critical", "pos": "a.", "orig_no": 1092, "m": "총 3가지 의미", "exA": "Some viewers were critical of the show's rushed ending.", "koA": "일부 시청자들은 그 방송의 서둘러 끝난 마무리에 비판적이었다.", "rels": [{"type": "①", "word": "critical", "pos": "a.", "m": "비판적인", "exA": "Some viewers were critical of the show's rushed ending.", "koA": "일부 시청자들은 그 방송의 서둘러 끝난 마무리에 비판적이었다.", "exB": "On the online comment board, some honest viewers were openly critical of the show's noticeably rushed, unfinished-feeling ending.", "koB": "온라인 댓글 게시판에서, 솔직한 일부 시청자들은 눈에 띄게 서두른, 미완성처럼 느껴지는 방송 마무리에 공개적으로 비판적이었다."}, {"type": "②", "word": "critical", "pos": "a.", "m": "중요한, 중대한", "exA": "Good lighting is critical for a successful live broadcast.", "koA": "좋은 조명은 성공적인 생방송을 위해 중요하다.", "exB": "According to the experienced advisor, genuinely good lighting is absolutely critical for any successful live school broadcast.", "koB": "경험 많은 지도교사에 따르면, 진정으로 좋은 조명은 성공적인 학교 생방송이라면 무엇이든 절대적으로 중요하다."}, {"type": "③", "word": "critical", "pos": "a.", "m": "결정적인, 위기의", "exA": "The final minute before airtime felt like a critical moment for the crew.", "koA": "방송 시작 전 마지막 1분은 제작진에게 결정적인 순간처럼 느껴졌다.", "exB": "As the countdown reached its final minute before airtime, it truly felt like the single most critical moment for the entire crew.", "koB": "카운트다운이 방송 시작 전 마지막 1분에 이르자, 그것은 정말로 제작진 전체에게 단연 가장 결정적인 순간처럼 느껴졌다."}]}, {"main": "expire", "pos": "v.", "orig_no": 1093, "m": "총 1가지 의미", "exA": "Their permission slip would expire if not renewed before Friday.", "koA": "그들의 허가서는 금요일 전에 갱신되지 않으면 만료될 것이었다.", "rels": [{"type": "①", "word": "expire", "pos": "v.", "m": "(기한이) 만료되다", "exA": "Their permission slip would expire if not renewed before Friday.", "koA": "그들의 허가서는 금요일 전에 갱신되지 않으면 만료될 것이었다.", "exB": "According to the office, their official filming permission slip would formally expire if it was not renewed before this coming Friday.", "koB": "행정실에 따르면, 그들의 공식 촬영 허가서는 이번 금요일 전에 갱신되지 않으면 공식적으로 만료될 것이었다."}]}, {"main": "inspire", "pos": "v.", "orig_no": 1094, "m": "총 1가지 의미", "exA": "Her confident speech inspired several shy students to join the club.", "koA": "그녀의 자신감 있는 연설은 몇몇 수줍은 학생들이 동아리에 가입하도록 고무했다.", "rels": [{"type": "①", "word": "inspire", "pos": "v.", "m": "고무[격려]하다, 영감을 주다", "exA": "Her confident speech inspired several shy students to join the club.", "koA": "그녀의 자신감 있는 연설은 몇몇 수줍은 학생들이 동아리에 가입하도록 고무했다.", "exB": "Delivered with genuine confidence, her short speech at assembly inspired several unusually shy students to finally join the broadcasting club.", "koB": "진정한 자신감을 담아 전달된 그녀의 짧은 조회 연설은 유난히 수줍은 몇몇 학생들이 마침내 방송 동아리에 가입하도록 고무했다."}]}, {"main": "loyal", "pos": "a.", "orig_no": 1095, "m": "총 1가지 의미", "exA": "Even after graduating, he remained a loyal viewer of the school broadcast.", "koA": "졸업한 후에도, 그는 학교 방송의 충실한 시청자로 남았다.", "rels": [{"type": "①", "word": "loyal", "pos": "a.", "m": "충성스러운, 충실한", "exA": "Even after graduating, he remained a loyal viewer of the school broadcast.", "koA": "졸업한 후에도, 그는 학교 방송의 충실한 시청자로 남았다.", "exB": "Somewhat surprisingly, even several years after graduating, he still remained a genuinely loyal viewer of the school's weekly broadcast.", "koB": "다소 놀랍게도, 졸업한 지 몇 년이 지난 후에도, 그는 여전히 학교의 주간 방송의 진정으로 충실한 시청자로 남아 있었다."}]}, {"main": "royal", "pos": "a.", "orig_no": 1096, "m": "총 1가지 의미", "exA": "They joked that the broadcasting room felt like a royal control center.", "koA": "그들은 방송실이 마치 왕실 관제 센터처럼 느껴진다고 농담했다.", "rels": [{"type": "①", "word": "royal", "pos": "a.", "m": "왕의, 왕국의", "exA": "They joked that the broadcasting room felt like a royal control center.", "koA": "그들은 방송실이 마치 왕실 관제 센터처럼 느껴진다고 농담했다.", "exB": "Surrounded by blinking screens and cables, they jokingly compared the small broadcasting room to some kind of royal control center.", "koB": "깜빡이는 화면과 케이블에 둘러싸여, 그들은 작은 방송실을 일종의 왕실 관제 센터에 농담 삼아 비유했다."}]}, {"main": "emergency", "pos": "n.", "orig_no": 1097, "m": "총 1가지 의미", "exA": "The crew rehearsed what to do during a sudden technical emergency.", "koA": "제작진은 갑작스러운 기술적 비상사태 동안 무엇을 해야 할지 연습했다.", "rels": [{"type": "①", "word": "emergency", "pos": "n.", "m": "비상사태", "exA": "The crew rehearsed what to do during a sudden technical emergency.", "koA": "제작진은 갑작스러운 기술적 비상사태 동안 무엇을 해야 할지 연습했다.", "exB": "Just to be fully prepared, the entire crew carefully rehearsed exactly what to do during any sudden technical emergency.", "koB": "완전히 대비하기 위해, 제작진 전체는 갑작스러운 기술적 비상사태가 생길 경우 정확히 무엇을 해야 할지 신중하게 연습했다."}]}, {"main": "emergence", "pos": "n.", "orig_no": 1098, "m": "총 1가지 의미", "exA": "The emergence of student podcasts changed how news was shared at school.", "koA": "학생 팟캐스트의 출현은 학교에서 뉴스가 공유되는 방식을 바꾸었다.", "rels": [{"type": "①", "word": "emergence", "pos": "n.", "m": "출현, 발생", "exA": "The emergence of student podcasts changed how news was shared at school.", "koA": "학생 팟캐스트의 출현은 학교에서 뉴스가 공유되는 방식을 바꾸었다.", "exB": "Over the past two years, the gradual emergence of student-made podcasts genuinely changed how news was shared throughout the school.", "koB": "지난 2년 동안, 학생이 만든 팟캐스트의 점진적인 출현은 학교 전체에서 뉴스가 공유되는 방식을 진정으로 바꾸었다."}]}, {"main": "terrible", "pos": "a.", "orig_no": 1099, "m": "총 1가지 의미", "exA": "A terrible echo ruined the first sound test in the studio.", "koA": "끔찍한 메아리가 스튜디오에서의 첫 음향 테스트를 망쳤다.", "rels": [{"type": "①", "word": "terrible", "pos": "a.", "m": "끔찍한, 심한, 지독한", "exA": "A terrible echo ruined the first sound test in the studio.", "koA": "끔찍한 메아리가 스튜디오에서의 첫 음향 테스트를 망쳤다.", "exB": "Completely unexpectedly, a terrible, distracting echo ruined the entire first sound test inside the newly built studio.", "koB": "완전히 예상치 못하게, 끔찍하고 정신 사나운 메아리가 새로 지어진 스튜디오 안에서의 첫 음향 테스트 전체를 망쳤다."}]}, {"main": "terrific", "pos": "a.", "orig_no": 1100, "m": "총 1가지 의미", "exA": "Despite early nerves, the final broadcast turned out to be terrific.", "koA": "초반의 긴장에도 불구하고, 최종 방송은 아주 멋진 것으로 드러났다.", "rels": [{"type": "①", "word": "terrific", "pos": "a.", "m": "아주 멋진, 훌륭한", "exA": "Despite early nerves, the final broadcast turned out to be terrific.", "koA": "초반의 긴장에도 불구하고, 최종 방송은 아주 멋진 것으로 드러났다.", "exB": "Despite everyone's early nervousness and doubts, the final live broadcast surprisingly turned out to be absolutely terrific.", "koB": "모두의 초반 긴장과 의구심에도 불구하고, 최종 생방송은 놀랍게도 완전히 아주 멋진 것으로 드러났다."}]}, {"main": "personal", "pos": "a.", "orig_no": 1101, "m": "총 1가지 의미", "exA": "She shared a personal story about overcoming stage fright.", "koA": "그녀는 무대 공포증을 극복한 것에 대한 개인적인 이야기를 나누었다.", "rels": [{"type": "①", "word": "personal", "pos": "a.", "m": "개인적인", "exA": "She shared a personal story about overcoming stage fright.", "koA": "그녀는 무대 공포증을 극복한 것에 대한 개인적인 이야기를 나누었다.", "exB": "During the closing segment, she bravely shared a deeply personal story about slowly overcoming her own stage fright.", "koB": "마무리 코너에서, 그녀는 자신의 무대 공포증을 서서히 극복한 것에 대한 매우 개인적인 이야기를 용감하게 나누었다."}]}, {"main": "personnel", "pos": "n.", "orig_no": 1102, "m": "총 1가지 의미", "exA": "Extra personnel were needed to manage the growing broadcast club.", "koA": "성장하는 방송 동아리를 관리하기 위해 추가 인원이 필요했다.", "rels": [{"type": "①", "word": "personnel", "pos": "n.", "m": "인원, 직원, 인사과", "exA": "Extra personnel were needed to manage the growing broadcast club.", "koA": "성장하는 방송 동아리를 관리하기 위해 추가 인원이 필요했다.", "exB": "As membership rapidly grew, several extra trained personnel were urgently needed to properly manage the busy broadcast club.", "koB": "회원 수가 빠르게 늘면서, 바쁜 방송 동아리를 제대로 관리하기 위해 훈련된 추가 인원 몇 명이 시급히 필요했다."}]}, {"main": "conscience", "pos": "n.", "orig_no": 1103, "m": "총 1가지 의미", "exA": "His conscience wouldn't let him ignore the technical mistake.", "koA": "그의 양심은 그 기술적 실수를 무시하도록 내버려두지 않았다.", "rels": [{"type": "①", "word": "conscience", "pos": "n.", "m": "양심", "exA": "His conscience wouldn't let him ignore the technical mistake.", "koA": "그의 양심은 그 기술적 실수를 무시하도록 내버려두지 않았다.", "exB": "No matter how tempting it was to stay quiet, his conscience simply wouldn't let him ignore the obvious technical mistake.", "koB": "조용히 있는 것이 아무리 유혹적이었어도, 그의 양심은 그 명백한 기술적 실수를 무시하도록 결코 내버려두지 않았다."}]}, {"main": "conscious", "pos": "a.", "orig_no": 1104, "m": "총 1가지 의미", "exA": "Being conscious of the tight schedule, they rehearsed quickly.", "koA": "빠듯한 일정을 의식하며, 그들은 빠르게 연습했다.", "rels": [{"type": "①", "word": "conscious", "pos": "a.", "m": "의식하는, 의식이 있는, 의도적인", "exA": "Being conscious of the tight schedule, they rehearsed quickly.", "koA": "빠듯한 일정을 의식하며, 그들은 빠르게 연습했다.", "exB": "Keenly conscious of the unusually tight broadcast schedule, the entire team rehearsed their segments quickly and efficiently.", "koB": "이례적으로 빠듯한 방송 일정을 예민하게 의식하며, 팀 전체는 자신들의 코너를 빠르고 효율적으로 연습했다."}]}, {"main": "simulate", "pos": "v.", "orig_no": 1105, "m": "총 1가지 의미", "exA": "They simulated a live broadcast twice before the real event.", "koA": "그들은 실제 행사 전에 생방송을 두 번 모의 실험했다.", "rels": [{"type": "①", "word": "simulate", "pos": "v.", "m": "모의 실험하다", "exA": "They simulated a live broadcast twice before the real event.", "koA": "그들은 실제 행사 전에 생방송을 두 번 모의 실험했다.", "exB": "To catch any possible mistakes early, they carefully simulated the entire live broadcast twice before the actual real event.", "koB": "가능한 실수를 미리 잡아내기 위해, 그들은 실제 행사 전에 생방송 전체를 두 번 신중하게 모의 실험했다."}]}, {"main": "stimulate", "pos": "v.", "orig_no": 1106, "m": "총 1가지 의미", "exA": "Colorful graphics helped stimulate the audience's interest.", "koA": "화려한 그래픽은 관객의 관심을 자극하는 데 도움이 되었다.", "rels": [{"type": "①", "word": "stimulate", "pos": "v.", "m": "자극[격려]하다, 관심을 불러일으키다", "exA": "Colorful graphics helped stimulate the audience's interest.", "koA": "화려한 그래픽은 관객의 관심을 자극하는 데 도움이 되었다.", "exB": "Carefully designed by the graphics team, the colorful, dynamic graphics genuinely helped stimulate the audience's growing interest.", "koB": "그래픽팀이 신중하게 디자인한 화려하고 역동적인 그래픽은 관객의 커져가는 관심을 진정으로 자극하는 데 도움이 되었다."}]}, {"main": "raise", "pos": "v.", "orig_no": 1107, "m": "총 1가지 의미", "exA": "The producer asked the team to raise the microphone volume.", "koA": "프로듀서는 팀에게 마이크 음량을 올려 달라고 요청했다.", "rels": [{"type": "①", "word": "raise", "pos": "v.", "m": "올리다, 들어올리다", "exA": "The producer asked the team to raise the microphone volume.", "koA": "프로듀서는 팀에게 마이크 음량을 올려 달라고 요청했다.", "exB": "Noticing the sound was too quiet, the producer immediately asked the sound team to raise the microphone volume slightly.", "koB": "소리가 너무 작다는 것을 알아챈 프로듀서는 즉시 음향팀에게 마이크 음량을 약간 올려 달라고 요청했다."}]}, {"main": "rise", "pos": "v.", "orig_no": 1108, "m": "총 1가지 의미", "exA": "Excitement began to rise as airtime approached.", "koA": "방송 시작 시간이 다가오면서 흥분이 오르기 시작했다.", "rels": [{"type": "①", "word": "rise", "pos": "v.", "m": "오르다, 올라가다", "exA": "Excitement began to rise as airtime approached.", "koA": "방송 시작 시간이 다가오면서 흥분이 오르기 시작했다.", "exB": "As the final countdown clock ticked down, nervous excitement clearly began to rise throughout the entire studio.", "koB": "최종 카운트다운 시계가 째깍거리며 줄어들자, 긴장된 흥분이 스튜디오 전체에서 눈에 띄게 오르기 시작했다."}]}, {"main": "confirm", "pos": "v.", "orig_no": 1109, "m": "총 1가지 의미", "exA": "The teacher confirmed the schedule just an hour before broadcast.", "koA": "선생님은 방송 한 시간 전에 일정을 확인해 주었다.", "rels": [{"type": "①", "word": "confirm", "pos": "v.", "m": "확인하다, 승인하다, (사실임을) 입증하다", "exA": "The teacher confirmed the schedule just an hour before broadcast.", "koA": "선생님은 방송 한 시간 전에 일정을 확인해 주었다.", "exB": "Just one tense hour before the live broadcast began, the advisor finally confirmed the entire schedule with a reassuring nod.", "koB": "생방송이 시작되기 긴장된 한 시간 전, 지도교사는 마침내 안심시키는 끄덕임과 함께 전체 일정을 확인해 주었다."}]}, {"main": "conform", "pos": "v.", "orig_no": 1110, "m": "총 1가지 의미", "exA": "New members had to conform to the studio's strict safety rules.", "koA": "신입 회원들은 스튜디오의 엄격한 안전 규칙을 따라야 했다.", "rels": [{"type": "①", "word": "conform", "pos": "v.", "m": "따르다, 순응하다", "exA": "New members had to conform to the studio's strict safety rules.", "koA": "신입 회원들은 스튜디오의 엄격한 안전 규칙을 따라야 했다.", "exB": "Before touching any equipment, every single new member had to carefully conform to the studio's strict, detailed safety rules.", "koB": "어떤 장비든 만지기 전에, 모든 신입 회원은 스튜디오의 엄격하고 세부적인 안전 규칙을 신중하게 따라야 했다."}]}];
+var MATCH_MC=[{"word": "feature", "meaning": "feature (특징)", "q": "A cozy reading corner became a popular __________ of the redesigned library.", "ko": "아늑한 독서 코너는 재설계된 도서관의 인기 있는 특징이 되었다.", "opts": ["feature (특징)", "feature (특집 기사[방송])", "shelter (피난처, 주거지, 보호소)", "domestic (국내의, 가정의)"], "answer_idx": 0, "opt_meanings": ["feature (특징)", "feature (특집 기사[방송])", "shelter (피난처, 주거지, 보호소)", "domestic (국내의, 가정의)"]}, {"word": "feature", "meaning": "feature (~을 특징으로 하다)", "q": "Next month's magazine will __________ student artwork from every grade.", "ko": "다음 달 잡지는 모든 학년의 학생 미술 작품을 특징으로 할 것이다.", "opts": ["feature (특집 기사[방송])", "feature (~을 특징으로 하다)", "departure (출발, 출항)", "translate (번역하다)"], "answer_idx": 1, "opt_meanings": ["feature (특집 기사[방송])", "feature (~을 특징으로 하다)", "departure (출발, 출항)", "translate (번역하다)"]}, {"word": "feature", "meaning": "feature (이목구비)", "q": "Careful makeup was used to soften the actor's sharp __________ for the role.", "ko": "배역을 위해 배우의 날카로운 이목구비를 부드럽게 하는 데 신중한 분장이 사용되었다.", "opts": ["feature (특집 기사[방송])", "feature (이목구비)", "accident (사고, 재난, 우연)", "manual (수동의, 육체노동의)"], "answer_idx": 1, "opt_meanings": ["feature (특집 기사[방송])", "feature (이목구비)", "accident (사고, 재난, 우연)", "manual (수동의, 육체노동의)"]}, {"word": "feature", "meaning": "feature (특집 기사[방송])", "q": "The newspaper ran a lengthy __________ on the school's recycling program.", "ko": "신문은 학교의 재활용 프로그램에 관한 긴 특집 기사를 실었다.", "opts": ["feature (이목구비)", "ignorant (무지한, 무식한)", "comic (희극의, 웃기는)", "feature (특집 기사[방송])"], "answer_idx": 3, "opt_meanings": ["feature (이목구비)", "ignorant (무지한, 무식한)", "comic (희극의, 웃기는)", "feature (특집 기사[방송])"]}, {"word": "critical", "meaning": "critical (비판적인)", "q": "A few reviewers were quietly __________ of the play's slow first act.", "ko": "몇몇 평론가들은 그 연극의 느린 1막에 조용히 비판적이었다.", "opts": ["critical (결정적인, 위기의)", "ultimate (궁극적인, 최고의, 최후의)", "critical (비판적인)", "appreciate (감사하다, 고마워하다)"], "answer_idx": 2, "opt_meanings": ["critical (결정적인, 위기의)", "ultimate (궁극적인, 최고의, 최후의)", "critical (비판적인)", "appreciate (감사하다, 고마워하다)"]}, {"word": "critical", "meaning": "critical (중요한, 중대한)", "q": "Practicing under pressure is __________ for actors before opening night.", "ko": "압박감 속에서 연습하는 것은 개막일 전 배우들에게 중요하다.", "opts": ["critical (비판적인)", "critical (중요한, 중대한)", "affect (영향을 미치다)", "ensure (보장하다, 확보하다)"], "answer_idx": 1, "opt_meanings": ["critical (비판적인)", "critical (중요한, 중대한)", "affect (영향을 미치다)", "ensure (보장하다, 확보하다)"]}, {"word": "critical", "meaning": "critical (결정적인, 위기의)", "q": "Losing the lead actor a day before the show was a __________ setback.", "ko": "공연 하루 전 주연 배우를 잃은 것은 결정적인 차질이었다.", "opts": ["critical (중요한, 중대한)", "leak (누설하다, 새다)", "obstacle (장애(물))", "critical (결정적인, 위기의)"], "answer_idx": 3, "opt_meanings": ["critical (중요한, 중대한)", "leak (누설하다, 새다)", "obstacle (장애(물))", "critical (결정적인, 위기의)"]}, {"word": "expire", "meaning": "expire ((기한이) 만료되다)", "q": "His backstage pass would __________ right after the final curtain call.", "ko": "그의 백스테이지 출입증은 마지막 커튼콜 직후 만료될 것이었다.", "opts": ["accept (받아들이다, 수락하다)", "expire ((기한이) 만료되다)", "hold (잡고[쥐고] 있다, 들다)", "application (지원, 신청(서), 적용)"], "answer_idx": 1, "opt_meanings": ["accept (받아들이다, 수락하다)", "expire ((기한이) 만료되다)", "hold (잡고[쥐고] 있다, 들다)", "application (지원, 신청(서), 적용)"]}, {"word": "inspire", "meaning": "inspire (고무[격려]하다, 영감을 주다)", "q": "Watching the seniors perform __________ the freshmen to try out next year.", "ko": "선배들의 공연을 본 것은 신입생들이 내년에 오디션을 보도록 영감을 주었다.", "opts": ["describe (묘사하다, 설명하다)", "download (다운로드하다)", "mess (엉망, 혼란한 상태)", "inspire (고무[격려]하다, 영감을 주다)"], "answer_idx": 3, "opt_meanings": ["describe (묘사하다, 설명하다)", "download (다운로드하다)", "mess (엉망, 혼란한 상태)", "inspire (고무[격려]하다, 영감을 주다)"]}, {"word": "loyal", "meaning": "loyal (충성스러운, 충실한)", "q": "A small but __________ group of fans came to every single rehearsal.", "ko": "작지만 충성스러운 팬 그룹은 모든 연습에 빠짐없이 참석했다.", "opts": ["escape (달아나다, 탈출하다)", "justify (정당화하다)", "negotiation (협상)", "loyal (충성스러운, 충실한)"], "answer_idx": 3, "opt_meanings": ["escape (달아나다, 탈출하다)", "justify (정당화하다)", "negotiation (협상)", "loyal (충성스러운, 충실한)"]}, {"word": "royal", "meaning": "royal (왕의, 왕국의)", "q": "The play was set in a __________ palace during a fictional kingdom's golden age.", "ko": "그 연극은 가상의 왕국의 황금기 동안 왕궁을 배경으로 했다.", "opts": ["barrier (장벽, 장애물, 한계)", "contain (포함하다, 억누르다)", "royal (왕의, 왕국의)", "random (무작위의, 임의의)"], "answer_idx": 2, "opt_meanings": ["barrier (장벽, 장애물, 한계)", "contain (포함하다, 억누르다)", "royal (왕의, 왕국의)", "random (무작위의, 임의의)"]}, {"word": "emergency", "meaning": "emergency (비상사태)", "q": "A backup generator was ready in case of a power __________ during the show.", "ko": "공연 중 정전 비상사태에 대비해 예비 발전기가 준비되어 있었다.", "opts": ["frank (솔직한, 숨김없는)", "emergency (비상사태)", "jealous (질투하는)", "morale (사기, 의욕)"], "answer_idx": 1, "opt_meanings": ["frank (솔직한, 숨김없는)", "emergency (비상사태)", "jealous (질투하는)", "morale (사기, 의욕)"]}, {"word": "emergence", "meaning": "emergence (출현, 발생)", "q": "The sudden __________ of new talent surprised even the veteran director.", "ko": "새로운 인재의 갑작스러운 출현은 베테랑 감독조차 놀라게 했다.", "opts": ["massive (거대한, 대량의)", "moment (순간, 중요성)", "sort (종류, 부류)", "emergence (출현, 발생)"], "answer_idx": 3, "opt_meanings": ["massive (거대한, 대량의)", "moment (순간, 중요성)", "sort (종류, 부류)", "emergence (출현, 발생)"]}];
+var FORM_MC=[{"word": "terrible", "meaning": "terrible (끔찍한, 심한, 지독한)", "q": "A __________ storm nearly forced the outdoor performance to be cancelled.", "ko": "끔찍한 폭풍은 야외 공연을 거의 취소하게 만들 뻔했다.", "opts": ["recognize (인식[인지]하다, 인정하다)", "economic (경제의, 경제학의)", "terrible (끔찍한, 심한, 지독한)", "environment ((자연·주변의) 환경)"], "answer_idx": 2, "opt_meanings": ["recognize (인식[인지]하다, 인정하다)", "economic (경제의, 경제학의)", "terrible (끔찍한, 심한, 지독한)", "environment ((자연·주변의) 환경)"]}, {"word": "terrific", "meaning": "terrific (아주 멋진, 훌륭한)", "q": "Critics agreed that the lighting design was simply __________.", "ko": "평론가들은 조명 디자인이 그저 아주 멋졌다는 데 동의했다.", "opts": ["cliff (절벽)", "terrific (아주 멋진, 훌륭한)", "explode (폭발하다, 터뜨리다)", "float (뜨다, 떠다니다)"], "answer_idx": 1, "opt_meanings": ["cliff (절벽)", "terrific (아주 멋진, 훌륭한)", "explode (폭발하다, 터뜨리다)", "float (뜨다, 떠다니다)"]}, {"word": "personal", "meaning": "personal (개인적인)", "q": "The director added a __________ touch by writing one scene herself.", "ko": "감독은 한 장면을 직접 씀으로써 개인적인 손길을 더했다.", "opts": ["personal (개인적인)", "precede (~에 앞서다[선행하다])", "decline (감소하다, 하락하다)", "philosophy (철학)"], "answer_idx": 0, "opt_meanings": ["personal (개인적인)", "precede (~에 앞서다[선행하다])", "decline (감소하다, 하락하다)", "philosophy (철학)"]}, {"word": "personnel", "meaning": "personnel (인원, 직원, 인사과)", "q": "Security __________ checked every bag before allowing guests into the theater.", "ko": "보안 인원은 손님들을 극장에 들여보내기 전 모든 가방을 확인했다.", "opts": ["income (수입, 소득)", "personnel (인원, 직원, 인사과)", "pupil (학생, 눈동자)", "excess (초과, 과도)"], "answer_idx": 1, "opt_meanings": ["income (수입, 소득)", "personnel (인원, 직원, 인사과)", "pupil (학생, 눈동자)", "excess (초과, 과도)"]}, {"word": "conscience", "meaning": "conscience (양심)", "q": "Her __________ bothered her until she admitted forgetting the props list.", "ko": "소품 목록을 잊었다고 인정할 때까지 그녀의 양심은 그녀를 괴롭혔다.", "opts": ["conscience (양심)", "resemble (닮다, 유사하다)", "complain (불평[항의]하다, 호소하다)", "capacity (용량, 수용력, 능력)"], "answer_idx": 0, "opt_meanings": ["conscience (양심)", "resemble (닮다, 유사하다)", "complain (불평[항의]하다, 호소하다)", "capacity (용량, 수용력, 능력)"]}, {"word": "conscious", "meaning": "conscious (의식하는, 의식이 있는, 의도적인)", "q": "The actors stayed __________ of the strict two-hour time limit.", "ko": "배우들은 엄격한 2시간 시간제한을 의식하고 있었다.", "opts": ["gas (기체, 가솔린)", "conscious (의식하는, 의식이 있는, 의도적인)", "break (휴식)", "dozens of (수십의, 많은)"], "answer_idx": 1, "opt_meanings": ["gas (기체, 가솔린)", "conscious (의식하는, 의식이 있는, 의도적인)", "break (휴식)", "dozens of (수십의, 많은)"]}, {"word": "simulate", "meaning": "simulate (모의 실험하다)", "q": "The tech crew used a small model to __________ the lighting changes.", "ko": "기술팀은 조명 변화를 모의 실험하기 위해 작은 모형을 사용했다.", "opts": ["ancient (고대의, 옛날의)", "common (흔한, 보통의, 공통의)", "simulate (모의 실험하다)", "circuit (회로, 순환)"], "answer_idx": 2, "opt_meanings": ["ancient (고대의, 옛날의)", "common (흔한, 보통의, 공통의)", "simulate (모의 실험하다)", "circuit (회로, 순환)"]}, {"word": "stimulate", "meaning": "stimulate (자극[격려]하다, 관심을 불러일으키다)", "q": "Live music at the entrance helped __________ excitement before the show began.", "ko": "입구의 라이브 음악은 공연이 시작되기 전 흥분을 자극하는 데 도움이 되었다.", "opts": ["display (전시하다, 드러내다)", "stimulate (자극[격려]하다, 관심을 불러일으키다)", "ordinary (평범한, 보통의)", "decade (10년, 10년간)"], "answer_idx": 1, "opt_meanings": ["display (전시하다, 드러내다)", "stimulate (자극[격려]하다, 관심을 불러일으키다)", "ordinary (평범한, 보통의)", "decade (10년, 10년간)"]}, {"word": "raise", "meaning": "raise (올리다, 들어올리다)", "q": "Volunteers worked together to __________ the heavy backdrop into place.", "ko": "자원봉사자들은 무거운 배경막을 제자리로 올리기 위해 함께 작업했다.", "opts": ["recover (회복하다, 복구되다)", "forecast (예측하다, 예보하다)", "raise (올리다, 들어올리다)", "native (토착의, 원산의)"], "answer_idx": 2, "opt_meanings": ["recover (회복하다, 복구되다)", "forecast (예측하다, 예보하다)", "raise (올리다, 들어올리다)", "native (토착의, 원산의)"]}, {"word": "rise", "meaning": "rise (오르다, 올라가다)", "q": "The curtain slowly began to __________ as the orchestra started playing.", "ko": "오케스트라가 연주를 시작하자 커튼이 서서히 오르기 시작했다.", "opts": ["debt (빚, 부채)", "defend (방어[수비]하다, 변호하다)", "accelerate (가속하다, 촉진하다)", "rise (오르다, 올라가다)"], "answer_idx": 3, "opt_meanings": ["debt (빚, 부채)", "defend (방어[수비]하다, 변호하다)", "accelerate (가속하다, 촉진하다)", "rise (오르다, 올라가다)"]}, {"word": "confirm", "meaning": "confirm (확인하다, 승인하다, (사실임을) 입증하다)", "q": "The stage manager __________ that every actor had arrived safely.", "ko": "무대 감독은 모든 배우가 안전하게 도착했음을 확인했다.", "opts": ["rainforest (열대 우림)", "precise (정확한, 정밀한, 꼼꼼한)", "associate (연상하다, 연관 짓다)", "confirm (확인하다, 승인하다, (사실임을) 입증하다)"], "answer_idx": 3, "opt_meanings": ["rainforest (열대 우림)", "precise (정확한, 정밀한, 꼼꼼한)", "associate (연상하다, 연관 짓다)", "confirm (확인하다, 승인하다, (사실임을) 입증하다)"]}, {"word": "conform", "meaning": "conform (따르다, 순응하다)", "q": "All backstage volunteers had to __________ to a strict no-phone policy.", "ko": "모든 무대 뒤 자원봉사자들은 엄격한 휴대폰 금지 규정을 따라야 했다.", "opts": ["conform (따르다, 순응하다)", "fascinated (매료된, 매혹된)", "sound (소리)", "despair (절망)"], "answer_idx": 0, "opt_meanings": ["conform (따르다, 순응하다)", "fascinated (매료된, 매혹된)", "sound (소리)", "despair (절망)"]}];
+
+// ===== 모바일 안전장치 (v18 표준 패턴) =====
+var _rawSyn=window.speechSynthesis;
+var syn=_rawSyn?{
+  cancel:function(){try{_rawSyn.cancel();}catch(e){}},
+  speak:function(u){try{_rawSyn.speak(u);}catch(e){}},
+  getVoices:function(){try{return _rawSyn.getVoices()||[];}catch(e){return [];}}
+}:{cancel:function(){},speak:function(){},getVoices:function(){return [];}};
+if(typeof SpeechSynthesisUtterance==='undefined'){window.SpeechSynthesisUtterance=function(t){this.text=t;this.lang='';this.rate=1;};}
+try{if(_rawSyn&&_rawSyn.getVoices&&_rawSyn.getVoices().length===0&&_rawSyn.addEventListener){_rawSyn.addEventListener('voiceschanged',function(){},{once:true});_rawSyn.getVoices();}}catch(e){}
+
+// ===== 기기별 속도 보정 (v12 표준 패턴) =====
+function isMobileTTS(){
+  if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))return true;
+  if(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)return true;
+  return false;
+}
+function adjRate(r){
+  if(!isMobileTTS())return r;
+  if(r<=0.75)return Math.max(0.3,r-0.4);
+  if(r<1)return Math.max(0.45,r-0.25);
+  return Math.max(0.7,r-0.3);
+}
+var ttsOffset=0;try{ttsOffset=parseFloat(localStorage.getItem('wm_ttsOffset'))||0;}catch(e){}
+function updateTtOffsetLabel(){var el=document.getElementById('ttOffsetLabel');if(!el)return;el.textContent=ttsOffset===0?'기본':(ttsOffset>0?'+':'')+ttsOffset.toFixed(2);}
+function adjustTtsOffset(delta){ttsOffset=Math.round((ttsOffset+delta)*100)/100;if(ttsOffset>0.4)ttsOffset=0.4;if(ttsOffset<-0.4)ttsOffset=-0.4;try{localStorage.setItem('wm_ttsOffset',ttsOffset);}catch(e){}updateTtOffsetLabel();}
+function resetTtsOffset(){ttsOffset=0;try{localStorage.setItem('wm_ttsOffset',0);}catch(e){}updateTtOffsetLabel();}
+function userRate(r){var v=adjRate(r)+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}
+
+// ===== 복잡 문장 판별 및 간격 (v13 확정값) =====
+function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|who|since|throughout|such as)\b/i.test(s);}
+function shadowGap(s){return isComplex(s)?2500:1800;}
+function readGap(s,lvl){var g=isComplex(s)?10500:6500;if(lvl==='B')g=Math.max(g,8500);return g;}
+
+// ===== 한글 발음 정리 (v19: 다의어 숫자 앞뒤 여백 + ~ 조사보정 추가) =====
+function cleanKo(t){
+  var s=t.replace(/\s*\(cf\.[^)]*\)/gi,'');
+  s=s.replace(/\s*\/\s*/g,', ');
+  // ~ + 조사를 "무엇" + 올바른 조사로 치환 (조사 불일치 자동 보정 포함)
+  s=s.replace(/~(를|을)/g,'무엇을');
+  s=s.replace(/~(는|은)/g,'무엇은');
+  s=s.replace(/~(가|이)/g,'무엇이');
+  s=s.replace(/~(와|과)/g,'무엇과');
+  s=s.replace(/~(로|으로)/g,'무엇으로');
+  s=s.replace(/~/g,'무엇');
+  s=s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');
+  s=s.replace(/\(([^)]*)\)/g,'$1 ');
+  // 다의어 번호(①②③④⑤) 앞뒤에 공백을 넣어 끊어 읽히게 함
+  s=s.replace(/([①②③④⑤])/g,' $1 ');
+  s=s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');
+  s=s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();
+  return s;
+}
+function spkKo(t){
+  syn.cancel();
+  var s=cleanKo(t);
+  var short=s.length<=4;
+  if(short){s=' '+s+' ';}
+  setTimeout(function(){
+    var u=new SpeechSynthesisUtterance(s);
+    u.lang='ko-KR';
+    u.rate=short?0.78:0.85;
+    syn.speak(u);
+  },100);
+}
+
+function spk(t,r){return new Promise(function(res){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=userRate(r||0.8);u.onend=res;u.onerror=res;syn.speak(u);},100);});}
+function spkW(w){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);},100);}
+function spkWordThenMeaning(word,meaning){
+  syn.cancel();
+  setTimeout(function(){
+    var u=new SpeechSynthesisUtterance(word);
+    u.lang='en-US';u.rate=userRate(0.85);
+    u.onend=function(){ spkKo(meaning); };
+    syn.speak(u);
+  },100);
+}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+// ===== 탭 전환 =====
+var stopReq=false;
+function stopAll(){stopReq=true;syn.cancel();document.querySelectorAll('.prog-dot').forEach(function(d){d.classList.remove('cur');});}
+function goTab(n,b){stopAll();document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});document.getElementById('panel-'+n).classList.add('active');b.classList.add('active');}
+
+function relTagClass(type){
+  if(type==='동의어') return 'syn';
+  if(type==='반의어') return 'ant';
+  if(type==='철자주의') return 'spell';
+  if(/^[①②③④⑤⑥⑦⑧]$/.test(type)) return 'mean';
+  return 'der';
+}
+
+// ===== ① 단어장(관계형) =====
+function buildVocab(){
+  var con=document.getElementById('vocab-list');con.innerHTML='';
+  WORD_GROUPS.forEach(function(g){
+    var card=document.createElement('div');card.className='group-card';
+    var mainRow=document.createElement('div');mainRow.className='group-main';
+    var w=document.createElement('span');w.className='w';w.textContent=g.main;
+    var p=document.createElement('span');p.className='p';p.textContent=g.pos+'  [No.'+g.orig_no+']';
+    mainRow.appendChild(w);mainRow.appendChild(p);
+    var m=document.createElement('div');m.className='group-m';m.textContent=g.m;
+    var ex=document.createElement('div');ex.className='group-ex';ex.textContent=g.exA+'  ('+g.koA+')';
+    card.appendChild(mainRow);card.appendChild(m);card.appendChild(ex);
+    var relList=document.createElement('div');relList.className='rel-list';
+    g.rels.forEach(function(r){
+      var item=document.createElement('div');item.className='rel-item';
+      var tag=document.createElement('span');tag.className='rel-tag '+relTagClass(r.type);tag.textContent=r.type;
+      var rw=document.createElement('span');rw.className='rel-w';rw.textContent=r.word;
+      var rp=document.createElement('span');rp.className='rel-p';rp.textContent=r.pos;
+      var rbtn=document.createElement('button');rbtn.className='play-btn';rbtn.textContent='🔊';
+      rbtn.addEventListener('click',function(e){e.stopPropagation();spkWordThenMeaning(r.word,r.m);});
+      var rm=document.createElement('div');rm.className='rel-m';rm.textContent=r.m;
+      item.appendChild(tag);item.appendChild(rw);item.appendChild(rp);item.appendChild(rbtn);item.appendChild(rm);
+      relList.appendChild(item);
+    });
+    card.appendChild(relList);
+    con.appendChild(card);
+  });
+}
+
+// ===== ②④ 집중듣기/낭독 공용 (문장 리스트 표시) =====
+var LVL={listen:'A',shadow:'A',read:'A',dict:'A'};
+var SPD={listen:0.8,read:0.8};
+
+function flatItems(){
+  var arr=[];
+  WORD_GROUPS.forEach(function(g){
+    g.rels.forEach(function(r){
+      arr.push({main:g.main,type:r.type,word:r.word,pos:r.pos,m:r.m,exA:r.exA,koA:r.koA,exB:r.exB,koB:r.koB});
+    });
+  });
+  return arr;
+}
+var FLAT=flatItems();
+
+function setLvl(tab,lvl,btn){
+  LVL[tab]=lvl;
+  var bar=btn.closest('.lvl-bar');
+  bar.querySelectorAll('.lvl-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+  if(tab==='dict') buildDict();
+  else if(tab==='listen'||tab==='read') buildList(tab);
+}
+function setSpd(r,btn,tab){
+  SPD[tab]=r;
+  var bar=btn.closest('.ctrl-bar');
+  bar.querySelectorAll('.spd-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+}
+
+function shortGloss(m){
+  var s=m.replace(/^[①②③④⑤⑥⑦⑧]\s*/,'');
+  s=s.split(',')[0].split('/')[0].trim();
+  return s;
+}
+function buildList(tab){
+  var con=document.getElementById(tab+'-list');con.innerHTML='';
+  var lvl=LVL[tab];
+  FLAT.forEach(function(it,i){
+    var sent=lvl==='A'?it.exA:it.exB;
+    var card=document.createElement('div');card.className='sent-card';card.id=tab+'-card-'+i;
+    var num=document.createElement('div');num.className='s-num';num.id=tab+'-num-'+i;num.textContent=i+1;
+    num.addEventListener('click',function(){spkOne(tab,i,sent);});
+    var txt=document.createElement('div');txt.className='s-txt';
+    txt.innerHTML='<span class="s-w">'+it.word+'('+shortGloss(it.m)+')</span> — '+sent;
+    card.appendChild(num);card.appendChild(txt);con.appendChild(card);
+  });
+}
+
+function setAct(tab,i,on){
+  var num=document.getElementById(tab+'-num-'+i);var card=document.getElementById(tab+'-card-'+i);
+  if(!num||!card)return;
+  if(on){num.classList.add('playing');card.classList.add('playing');}
+  else{num.classList.remove('playing');card.classList.remove('playing');}
+}
+function setNow(tab,i){
+  var el=document.getElementById(tab+'-now');if(!el)return;
+  if(i<0){el.innerHTML='<span class="now-txt">문장을 선택하면 여기에 표시돼요</span>';return;}
+  var it=FLAT[i];var lvl=LVL[tab];var sent=lvl==='A'?it.exA:it.exB;
+  el.innerHTML='<span class="now-txt"><b>'+it.word+'('+shortGloss(it.m)+')</b> — '+sent+'</span>';
+}
+async function spkOne(tab,i,sent){
+  stopAll();await wait(100);stopReq=false;
+  setAct(tab,i,true);setNow(tab,i);
+  var rate=SPD[tab]||0.8;
+  await spk(sent,rate);
+  setAct(tab,i,false);setNow(tab,-1);
+}
+
+// ===== ③ 따라말하기 진행 점(dot) 빌드 =====
+function buildProg(){
+  var p=document.getElementById('sh-prog');if(!p)return;
+  p.innerHTML='';
+  FLAT.forEach(function(_,i){
+    var d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d);
+  });
+}
+
+async function playAll(tab){
+  stopAll();await wait(150);stopReq=false;
+  var lvl=LVL[tab];
+
+  if(tab==='shadow'){
+    document.getElementById('sh-status').textContent='재생 중...';
+    for(var i=0;i<FLAT.length;i++){
+      if(stopReq)break;
+      var sent=lvl==='A'?FLAT[i].exA:FLAT[i].exB;
+      document.querySelectorAll('.prog-dot').forEach(function(d){d.classList.remove('cur');});
+      var pd=document.getElementById('pd-'+i);if(pd)pd.classList.add('cur');
+      document.getElementById('sh-hint').textContent='문장 '+(i+1)+' / '+FLAT.length+' — 바로 따라 말하세요!';
+      await spk(sent,0.8);
+      if(pd){pd.classList.remove('cur');pd.classList.add('done');}
+      if(stopReq)break;
+      await wait(shadowGap(sent));
+    }
+    document.getElementById('sh-status').textContent=stopReq?'정지되었습니다.':'완료! 수고했어요 👏';
+    document.getElementById('sh-hint').textContent='';
+    return;
+  }
+
+  for(var i=0;i<FLAT.length;i++){
+    if(stopReq)break;
+    var sent=lvl==='A'?FLAT[i].exA:FLAT[i].exB;
+    setAct(tab,i,true);setNow(tab,i);
+    var rate=SPD[tab]||0.8;
+    await spk(sent,rate);
+    setAct(tab,i,false);
+    if(stopReq)break;
+    await wait(tab==='read'?readGap(sent,lvl):250);
+  }
+  setNow(tab,-1);
+}
+
+// ===== ⑤ 받아쓰기 — 정답 단어를 화면에 노출하지 않음 =====
+function buildDict(){
+  var con=document.getElementById('dict-list');con.innerHTML='';
+  var lvl=LVL.dict;
+  FLAT.forEach(function(it,i){
+    var sent=lvl==='A'?it.exA:it.exB;
+    var card=document.createElement('div');card.className='sent-card';
+    var num=document.createElement('div');num.className='s-num';num.id='dn-'+i;num.textContent=i+1;
+    num.addEventListener('click',function(){document.querySelectorAll('.s-num').forEach(function(n){n.classList.remove('playing');});num.classList.add('playing');syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(sent);u.lang='en-US';u.rate=userRate(0.8);u.onend=function(){num.classList.remove('playing');};syn.speak(u);},100);});
+    var hint=document.createElement('div');hint.className='s-txt';
+    hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
+    card.appendChild(num);card.appendChild(hint);con.appendChild(card);
+  });
+}
+
+// ===== ⑥⑦ 퀴즈 공용 — 정답/오답 텍스트 해설 포함 =====
+var qState={match:{},form:{}};
+function buildQuiz(tab,data){
+  var wrap=document.getElementById(tab+'-wrap');wrap.innerHTML='';
+  document.getElementById(tab+'-tot').textContent=data.length;
+  qState[tab]={answered:{},ok:0};
+  data.forEach(function(q,i){
+    var card=document.createElement('div');card.className='q-card';
+    var qn=document.createElement('div');qn.className='q-num';qn.textContent=(i+1)+'번';
+    var qt=document.createElement('div');qt.className='q-text';qt.textContent=q.q;
+    var opts=document.createElement('div');opts.className='q-opts';
+    var fb=document.createElement('div');fb.className='q-feedback';
+    q.opts.forEach(function(opt,oi){
+      var b=document.createElement('button');b.className='q-opt';b.textContent=opt;
+      b.addEventListener('click',function(){
+        if(qState[tab].answered[i])return;
+        qState[tab].answered[i]=true;
+        var isCorrect=(oi===q.answer_idx);
+        if(isCorrect){b.classList.add('correct');qState[tab].ok++;}
+        else{b.classList.add('wrong');opts.children[q.answer_idx].classList.add('correct');}
+        document.getElementById(tab+'-ok').textContent=qState[tab].ok;
+
+        var ansOpt=q.opts[q.answer_idx];
+        fb.className='q-feedback show '+(isCorrect?'ok':'no');
+        var html='';
+        html+='<div class="fb-title">'+(isCorrect?'✅ 정답입니다!':'❌ 오답입니다.')+'</div>';
+        html+='💬 문장 해석: '+q.ko+'<br>';
+        html+='정답은 <b>'+ansOpt+'</b>입니다.';
+        var wrongParts=[];
+        q.opts.forEach(function(o,oi2){
+          if(oi2!==q.answer_idx){
+            wrongParts.push(o);
+          }
+        });
+        if(wrongParts.length){
+          html+='<br>'+wrongParts.join(', ')+'은(는) 이 문장의 빈칸에 어울리지 않습니다.';
+        }
+        fb.innerHTML=html;
+      });
+      opts.appendChild(b);
+    });
+    card.appendChild(qn);card.appendChild(qt);card.appendChild(opts);card.appendChild(fb);
+    wrap.appendChild(card);
+  });
+}
+function resetQuiz(tab){
+  document.getElementById(tab+'-ok').textContent='0';
+  buildQuiz(tab, tab==='match'?MATCH_MC:FORM_MC);
+}
+
+// ===== 초기화 =====
+buildVocab();
+buildList('listen');buildList('read');
+buildProg();
+buildDict();
+buildQuiz('match',MATCH_MC);
+buildQuiz('form',FORM_MC);
+updateTtOffsetLabel();
+
+</script>
+</body></html>
