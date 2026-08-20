@@ -3,2286 +3,1206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>보카 마스터 | 미라클 영어 스터디</title>
+<title>고등 워드마스터 컴플릿 — 학습 허브</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
-  :root{
-    --navy:#232946;--navy2:#3a4a72;
-    --bg:#f6f7fb;--card:#fff;--text:#232946;--muted:#8d93b0;--border:#eceef6;
-    --blue:#5b7cfa;--blue-light:#eef1ff;
-    --green:#2bb583;--green-light:#e8f9f2;
-    --orange:#ff9a3c;--orange-light:#fff3e6;
-    --purple:#9b7bff;--purple-light:#f2eeff;
-    --pink:#ff6fa5;--pink-light:#ffeef4;
-    --accent:var(--blue);--accent-light:var(--blue-light);
-    --radius:20px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Nunito','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-  header{background:linear-gradient(135deg,#2f3b63,#4a5fa5);color:#fff;padding:52px 20px 40px;text-align:center;}
-  header .brand{font-size:14px;letter-spacing:3px;opacity:.75;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;font-weight:600;}
-  header h1{font-size:42px;font-weight:900;margin-bottom:12px;letter-spacing:-.5px;}
-  header .tagline{font-size:15.5px;opacity:.85;font-family:'Noto Sans KR',sans-serif;}
-  .stats-row{display:flex;justify-content:center;gap:14px;margin-top:26px;flex-wrap:wrap;}
-  .stat{background:rgba(255,255,255,.14);border-radius:16px;padding:12px 28px;text-align:center;backdrop-filter:blur(4px);}
-  .stat .n{font-size:26px;font-weight:900;}
-  .stat .l{font-size:12.5px;opacity:.8;font-family:'Noto Sans KR',sans-serif;margin-top:2px;}
-
-  .guide-banner{max-width:1120px;margin:20px auto 0;padding:0 20px;}
-  .guide-inner{background:#fff;border-radius:16px;padding:16px 22px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(35,41,70,.06);font-size:14.5px;font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.6;}
-
-  /* 상위탭: 교재 선택 */
-  .series-wrap{max-width:1120px;margin:22px auto 0;padding:0 20px;}
-  .series-group-label{font-size:13.5px;font-weight:800;color:var(--muted);letter-spacing:1px;margin:24px 0 12px 4px;font-family:'Noto Sans KR',sans-serif;text-transform:uppercase;}
-  .series-bar{display:flex;flex-wrap:wrap;gap:12px;padding-bottom:2px;}
-  .series-btn{min-width:0;flex:0 1 calc(25% - 9px);}
-  @media (max-width:820px){ .series-btn{flex-basis:calc(50% - 6px);} }
-  @media (max-width:480px){ .series-btn{flex-basis:100%;} }
-  .series-btn{border:2px solid transparent;background:#fff;border-radius:18px;padding:16px 20px;cursor:pointer;transition:all .18s ease;font-family:'Noto Sans KR',sans-serif;text-align:left;box-shadow:0 3px 12px rgba(35,41,70,.05);display:flex;align-items:center;gap:12px;}
-  .series-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(35,41,70,.1);}
-  .series-btn .sb-icon{font-size:22px;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--blue-light);}
-  .series-btn .sb-text{display:flex;flex-direction:column;gap:2px;}
-  .series-btn .sb-name{font-size:14px;font-weight:800;color:var(--text);white-space:normal;line-height:1.25;word-break:keep-all;}
-  .series-btn .sb-sub{font-size:12px;color:var(--muted);white-space:normal;font-weight:600;}
-
-  .series-btn.hs .sb-icon{background:var(--blue-light);color:var(--blue);}
-  .series-btn.hs.active,.series-btn.hs:hover{border-color:var(--blue);}
-  .series-btn.hs.active .sb-name{color:var(--blue);}
-
-  .series-btn.ms .sb-icon{background:var(--green-light);color:var(--green);}
-  .series-btn.ms.active,.series-btn.ms:hover{border-color:var(--green);}
-  .series-btn.ms.active .sb-name{color:var(--green);}
-
-  .series-btn.es .sb-icon{background:var(--orange-light);color:var(--orange);}
-  .series-btn.es.active,.series-btn.es:hover{border-color:var(--orange);}
-  .series-btn.es.active .sb-name{color:var(--orange);}
-
-  .series-btn.px .sb-icon{background:var(--purple-light);color:var(--purple);}
-  .series-btn.px.active,.series-btn.px:hover{border-color:var(--purple);}
-  .series-btn.px.active .sb-name{color:var(--purple);}
-
-  .series-btn.pk .sb-icon{background:var(--pink-light);color:var(--pink);}
-  .series-btn.pk.active,.series-btn.pk:hover{border-color:var(--pink);}
-  .series-btn.pk.active .sb-name{color:var(--pink);}
-
-  .series-btn.coming{opacity:.55;cursor:not-allowed;box-shadow:none;}
-  .series-btn.coming:hover{transform:none;box-shadow:none;}
-  .series-btn.coming .sb-icon{background:#eef0f6;color:var(--muted);}
-  .series-btn.coming .sb-name{color:var(--muted);}
-
-  main{max-width:1120px;margin:0 auto;padding:24px 20px 60px;}
-  .series-panel{display:none;}
-  .series-panel.show{display:block;}
-
-  #hs-basic{--accent:var(--blue);--accent-light:var(--blue-light);}
-  #hs-suneung{--accent:var(--green);--accent-light:var(--green-light);}
-  #hs-polyext{--accent:var(--purple);--accent-light:var(--purple-light);}
-  #hs-synant{--accent:var(--pink);--accent-light:var(--pink-light);}
-
-  .series-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
-  .series-head h2{font-size:21px;font-weight:900;color:var(--navy);}
-  .series-head .lv{font-size:12.5px;color:var(--accent);font-family:'Noto Sans KR',sans-serif;font-weight:700;background:var(--accent-light);padding:6px 14px;border-radius:99px;}
-
-  .day-section{margin-bottom:28px;}
-  .day-title{position:relative;font-size:14.5px;font-weight:800;color:var(--navy2);margin-bottom:12px;padding-left:14px;font-family:'Noto Sans KR',sans-serif;}
-  .day-title::before{content:'';position:absolute;left:0;top:1px;bottom:1px;width:5px;border-radius:3px;background:var(--accent);}
-  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:11px;}
-  .card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--accent-light);border:none;border-radius:16px;padding:18px 8px 15px;text-decoration:none;color:var(--text);overflow:hidden;transition:all .16s ease;}
-  .card:hover{transform:translateY(-3px);box-shadow:0 10px 22px -4px color-mix(in srgb, var(--accent) 45%, transparent);}
-  .card .num-badge{width:32px;height:32px;border-radius:10px;background:var(--accent);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
-  .card .range{font-size:10.5px;color:var(--navy2);font-weight:700;font-family:'Noto Sans KR',sans-serif;}
-
-  /* 다의어확장 / 동의어반의어확장: 세트 수가 적어 큰 카드로 표시 */
-  #hs-polyext .card-grid,#hs-synant .card-grid,#hs-suneung-synant .card-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
-  .card.card-lg{padding:20px 14px 18px;align-items:flex-start;text-align:left;}
-  .card.card-lg .num-badge{width:38px;height:38px;border-radius:12px;font-size:16px;margin-bottom:10px;}
-  .card.card-lg .c-title{font-size:15px;font-weight:800;color:var(--text);font-family:'Noto Sans KR',sans-serif;margin-bottom:4px;}
-  .card.card-lg .range{font-size:12.5px;color:var(--accent);font-weight:800;}
-
-  .coming-box{background:#fff;border:1.5px dashed var(--border);border-radius:18px;padding:50px 20px;text-align:center;color:var(--muted);font-family:'Noto Sans KR',sans-serif;}
-  .coming-box .ci{font-size:34px;margin-bottom:10px;}
-  .coming-box .ct{font-size:15px;font-weight:800;color:var(--text);margin-bottom:6px;}
-  .coming-box .cd{font-size:12.5px;line-height:1.7;}
-
-  footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;font-family:'Noto Sans KR',sans-serif;}
+:root{
+  --border:#e2e6ee; --text:#233047; --muted:#8a95a8; --navy2:#1b2b52;
+  --bg:#f5f7fb;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Noto Sans KR',Apple SD Gothic Neo,sans-serif;background:var(--bg);color:var(--text);}
+.header{background:linear-gradient(135deg,#2f5fd9 0%,#17a698 100%);color:#fff;padding:28px 20px;text-align:center;}
+.header h1{margin:0 0 6px;font-size:22px;font-weight:800;}
+.header p{margin:0;font-size:13px;opacity:.9;}
+.container{max-width:1080px;margin:0 auto;padding:20px 16px 60px;}
+.day-block{margin-bottom:22px;}
+.day-title{position:relative;font-size:15px;font-weight:800;color:var(--navy2);margin-bottom:10px;padding-left:14px;}
+.day-title::before{content:'';position:absolute;left:0;top:1px;bottom:1px;width:5px;border-radius:3px;background:linear-gradient(180deg,#2f5fd9 0%,#17a698 100%);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;}
+.card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 8px 14px 14px;text-decoration:none;color:var(--text);overflow:hidden;box-shadow:0 2px 6px rgba(19,35,73,.06);transition:all .18s ease;text-align:center;}
+.card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:6px;background:linear-gradient(180deg,#2f5fd9 0%,#17a698 100%);}
+.card.card-exp::before{background:linear-gradient(180deg,#f5a623 0%,#e8622c 100%);}
+.card .num-badge{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2f5fd9 0%,#17a698 100%);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:7px;box-shadow:0 3px 8px rgba(47,95,217,.25);}
+.card.card-exp .num-badge{background:linear-gradient(135deg,#f5a623 0%,#e8622c 100%);box-shadow:0 3px 8px rgba(232,98,44,.25);}
+.card .range{font-size:10.5px;color:var(--muted);line-height:1.5;}
+.card:hover{box-shadow:0 10px 20px rgba(23,166,152,.2);transform:translateY(-3px);}
+.legend{display:flex;gap:18px;justify-content:center;margin:10px 0 26px;font-size:12px;color:var(--muted);}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot.base{background:linear-gradient(135deg,#2f5fd9 0%,#17a698 100%);}
+.dot.exp{background:linear-gradient(135deg,#f5a623 0%,#e8622c 100%);}
 </style>
 </head>
 <body>
-<header>
-  <div class="brand">미라클 영어 스터디</div>
-  <h1>📚 보카 마스터</h1>
-  <div class="tagline">교재를 선택하고 세트를 눌러 학습을 시작하세요</div>
-  <div class="stats-row">
-    <div class="stat"><div class="n">9</div><div class="l">교재</div></div>
-    <div class="stat"><div class="n">352</div><div class="l">완성 세트</div></div>
-    <div class="stat"><div class="n">3,200</div><div class="l">완성 단어</div></div>
+<div class="header">
+  <h1>고등 워드마스터 컴플릿</h1>
+  <p>No.1~1200 · Day1~Day40 · 총 240세트(본편 120 + 확장 120)</p>
+</div>
+<div class="container">
+  <div class="legend">
+    <span><span class="dot base"></span>본편(다의어 학습)</span>
+    <span><span class="dot exp"></span>확장(동의어·반의어·파생어·숙어)</span>
   </div>
-</header>
-
-<div class="guide-banner">
-  <div class="guide-inner">
-    <span>💡</span>
-    <span>아래에서 교재를 선택하면 해당 교재의 학습 세트 목록이 펼쳐져요. 준비중인 교재는 곧 추가될 예정입니다.</span>
+<div class="day-block">
+  <div class="day-title">Day1</div>
+  <div class="card-grid">
+<a class="card" href="학습_1.고등 워드마스터 컴플릿 Day1 (No.1-10).html" target="_blank">
+  <span class="num-badge">1</span>
+  <span class="range">No.1-10</span>
+</a>
+<a class="card card-exp" href="학습_1-a.고등 워드마스터 컴플릿 Day1 확장 (No.1-10 관련어 31개).html" target="_blank">
+  <span class="num-badge">1-a</span>
+  <span class="range">확장 · No.1-10<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_2.고등 워드마스터 컴플릿 Day1 (No.11-20).html" target="_blank">
+  <span class="num-badge">2</span>
+  <span class="range">No.11-20</span>
+</a>
+<a class="card card-exp" href="학습_2-a.고등 워드마스터 컴플릿 Day1 확장 (No.11-20 관련어 31개).html" target="_blank">
+  <span class="num-badge">2-a</span>
+  <span class="range">확장 · No.11-20<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_3.고등 워드마스터 컴플릿 Day1 (No.21-30).html" target="_blank">
+  <span class="num-badge">3</span>
+  <span class="range">No.21-30</span>
+</a>
+<a class="card card-exp" href="학습_3-a.고등 워드마스터 컴플릿 Day1 확장 (No.21-30 관련어 24개).html" target="_blank">
+  <span class="num-badge">3-a</span>
+  <span class="range">확장 · No.21-30<br><span class='range'>관련어 24개</span></span>
+</a>
   </div>
 </div>
-
-<div class="series-wrap">
-  <div class="series-group-label">고등 시리즈</div>
-  <div class="series-bar">
-    <button class="series-btn hs active" onclick="showSeries('hs-basic', this)">
-      <div class="sb-icon">📘</div><div class="sb-text"><span class="sb-name">워드마스터 Basic</span><span class="sb-sub">No.1~1200 · 120세트</span></div>
-    </button>
-    <button class="series-btn px" onclick="showSeries('hs-polyext', this)">
-      <div class="sb-icon">🔀</div><div class="sb-text"><span class="sb-name">Basic 다의어확장</span><span class="sb-sub">385개 의미 · 20세트</span></div>
-    </button>
-    <button class="series-btn pk" onclick="showSeries('hs-synant', this)">
-      <div class="sb-icon">🔁</div><div class="sb-text"><span class="sb-name">Basic 동의어·반의어확장</span><span class="sb-sub">287개 관계 · 12세트</span></div>
-    </button>
-    <button class="series-btn hs" onclick="showSeries('hs-suneung', this)">
-      <div class="sb-icon">📗</div><div class="sb-text"><span class="sb-name">수능 2000</span><span class="sb-sub">No.1~2000 · 200세트</span></div>
-    </button>
-    <button class="series-btn pk" onclick="showSeries('hs-suneung-synant', this)">
-      <div class="sb-icon">🔁</div><div class="sb-text"><span class="sb-name">수능2000 동의어·반의어확장</span><span class="sb-sub">999개 관계 · 41세트</span></div>
-    </button>
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📙</div><div class="sb-text"><span class="sb-name">컴플릿</span><span class="sb-sub">준비중</span></div>
-    </button>
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📕</div><div class="sb-text"><span class="sb-name">숙어 1000</span><span class="sb-sub">준비중</span></div>
-    </button>
-  </div>
-
-  <div class="series-group-label">중등 시리즈</div>
-  <div class="series-bar">
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📒</div><div class="sb-text"><span class="sb-name">워드마스터 베이직</span><span class="sb-sub">준비중</span></div>
-    </button>
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📗</div><div class="sb-text"><span class="sb-name">워드마스터 실력</span><span class="sb-sub">준비중</span></div>
-    </button>
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📙</div><div class="sb-text"><span class="sb-name">워드마스터 고난도</span><span class="sb-sub">준비중</span></div>
-    </button>
-  </div>
-
-  <div class="series-group-label">초등 시리즈</div>
-  <div class="series-bar">
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📔</div><div class="sb-text"><span class="sb-name">워드마스터 베이직</span><span class="sb-sub">준비중</span></div>
-    </button>
-    <button class="series-btn coming" disabled title="준비중">
-      <div class="sb-icon">📓</div><div class="sb-text"><span class="sb-name">워드마스터 컴플릿</span><span class="sb-sub">준비중</span></div>
-    </button>
+<div class="day-block">
+  <div class="day-title">Day2</div>
+  <div class="card-grid">
+<a class="card" href="학습_4.고등 워드마스터 컴플릿 Day2 (No.31-40).html" target="_blank">
+  <span class="num-badge">4</span>
+  <span class="range">No.31-40</span>
+</a>
+<a class="card card-exp" href="학습_4-a.고등 워드마스터 컴플릿 Day2 확장 (No.31-40 관련어 36개).html" target="_blank">
+  <span class="num-badge">4-a</span>
+  <span class="range">확장 · No.31-40<br><span class='range'>관련어 36개</span></span>
+</a>
+<a class="card" href="학습_5.고등 워드마스터 컴플릿 Day2 (No.41-50).html" target="_blank">
+  <span class="num-badge">5</span>
+  <span class="range">No.41-50</span>
+</a>
+<a class="card card-exp" href="학습_5-a.고등 워드마스터 컴플릿 Day2 확장 (No.41-50 관련어 37개).html" target="_blank">
+  <span class="num-badge">5-a</span>
+  <span class="range">확장 · No.41-50<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_6.고등 워드마스터 컴플릿 Day2 (No.51-60).html" target="_blank">
+  <span class="num-badge">6</span>
+  <span class="range">No.51-60</span>
+</a>
+<a class="card card-exp" href="학습_6-a.고등 워드마스터 컴플릿 Day2 확장 (No.51-60 관련어 22개).html" target="_blank">
+  <span class="num-badge">6-a</span>
+  <span class="range">확장 · No.51-60<br><span class='range'>관련어 22개</span></span>
+</a>
   </div>
 </div>
-
-<main>
-<div id="hs-basic" class="series-panel show">
-  <div class="series-head">
-    <h2>고등 워드마스터 Basic · No.1~1200</h2>
-    <span class="lv">난이도: 초등6~중1~2 (쉬운~보통)</span>
-  </div>
-
-      <div class="day-section">
-        <h2 class="day-title">Day 1</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_1.고등 워드마스터 Basic Day1 (No.1-10).html">
-          <span class="num-badge">1</span>
-          <span class="range">No.1-10</span>
-        </a>
-        <a class="card" href="학습_2.고등 워드마스터 Basic Day1 (No.11-20).html">
-          <span class="num-badge">2</span>
-          <span class="range">No.11-20</span>
-        </a>
-        <a class="card" href="학습_3.고등 워드마스터 Basic Day1 (No.21-30).html">
-          <span class="num-badge">3</span>
-          <span class="range">No.21-30</span>
-        </a>
-        <a class="card" href="학습_4.고등 워드마스터 Basic Day1 (No.31-40).html">
-          <span class="num-badge">4</span>
-          <span class="range">No.31-40</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 2</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_5.고등 워드마스터 Basic Day2 (No.41-50).html">
-          <span class="num-badge">5</span>
-          <span class="range">No.41-50</span>
-        </a>
-        <a class="card" href="학습_6.고등 워드마스터 Basic Day2 (No.51-60).html">
-          <span class="num-badge">6</span>
-          <span class="range">No.51-60</span>
-        </a>
-        <a class="card" href="학습_7.고등 워드마스터 Basic Day2 (No.61-70).html">
-          <span class="num-badge">7</span>
-          <span class="range">No.61-70</span>
-        </a>
-        <a class="card" href="학습_8.고등 워드마스터 Basic Day2 (No.71-80).html">
-          <span class="num-badge">8</span>
-          <span class="range">No.71-80</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 3</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_9.고등 워드마스터 Basic Day3 (No.81-90).html">
-          <span class="num-badge">9</span>
-          <span class="range">No.81-90</span>
-        </a>
-        <a class="card" href="학습_10.고등 워드마스터 Basic Day3 (No.91-100).html">
-          <span class="num-badge">10</span>
-          <span class="range">No.91-100</span>
-        </a>
-        <a class="card" href="학습_11.고등 워드마스터 Basic Day3 (No.101-110).html">
-          <span class="num-badge">11</span>
-          <span class="range">No.101-110</span>
-        </a>
-        <a class="card" href="학습_12.고등 워드마스터 Basic Day3 (No.111-120).html">
-          <span class="num-badge">12</span>
-          <span class="range">No.111-120</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 4</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_13.고등 워드마스터 Basic Day4 (No.121-130).html">
-          <span class="num-badge">13</span>
-          <span class="range">No.121-130</span>
-        </a>
-        <a class="card" href="학습_14.고등 워드마스터 Basic Day4 (No.131-140).html">
-          <span class="num-badge">14</span>
-          <span class="range">No.131-140</span>
-        </a>
-        <a class="card" href="학습_15.고등 워드마스터 Basic Day4 (No.141-150).html">
-          <span class="num-badge">15</span>
-          <span class="range">No.141-150</span>
-        </a>
-        <a class="card" href="학습_16.고등 워드마스터 Basic Day4 (No.151-160).html">
-          <span class="num-badge">16</span>
-          <span class="range">No.151-160</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 5</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_17.고등 워드마스터 Basic Day5 (No.161-170).html">
-          <span class="num-badge">17</span>
-          <span class="range">No.161-170</span>
-        </a>
-        <a class="card" href="학습_18.고등 워드마스터 Basic Day5 (No.171-180).html">
-          <span class="num-badge">18</span>
-          <span class="range">No.171-180</span>
-        </a>
-        <a class="card" href="학습_19.고등 워드마스터 Basic Day5 (No.181-190).html">
-          <span class="num-badge">19</span>
-          <span class="range">No.181-190</span>
-        </a>
-        <a class="card" href="학습_20.고등 워드마스터 Basic Day5 (No.191-200).html">
-          <span class="num-badge">20</span>
-          <span class="range">No.191-200</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 6</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_21.고등 워드마스터 Basic Day6 (No.201-210).html">
-          <span class="num-badge">21</span>
-          <span class="range">No.201-210</span>
-        </a>
-        <a class="card" href="학습_22.고등 워드마스터 Basic Day6 (No.211-220).html">
-          <span class="num-badge">22</span>
-          <span class="range">No.211-220</span>
-        </a>
-        <a class="card" href="학습_23.고등 워드마스터 Basic Day6 (No.221-230).html">
-          <span class="num-badge">23</span>
-          <span class="range">No.221-230</span>
-        </a>
-        <a class="card" href="학습_24.고등 워드마스터 Basic Day6 (No.231-240).html">
-          <span class="num-badge">24</span>
-          <span class="range">No.231-240</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 7</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_25.고등 워드마스터 Basic Day7 (No.241-250).html">
-          <span class="num-badge">25</span>
-          <span class="range">No.241-250</span>
-        </a>
-        <a class="card" href="학습_26.고등 워드마스터 Basic Day7 (No.251-260).html">
-          <span class="num-badge">26</span>
-          <span class="range">No.251-260</span>
-        </a>
-        <a class="card" href="학습_27.고등 워드마스터 Basic Day7 (No.261-270).html">
-          <span class="num-badge">27</span>
-          <span class="range">No.261-270</span>
-        </a>
-        <a class="card" href="학습_28.고등 워드마스터 Basic Day7 (No.271-280).html">
-          <span class="num-badge">28</span>
-          <span class="range">No.271-280</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 8</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_29.고등 워드마스터 Basic Day8 (No.281-290).html">
-          <span class="num-badge">29</span>
-          <span class="range">No.281-290</span>
-        </a>
-        <a class="card" href="학습_30.고등 워드마스터 Basic Day8 (No.291-300).html">
-          <span class="num-badge">30</span>
-          <span class="range">No.291-300</span>
-        </a>
-        <a class="card" href="학습_31.고등 워드마스터 Basic Day8 (No.301-310).html">
-          <span class="num-badge">31</span>
-          <span class="range">No.301-310</span>
-        </a>
-        <a class="card" href="학습_32.고등 워드마스터 Basic Day8 (No.311-320).html">
-          <span class="num-badge">32</span>
-          <span class="range">No.311-320</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 9</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_33.고등 워드마스터 Basic Day9 (No.321-330).html">
-          <span class="num-badge">33</span>
-          <span class="range">No.321-330</span>
-        </a>
-        <a class="card" href="학습_34.고등 워드마스터 Basic Day9 (No.331-340).html">
-          <span class="num-badge">34</span>
-          <span class="range">No.331-340</span>
-        </a>
-        <a class="card" href="학습_35.고등 워드마스터 Basic Day9 (No.341-350).html">
-          <span class="num-badge">35</span>
-          <span class="range">No.341-350</span>
-        </a>
-        <a class="card" href="학습_36.고등 워드마스터 Basic Day9 (No.351-360).html">
-          <span class="num-badge">36</span>
-          <span class="range">No.351-360</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 10</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_37.고등 워드마스터 Basic Day10 (No.361-370).html">
-          <span class="num-badge">37</span>
-          <span class="range">No.361-370</span>
-        </a>
-        <a class="card" href="학습_38.고등 워드마스터 Basic Day10 (No.371-380).html">
-          <span class="num-badge">38</span>
-          <span class="range">No.371-380</span>
-        </a>
-        <a class="card" href="학습_39.고등 워드마스터 Basic Day10 (No.381-390).html">
-          <span class="num-badge">39</span>
-          <span class="range">No.381-390</span>
-        </a>
-        <a class="card" href="학습_40.고등 워드마스터 Basic Day10 (No.391-400).html">
-          <span class="num-badge">40</span>
-          <span class="range">No.391-400</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 11</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_41.고등 워드마스터 Basic Day11 (No.401-410).html">
-          <span class="num-badge">41</span>
-          <span class="range">No.401-410</span>
-        </a>
-        <a class="card" href="학습_42.고등 워드마스터 Basic Day11 (No.411-420).html">
-          <span class="num-badge">42</span>
-          <span class="range">No.411-420</span>
-        </a>
-        <a class="card" href="학습_43.고등 워드마스터 Basic Day11 (No.421-430).html">
-          <span class="num-badge">43</span>
-          <span class="range">No.421-430</span>
-        </a>
-        <a class="card" href="학습_44.고등 워드마스터 Basic Day11 (No.431-440).html">
-          <span class="num-badge">44</span>
-          <span class="range">No.431-440</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 12</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_45.고등 워드마스터 Basic Day12 (No.441-450).html">
-          <span class="num-badge">45</span>
-          <span class="range">No.441-450</span>
-        </a>
-        <a class="card" href="학습_46.고등 워드마스터 Basic Day12 (No.451-460).html">
-          <span class="num-badge">46</span>
-          <span class="range">No.451-460</span>
-        </a>
-        <a class="card" href="학습_47.고등 워드마스터 Basic Day12 (No.461-470).html">
-          <span class="num-badge">47</span>
-          <span class="range">No.461-470</span>
-        </a>
-        <a class="card" href="학습_48.고등 워드마스터 Basic Day12 (No.471-480).html">
-          <span class="num-badge">48</span>
-          <span class="range">No.471-480</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 13</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_49.고등 워드마스터 Basic Day13 (No.481-490).html">
-          <span class="num-badge">49</span>
-          <span class="range">No.481-490</span>
-        </a>
-        <a class="card" href="학습_50.고등 워드마스터 Basic Day13 (No.491-500).html">
-          <span class="num-badge">50</span>
-          <span class="range">No.491-500</span>
-        </a>
-        <a class="card" href="학습_51.고등 워드마스터 Basic Day13 (No.501-510).html">
-          <span class="num-badge">51</span>
-          <span class="range">No.501-510</span>
-        </a>
-        <a class="card" href="학습_52.고등 워드마스터 Basic Day13 (No.511-520).html">
-          <span class="num-badge">52</span>
-          <span class="range">No.511-520</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 14</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_53.고등 워드마스터 Basic Day14 (No.521-530).html">
-          <span class="num-badge">53</span>
-          <span class="range">No.521-530</span>
-        </a>
-        <a class="card" href="학습_54.고등 워드마스터 Basic Day14 (No.531-540).html">
-          <span class="num-badge">54</span>
-          <span class="range">No.531-540</span>
-        </a>
-        <a class="card" href="학습_55.고등 워드마스터 Basic Day14 (No.541-550).html">
-          <span class="num-badge">55</span>
-          <span class="range">No.541-550</span>
-        </a>
-        <a class="card" href="학습_56.고등 워드마스터 Basic Day14 (No.551-560).html">
-          <span class="num-badge">56</span>
-          <span class="range">No.551-560</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 15</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_57.고등 워드마스터 Basic Day15 (No.561-570).html">
-          <span class="num-badge">57</span>
-          <span class="range">No.561-570</span>
-        </a>
-        <a class="card" href="학습_58.고등 워드마스터 Basic Day15 (No.571-580).html">
-          <span class="num-badge">58</span>
-          <span class="range">No.571-580</span>
-        </a>
-        <a class="card" href="학습_59.고등 워드마스터 Basic Day15 (No.581-590).html">
-          <span class="num-badge">59</span>
-          <span class="range">No.581-590</span>
-        </a>
-        <a class="card" href="학습_60.고등 워드마스터 Basic Day15 (No.591-600).html">
-          <span class="num-badge">60</span>
-          <span class="range">No.591-600</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 16</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_61.고등 워드마스터 Basic Day16 (No.601-610).html">
-          <span class="num-badge">61</span>
-          <span class="range">No.601-610</span>
-        </a>
-        <a class="card" href="학습_62.고등 워드마스터 Basic Day16 (No.611-620).html">
-          <span class="num-badge">62</span>
-          <span class="range">No.611-620</span>
-        </a>
-        <a class="card" href="학습_63.고등 워드마스터 Basic Day16 (No.621-630).html">
-          <span class="num-badge">63</span>
-          <span class="range">No.621-630</span>
-        </a>
-        <a class="card" href="학습_64.고등 워드마스터 Basic Day16 (No.631-640).html">
-          <span class="num-badge">64</span>
-          <span class="range">No.631-640</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 17</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_65.고등 워드마스터 Basic Day17 (No.641-650).html">
-          <span class="num-badge">65</span>
-          <span class="range">No.641-650</span>
-        </a>
-        <a class="card" href="학습_66.고등 워드마스터 Basic Day17 (No.651-660).html">
-          <span class="num-badge">66</span>
-          <span class="range">No.651-660</span>
-        </a>
-        <a class="card" href="학습_67.고등 워드마스터 Basic Day17 (No.661-670).html">
-          <span class="num-badge">67</span>
-          <span class="range">No.661-670</span>
-        </a>
-        <a class="card" href="학습_68.고등 워드마스터 Basic Day17 (No.671-680).html">
-          <span class="num-badge">68</span>
-          <span class="range">No.671-680</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 18</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_69.고등 워드마스터 Basic Day18 (No.681-690).html">
-          <span class="num-badge">69</span>
-          <span class="range">No.681-690</span>
-        </a>
-        <a class="card" href="학습_70.고등 워드마스터 Basic Day18 (No.691-700).html">
-          <span class="num-badge">70</span>
-          <span class="range">No.691-700</span>
-        </a>
-        <a class="card" href="학습_71.고등 워드마스터 Basic Day18 (No.701-710).html">
-          <span class="num-badge">71</span>
-          <span class="range">No.701-710</span>
-        </a>
-        <a class="card" href="학습_72.고등 워드마스터 Basic Day18 (No.711-720).html">
-          <span class="num-badge">72</span>
-          <span class="range">No.711-720</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 19</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_73.고등 워드마스터 Basic Day19 (No.721-730).html">
-          <span class="num-badge">73</span>
-          <span class="range">No.721-730</span>
-        </a>
-        <a class="card" href="학습_74.고등 워드마스터 Basic Day19 (No.731-740).html">
-          <span class="num-badge">74</span>
-          <span class="range">No.731-740</span>
-        </a>
-        <a class="card" href="학습_75.고등 워드마스터 Basic Day19 (No.741-750).html">
-          <span class="num-badge">75</span>
-          <span class="range">No.741-750</span>
-        </a>
-        <a class="card" href="학습_76.고등 워드마스터 Basic Day19 (No.751-760).html">
-          <span class="num-badge">76</span>
-          <span class="range">No.751-760</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 20</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_77.고등 워드마스터 Basic Day20 (No.761-770).html">
-          <span class="num-badge">77</span>
-          <span class="range">No.761-770</span>
-        </a>
-        <a class="card" href="학습_78.고등 워드마스터 Basic Day20 (No.771-780).html">
-          <span class="num-badge">78</span>
-          <span class="range">No.771-780</span>
-        </a>
-        <a class="card" href="학습_79.고등 워드마스터 Basic Day20 (No.781-790).html">
-          <span class="num-badge">79</span>
-          <span class="range">No.781-790</span>
-        </a>
-        <a class="card" href="학습_80.고등 워드마스터 Basic Day20 (No.791-800).html">
-          <span class="num-badge">80</span>
-          <span class="range">No.791-800</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 21</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_81.고등 워드마스터 Basic Day21 (No.801-810).html">
-          <span class="num-badge">81</span>
-          <span class="range">No.801-810</span>
-        </a>
-        <a class="card" href="학습_82.고등 워드마스터 Basic Day21 (No.811-820).html">
-          <span class="num-badge">82</span>
-          <span class="range">No.811-820</span>
-        </a>
-        <a class="card" href="학습_83.고등 워드마스터 Basic Day21 (No.821-830).html">
-          <span class="num-badge">83</span>
-          <span class="range">No.821-830</span>
-        </a>
-        <a class="card" href="학습_84.고등 워드마스터 Basic Day21 (No.831-840).html">
-          <span class="num-badge">84</span>
-          <span class="range">No.831-840</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 22</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_85.고등 워드마스터 Basic Day22 (No.841-850).html">
-          <span class="num-badge">85</span>
-          <span class="range">No.841-850</span>
-        </a>
-        <a class="card" href="학습_86.고등 워드마스터 Basic Day22 (No.851-860).html">
-          <span class="num-badge">86</span>
-          <span class="range">No.851-860</span>
-        </a>
-        <a class="card" href="학습_87.고등 워드마스터 Basic Day22 (No.861-870).html">
-          <span class="num-badge">87</span>
-          <span class="range">No.861-870</span>
-        </a>
-        <a class="card" href="학습_88.고등 워드마스터 Basic Day22 (No.871-880).html">
-          <span class="num-badge">88</span>
-          <span class="range">No.871-880</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 23</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_89.고등 워드마스터 Basic Day23 (No.881-890).html">
-          <span class="num-badge">89</span>
-          <span class="range">No.881-890</span>
-        </a>
-        <a class="card" href="학습_90.고등 워드마스터 Basic Day23 (No.891-900).html">
-          <span class="num-badge">90</span>
-          <span class="range">No.891-900</span>
-        </a>
-        <a class="card" href="학습_91.고등 워드마스터 Basic Day23 (No.901-910).html">
-          <span class="num-badge">91</span>
-          <span class="range">No.901-910</span>
-        </a>
-        <a class="card" href="학습_92.고등 워드마스터 Basic Day23 (No.911-920).html">
-          <span class="num-badge">92</span>
-          <span class="range">No.911-920</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 24</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_93.고등 워드마스터 Basic Day24 (No.921-930).html">
-          <span class="num-badge">93</span>
-          <span class="range">No.921-930</span>
-        </a>
-        <a class="card" href="학습_94.고등 워드마스터 Basic Day24 (No.931-940).html">
-          <span class="num-badge">94</span>
-          <span class="range">No.931-940</span>
-        </a>
-        <a class="card" href="학습_95.고등 워드마스터 Basic Day24 (No.941-950).html">
-          <span class="num-badge">95</span>
-          <span class="range">No.941-950</span>
-        </a>
-        <a class="card" href="학습_96.고등 워드마스터 Basic Day24 (No.951-960).html">
-          <span class="num-badge">96</span>
-          <span class="range">No.951-960</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 25</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_97.고등 워드마스터 Basic Day25 (No.961-970).html">
-          <span class="num-badge">97</span>
-          <span class="range">No.961-970</span>
-        </a>
-        <a class="card" href="학습_98.고등 워드마스터 Basic Day25 (No.971-980).html">
-          <span class="num-badge">98</span>
-          <span class="range">No.971-980</span>
-        </a>
-        <a class="card" href="학습_99.고등 워드마스터 Basic Day25 (No.981-990).html">
-          <span class="num-badge">99</span>
-          <span class="range">No.981-990</span>
-        </a>
-        <a class="card" href="학습_100.고등 워드마스터 Basic Day25 (No.991-1000).html">
-          <span class="num-badge">100</span>
-          <span class="range">No.991-1000</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 26</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_101.고등 워드마스터 Basic Day26 (No.1001-1010).html">
-          <span class="num-badge">101</span>
-          <span class="range">No.1001-1010</span>
-        </a>
-        <a class="card" href="학습_102.고등 워드마스터 Basic Day26 (No.1011-1020).html">
-          <span class="num-badge">102</span>
-          <span class="range">No.1011-1020</span>
-        </a>
-        <a class="card" href="학습_103.고등 워드마스터 Basic Day26 (No.1021-1030).html">
-          <span class="num-badge">103</span>
-          <span class="range">No.1021-1030</span>
-        </a>
-        <a class="card" href="학습_104.고등 워드마스터 Basic Day26 (No.1031-1040).html">
-          <span class="num-badge">104</span>
-          <span class="range">No.1031-1040</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 27</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_105.고등 워드마스터 Basic Day27 (No.1041-1050).html">
-          <span class="num-badge">105</span>
-          <span class="range">No.1041-1050</span>
-        </a>
-        <a class="card" href="학습_106.고등 워드마스터 Basic Day27 (No.1051-1060).html">
-          <span class="num-badge">106</span>
-          <span class="range">No.1051-1060</span>
-        </a>
-        <a class="card" href="학습_107.고등 워드마스터 Basic Day27 (No.1061-1070).html">
-          <span class="num-badge">107</span>
-          <span class="range">No.1061-1070</span>
-        </a>
-        <a class="card" href="학습_108.고등 워드마스터 Basic Day27 (No.1071-1080).html">
-          <span class="num-badge">108</span>
-          <span class="range">No.1071-1080</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 28</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_109.고등 워드마스터 Basic Day28 (No.1081-1090).html">
-          <span class="num-badge">109</span>
-          <span class="range">No.1081-1090</span>
-        </a>
-        <a class="card" href="학습_110.고등 워드마스터 Basic Day28 (No.1091-1100).html">
-          <span class="num-badge">110</span>
-          <span class="range">No.1091-1100</span>
-        </a>
-        <a class="card" href="학습_111.고등 워드마스터 Basic Day28 (No.1101-1110).html">
-          <span class="num-badge">111</span>
-          <span class="range">No.1101-1110</span>
-        </a>
-        <a class="card" href="학습_112.고등 워드마스터 Basic Day28 (No.1111-1120).html">
-          <span class="num-badge">112</span>
-          <span class="range">No.1111-1120</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 29</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_113.고등 워드마스터 Basic Day29 (No.1121-1130).html">
-          <span class="num-badge">113</span>
-          <span class="range">No.1121-1130</span>
-        </a>
-        <a class="card" href="학습_114.고등 워드마스터 Basic Day29 (No.1131-1140).html">
-          <span class="num-badge">114</span>
-          <span class="range">No.1131-1140</span>
-        </a>
-        <a class="card" href="학습_115.고등 워드마스터 Basic Day29 (No.1141-1150).html">
-          <span class="num-badge">115</span>
-          <span class="range">No.1141-1150</span>
-        </a>
-        <a class="card" href="학습_116.고등 워드마스터 Basic Day29 (No.1151-1160).html">
-          <span class="num-badge">116</span>
-          <span class="range">No.1151-1160</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day 30</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_117.고등 워드마스터 Basic Day30 (No.1161-1170).html">
-          <span class="num-badge">117</span>
-          <span class="range">No.1161-1170</span>
-        </a>
-        <a class="card" href="학습_118.고등 워드마스터 Basic Day30 (No.1171-1180).html">
-          <span class="num-badge">118</span>
-          <span class="range">No.1171-1180</span>
-        </a>
-        <a class="card" href="학습_119.고등 워드마스터 Basic Day30 (No.1181-1190).html">
-          <span class="num-badge">119</span>
-          <span class="range">No.1181-1190</span>
-        </a>
-        <a class="card" href="학습_120.고등 워드마스터 Basic Day30 (No.1191-1200).html">
-          <span class="num-badge">120</span>
-          <span class="range">No.1191-1200</span>
-        </a>
-        </div>
-      </div>
-</div>
-<div id="hs-polyext" class="series-panel">
-  <div class="series-head">
-    <h2>고등 워드마스터 Basic 다의어확장 · 385개 의미</h2>
-    <span class="lv">본단어 하나가 여러 의미를 가질 때, 그 의미들을 한 세트로 묶어 학습</span>
-  </div>
-  <div class="day-section">
-    <div class="day-title">전체 20세트 (No.1001~1200 다의어 전수 커버)</div>
-    <div class="card-grid">
-        <a class="card card-lg" href="다의어확장_1.고등 워드마스터 Basic 확장 (원본101 전반 — 23개 의미).html">
-          <div class="num-badge">1</div>
-          <span class="c-title">원본101 전반</span>
-          <span class="range">No.1001~1005</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_2.고등 워드마스터 Basic 확장 (원본101 후반 — 18개 의미).html">
-          <div class="num-badge">2</div>
-          <span class="c-title">원본101 후반</span>
-          <span class="range">No.1006~1010</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_3.고등 워드마스터 Basic 확장 (원본102 — 18개 의미).html">
-          <div class="num-badge">3</div>
-          <span class="c-title">원본102</span>
-          <span class="range">No.1011~1020</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_4.고등 워드마스터 Basic 확장 (원본103+104 — 21개 의미).html">
-          <div class="num-badge">4</div>
-          <span class="c-title">원본103+104</span>
-          <span class="range">No.1021~1040</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_5.고등 워드마스터 Basic 확장 (원본106 — 16개 의미).html">
-          <div class="num-badge">5</div>
-          <span class="c-title">원본106</span>
-          <span class="range">No.1051~1060</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_6.고등 워드마스터 Basic 확장 (원본107+108 — 23개 의미).html">
-          <div class="num-badge">6</div>
-          <span class="c-title">원본107+108</span>
-          <span class="range">No.1061~1082</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_7.고등 워드마스터 Basic 확장 (원본110+111 — 25개 의미).html">
-          <div class="num-badge">7</div>
-          <span class="c-title">원본110+111</span>
-          <span class="range">No.1091~1110</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_8.고등 워드마스터 Basic 확장 (원본112 — 10개 의미).html">
-          <div class="num-badge">8</div>
-          <span class="c-title">원본112</span>
-          <span class="range">No.1111~1120</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_9.고등 워드마스터 Basic 확장 (원본114 — 17개 의미).html">
-          <div class="num-badge">9</div>
-          <span class="c-title">원본114</span>
-          <span class="range">No.1131~1140</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_10.고등 워드마스터 Basic 확장 (원본115+116 — 23개 의미).html">
-          <div class="num-badge">10</div>
-          <span class="c-title">원본115+116</span>
-          <span class="range">No.1141~1160</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_11.고등 워드마스터 Basic 확장 (원본118 — 22개 의미).html">
-          <div class="num-badge">11</div>
-          <span class="c-title">원본118</span>
-          <span class="range">No.1171~1180</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_12.고등 워드마스터 Basic 확장 (원본119+120 — 21개 의미).html">
-          <div class="num-badge">12</div>
-          <span class="c-title">원본119+120</span>
-          <span class="range">No.1181~1200</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_13.고등 워드마스터 Basic 확장 (원본105 전반 — 19개 의미).html">
-          <div class="num-badge">13</div>
-          <span class="c-title">원본105 전반</span>
-          <span class="range">No.1041~1045</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_14.고등 워드마스터 Basic 확장 (원본105 후반 — 18개 의미).html">
-          <div class="num-badge">14</div>
-          <span class="c-title">원본105 후반</span>
-          <span class="range">No.1046~1050</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_15.고등 워드마스터 Basic 확장 (원본109 전반 — 20개 의미).html">
-          <div class="num-badge">15</div>
-          <span class="c-title">원본109 전반</span>
-          <span class="range">No.1081~1098</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_16.고등 워드마스터 Basic 확장 (원본109 후반 — 19개 의미).html">
-          <div class="num-badge">16</div>
-          <span class="c-title">원본109 후반</span>
-          <span class="range">No.1101~1105</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_17.고등 워드마스터 Basic 확장 (원본113 전반 — 17개 의미).html">
-          <div class="num-badge">17</div>
-          <span class="c-title">원본113 전반</span>
-          <span class="range">No.1121~1125</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_18.고등 워드마스터 Basic 확장 (원본113 후반 — 19개 의미).html">
-          <div class="num-badge">18</div>
-          <span class="c-title">원본113 후반</span>
-          <span class="range">No.1126~1130</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_19.고등 워드마스터 Basic 확장 (원본117 전반 — 17개 의미).html">
-          <div class="num-badge">19</div>
-          <span class="c-title">원본117 전반</span>
-          <span class="range">No.1161~1165</span>
-        </a>
-        <a class="card card-lg" href="다의어확장_20.고등 워드마스터 Basic 확장 (원본117 후반 — 21개 의미).html">
-          <div class="num-badge">20</div>
-          <span class="c-title">원본117 후반</span>
-          <span class="range">No.1166~1170</span>
-        </a>
-    </div>
+<div class="day-block">
+  <div class="day-title">Day3</div>
+  <div class="card-grid">
+<a class="card" href="학습_7.고등 워드마스터 컴플릿 Day3 (No.61-70).html" target="_blank">
+  <span class="num-badge">7</span>
+  <span class="range">No.61-70</span>
+</a>
+<a class="card card-exp" href="학습_7-a.고등 워드마스터 컴플릿 Day3 확장 (No.61-70 관련어 33개).html" target="_blank">
+  <span class="num-badge">7-a</span>
+  <span class="range">확장 · No.61-70<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_8.고등 워드마스터 컴플릿 Day3 (No.71-80).html" target="_blank">
+  <span class="num-badge">8</span>
+  <span class="range">No.71-80</span>
+</a>
+<a class="card card-exp" href="학습_8-a.고등 워드마스터 컴플릿 Day3 확장 (No.71-80 관련어 37개).html" target="_blank">
+  <span class="num-badge">8-a</span>
+  <span class="range">확장 · No.71-80<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_9.고등 워드마스터 컴플릿 Day3 (No.81-90).html" target="_blank">
+  <span class="num-badge">9</span>
+  <span class="range">No.81-90</span>
+</a>
+<a class="card card-exp" href="학습_9-a.고등 워드마스터 컴플릿 Day3 확장 (No.81-90 관련어 23개).html" target="_blank">
+  <span class="num-badge">9-a</span>
+  <span class="range">확장 · No.81-90<br><span class='range'>관련어 23개</span></span>
+</a>
   </div>
 </div>
-<div id="hs-synant" class="series-panel">
-  <div class="series-head">
-    <h2>고등 워드마스터 Basic 동의어·반의어확장 · 287개 관계</h2>
-    <span class="lv">본단어의 동의어·반의어를 별도 항목으로 학습 (No.3~1136)</span>
-  </div>
-  <div class="day-section">
-    <div class="day-title">전체 12세트</div>
-    <div class="card-grid">
-        <a class="card card-lg" href="동의어반의어확장_1.고등 워드마스터 Basic 확장 (No.3~74 — 25개 관계항목).html">
-          <div class="num-badge">1</div>
-          <span class="c-title">원본 Day1~2</span>
-          <span class="range">No.3~74</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_2.고등 워드마스터 Basic 확장 (No.77~157 — 25개 관계항목).html">
-          <div class="num-badge">2</div>
-          <span class="c-title">원본 Day2~4</span>
-          <span class="range">No.77~157</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_3.고등 워드마스터 Basic 확장 (No.158~255 — 25개 관계항목).html">
-          <div class="num-badge">3</div>
-          <span class="c-title">원본 Day4~7</span>
-          <span class="range">No.158~255</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_4.고등 워드마스터 Basic 확장 (No.256~318 — 25개 관계항목).html">
-          <div class="num-badge">4</div>
-          <span class="c-title">원본 Day7~8</span>
-          <span class="range">No.256~318</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_5.고등 워드마스터 Basic 확장 (No.319~369 — 25개 관계항목).html">
-          <div class="num-badge">5</div>
-          <span class="c-title">원본 Day8~10</span>
-          <span class="range">No.319~369</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_6.고등 워드마스터 Basic 확장 (No.370~440 — 25개 관계항목).html">
-          <div class="num-badge">6</div>
-          <span class="c-title">원본 Day10~11</span>
-          <span class="range">No.370~440</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_7.고등 워드마스터 Basic 확장 (No.444~494 — 25개 관계항목).html">
-          <div class="num-badge">7</div>
-          <span class="c-title">원본 Day12~13</span>
-          <span class="range">No.444~494</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_8.고등 워드마스터 Basic 확장 (No.495~639 — 25개 관계항목).html">
-          <div class="num-badge">8</div>
-          <span class="c-title">원본 Day13~16</span>
-          <span class="range">No.495~639</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_9.고등 워드마스터 Basic 확장 (No.640~762 — 25개 관계항목).html">
-          <div class="num-badge">9</div>
-          <span class="c-title">원본 Day16~20</span>
-          <span class="range">No.640~762</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_10.고등 워드마스터 Basic 확장 (No.777~879 — 25개 관계항목).html">
-          <div class="num-badge">10</div>
-          <span class="c-title">원본 Day20~22</span>
-          <span class="range">No.777~879</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_11.고등 워드마스터 Basic 확장 (No.883~949 — 25개 관계항목).html">
-          <div class="num-badge">11</div>
-          <span class="c-title">원본 Day23~24</span>
-          <span class="range">No.883~949</span>
-        </a>
-        <a class="card card-lg" href="동의어반의어확장_12.고등 워드마스터 Basic 확장 (No.956~1136 — 12개 관계항목).html">
-          <div class="num-badge">12</div>
-          <span class="c-title">원본 Day24~29</span>
-          <span class="range">No.956~1136</span>
-        </a>
-    </div>
+<div class="day-block">
+  <div class="day-title">Day4</div>
+  <div class="card-grid">
+<a class="card" href="학습_10.고등 워드마스터 컴플릿 Day4 (No.91-100).html" target="_blank">
+  <span class="num-badge">10</span>
+  <span class="range">No.91-100</span>
+</a>
+<a class="card card-exp" href="학습_10-a.고등 워드마스터 컴플릿 Day4 확장 (No.91-100 관련어 29개).html" target="_blank">
+  <span class="num-badge">10-a</span>
+  <span class="range">확장 · No.91-100<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_11.고등 워드마스터 컴플릿 Day4 (No.101-110).html" target="_blank">
+  <span class="num-badge">11</span>
+  <span class="range">No.101-110</span>
+</a>
+<a class="card card-exp" href="학습_11-a.고등 워드마스터 컴플릿 Day4 확장 (No.101-110 관련어 37개).html" target="_blank">
+  <span class="num-badge">11-a</span>
+  <span class="range">확장 · No.101-110<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_12.고등 워드마스터 컴플릿 Day4 (No.111-120).html" target="_blank">
+  <span class="num-badge">12</span>
+  <span class="range">No.111-120</span>
+</a>
+<a class="card card-exp" href="학습_12-a.고등 워드마스터 컴플릿 Day4 확장 (No.111-120 관련어 19개).html" target="_blank">
+  <span class="num-badge">12-a</span>
+  <span class="range">확장 · No.111-120<br><span class='range'>관련어 19개</span></span>
+</a>
   </div>
 </div>
-<div id="hs-suneung-synant" class="series-panel">
-  <div class="series-head">
-    <h2>고등 워마 수능2000 동의어·반의어확장 · 999개 관계</h2>
-    <span class="lv">본단어의 동의어·반의어를 별도 항목으로 학습 (No.31~1993)</span>
-  </div>
-  <div class="day-section">
-    <div class="day-title">전체 41세트</div>
-    <div class="card-grid">
-        <a class="card card-lg" href="수능2000동의어반의어확장_1.고등 워마 수능2000 확장 (No.31~72 — 25개 관계항목).html">
-          <div class="num-badge">1</div>
-          <span class="c-title">원본 Day1~2</span>
-          <span class="range">No.31~72</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_2.고등 워마 수능2000 확장 (No.74~108 — 24개 관계항목).html">
-          <div class="num-badge">2</div>
-          <span class="c-title">원본 Day2~3</span>
-          <span class="range">No.74~108</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_3.고등 워마 수능2000 확장 (No.110~159 — 25개 관계항목).html">
-          <div class="num-badge">3</div>
-          <span class="c-title">원본 Day3~4</span>
-          <span class="range">No.110~159</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_4.고등 워마 수능2000 확장 (No.160~202 — 25개 관계항목).html">
-          <div class="num-badge">4</div>
-          <span class="c-title">원본 Day4~6</span>
-          <span class="range">No.160~202</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_5.고등 워마 수능2000 확장 (No.203~256 — 25개 관계항목).html">
-          <div class="num-badge">5</div>
-          <span class="c-title">원본 Day6~7</span>
-          <span class="range">No.203~256</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_6.고등 워마 수능2000 확장 (No.257~295 — 25개 관계항목).html">
-          <div class="num-badge">6</div>
-          <span class="c-title">원본 Day7~8</span>
-          <span class="range">No.257~295</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_7.고등 워마 수능2000 확장 (No.296~351 — 24개 관계항목).html">
-          <div class="num-badge">7</div>
-          <span class="c-title">원본 Day8~9</span>
-          <span class="range">No.296~351</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_8.고등 워마 수능2000 확장 (No.357~401 — 24개 관계항목).html">
-          <div class="num-badge">8</div>
-          <span class="c-title">원본 Day9~11</span>
-          <span class="range">No.357~401</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_9.고등 워마 수능2000 확장 (No.408~460 — 25개 관계항목).html">
-          <div class="num-badge">9</div>
-          <span class="c-title">원본 Day11~12</span>
-          <span class="range">No.408~460</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_10.고등 워마 수능2000 확장 (No.464~507 — 23개 관계항목).html">
-          <div class="num-badge">10</div>
-          <span class="c-title">원본 Day12~13</span>
-          <span class="range">No.464~507</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_11.고등 워마 수능2000 확장 (No.509~548 — 24개 관계항목).html">
-          <div class="num-badge">11</div>
-          <span class="c-title">원본 Day13~14</span>
-          <span class="range">No.509~548</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_12.고등 워마 수능2000 확장 (No.549~606 — 25개 관계항목).html">
-          <div class="num-badge">12</div>
-          <span class="c-title">원본 Day14~16</span>
-          <span class="range">No.549~606</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_13.고등 워마 수능2000 확장 (No.611~684 — 25개 관계항목).html">
-          <div class="num-badge">13</div>
-          <span class="c-title">원본 Day16~18</span>
-          <span class="range">No.611~684</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_14.고등 워마 수능2000 확장 (No.688~734 — 24개 관계항목).html">
-          <div class="num-badge">14</div>
-          <span class="c-title">원본 Day18~19</span>
-          <span class="range">No.688~734</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_15.고등 워마 수능2000 확장 (No.756~801 — 25개 관계항목).html">
-          <div class="num-badge">15</div>
-          <span class="c-title">원본 Day19~21</span>
-          <span class="range">No.756~801</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_16.고등 워마 수능2000 확장 (No.805~870 — 25개 관계항목).html">
-          <div class="num-badge">16</div>
-          <span class="c-title">원본 Day21~22</span>
-          <span class="range">No.805~870</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_17.고등 워마 수능2000 확장 (No.874~921 — 25개 관계항목).html">
-          <div class="num-badge">17</div>
-          <span class="c-title">원본 Day22~24</span>
-          <span class="range">No.874~921</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_18.고등 워마 수능2000 확장 (No.926~976 — 24개 관계항목).html">
-          <div class="num-badge">18</div>
-          <span class="c-title">원본 Day24~25</span>
-          <span class="range">No.926~976</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_19.고등 워마 수능2000 확장 (No.977~1026 — 25개 관계항목).html">
-          <div class="num-badge">19</div>
-          <span class="c-title">원본 Day25~26</span>
-          <span class="range">No.977~1026</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_20.고등 워마 수능2000 확장 (No.1027~1077 — 25개 관계항목).html">
-          <div class="num-badge">20</div>
-          <span class="c-title">원본 Day26~27</span>
-          <span class="range">No.1027~1077</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_21.고등 워마 수능2000 확장 (No.1079~1137 — 24개 관계항목).html">
-          <div class="num-badge">21</div>
-          <span class="c-title">원본 Day27~29</span>
-          <span class="range">No.1079~1137</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_22.고등 워마 수능2000 확장 (No.1139~1187 — 24개 관계항목).html">
-          <div class="num-badge">22</div>
-          <span class="c-title">원본 Day29~30</span>
-          <span class="range">No.1139~1187</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_23.고등 워마 수능2000 확장 (No.1193~1246 — 25개 관계항목).html">
-          <div class="num-badge">23</div>
-          <span class="c-title">원본 Day30~32</span>
-          <span class="range">No.1193~1246</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_24.고등 워마 수능2000 확장 (No.1251~1295 — 25개 관계항목).html">
-          <div class="num-badge">24</div>
-          <span class="c-title">원본 Day32~33</span>
-          <span class="range">No.1251~1295</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_25.고등 워마 수능2000 확장 (No.1296~1341 — 25개 관계항목).html">
-          <div class="num-badge">25</div>
-          <span class="c-title">원본 Day33~34</span>
-          <span class="range">No.1296~1341</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_26.고등 워마 수능2000 확장 (No.1349~1394 — 23개 관계항목).html">
-          <div class="num-badge">26</div>
-          <span class="c-title">원본 Day34~35</span>
-          <span class="range">No.1349~1394</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_27.고등 워마 수능2000 확장 (No.1395~1424 — 24개 관계항목).html">
-          <div class="num-badge">27</div>
-          <span class="c-title">원본 Day35~36</span>
-          <span class="range">No.1395~1424</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_28.고등 워마 수능2000 확장 (No.1426~1472 — 25개 관계항목).html">
-          <div class="num-badge">28</div>
-          <span class="c-title">원본 Day36~37</span>
-          <span class="range">No.1426~1472</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_29.고등 워마 수능2000 확장 (No.1479~1534 — 25개 관계항목).html">
-          <div class="num-badge">29</div>
-          <span class="c-title">원본 Day37~39</span>
-          <span class="range">No.1479~1534</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_30.고등 워마 수능2000 확장 (No.1538~1565 — 25개 관계항목).html">
-          <div class="num-badge">30</div>
-          <span class="c-title">원본 Day39~40</span>
-          <span class="range">No.1538~1565</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_31.고등 워마 수능2000 확장 (No.1566~1625 — 25개 관계항목).html">
-          <div class="num-badge">31</div>
-          <span class="c-title">원본 Day40~41</span>
-          <span class="range">No.1566~1625</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_32.고등 워마 수능2000 확장 (No.1630~1680 — 25개 관계항목).html">
-          <div class="num-badge">32</div>
-          <span class="c-title">원본 Day41~42</span>
-          <span class="range">No.1630~1680</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_33.고등 워마 수능2000 확장 (No.1683~1734 — 25개 관계항목).html">
-          <div class="num-badge">33</div>
-          <span class="c-title">원본 Day43~44</span>
-          <span class="range">No.1683~1734</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_34.고등 워마 수능2000 확장 (No.1736~1772 — 25개 관계항목).html">
-          <div class="num-badge">34</div>
-          <span class="c-title">원본 Day44~45</span>
-          <span class="range">No.1736~1772</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_35.고등 워마 수능2000 확장 (No.1774~1812 — 24개 관계항목).html">
-          <div class="num-badge">35</div>
-          <span class="c-title">원본 Day45~46</span>
-          <span class="range">No.1774~1812</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_36.고등 워마 수능2000 확장 (No.1813~1836 — 25개 관계항목).html">
-          <div class="num-badge">36</div>
-          <span class="c-title">원본 Day46</span>
-          <span class="range">No.1813~1836</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_37.고등 워마 수능2000 확장 (No.1838~1871 — 25개 관계항목).html">
-          <div class="num-badge">37</div>
-          <span class="c-title">원본 Day46~47</span>
-          <span class="range">No.1838~1871</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_38.고등 워마 수능2000 확장 (No.1872~1900 — 25개 관계항목).html">
-          <div class="num-badge">38</div>
-          <span class="c-title">원본 Day47~48</span>
-          <span class="range">No.1872~1900</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_39.고등 워마 수능2000 확장 (No.1903~1926 — 24개 관계항목).html">
-          <div class="num-badge">39</div>
-          <span class="c-title">원본 Day48~49</span>
-          <span class="range">No.1903~1926</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_40.고등 워마 수능2000 확장 (No.1928~1964 — 25개 관계항목).html">
-          <div class="num-badge">40</div>
-          <span class="c-title">원본 Day49~50</span>
-          <span class="range">No.1928~1964</span>
-        </a>
-        <a class="card card-lg" href="수능2000동의어반의어확장_41.고등 워마 수능2000 확장 (No.1966~1993 — 14개 관계항목, 시리즈 최종).html">
-          <div class="num-badge">41</div>
-          <span class="c-title">원본 Day50</span>
-          <span class="range">No.1966~1993</span>
-        </a>
-    </div>
+<div class="day-block">
+  <div class="day-title">Day5</div>
+  <div class="card-grid">
+<a class="card" href="학습_13.고등 워드마스터 컴플릿 Day5 (No.121-130).html" target="_blank">
+  <span class="num-badge">13</span>
+  <span class="range">No.121-130</span>
+</a>
+<a class="card card-exp" href="학습_13-a.고등 워드마스터 컴플릿 Day5 확장 (No.121-130 관련어 34개).html" target="_blank">
+  <span class="num-badge">13-a</span>
+  <span class="range">확장 · No.121-130<br><span class='range'>관련어 34개</span></span>
+</a>
+<a class="card" href="학습_14.고등 워드마스터 컴플릿 Day5 (No.131-140).html" target="_blank">
+  <span class="num-badge">14</span>
+  <span class="range">No.131-140</span>
+</a>
+<a class="card card-exp" href="학습_14-a.고등 워드마스터 컴플릿 Day5 확장 (No.131-140 관련어 34개).html" target="_blank">
+  <span class="num-badge">14-a</span>
+  <span class="range">확장 · No.131-140<br><span class='range'>관련어 34개</span></span>
+</a>
+<a class="card" href="학습_15.고등 워드마스터 컴플릿 Day5 (No.141-150).html" target="_blank">
+  <span class="num-badge">15</span>
+  <span class="range">No.141-150</span>
+</a>
+<a class="card card-exp" href="학습_15-a.고등 워드마스터 컴플릿 Day5 확장 (No.141-150 관련어 25개).html" target="_blank">
+  <span class="num-badge">15-a</span>
+  <span class="range">확장 · No.141-150<br><span class='range'>관련어 25개</span></span>
+</a>
   </div>
 </div>
-<div id="hs-suneung" class="series-panel">
-  <div class="series-head">
-    <h2>고등 워마 수능2000 · No.1~2000</h2>
-    <span class="lv">난이도: 고등 1~2학년 (수능 수준)</span>
+<div class="day-block">
+  <div class="day-title">Day6</div>
+  <div class="card-grid">
+<a class="card" href="학습_16.고등 워드마스터 컴플릿 Day6 (No.151-160).html" target="_blank">
+  <span class="num-badge">16</span>
+  <span class="range">No.151-160</span>
+</a>
+<a class="card card-exp" href="학습_16-a.고등 워드마스터 컴플릿 Day6 확장 (No.151-160 관련어 42개).html" target="_blank">
+  <span class="num-badge">16-a</span>
+  <span class="range">확장 · No.151-160<br><span class='range'>관련어 42개</span></span>
+</a>
+<a class="card" href="학습_17.고등 워드마스터 컴플릿 Day6 (No.161-170).html" target="_blank">
+  <span class="num-badge">17</span>
+  <span class="range">No.161-170</span>
+</a>
+<a class="card card-exp" href="학습_17-a.고등 워드마스터 컴플릿 Day6 확장 (No.161-170 관련어 33개).html" target="_blank">
+  <span class="num-badge">17-a</span>
+  <span class="range">확장 · No.161-170<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_18.고등 워드마스터 컴플릿 Day6 (No.171-180).html" target="_blank">
+  <span class="num-badge">18</span>
+  <span class="range">No.171-180</span>
+</a>
+<a class="card card-exp" href="학습_18-a.고등 워드마스터 컴플릿 Day6 확장 (No.171-180 관련어 24개).html" target="_blank">
+  <span class="num-badge">18-a</span>
+  <span class="range">확장 · No.171-180<br><span class='range'>관련어 24개</span></span>
+</a>
   </div>
-
-      <div class="day-section">
-        <h2 class="day-title">Day1</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_1.고등 워마 수능2000 Day1 (No.1-10).html">
-          <span class="num-badge">1</span>
-          <span class="range">No.1-10</span>
-        </a>
-        <a class="card" href="학습_2.고등 워마 수능2000 Day1 (No.11-20).html">
-          <span class="num-badge">2</span>
-          <span class="range">No.11-20</span>
-        </a>
-        <a class="card" href="학습_3.고등 워마 수능2000 Day1 (No.21-30).html">
-          <span class="num-badge">3</span>
-          <span class="range">No.21-30</span>
-        </a>
-        <a class="card" href="학습_4.고등 워마 수능2000 Day1 (No.31-40).html">
-          <span class="num-badge">4</span>
-          <span class="range">No.31-40</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day2</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_5.고등 워마 수능2000 Day2 (No.41-50).html">
-          <span class="num-badge">5</span>
-          <span class="range">No.41-50</span>
-        </a>
-        <a class="card" href="학습_6.고등 워마 수능2000 Day2 (No.51-60).html">
-          <span class="num-badge">6</span>
-          <span class="range">No.51-60</span>
-        </a>
-        <a class="card" href="학습_7.고등 워마 수능2000 Day2 (No.61-70).html">
-          <span class="num-badge">7</span>
-          <span class="range">No.61-70</span>
-        </a>
-        <a class="card" href="학습_8.고등 워마 수능2000 Day2 (No.71-80).html">
-          <span class="num-badge">8</span>
-          <span class="range">No.71-80</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day3</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_9.고등 워마 수능2000 Day3 (No.81-90).html">
-          <span class="num-badge">9</span>
-          <span class="range">No.81-90</span>
-        </a>
-        <a class="card" href="학습_10.고등 워마 수능2000 Day3 (No.91-100).html">
-          <span class="num-badge">10</span>
-          <span class="range">No.91-100</span>
-        </a>
-        <a class="card" href="학습_11.고등 워마 수능2000 Day3 (No.101-110).html">
-          <span class="num-badge">11</span>
-          <span class="range">No.101-110</span>
-        </a>
-        <a class="card" href="학습_12.고등 워마 수능2000 Day3 (No.111-120).html">
-          <span class="num-badge">12</span>
-          <span class="range">No.111-120</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day4</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_13.고등 워마 수능2000 Day4 (No.121-130).html">
-          <span class="num-badge">13</span>
-          <span class="range">No.121-130</span>
-        </a>
-        <a class="card" href="학습_14.고등 워마 수능2000 Day4 (No.131-140).html">
-          <span class="num-badge">14</span>
-          <span class="range">No.131-140</span>
-        </a>
-        <a class="card" href="학습_15.고등 워마 수능2000 Day4 (No.141-150).html">
-          <span class="num-badge">15</span>
-          <span class="range">No.141-150</span>
-        </a>
-        <a class="card" href="학습_16.고등 워마 수능2000 Day4 (No.151-160).html">
-          <span class="num-badge">16</span>
-          <span class="range">No.151-160</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day5</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_17.고등 워마 수능2000 Day5 (No.161-170).html">
-          <span class="num-badge">17</span>
-          <span class="range">No.161-170</span>
-        </a>
-        <a class="card" href="학습_18.고등 워마 수능2000 Day5 (No.171-180).html">
-          <span class="num-badge">18</span>
-          <span class="range">No.171-180</span>
-        </a>
-        <a class="card" href="학습_19.고등 워마 수능2000 Day5 (No.181-190).html">
-          <span class="num-badge">19</span>
-          <span class="range">No.181-190</span>
-        </a>
-        <a class="card" href="학습_20.고등 워마 수능2000 Day5 (No.191-200).html">
-          <span class="num-badge">20</span>
-          <span class="range">No.191-200</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day6</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_21.고등 워마 수능2000 Day6 (No.201-210).html">
-          <span class="num-badge">21</span>
-          <span class="range">No.201-210</span>
-        </a>
-        <a class="card" href="학습_22.고등 워마 수능2000 Day6 (No.211-220).html">
-          <span class="num-badge">22</span>
-          <span class="range">No.211-220</span>
-        </a>
-        <a class="card" href="학습_23.고등 워마 수능2000 Day6 (No.221-230).html">
-          <span class="num-badge">23</span>
-          <span class="range">No.221-230</span>
-        </a>
-        <a class="card" href="학습_24.고등 워마 수능2000 Day6 (No.231-240).html">
-          <span class="num-badge">24</span>
-          <span class="range">No.231-240</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day7</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_25.고등 워마 수능2000 Day7 (No.241-250).html">
-          <span class="num-badge">25</span>
-          <span class="range">No.241-250</span>
-        </a>
-        <a class="card" href="학습_26.고등 워마 수능2000 Day7 (No.251-260).html">
-          <span class="num-badge">26</span>
-          <span class="range">No.251-260</span>
-        </a>
-        <a class="card" href="학습_27.고등 워마 수능2000 Day7 (No.261-270).html">
-          <span class="num-badge">27</span>
-          <span class="range">No.261-270</span>
-        </a>
-        <a class="card" href="학습_28.고등 워마 수능2000 Day7 (No.271-280).html">
-          <span class="num-badge">28</span>
-          <span class="range">No.271-280</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day8</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_29.고등 워마 수능2000 Day8 (No.281-290).html">
-          <span class="num-badge">29</span>
-          <span class="range">No.281-290</span>
-        </a>
-        <a class="card" href="학습_30.고등 워마 수능2000 Day8 (No.291-300).html">
-          <span class="num-badge">30</span>
-          <span class="range">No.291-300</span>
-        </a>
-        <a class="card" href="학습_31.고등 워마 수능2000 Day8 (No.301-310).html">
-          <span class="num-badge">31</span>
-          <span class="range">No.301-310</span>
-        </a>
-        <a class="card" href="학습_32.고등 워마 수능2000 Day8 (No.311-320).html">
-          <span class="num-badge">32</span>
-          <span class="range">No.311-320</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day9</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_33.고등 워마 수능2000 Day9 (No.321-330).html">
-          <span class="num-badge">33</span>
-          <span class="range">No.321-330</span>
-        </a>
-        <a class="card" href="학습_34.고등 워마 수능2000 Day9 (No.331-340).html">
-          <span class="num-badge">34</span>
-          <span class="range">No.331-340</span>
-        </a>
-        <a class="card" href="학습_35.고등 워마 수능2000 Day9 (No.341-350).html">
-          <span class="num-badge">35</span>
-          <span class="range">No.341-350</span>
-        </a>
-        <a class="card" href="학습_36.고등 워마 수능2000 Day9 (No.351-360).html">
-          <span class="num-badge">36</span>
-          <span class="range">No.351-360</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day10</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_37.고등 워마 수능2000 Day10 (No.361-370).html">
-          <span class="num-badge">37</span>
-          <span class="range">No.361-370</span>
-        </a>
-        <a class="card" href="학습_38.고등 워마 수능2000 Day10 (No.371-380).html">
-          <span class="num-badge">38</span>
-          <span class="range">No.371-380</span>
-        </a>
-        <a class="card" href="학습_39.고등 워마 수능2000 Day10 (No.381-390).html">
-          <span class="num-badge">39</span>
-          <span class="range">No.381-390</span>
-        </a>
-        <a class="card" href="학습_40.고등 워마 수능2000 Day10 (No.391-400).html">
-          <span class="num-badge">40</span>
-          <span class="range">No.391-400</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day11</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_41.고등 워마 수능2000 Day11 (No.401-410).html">
-          <span class="num-badge">41</span>
-          <span class="range">No.401-410</span>
-        </a>
-        <a class="card" href="학습_42.고등 워마 수능2000 Day11 (No.411-420).html">
-          <span class="num-badge">42</span>
-          <span class="range">No.411-420</span>
-        </a>
-        <a class="card" href="학습_43.고등 워마 수능2000 Day11 (No.421-430).html">
-          <span class="num-badge">43</span>
-          <span class="range">No.421-430</span>
-        </a>
-        <a class="card" href="학습_44.고등 워마 수능2000 Day11 (No.431-440).html">
-          <span class="num-badge">44</span>
-          <span class="range">No.431-440</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day12</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_45.고등 워마 수능2000 Day12 (No.441-450).html">
-          <span class="num-badge">45</span>
-          <span class="range">No.441-450</span>
-        </a>
-        <a class="card" href="학습_46.고등 워마 수능2000 Day12 (No.451-460).html">
-          <span class="num-badge">46</span>
-          <span class="range">No.451-460</span>
-        </a>
-        <a class="card" href="학습_47.고등 워마 수능2000 Day12 (No.461-470).html">
-          <span class="num-badge">47</span>
-          <span class="range">No.461-470</span>
-        </a>
-        <a class="card" href="학습_48.고등 워마 수능2000 Day12 (No.471-480).html">
-          <span class="num-badge">48</span>
-          <span class="range">No.471-480</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day13</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_49.고등 워마 수능2000 Day13 (No.481-490).html">
-          <span class="num-badge">49</span>
-          <span class="range">No.481-490</span>
-        </a>
-        <a class="card" href="학습_50.고등 워마 수능2000 Day13 (No.491-500).html">
-          <span class="num-badge">50</span>
-          <span class="range">No.491-500</span>
-        </a>
-        <a class="card" href="학습_51.고등 워마 수능2000 Day13 (No.501-510).html">
-          <span class="num-badge">51</span>
-          <span class="range">No.501-510</span>
-        </a>
-        <a class="card" href="학습_52.고등 워마 수능2000 Day13 (No.511-520).html">
-          <span class="num-badge">52</span>
-          <span class="range">No.511-520</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day14</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_53.고등 워마 수능2000 Day14 (No.521-530).html">
-          <span class="num-badge">53</span>
-          <span class="range">No.521-530</span>
-        </a>
-        <a class="card" href="학습_54.고등 워마 수능2000 Day14 (No.531-540).html">
-          <span class="num-badge">54</span>
-          <span class="range">No.531-540</span>
-        </a>
-        <a class="card" href="학습_55.고등 워마 수능2000 Day14 (No.541-550).html">
-          <span class="num-badge">55</span>
-          <span class="range">No.541-550</span>
-        </a>
-        <a class="card" href="학습_56.고등 워마 수능2000 Day14 (No.551-560).html">
-          <span class="num-badge">56</span>
-          <span class="range">No.551-560</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day15</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_57.고등 워마 수능2000 Day15 (No.561-570).html">
-          <span class="num-badge">57</span>
-          <span class="range">No.561-570</span>
-        </a>
-        <a class="card" href="학습_58.고등 워마 수능2000 Day15 (No.571-580).html">
-          <span class="num-badge">58</span>
-          <span class="range">No.571-580</span>
-        </a>
-        <a class="card" href="학습_59.고등 워마 수능2000 Day15 (No.581-590).html">
-          <span class="num-badge">59</span>
-          <span class="range">No.581-590</span>
-        </a>
-        <a class="card" href="학습_60.고등 워마 수능2000 Day15 (No.591-600).html">
-          <span class="num-badge">60</span>
-          <span class="range">No.591-600</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day16</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_61.고등 워마 수능2000 Day16 (No.601-610).html">
-          <span class="num-badge">61</span>
-          <span class="range">No.601-610</span>
-        </a>
-        <a class="card" href="학습_62.고등 워마 수능2000 Day16 (No.611-620).html">
-          <span class="num-badge">62</span>
-          <span class="range">No.611-620</span>
-        </a>
-        <a class="card" href="학습_63.고등 워마 수능2000 Day16 (No.621-630).html">
-          <span class="num-badge">63</span>
-          <span class="range">No.621-630</span>
-        </a>
-        <a class="card" href="학습_64.고등 워마 수능2000 Day16 (No.631-640).html">
-          <span class="num-badge">64</span>
-          <span class="range">No.631-640</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day17</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_65.고등 워마 수능2000 Day17 (No.641-650).html">
-          <span class="num-badge">65</span>
-          <span class="range">No.641-650</span>
-        </a>
-        <a class="card" href="학습_66.고등 워마 수능2000 Day17 (No.651-660).html">
-          <span class="num-badge">66</span>
-          <span class="range">No.651-660</span>
-        </a>
-        <a class="card" href="학습_67.고등 워마 수능2000 Day17 (No.661-670).html">
-          <span class="num-badge">67</span>
-          <span class="range">No.661-670</span>
-        </a>
-        <a class="card" href="학습_68.고등 워마 수능2000 Day17 (No.671-680).html">
-          <span class="num-badge">68</span>
-          <span class="range">No.671-680</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day18</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_69.고등 워마 수능2000 Day18 (No.681-690).html">
-          <span class="num-badge">69</span>
-          <span class="range">No.681-690</span>
-        </a>
-        <a class="card" href="학습_70.고등 워마 수능2000 Day18 (No.691-700).html">
-          <span class="num-badge">70</span>
-          <span class="range">No.691-700</span>
-        </a>
-        <a class="card" href="학습_71.고등 워마 수능2000 Day18 (No.701-710).html">
-          <span class="num-badge">71</span>
-          <span class="range">No.701-710</span>
-        </a>
-        <a class="card" href="학습_72.고등 워마 수능2000 Day18 (No.711-720).html">
-          <span class="num-badge">72</span>
-          <span class="range">No.711-720</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day19</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_73.고등 워마 수능2000 Day19 (No.721-730).html">
-          <span class="num-badge">73</span>
-          <span class="range">No.721-730</span>
-        </a>
-        <a class="card" href="학습_74.고등 워마 수능2000 Day19 (No.731-740).html">
-          <span class="num-badge">74</span>
-          <span class="range">No.731-740</span>
-        </a>
-        <a class="card" href="학습_75.고등 워마 수능2000 Day19 (No.741-750).html">
-          <span class="num-badge">75</span>
-          <span class="range">No.741-750</span>
-        </a>
-        <a class="card" href="학습_76.고등 워마 수능2000 Day19 (No.751-760).html">
-          <span class="num-badge">76</span>
-          <span class="range">No.751-760</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day20</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_77.고등 워마 수능2000 Day20 (No.761-770).html">
-          <span class="num-badge">77</span>
-          <span class="range">No.761-770</span>
-        </a>
-        <a class="card" href="학습_78.고등 워마 수능2000 Day20 (No.771-780).html">
-          <span class="num-badge">78</span>
-          <span class="range">No.771-780</span>
-        </a>
-        <a class="card" href="학습_79.고등 워마 수능2000 Day20 (No.781-790).html">
-          <span class="num-badge">79</span>
-          <span class="range">No.781-790</span>
-        </a>
-        <a class="card" href="학습_80.고등 워마 수능2000 Day20 (No.791-800).html">
-          <span class="num-badge">80</span>
-          <span class="range">No.791-800</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day21</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_81.고등 워마 수능2000 Day21 (No.801-810).html">
-          <span class="num-badge">81</span>
-          <span class="range">No.801-810</span>
-        </a>
-        <a class="card" href="학습_82.고등 워마 수능2000 Day21 (No.811-820).html">
-          <span class="num-badge">82</span>
-          <span class="range">No.811-820</span>
-        </a>
-        <a class="card" href="학습_83.고등 워마 수능2000 Day21 (No.821-830).html">
-          <span class="num-badge">83</span>
-          <span class="range">No.821-830</span>
-        </a>
-        <a class="card" href="학습_84.고등 워마 수능2000 Day21 (No.831-840).html">
-          <span class="num-badge">84</span>
-          <span class="range">No.831-840</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day22</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_85.고등 워마 수능2000 Day22 (No.841-850).html">
-          <span class="num-badge">85</span>
-          <span class="range">No.841-850</span>
-        </a>
-        <a class="card" href="학습_86.고등 워마 수능2000 Day22 (No.851-860).html">
-          <span class="num-badge">86</span>
-          <span class="range">No.851-860</span>
-        </a>
-        <a class="card" href="학습_87.고등 워마 수능2000 Day22 (No.861-870).html">
-          <span class="num-badge">87</span>
-          <span class="range">No.861-870</span>
-        </a>
-        <a class="card" href="학습_88.고등 워마 수능2000 Day22 (No.871-880).html">
-          <span class="num-badge">88</span>
-          <span class="range">No.871-880</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day23</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_89.고등 워마 수능2000 Day23 (No.881-890).html">
-          <span class="num-badge">89</span>
-          <span class="range">No.881-890</span>
-        </a>
-        <a class="card" href="학습_90.고등 워마 수능2000 Day23 (No.891-900).html">
-          <span class="num-badge">90</span>
-          <span class="range">No.891-900</span>
-        </a>
-        <a class="card" href="학습_91.고등 워마 수능2000 Day23 (No.901-910).html">
-          <span class="num-badge">91</span>
-          <span class="range">No.901-910</span>
-        </a>
-        <a class="card" href="학습_92.고등 워마 수능2000 Day23 (No.911-920).html">
-          <span class="num-badge">92</span>
-          <span class="range">No.911-920</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day24</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_93.고등 워마 수능2000 Day24 (No.921-930).html">
-          <span class="num-badge">93</span>
-          <span class="range">No.921-930</span>
-        </a>
-        <a class="card" href="학습_94.고등 워마 수능2000 Day24 (No.931-940).html">
-          <span class="num-badge">94</span>
-          <span class="range">No.931-940</span>
-        </a>
-        <a class="card" href="학습_95.고등 워마 수능2000 Day24 (No.941-950).html">
-          <span class="num-badge">95</span>
-          <span class="range">No.941-950</span>
-        </a>
-        <a class="card" href="학습_96.고등 워마 수능2000 Day24 (No.951-960).html">
-          <span class="num-badge">96</span>
-          <span class="range">No.951-960</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day25</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_97.고등 워마 수능2000 Day25 (No.961-970).html">
-          <span class="num-badge">97</span>
-          <span class="range">No.961-970</span>
-        </a>
-        <a class="card" href="학습_98.고등 워마 수능2000 Day25 (No.971-980).html">
-          <span class="num-badge">98</span>
-          <span class="range">No.971-980</span>
-        </a>
-        <a class="card" href="학습_99.고등 워마 수능2000 Day25 (No.981-990).html">
-          <span class="num-badge">99</span>
-          <span class="range">No.981-990</span>
-        </a>
-        <a class="card" href="학습_100.고등 워마 수능2000 Day25 (No.991-1000).html">
-          <span class="num-badge">100</span>
-          <span class="range">No.991-1000</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day26</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_101.고등 워마 수능2000 Day26 (No.1001-1010).html">
-          <span class="num-badge">101</span>
-          <span class="range">No.1001-1010</span>
-        </a>
-        <a class="card" href="학습_102.고등 워마 수능2000 Day26 (No.1011-1020).html">
-          <span class="num-badge">102</span>
-          <span class="range">No.1011-1020</span>
-        </a>
-        <a class="card" href="학습_103.고등 워마 수능2000 Day26 (No.1021-1030).html">
-          <span class="num-badge">103</span>
-          <span class="range">No.1021-1030</span>
-        </a>
-        <a class="card" href="학습_104.고등 워마 수능2000 Day26 (No.1031-1040).html">
-          <span class="num-badge">104</span>
-          <span class="range">No.1031-1040</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day27</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_105.고등 워마 수능2000 Day27 (No.1041-1050).html">
-          <span class="num-badge">105</span>
-          <span class="range">No.1041-1050</span>
-        </a>
-        <a class="card" href="학습_106.고등 워마 수능2000 Day27 (No.1051-1060).html">
-          <span class="num-badge">106</span>
-          <span class="range">No.1051-1060</span>
-        </a>
-        <a class="card" href="학습_107.고등 워마 수능2000 Day27 (No.1061-1070).html">
-          <span class="num-badge">107</span>
-          <span class="range">No.1061-1070</span>
-        </a>
-        <a class="card" href="학습_108.고등 워마 수능2000 Day27 (No.1071-1080).html">
-          <span class="num-badge">108</span>
-          <span class="range">No.1071-1080</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day28</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_109.고등 워마 수능2000 Day28 (No.1081-1090).html">
-          <span class="num-badge">109</span>
-          <span class="range">No.1081-1090</span>
-        </a>
-        <a class="card" href="학습_110.고등 워마 수능2000 Day28 (No.1091-1100).html">
-          <span class="num-badge">110</span>
-          <span class="range">No.1091-1100</span>
-        </a>
-        <a class="card" href="학습_111.고등 워마 수능2000 Day28 (No.1101-1110).html">
-          <span class="num-badge">111</span>
-          <span class="range">No.1101-1110</span>
-        </a>
-        <a class="card" href="학습_112.고등 워마 수능2000 Day28 (No.1111-1120).html">
-          <span class="num-badge">112</span>
-          <span class="range">No.1111-1120</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day29</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_113.고등 워마 수능2000 Day29 (No.1121-1130).html">
-          <span class="num-badge">113</span>
-          <span class="range">No.1121-1130</span>
-        </a>
-        <a class="card" href="학습_114.고등 워마 수능2000 Day29 (No.1131-1140).html">
-          <span class="num-badge">114</span>
-          <span class="range">No.1131-1140</span>
-        </a>
-        <a class="card" href="학습_115.고등 워마 수능2000 Day29 (No.1141-1150).html">
-          <span class="num-badge">115</span>
-          <span class="range">No.1141-1150</span>
-        </a>
-        <a class="card" href="학습_116.고등 워마 수능2000 Day29 (No.1151-1160).html">
-          <span class="num-badge">116</span>
-          <span class="range">No.1151-1160</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day30</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_117.고등 워마 수능2000 Day30 (No.1161-1170).html">
-          <span class="num-badge">117</span>
-          <span class="range">No.1161-1170</span>
-        </a>
-        <a class="card" href="학습_118.고등 워마 수능2000 Day30 (No.1171-1180).html">
-          <span class="num-badge">118</span>
-          <span class="range">No.1171-1180</span>
-        </a>
-        <a class="card" href="학습_119.고등 워마 수능2000 Day30 (No.1181-1190).html">
-          <span class="num-badge">119</span>
-          <span class="range">No.1181-1190</span>
-        </a>
-        <a class="card" href="학습_120.고등 워마 수능2000 Day30 (No.1191-1200).html">
-          <span class="num-badge">120</span>
-          <span class="range">No.1191-1200</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day31</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_121.고등 워마 수능2000 Day31 (No.1201-1210).html">
-          <span class="num-badge">121</span>
-          <span class="range">No.1201-1210</span>
-        </a>
-        <a class="card" href="학습_122.고등 워마 수능2000 Day31 (No.1211-1220).html">
-          <span class="num-badge">122</span>
-          <span class="range">No.1211-1220</span>
-        </a>
-        <a class="card" href="학습_123.고등 워마 수능2000 Day31 (No.1221-1230).html">
-          <span class="num-badge">123</span>
-          <span class="range">No.1221-1230</span>
-        </a>
-        <a class="card" href="학습_124.고등 워마 수능2000 Day31 (No.1231-1240).html">
-          <span class="num-badge">124</span>
-          <span class="range">No.1231-1240</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day32</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_125.고등 워마 수능2000 Day32 (No.1241-1250).html">
-          <span class="num-badge">125</span>
-          <span class="range">No.1241-1250</span>
-        </a>
-        <a class="card" href="학습_126.고등 워마 수능2000 Day32 (No.1251-1260).html">
-          <span class="num-badge">126</span>
-          <span class="range">No.1251-1260</span>
-        </a>
-        <a class="card" href="학습_127.고등 워마 수능2000 Day32 (No.1261-1270).html">
-          <span class="num-badge">127</span>
-          <span class="range">No.1261-1270</span>
-        </a>
-        <a class="card" href="학습_128.고등 워마 수능2000 Day32 (No.1271-1280).html">
-          <span class="num-badge">128</span>
-          <span class="range">No.1271-1280</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day33</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_129.고등 워마 수능2000 Day33 (No.1281-1290).html">
-          <span class="num-badge">129</span>
-          <span class="range">No.1281-1290</span>
-        </a>
-        <a class="card" href="학습_130.고등 워마 수능2000 Day33 (No.1291-1300).html">
-          <span class="num-badge">130</span>
-          <span class="range">No.1291-1300</span>
-        </a>
-        <a class="card" href="학습_131.고등 워마 수능2000 Day33 (No.1301-1310).html">
-          <span class="num-badge">131</span>
-          <span class="range">No.1301-1310</span>
-        </a>
-        <a class="card" href="학습_132.고등 워마 수능2000 Day33 (No.1311-1320).html">
-          <span class="num-badge">132</span>
-          <span class="range">No.1311-1320</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day34</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_133.고등 워마 수능2000 Day34 (No.1321-1330).html">
-          <span class="num-badge">133</span>
-          <span class="range">No.1321-1330</span>
-        </a>
-        <a class="card" href="학습_134.고등 워마 수능2000 Day34 (No.1331-1340).html">
-          <span class="num-badge">134</span>
-          <span class="range">No.1331-1340</span>
-        </a>
-        <a class="card" href="학습_135.고등 워마 수능2000 Day34 (No.1341-1350).html">
-          <span class="num-badge">135</span>
-          <span class="range">No.1341-1350</span>
-        </a>
-        <a class="card" href="학습_136.고등 워마 수능2000 Day34 (No.1351-1360).html">
-          <span class="num-badge">136</span>
-          <span class="range">No.1351-1360</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day35</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_137.고등 워마 수능2000 Day35 (No.1361-1370).html">
-          <span class="num-badge">137</span>
-          <span class="range">No.1361-1370</span>
-        </a>
-        <a class="card" href="학습_138.고등 워마 수능2000 Day35 (No.1371-1380).html">
-          <span class="num-badge">138</span>
-          <span class="range">No.1371-1380</span>
-        </a>
-        <a class="card" href="학습_139.고등 워마 수능2000 Day35 (No.1381-1390).html">
-          <span class="num-badge">139</span>
-          <span class="range">No.1381-1390</span>
-        </a>
-        <a class="card" href="학습_140.고등 워마 수능2000 Day35 (No.1391-1400).html">
-          <span class="num-badge">140</span>
-          <span class="range">No.1391-1400</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day36</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_141.고등 워마 수능2000 Day36 (No.1401-1410).html">
-          <span class="num-badge">141</span>
-          <span class="range">No.1401-1410</span>
-        </a>
-        <a class="card" href="학습_142.고등 워마 수능2000 Day36 (No.1411-1420).html">
-          <span class="num-badge">142</span>
-          <span class="range">No.1411-1420</span>
-        </a>
-        <a class="card" href="학습_143.고등 워마 수능2000 Day36 (No.1421-1430).html">
-          <span class="num-badge">143</span>
-          <span class="range">No.1421-1430</span>
-        </a>
-        <a class="card" href="학습_144.고등 워마 수능2000 Day36 (No.1431-1440).html">
-          <span class="num-badge">144</span>
-          <span class="range">No.1431-1440</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day37</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_145.고등 워마 수능2000 Day37 (No.1441-1450).html">
-          <span class="num-badge">145</span>
-          <span class="range">No.1441-1450</span>
-        </a>
-        <a class="card" href="학습_146.고등 워마 수능2000 Day37 (No.1451-1460).html">
-          <span class="num-badge">146</span>
-          <span class="range">No.1451-1460</span>
-        </a>
-        <a class="card" href="학습_147.고등 워마 수능2000 Day37 (No.1461-1470).html">
-          <span class="num-badge">147</span>
-          <span class="range">No.1461-1470</span>
-        </a>
-        <a class="card" href="학습_148.고등 워마 수능2000 Day37 (No.1471-1480).html">
-          <span class="num-badge">148</span>
-          <span class="range">No.1471-1480</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day38</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_149.고등 워마 수능2000 Day38 (No.1481-1490).html">
-          <span class="num-badge">149</span>
-          <span class="range">No.1481-1490</span>
-        </a>
-        <a class="card" href="학습_150.고등 워마 수능2000 Day38 (No.1491-1500).html">
-          <span class="num-badge">150</span>
-          <span class="range">No.1491-1500</span>
-        </a>
-        <a class="card" href="학습_151.고등 워마 수능2000 Day38 (No.1501-1510).html">
-          <span class="num-badge">151</span>
-          <span class="range">No.1501-1510</span>
-        </a>
-        <a class="card" href="학습_152.고등 워마 수능2000 Day38 (No.1511-1520).html">
-          <span class="num-badge">152</span>
-          <span class="range">No.1511-1520</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day39</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_153.고등 워마 수능2000 Day39 (No.1521-1530).html">
-          <span class="num-badge">153</span>
-          <span class="range">No.1521-1530</span>
-        </a>
-        <a class="card" href="학습_154.고등 워마 수능2000 Day39 (No.1531-1540).html">
-          <span class="num-badge">154</span>
-          <span class="range">No.1531-1540</span>
-        </a>
-        <a class="card" href="학습_155.고등 워마 수능2000 Day39 (No.1541-1550).html">
-          <span class="num-badge">155</span>
-          <span class="range">No.1541-1550</span>
-        </a>
-        <a class="card" href="학습_156.고등 워마 수능2000 Day39 (No.1551-1560).html">
-          <span class="num-badge">156</span>
-          <span class="range">No.1551-1560</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day40</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_157.고등 워마 수능2000 Day40 (No.1561-1570).html">
-          <span class="num-badge">157</span>
-          <span class="range">No.1561-1570</span>
-        </a>
-        <a class="card" href="학습_158.고등 워마 수능2000 Day40 (No.1571-1580).html">
-          <span class="num-badge">158</span>
-          <span class="range">No.1571-1580</span>
-        </a>
-        <a class="card" href="학습_159.고등 워마 수능2000 Day40 (No.1581-1590).html">
-          <span class="num-badge">159</span>
-          <span class="range">No.1581-1590</span>
-        </a>
-        <a class="card" href="학습_160.고등 워마 수능2000 Day40 (No.1591-1600).html">
-          <span class="num-badge">160</span>
-          <span class="range">No.1591-1600</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day41</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_161.고등 워마 수능2000 Day41 (No.1601-1610).html">
-          <span class="num-badge">161</span>
-          <span class="range">No.1601-1610</span>
-        </a>
-        <a class="card" href="학습_162.고등 워마 수능2000 Day41 (No.1611-1620).html">
-          <span class="num-badge">162</span>
-          <span class="range">No.1611-1620</span>
-        </a>
-        <a class="card" href="학습_163.고등 워마 수능2000 Day41 (No.1621-1630).html">
-          <span class="num-badge">163</span>
-          <span class="range">No.1621-1630</span>
-        </a>
-        <a class="card" href="학습_164.고등 워마 수능2000 Day41 (No.1631-1640).html">
-          <span class="num-badge">164</span>
-          <span class="range">No.1631-1640</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day42</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_165.고등 워마 수능2000 Day42 (No.1641-1650).html">
-          <span class="num-badge">165</span>
-          <span class="range">No.1641-1650</span>
-        </a>
-        <a class="card" href="학습_166.고등 워마 수능2000 Day42 (No.1651-1660).html">
-          <span class="num-badge">166</span>
-          <span class="range">No.1651-1660</span>
-        </a>
-        <a class="card" href="학습_167.고등 워마 수능2000 Day42 (No.1661-1670).html">
-          <span class="num-badge">167</span>
-          <span class="range">No.1661-1670</span>
-        </a>
-        <a class="card" href="학습_168.고등 워마 수능2000 Day42 (No.1671-1680).html">
-          <span class="num-badge">168</span>
-          <span class="range">No.1671-1680</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day43</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_169.고등 워마 수능2000 Day43 (No.1681-1690).html">
-          <span class="num-badge">169</span>
-          <span class="range">No.1681-1690</span>
-        </a>
-        <a class="card" href="학습_170.고등 워마 수능2000 Day43 (No.1691-1700).html">
-          <span class="num-badge">170</span>
-          <span class="range">No.1691-1700</span>
-        </a>
-        <a class="card" href="학습_171.고등 워마 수능2000 Day43 (No.1701-1710).html">
-          <span class="num-badge">171</span>
-          <span class="range">No.1701-1710</span>
-        </a>
-        <a class="card" href="학습_172.고등 워마 수능2000 Day43 (No.1711-1720).html">
-          <span class="num-badge">172</span>
-          <span class="range">No.1711-1720</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day44</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_173.고등 워마 수능2000 Day44 (No.1721-1730).html">
-          <span class="num-badge">173</span>
-          <span class="range">No.1721-1730</span>
-        </a>
-        <a class="card" href="학습_174.고등 워마 수능2000 Day44 (No.1731-1740).html">
-          <span class="num-badge">174</span>
-          <span class="range">No.1731-1740</span>
-        </a>
-        <a class="card" href="학습_175.고등 워마 수능2000 Day44 (No.1741-1750).html">
-          <span class="num-badge">175</span>
-          <span class="range">No.1741-1750</span>
-        </a>
-        <a class="card" href="학습_176.고등 워마 수능2000 Day44 (No.1751-1760).html">
-          <span class="num-badge">176</span>
-          <span class="range">No.1751-1760</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day45</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_177.고등 워마 수능2000 Day45 (No.1761-1770).html">
-          <span class="num-badge">177</span>
-          <span class="range">No.1761-1770</span>
-        </a>
-        <a class="card" href="학습_178.고등 워마 수능2000 Day45 (No.1771-1780).html">
-          <span class="num-badge">178</span>
-          <span class="range">No.1771-1780</span>
-        </a>
-        <a class="card" href="학습_179.고등 워마 수능2000 Day45 (No.1781-1790).html">
-          <span class="num-badge">179</span>
-          <span class="range">No.1781-1790</span>
-        </a>
-        <a class="card" href="학습_180.고등 워마 수능2000 Day45 (No.1791-1800).html">
-          <span class="num-badge">180</span>
-          <span class="range">No.1791-1800</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day46</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_181.고등 워마 수능2000 Day46 (No.1801-1810).html">
-          <span class="num-badge">181</span>
-          <span class="range">No.1801-1810</span>
-        </a>
-        <a class="card" href="학습_182.고등 워마 수능2000 Day46 (No.1811-1820).html">
-          <span class="num-badge">182</span>
-          <span class="range">No.1811-1820</span>
-        </a>
-        <a class="card" href="학습_183.고등 워마 수능2000 Day46 (No.1821-1830).html">
-          <span class="num-badge">183</span>
-          <span class="range">No.1821-1830</span>
-        </a>
-        <a class="card" href="학습_184.고등 워마 수능2000 Day46 (No.1831-1840).html">
-          <span class="num-badge">184</span>
-          <span class="range">No.1831-1840</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day47</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_185.고등 워마 수능2000 Day47 (No.1841-1850).html">
-          <span class="num-badge">185</span>
-          <span class="range">No.1841-1850</span>
-        </a>
-        <a class="card" href="학습_186.고등 워마 수능2000 Day47 (No.1851-1860).html">
-          <span class="num-badge">186</span>
-          <span class="range">No.1851-1860</span>
-        </a>
-        <a class="card" href="학습_187.고등 워마 수능2000 Day47 (No.1861-1870).html">
-          <span class="num-badge">187</span>
-          <span class="range">No.1861-1870</span>
-        </a>
-        <a class="card" href="학습_188.고등 워마 수능2000 Day47 (No.1871-1880).html">
-          <span class="num-badge">188</span>
-          <span class="range">No.1871-1880</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day48</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_189.고등 워마 수능2000 Day48 (No.1881-1890).html">
-          <span class="num-badge">189</span>
-          <span class="range">No.1881-1890</span>
-        </a>
-        <a class="card" href="학습_190.고등 워마 수능2000 Day48 (No.1891-1900).html">
-          <span class="num-badge">190</span>
-          <span class="range">No.1891-1900</span>
-        </a>
-        <a class="card" href="학습_191.고등 워마 수능2000 Day48 (No.1901-1910).html">
-          <span class="num-badge">191</span>
-          <span class="range">No.1901-1910</span>
-        </a>
-        <a class="card" href="학습_192.고등 워마 수능2000 Day48 (No.1911-1920).html">
-          <span class="num-badge">192</span>
-          <span class="range">No.1911-1920</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day49</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_193.고등 워마 수능2000 Day49 (No.1921-1930).html">
-          <span class="num-badge">193</span>
-          <span class="range">No.1921-1930</span>
-        </a>
-        <a class="card" href="학습_194.고등 워마 수능2000 Day49 (No.1931-1940).html">
-          <span class="num-badge">194</span>
-          <span class="range">No.1931-1940</span>
-        </a>
-        <a class="card" href="학습_195.고등 워마 수능2000 Day49 (No.1941-1950).html">
-          <span class="num-badge">195</span>
-          <span class="range">No.1941-1950</span>
-        </a>
-        <a class="card" href="학습_196.고등 워마 수능2000 Day49 (No.1951-1960).html">
-          <span class="num-badge">196</span>
-          <span class="range">No.1951-1960</span>
-        </a>
-        </div>
-      </div>
-      <div class="day-section">
-        <h2 class="day-title">Day50</h2>
-        <div class="card-grid">
-        <a class="card" href="학습_197.고등 워마 수능2000 Day50 (No.1961-1970).html">
-          <span class="num-badge">197</span>
-          <span class="range">No.1961-1970</span>
-        </a>
-        <a class="card" href="학습_198.고등 워마 수능2000 Day50 (No.1971-1980).html">
-          <span class="num-badge">198</span>
-          <span class="range">No.1971-1980</span>
-        </a>
-        <a class="card" href="학습_199.고등 워마 수능2000 Day50 (No.1981-1990).html">
-          <span class="num-badge">199</span>
-          <span class="range">No.1981-1990</span>
-        </a>
-        <a class="card" href="학습_200.고등 워마 수능2000 Day50 (No.1991-2000).html">
-          <span class="num-badge">200</span>
-          <span class="range">No.1991-2000</span>
-        </a>
-        </div>
-      </div>
 </div>
-</main>
-
-<footer>미라클 영어 스터디 · 보카 마스터</footer>
-
-<script>
-function showSeries(id, btn){
-  document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  document.querySelectorAll('.series-panel').forEach(p => p.classList.remove('show'));
-  const el = document.getElementById(id);
-  if(el) el.classList.add('show');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-</script>
+<div class="day-block">
+  <div class="day-title">Day7</div>
+  <div class="card-grid">
+<a class="card" href="학습_19.고등 워드마스터 컴플릿 Day7 (No.181-190).html" target="_blank">
+  <span class="num-badge">19</span>
+  <span class="range">No.181-190</span>
+</a>
+<a class="card card-exp" href="학습_19-a.고등 워드마스터 컴플릿 Day7 확장 (No.181-190 관련어 30개).html" target="_blank">
+  <span class="num-badge">19-a</span>
+  <span class="range">확장 · No.181-190<br><span class='range'>관련어 30개</span></span>
+</a>
+<a class="card" href="학습_20.고등 워드마스터 컴플릿 Day7 (No.191-200).html" target="_blank">
+  <span class="num-badge">20</span>
+  <span class="range">No.191-200</span>
+</a>
+<a class="card card-exp" href="학습_20-a.고등 워드마스터 컴플릿 Day7 확장 (No.191-200 관련어 33개).html" target="_blank">
+  <span class="num-badge">20-a</span>
+  <span class="range">확장 · No.191-200<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_21.고등 워드마스터 컴플릿 Day7 (No.201-210).html" target="_blank">
+  <span class="num-badge">21</span>
+  <span class="range">No.201-210</span>
+</a>
+<a class="card card-exp" href="학습_21-a.고등 워드마스터 컴플릿 Day7 확장 (No.201-210 관련어 28개).html" target="_blank">
+  <span class="num-badge">21-a</span>
+  <span class="range">확장 · No.201-210<br><span class='range'>관련어 28개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day8</div>
+  <div class="card-grid">
+<a class="card" href="학습_22.고등 워드마스터 컴플릿 Day8 (No.211-220).html" target="_blank">
+  <span class="num-badge">22</span>
+  <span class="range">No.211-220</span>
+</a>
+<a class="card card-exp" href="학습_22-a.고등 워드마스터 컴플릿 Day8 확장 (No.211-220 관련어 36개).html" target="_blank">
+  <span class="num-badge">22-a</span>
+  <span class="range">확장 · No.211-220<br><span class='range'>관련어 36개</span></span>
+</a>
+<a class="card" href="학습_23.고등 워드마스터 컴플릿 Day8 (No.221-230).html" target="_blank">
+  <span class="num-badge">23</span>
+  <span class="range">No.221-230</span>
+</a>
+<a class="card card-exp" href="학습_23-a.고등 워드마스터 컴플릿 Day8 확장 (No.221-230 관련어 33개).html" target="_blank">
+  <span class="num-badge">23-a</span>
+  <span class="range">확장 · No.221-230<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_24.고등 워드마스터 컴플릿 Day8 (No.231-240).html" target="_blank">
+  <span class="num-badge">24</span>
+  <span class="range">No.231-240</span>
+</a>
+<a class="card card-exp" href="학습_24-a.고등 워드마스터 컴플릿 Day8 확장 (No.231-240 관련어 29개).html" target="_blank">
+  <span class="num-badge">24-a</span>
+  <span class="range">확장 · No.231-240<br><span class='range'>관련어 29개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day9</div>
+  <div class="card-grid">
+<a class="card" href="학습_25.고등 워드마스터 컴플릿 Day9 (No.241-250).html" target="_blank">
+  <span class="num-badge">25</span>
+  <span class="range">No.241-250</span>
+</a>
+<a class="card card-exp" href="학습_25-a.고등 워드마스터 컴플릿 Day9 확장 (No.241-250 관련어 32개).html" target="_blank">
+  <span class="num-badge">25-a</span>
+  <span class="range">확장 · No.241-250<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_26.고등 워드마스터 컴플릿 Day9 (No.251-260).html" target="_blank">
+  <span class="num-badge">26</span>
+  <span class="range">No.251-260</span>
+</a>
+<a class="card card-exp" href="학습_26-a.고등 워드마스터 컴플릿 Day9 확장 (No.251-260 관련어 37개).html" target="_blank">
+  <span class="num-badge">26-a</span>
+  <span class="range">확장 · No.251-260<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_27.고등 워드마스터 컴플릿 Day9 (No.261-270).html" target="_blank">
+  <span class="num-badge">27</span>
+  <span class="range">No.261-270</span>
+</a>
+<a class="card card-exp" href="학습_27-a.고등 워드마스터 컴플릿 Day9 확장 (No.261-270 관련어 20개).html" target="_blank">
+  <span class="num-badge">27-a</span>
+  <span class="range">확장 · No.261-270<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day10</div>
+  <div class="card-grid">
+<a class="card" href="학습_28.고등 워드마스터 컴플릿 Day10 (No.271-280).html" target="_blank">
+  <span class="num-badge">28</span>
+  <span class="range">No.271-280</span>
+</a>
+<a class="card card-exp" href="학습_28-a.고등 워드마스터 컴플릿 Day10 확장 (No.271-280 관련어 29개).html" target="_blank">
+  <span class="num-badge">28-a</span>
+  <span class="range">확장 · No.271-280<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_29.고등 워드마스터 컴플릿 Day10 (No.281-290).html" target="_blank">
+  <span class="num-badge">29</span>
+  <span class="range">No.281-290</span>
+</a>
+<a class="card card-exp" href="학습_29-a.고등 워드마스터 컴플릿 Day10 확장 (No.281-290 관련어 29개).html" target="_blank">
+  <span class="num-badge">29-a</span>
+  <span class="range">확장 · No.281-290<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_30.고등 워드마스터 컴플릿 Day10 (No.291-300).html" target="_blank">
+  <span class="num-badge">30</span>
+  <span class="range">No.291-300</span>
+</a>
+<a class="card card-exp" href="학습_30-a.고등 워드마스터 컴플릿 Day10 확장 (No.291-300 관련어 20개).html" target="_blank">
+  <span class="num-badge">30-a</span>
+  <span class="range">확장 · No.291-300<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day11</div>
+  <div class="card-grid">
+<a class="card" href="학습_31.고등 워드마스터 컴플릿 Day11 (No.301-310).html" target="_blank">
+  <span class="num-badge">31</span>
+  <span class="range">No.301-310</span>
+</a>
+<a class="card card-exp" href="학습_31-a.고등 워드마스터 컴플릿 Day11 확장 (No.301-310 관련어 29개).html" target="_blank">
+  <span class="num-badge">31-a</span>
+  <span class="range">확장 · No.301-310<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_32.고등 워드마스터 컴플릿 Day11 (No.311-320).html" target="_blank">
+  <span class="num-badge">32</span>
+  <span class="range">No.311-320</span>
+</a>
+<a class="card card-exp" href="학습_32-a.고등 워드마스터 컴플릿 Day11 확장 (No.311-320 관련어 33개).html" target="_blank">
+  <span class="num-badge">32-a</span>
+  <span class="range">확장 · No.311-320<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_33.고등 워드마스터 컴플릿 Day11 (No.321-330).html" target="_blank">
+  <span class="num-badge">33</span>
+  <span class="range">No.321-330</span>
+</a>
+<a class="card card-exp" href="학습_33-a.고등 워드마스터 컴플릿 Day11 확장 (No.321-330 관련어 21개).html" target="_blank">
+  <span class="num-badge">33-a</span>
+  <span class="range">확장 · No.321-330<br><span class='range'>관련어 21개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day12</div>
+  <div class="card-grid">
+<a class="card" href="학습_34.고등 워드마스터 컴플릿 Day12 (No.331-340).html" target="_blank">
+  <span class="num-badge">34</span>
+  <span class="range">No.331-340</span>
+</a>
+<a class="card card-exp" href="학습_34-a.고등 워드마스터 컴플릿 Day12 확장 (No.331-340 관련어 32개).html" target="_blank">
+  <span class="num-badge">34-a</span>
+  <span class="range">확장 · No.331-340<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_35.고등 워드마스터 컴플릿 Day12 (No.341-350).html" target="_blank">
+  <span class="num-badge">35</span>
+  <span class="range">No.341-350</span>
+</a>
+<a class="card card-exp" href="학습_35-a.고등 워드마스터 컴플릿 Day12 확장 (No.341-350 관련어 33개).html" target="_blank">
+  <span class="num-badge">35-a</span>
+  <span class="range">확장 · No.341-350<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_36.고등 워드마스터 컴플릿 Day12 (No.351-360).html" target="_blank">
+  <span class="num-badge">36</span>
+  <span class="range">No.351-360</span>
+</a>
+<a class="card card-exp" href="학습_36-a.고등 워드마스터 컴플릿 Day12 확장 (No.351-360 관련어 26개).html" target="_blank">
+  <span class="num-badge">36-a</span>
+  <span class="range">확장 · No.351-360<br><span class='range'>관련어 26개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day13</div>
+  <div class="card-grid">
+<a class="card" href="학습_37.고등 워드마스터 컴플릿 Day13 (No.361-370).html" target="_blank">
+  <span class="num-badge">37</span>
+  <span class="range">No.361-370</span>
+</a>
+<a class="card card-exp" href="학습_37-a.고등 워드마스터 컴플릿 Day13 확장 (No.361-370 관련어 39개).html" target="_blank">
+  <span class="num-badge">37-a</span>
+  <span class="range">확장 · No.361-370<br><span class='range'>관련어 39개</span></span>
+</a>
+<a class="card" href="학습_38.고등 워드마스터 컴플릿 Day13 (No.371-380).html" target="_blank">
+  <span class="num-badge">38</span>
+  <span class="range">No.371-380</span>
+</a>
+<a class="card card-exp" href="학습_38-a.고등 워드마스터 컴플릿 Day13 확장 (No.371-380 관련어 33개).html" target="_blank">
+  <span class="num-badge">38-a</span>
+  <span class="range">확장 · No.371-380<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_39.고등 워드마스터 컴플릿 Day13 (No.381-390).html" target="_blank">
+  <span class="num-badge">39</span>
+  <span class="range">No.381-390</span>
+</a>
+<a class="card card-exp" href="학습_39-a.고등 워드마스터 컴플릿 Day13 확장 (No.381-390 관련어 20개).html" target="_blank">
+  <span class="num-badge">39-a</span>
+  <span class="range">확장 · No.381-390<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day14</div>
+  <div class="card-grid">
+<a class="card" href="학습_40.고등 워드마스터 컴플릿 Day14 (No.391-400).html" target="_blank">
+  <span class="num-badge">40</span>
+  <span class="range">No.391-400</span>
+</a>
+<a class="card card-exp" href="학습_40-a.고등 워드마스터 컴플릿 Day14 확장 (No.391-400 관련어 40개).html" target="_blank">
+  <span class="num-badge">40-a</span>
+  <span class="range">확장 · No.391-400<br><span class='range'>관련어 40개</span></span>
+</a>
+<a class="card" href="학습_41.고등 워드마스터 컴플릿 Day14 (No.401-410).html" target="_blank">
+  <span class="num-badge">41</span>
+  <span class="range">No.401-410</span>
+</a>
+<a class="card card-exp" href="학습_41-a.고등 워드마스터 컴플릿 Day14 확장 (No.401-410 관련어 32개).html" target="_blank">
+  <span class="num-badge">41-a</span>
+  <span class="range">확장 · No.401-410<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_42.고등 워드마스터 컴플릿 Day14 (No.411-420).html" target="_blank">
+  <span class="num-badge">42</span>
+  <span class="range">No.411-420</span>
+</a>
+<a class="card card-exp" href="학습_42-a.고등 워드마스터 컴플릿 Day14 확장 (No.411-420 관련어 26개).html" target="_blank">
+  <span class="num-badge">42-a</span>
+  <span class="range">확장 · No.411-420<br><span class='range'>관련어 26개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day15</div>
+  <div class="card-grid">
+<a class="card" href="학습_43.고등 워드마스터 컴플릿 Day15 (No.421-430).html" target="_blank">
+  <span class="num-badge">43</span>
+  <span class="range">No.421-430</span>
+</a>
+<a class="card card-exp" href="학습_43-a.고등 워드마스터 컴플릿 Day15 확장 (No.421-430 관련어 35개).html" target="_blank">
+  <span class="num-badge">43-a</span>
+  <span class="range">확장 · No.421-430<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_44.고등 워드마스터 컴플릿 Day15 (No.431-440).html" target="_blank">
+  <span class="num-badge">44</span>
+  <span class="range">No.431-440</span>
+</a>
+<a class="card card-exp" href="학습_44-a.고등 워드마스터 컴플릿 Day15 확장 (No.431-440 관련어 33개).html" target="_blank">
+  <span class="num-badge">44-a</span>
+  <span class="range">확장 · No.431-440<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_45.고등 워드마스터 컴플릿 Day15 (No.441-450).html" target="_blank">
+  <span class="num-badge">45</span>
+  <span class="range">No.441-450</span>
+</a>
+<a class="card card-exp" href="학습_45-a.고등 워드마스터 컴플릿 Day15 확장 (No.441-450 관련어 27개).html" target="_blank">
+  <span class="num-badge">45-a</span>
+  <span class="range">확장 · No.441-450<br><span class='range'>관련어 27개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day16</div>
+  <div class="card-grid">
+<a class="card" href="학습_46.고등 워드마스터 컴플릿 Day16 (No.451-460).html" target="_blank">
+  <span class="num-badge">46</span>
+  <span class="range">No.451-460</span>
+</a>
+<a class="card card-exp" href="학습_46-a.고등 워드마스터 컴플릿 Day16 확장 (No.451-460 관련어 42개).html" target="_blank">
+  <span class="num-badge">46-a</span>
+  <span class="range">확장 · No.451-460<br><span class='range'>관련어 42개</span></span>
+</a>
+<a class="card" href="학습_47.고등 워드마스터 컴플릿 Day16 (No.461-470).html" target="_blank">
+  <span class="num-badge">47</span>
+  <span class="range">No.461-470</span>
+</a>
+<a class="card card-exp" href="학습_47-a.고등 워드마스터 컴플릿 Day16 확장 (No.461-470 관련어 30개).html" target="_blank">
+  <span class="num-badge">47-a</span>
+  <span class="range">확장 · No.461-470<br><span class='range'>관련어 30개</span></span>
+</a>
+<a class="card" href="학습_48.고등 워드마스터 컴플릿 Day16 (No.471-480).html" target="_blank">
+  <span class="num-badge">48</span>
+  <span class="range">No.471-480</span>
+</a>
+<a class="card card-exp" href="학습_48-a.고등 워드마스터 컴플릿 Day16 확장 (No.471-480 관련어 21개).html" target="_blank">
+  <span class="num-badge">48-a</span>
+  <span class="range">확장 · No.471-480<br><span class='range'>관련어 21개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day17</div>
+  <div class="card-grid">
+<a class="card" href="학습_49.고등 워드마스터 컴플릿 Day17 (No.481-490).html" target="_blank">
+  <span class="num-badge">49</span>
+  <span class="range">No.481-490</span>
+</a>
+<a class="card card-exp" href="학습_49-a.고등 워드마스터 컴플릿 Day17 확장 (No.481-490 관련어 35개).html" target="_blank">
+  <span class="num-badge">49-a</span>
+  <span class="range">확장 · No.481-490<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_50.고등 워드마스터 컴플릿 Day17 (No.491-500).html" target="_blank">
+  <span class="num-badge">50</span>
+  <span class="range">No.491-500</span>
+</a>
+<a class="card card-exp" href="학습_50-a.고등 워드마스터 컴플릿 Day17 확장 (No.491-500 관련어 36개).html" target="_blank">
+  <span class="num-badge">50-a</span>
+  <span class="range">확장 · No.491-500<br><span class='range'>관련어 36개</span></span>
+</a>
+<a class="card" href="학습_51.고등 워드마스터 컴플릿 Day17 (No.501-510).html" target="_blank">
+  <span class="num-badge">51</span>
+  <span class="range">No.501-510</span>
+</a>
+<a class="card card-exp" href="학습_51-a.고등 워드마스터 컴플릿 Day17 확장 (No.501-510 관련어 22개).html" target="_blank">
+  <span class="num-badge">51-a</span>
+  <span class="range">확장 · No.501-510<br><span class='range'>관련어 22개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day18</div>
+  <div class="card-grid">
+<a class="card" href="학습_52.고등 워드마스터 컴플릿 Day18 (No.511-520).html" target="_blank">
+  <span class="num-badge">52</span>
+  <span class="range">No.511-520</span>
+</a>
+<a class="card card-exp" href="학습_52-a.고등 워드마스터 컴플릿 Day18 확장 (No.511-520 관련어 31개).html" target="_blank">
+  <span class="num-badge">52-a</span>
+  <span class="range">확장 · No.511-520<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_53.고등 워드마스터 컴플릿 Day18 (No.521-530).html" target="_blank">
+  <span class="num-badge">53</span>
+  <span class="range">No.521-530</span>
+</a>
+<a class="card card-exp" href="학습_53-a.고등 워드마스터 컴플릿 Day18 확장 (No.521-530 관련어 38개).html" target="_blank">
+  <span class="num-badge">53-a</span>
+  <span class="range">확장 · No.521-530<br><span class='range'>관련어 38개</span></span>
+</a>
+<a class="card" href="학습_54.고등 워드마스터 컴플릿 Day18 (No.531-540).html" target="_blank">
+  <span class="num-badge">54</span>
+  <span class="range">No.531-540</span>
+</a>
+<a class="card card-exp" href="학습_54-a.고등 워드마스터 컴플릿 Day18 확장 (No.531-540 관련어 23개).html" target="_blank">
+  <span class="num-badge">54-a</span>
+  <span class="range">확장 · No.531-540<br><span class='range'>관련어 23개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day19</div>
+  <div class="card-grid">
+<a class="card" href="학습_55.고등 워드마스터 컴플릿 Day19 (No.541-550).html" target="_blank">
+  <span class="num-badge">55</span>
+  <span class="range">No.541-550</span>
+</a>
+<a class="card card-exp" href="학습_55-a.고등 워드마스터 컴플릿 Day19 확장 (No.541-550 관련어 31개).html" target="_blank">
+  <span class="num-badge">55-a</span>
+  <span class="range">확장 · No.541-550<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_56.고등 워드마스터 컴플릿 Day19 (No.551-560).html" target="_blank">
+  <span class="num-badge">56</span>
+  <span class="range">No.551-560</span>
+</a>
+<a class="card card-exp" href="학습_56-a.고등 워드마스터 컴플릿 Day19 확장 (No.551-560 관련어 32개).html" target="_blank">
+  <span class="num-badge">56-a</span>
+  <span class="range">확장 · No.551-560<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_57.고등 워드마스터 컴플릿 Day19 (No.561-570).html" target="_blank">
+  <span class="num-badge">57</span>
+  <span class="range">No.561-570</span>
+</a>
+<a class="card card-exp" href="학습_57-a.고등 워드마스터 컴플릿 Day19 확장 (No.561-570 관련어 18개).html" target="_blank">
+  <span class="num-badge">57-a</span>
+  <span class="range">확장 · No.561-570<br><span class='range'>관련어 18개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day20</div>
+  <div class="card-grid">
+<a class="card" href="학습_58.고등 워드마스터 컴플릿 Day20 (No.571-580).html" target="_blank">
+  <span class="num-badge">58</span>
+  <span class="range">No.571-580</span>
+</a>
+<a class="card card-exp" href="학습_58-a.고등 워드마스터 컴플릿 Day20 확장 (No.571-580 관련어 25개).html" target="_blank">
+  <span class="num-badge">58-a</span>
+  <span class="range">확장 · No.571-580<br><span class='range'>관련어 25개</span></span>
+</a>
+<a class="card" href="학습_59.고등 워드마스터 컴플릿 Day20 (No.581-590).html" target="_blank">
+  <span class="num-badge">59</span>
+  <span class="range">No.581-590</span>
+</a>
+<a class="card card-exp" href="학습_59-a.고등 워드마스터 컴플릿 Day20 확장 (No.581-590 관련어 28개).html" target="_blank">
+  <span class="num-badge">59-a</span>
+  <span class="range">확장 · No.581-590<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_60.고등 워드마스터 컴플릿 Day20 (No.591-600).html" target="_blank">
+  <span class="num-badge">60</span>
+  <span class="range">No.591-600</span>
+</a>
+<a class="card card-exp" href="학습_60-a.고등 워드마스터 컴플릿 Day20 확장 (No.591-600 관련어 20개).html" target="_blank">
+  <span class="num-badge">60-a</span>
+  <span class="range">확장 · No.591-600<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day21</div>
+  <div class="card-grid">
+<a class="card" href="학습_61.고등 워드마스터 컴플릿 Day21 (No.601-610).html" target="_blank">
+  <span class="num-badge">61</span>
+  <span class="range">No.601-610</span>
+</a>
+<a class="card card-exp" href="학습_61-a.고등 워드마스터 컴플릿 Day21 확장 (No.601-610 관련어 35개).html" target="_blank">
+  <span class="num-badge">61-a</span>
+  <span class="range">확장 · No.601-610<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_62.고등 워드마스터 컴플릿 Day21 (No.611-620).html" target="_blank">
+  <span class="num-badge">62</span>
+  <span class="range">No.611-620</span>
+</a>
+<a class="card card-exp" href="학습_62-a.고등 워드마스터 컴플릿 Day21 확장 (No.611-620 관련어 32개).html" target="_blank">
+  <span class="num-badge">62-a</span>
+  <span class="range">확장 · No.611-620<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_63.고등 워드마스터 컴플릿 Day21 (No.621-630).html" target="_blank">
+  <span class="num-badge">63</span>
+  <span class="range">No.621-630</span>
+</a>
+<a class="card card-exp" href="학습_63-a.고등 워드마스터 컴플릿 Day21 확장 (No.621-630 관련어 24개).html" target="_blank">
+  <span class="num-badge">63-a</span>
+  <span class="range">확장 · No.621-630<br><span class='range'>관련어 24개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day22</div>
+  <div class="card-grid">
+<a class="card" href="학습_64.고등 워드마스터 컴플릿 Day22 (No.631-640).html" target="_blank">
+  <span class="num-badge">64</span>
+  <span class="range">No.631-640</span>
+</a>
+<a class="card card-exp" href="학습_64-a.고등 워드마스터 컴플릿 Day22 확장 (No.631-640 관련어 31개).html" target="_blank">
+  <span class="num-badge">64-a</span>
+  <span class="range">확장 · No.631-640<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_65.고등 워드마스터 컴플릿 Day22 (No.641-650).html" target="_blank">
+  <span class="num-badge">65</span>
+  <span class="range">No.641-650</span>
+</a>
+<a class="card card-exp" href="학습_65-a.고등 워드마스터 컴플릿 Day22 확장 (No.641-650 관련어 28개).html" target="_blank">
+  <span class="num-badge">65-a</span>
+  <span class="range">확장 · No.641-650<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_66.고등 워드마스터 컴플릿 Day22 (No.651-660).html" target="_blank">
+  <span class="num-badge">66</span>
+  <span class="range">No.651-660</span>
+</a>
+<a class="card card-exp" href="학습_66-a.고등 워드마스터 컴플릿 Day22 확장 (No.651-660 관련어 25개).html" target="_blank">
+  <span class="num-badge">66-a</span>
+  <span class="range">확장 · No.651-660<br><span class='range'>관련어 25개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day23</div>
+  <div class="card-grid">
+<a class="card" href="학습_67.고등 워드마스터 컴플릿 Day23 (No.661-670).html" target="_blank">
+  <span class="num-badge">67</span>
+  <span class="range">No.661-670</span>
+</a>
+<a class="card card-exp" href="학습_67-a.고등 워드마스터 컴플릿 Day23 확장 (No.661-670 관련어 29개).html" target="_blank">
+  <span class="num-badge">67-a</span>
+  <span class="range">확장 · No.661-670<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_68.고등 워드마스터 컴플릿 Day23 (No.671-680).html" target="_blank">
+  <span class="num-badge">68</span>
+  <span class="range">No.671-680</span>
+</a>
+<a class="card card-exp" href="학습_68-a.고등 워드마스터 컴플릿 Day23 확장 (No.671-680 관련어 35개).html" target="_blank">
+  <span class="num-badge">68-a</span>
+  <span class="range">확장 · No.671-680<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_69.고등 워드마스터 컴플릿 Day23 (No.681-690).html" target="_blank">
+  <span class="num-badge">69</span>
+  <span class="range">No.681-690</span>
+</a>
+<a class="card card-exp" href="학습_69-a.고등 워드마스터 컴플릿 Day23 확장 (No.681-690 관련어 17개).html" target="_blank">
+  <span class="num-badge">69-a</span>
+  <span class="range">확장 · No.681-690<br><span class='range'>관련어 17개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day24</div>
+  <div class="card-grid">
+<a class="card" href="학습_70.고등 워드마스터 컴플릿 Day24 (No.691-700).html" target="_blank">
+  <span class="num-badge">70</span>
+  <span class="range">No.691-700</span>
+</a>
+<a class="card card-exp" href="학습_70-a.고등 워드마스터 컴플릿 Day24 확장 (No.691-700 관련어 31개).html" target="_blank">
+  <span class="num-badge">70-a</span>
+  <span class="range">확장 · No.691-700<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_71.고등 워드마스터 컴플릿 Day24 (No.701-710).html" target="_blank">
+  <span class="num-badge">71</span>
+  <span class="range">No.701-710</span>
+</a>
+<a class="card card-exp" href="학습_71-a.고등 워드마스터 컴플릿 Day24 확장 (No.701-710 관련어 24개).html" target="_blank">
+  <span class="num-badge">71-a</span>
+  <span class="range">확장 · No.701-710<br><span class='range'>관련어 24개</span></span>
+</a>
+<a class="card" href="학습_72.고등 워드마스터 컴플릿 Day24 (No.711-720).html" target="_blank">
+  <span class="num-badge">72</span>
+  <span class="range">No.711-720</span>
+</a>
+<a class="card card-exp" href="학습_72-a.고등 워드마스터 컴플릿 Day24 확장 (No.711-720 관련어 18개).html" target="_blank">
+  <span class="num-badge">72-a</span>
+  <span class="range">확장 · No.711-720<br><span class='range'>관련어 18개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day25</div>
+  <div class="card-grid">
+<a class="card" href="학습_73.고등 워드마스터 컴플릿 Day25 (No.721-730).html" target="_blank">
+  <span class="num-badge">73</span>
+  <span class="range">No.721-730</span>
+</a>
+<a class="card card-exp" href="학습_73-a.고등 워드마스터 컴플릿 Day25 확장 (No.721-730 관련어 37개).html" target="_blank">
+  <span class="num-badge">73-a</span>
+  <span class="range">확장 · No.721-730<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_74.고등 워드마스터 컴플릿 Day25 (No.731-740).html" target="_blank">
+  <span class="num-badge">74</span>
+  <span class="range">No.731-740</span>
+</a>
+<a class="card card-exp" href="학습_74-a.고등 워드마스터 컴플릿 Day25 확장 (No.731-740 관련어 28개).html" target="_blank">
+  <span class="num-badge">74-a</span>
+  <span class="range">확장 · No.731-740<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_75.고등 워드마스터 컴플릿 Day25 (No.741-750).html" target="_blank">
+  <span class="num-badge">75</span>
+  <span class="range">No.741-750</span>
+</a>
+<a class="card card-exp" href="학습_75-a.고등 워드마스터 컴플릿 Day25 확장 (No.741-750 관련어 18개).html" target="_blank">
+  <span class="num-badge">75-a</span>
+  <span class="range">확장 · No.741-750<br><span class='range'>관련어 18개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day26</div>
+  <div class="card-grid">
+<a class="card" href="학습_76.고등 워드마스터 컴플릿 Day26 (No.751-760).html" target="_blank">
+  <span class="num-badge">76</span>
+  <span class="range">No.751-760</span>
+</a>
+<a class="card card-exp" href="학습_76-a.고등 워드마스터 컴플릿 Day26 확장 (No.751-760 관련어 28개).html" target="_blank">
+  <span class="num-badge">76-a</span>
+  <span class="range">확장 · No.751-760<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_77.고등 워드마스터 컴플릿 Day26 (No.761-770).html" target="_blank">
+  <span class="num-badge">77</span>
+  <span class="range">No.761-770</span>
+</a>
+<a class="card card-exp" href="학습_77-a.고등 워드마스터 컴플릿 Day26 확장 (No.761-770 관련어 23개).html" target="_blank">
+  <span class="num-badge">77-a</span>
+  <span class="range">확장 · No.761-770<br><span class='range'>관련어 23개</span></span>
+</a>
+<a class="card" href="학습_78.고등 워드마스터 컴플릿 Day26 (No.771-780).html" target="_blank">
+  <span class="num-badge">78</span>
+  <span class="range">No.771-780</span>
+</a>
+<a class="card card-exp" href="학습_78-a.고등 워드마스터 컴플릿 Day26 확장 (No.771-780 관련어 22개).html" target="_blank">
+  <span class="num-badge">78-a</span>
+  <span class="range">확장 · No.771-780<br><span class='range'>관련어 22개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day27</div>
+  <div class="card-grid">
+<a class="card" href="학습_79.고등 워드마스터 컴플릿 Day27 (No.781-790).html" target="_blank">
+  <span class="num-badge">79</span>
+  <span class="range">No.781-790</span>
+</a>
+<a class="card card-exp" href="학습_79-a.고등 워드마스터 컴플릿 Day27 확장 (No.781-790 관련어 35개).html" target="_blank">
+  <span class="num-badge">79-a</span>
+  <span class="range">확장 · No.781-790<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_80.고등 워드마스터 컴플릿 Day27 (No.791-800).html" target="_blank">
+  <span class="num-badge">80</span>
+  <span class="range">No.791-800</span>
+</a>
+<a class="card card-exp" href="학습_80-a.고등 워드마스터 컴플릿 Day27 확장 (No.791-800 관련어 31개).html" target="_blank">
+  <span class="num-badge">80-a</span>
+  <span class="range">확장 · No.791-800<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_81.고등 워드마스터 컴플릿 Day27 (No.801-810).html" target="_blank">
+  <span class="num-badge">81</span>
+  <span class="range">No.801-810</span>
+</a>
+<a class="card card-exp" href="학습_81-a.고등 워드마스터 컴플릿 Day27 확장 (No.801-810 관련어 20개).html" target="_blank">
+  <span class="num-badge">81-a</span>
+  <span class="range">확장 · No.801-810<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day28</div>
+  <div class="card-grid">
+<a class="card" href="학습_82.고등 워드마스터 컴플릿 Day28 (No.811-820).html" target="_blank">
+  <span class="num-badge">82</span>
+  <span class="range">No.811-820</span>
+</a>
+<a class="card card-exp" href="학습_82-a.고등 워드마스터 컴플릿 Day28 확장 (No.811-820 관련어 28개).html" target="_blank">
+  <span class="num-badge">82-a</span>
+  <span class="range">확장 · No.811-820<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_83.고등 워드마스터 컴플릿 Day28 (No.821-830).html" target="_blank">
+  <span class="num-badge">83</span>
+  <span class="range">No.821-830</span>
+</a>
+<a class="card card-exp" href="학습_83-a.고등 워드마스터 컴플릿 Day28 확장 (No.821-830 관련어 26개).html" target="_blank">
+  <span class="num-badge">83-a</span>
+  <span class="range">확장 · No.821-830<br><span class='range'>관련어 26개</span></span>
+</a>
+<a class="card" href="학습_84.고등 워드마스터 컴플릿 Day28 (No.831-840).html" target="_blank">
+  <span class="num-badge">84</span>
+  <span class="range">No.831-840</span>
+</a>
+<a class="card card-exp" href="학습_84-a.고등 워드마스터 컴플릿 Day28 확장 (No.831-840 관련어 22개).html" target="_blank">
+  <span class="num-badge">84-a</span>
+  <span class="range">확장 · No.831-840<br><span class='range'>관련어 22개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day29</div>
+  <div class="card-grid">
+<a class="card" href="학습_85.고등 워드마스터 컴플릿 Day29 (No.841-850).html" target="_blank">
+  <span class="num-badge">85</span>
+  <span class="range">No.841-850</span>
+</a>
+<a class="card card-exp" href="학습_85-a.고등 워드마스터 컴플릿 Day29 확장 (No.841-850 관련어 26개).html" target="_blank">
+  <span class="num-badge">85-a</span>
+  <span class="range">확장 · No.841-850<br><span class='range'>관련어 26개</span></span>
+</a>
+<a class="card" href="학습_86.고등 워드마스터 컴플릿 Day29 (No.851-860).html" target="_blank">
+  <span class="num-badge">86</span>
+  <span class="range">No.851-860</span>
+</a>
+<a class="card card-exp" href="학습_86-a.고등 워드마스터 컴플릿 Day29 확장 (No.851-860 관련어 26개).html" target="_blank">
+  <span class="num-badge">86-a</span>
+  <span class="range">확장 · No.851-860<br><span class='range'>관련어 26개</span></span>
+</a>
+<a class="card" href="학습_87.고등 워드마스터 컴플릿 Day29 (No.861-870).html" target="_blank">
+  <span class="num-badge">87</span>
+  <span class="range">No.861-870</span>
+</a>
+<a class="card card-exp" href="학습_87-a.고등 워드마스터 컴플릿 Day29 확장 (No.861-870 관련어 20개).html" target="_blank">
+  <span class="num-badge">87-a</span>
+  <span class="range">확장 · No.861-870<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day30</div>
+  <div class="card-grid">
+<a class="card" href="학습_88.고등 워드마스터 컴플릿 Day30 (No.871-880).html" target="_blank">
+  <span class="num-badge">88</span>
+  <span class="range">No.871-880</span>
+</a>
+<a class="card card-exp" href="학습_88-a.고등 워드마스터 컴플릿 Day30 확장 (No.871-880 관련어 29개).html" target="_blank">
+  <span class="num-badge">88-a</span>
+  <span class="range">확장 · No.871-880<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_89.고등 워드마스터 컴플릿 Day30 (No.881-890).html" target="_blank">
+  <span class="num-badge">89</span>
+  <span class="range">No.881-890</span>
+</a>
+<a class="card card-exp" href="학습_89-a.고등 워드마스터 컴플릿 Day30 확장 (No.881-890 관련어 28개).html" target="_blank">
+  <span class="num-badge">89-a</span>
+  <span class="range">확장 · No.881-890<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_90.고등 워드마스터 컴플릿 Day30 (No.891-900).html" target="_blank">
+  <span class="num-badge">90</span>
+  <span class="range">No.891-900</span>
+</a>
+<a class="card card-exp" href="학습_90-a.고등 워드마스터 컴플릿 Day30 확장 (No.891-900 관련어 18개).html" target="_blank">
+  <span class="num-badge">90-a</span>
+  <span class="range">확장 · No.891-900<br><span class='range'>관련어 18개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day31</div>
+  <div class="card-grid">
+<a class="card" href="학습_91.고등 워드마스터 컴플릿 Day31 (No.901-910).html" target="_blank">
+  <span class="num-badge">91</span>
+  <span class="range">No.901-910</span>
+</a>
+<a class="card card-exp" href="학습_91-a.고등 워드마스터 컴플릿 Day31 확장 (No.901-910 관련어 38개).html" target="_blank">
+  <span class="num-badge">91-a</span>
+  <span class="range">확장 · No.901-910<br><span class='range'>관련어 38개</span></span>
+</a>
+<a class="card" href="학습_92.고등 워드마스터 컴플릿 Day31 (No.911-920).html" target="_blank">
+  <span class="num-badge">92</span>
+  <span class="range">No.911-920</span>
+</a>
+<a class="card card-exp" href="학습_92-a.고등 워드마스터 컴플릿 Day31 확장 (No.911-920 관련어 22개).html" target="_blank">
+  <span class="num-badge">92-a</span>
+  <span class="range">확장 · No.911-920<br><span class='range'>관련어 22개</span></span>
+</a>
+<a class="card" href="학습_93.고등 워드마스터 컴플릿 Day31 (No.921-930).html" target="_blank">
+  <span class="num-badge">93</span>
+  <span class="range">No.921-930</span>
+</a>
+<a class="card card-exp" href="학습_93-a.고등 워드마스터 컴플릿 Day31 확장 (No.921-930 관련어 22개).html" target="_blank">
+  <span class="num-badge">93-a</span>
+  <span class="range">확장 · No.921-930<br><span class='range'>관련어 22개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day32</div>
+  <div class="card-grid">
+<a class="card" href="학습_94.고등 워드마스터 컴플릿 Day32 (No.931-940).html" target="_blank">
+  <span class="num-badge">94</span>
+  <span class="range">No.931-940</span>
+</a>
+<a class="card card-exp" href="학습_94-a.고등 워드마스터 컴플릿 Day32 확장 (No.931-940 관련어 31개).html" target="_blank">
+  <span class="num-badge">94-a</span>
+  <span class="range">확장 · No.931-940<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_95.고등 워드마스터 컴플릿 Day32 (No.941-950).html" target="_blank">
+  <span class="num-badge">95</span>
+  <span class="range">No.941-950</span>
+</a>
+<a class="card card-exp" href="학습_95-a.고등 워드마스터 컴플릿 Day32 확장 (No.941-950 관련어 33개).html" target="_blank">
+  <span class="num-badge">95-a</span>
+  <span class="range">확장 · No.941-950<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_96.고등 워드마스터 컴플릿 Day32 (No.951-960).html" target="_blank">
+  <span class="num-badge">96</span>
+  <span class="range">No.951-960</span>
+</a>
+<a class="card card-exp" href="학습_96-a.고등 워드마스터 컴플릿 Day32 확장 (No.951-960 관련어 25개).html" target="_blank">
+  <span class="num-badge">96-a</span>
+  <span class="range">확장 · No.951-960<br><span class='range'>관련어 25개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day33</div>
+  <div class="card-grid">
+<a class="card" href="학습_97.고등 워드마스터 컴플릿 Day33 (No.961-970).html" target="_blank">
+  <span class="num-badge">97</span>
+  <span class="range">No.961-970</span>
+</a>
+<a class="card card-exp" href="학습_97-a.고등 워드마스터 컴플릿 Day33 확장 (No.961-970 관련어 31개).html" target="_blank">
+  <span class="num-badge">97-a</span>
+  <span class="range">확장 · No.961-970<br><span class='range'>관련어 31개</span></span>
+</a>
+<a class="card" href="학습_98.고등 워드마스터 컴플릿 Day33 (No.971-980).html" target="_blank">
+  <span class="num-badge">98</span>
+  <span class="range">No.971-980</span>
+</a>
+<a class="card card-exp" href="학습_98-a.고등 워드마스터 컴플릿 Day33 확장 (No.971-980 관련어 25개).html" target="_blank">
+  <span class="num-badge">98-a</span>
+  <span class="range">확장 · No.971-980<br><span class='range'>관련어 25개</span></span>
+</a>
+<a class="card" href="학습_99.고등 워드마스터 컴플릿 Day33 (No.981-990).html" target="_blank">
+  <span class="num-badge">99</span>
+  <span class="range">No.981-990</span>
+</a>
+<a class="card card-exp" href="학습_99-a.고등 워드마스터 컴플릿 Day33 확장 (No.981-990 관련어 23개).html" target="_blank">
+  <span class="num-badge">99-a</span>
+  <span class="range">확장 · No.981-990<br><span class='range'>관련어 23개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day34</div>
+  <div class="card-grid">
+<a class="card" href="학습_100.고등 워드마스터 컴플릿 Day34 (No.991-1000).html" target="_blank">
+  <span class="num-badge">100</span>
+  <span class="range">No.991-1000</span>
+</a>
+<a class="card card-exp" href="학습_100-a.고등 워드마스터 컴플릿 Day34 확장 (No.991-1000 관련어 28개).html" target="_blank">
+  <span class="num-badge">100-a</span>
+  <span class="range">확장 · No.991-1000<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_101.고등 워드마스터 컴플릿 Day34 (No.1001-1010).html" target="_blank">
+  <span class="num-badge">101</span>
+  <span class="range">No.1001-1010</span>
+</a>
+<a class="card card-exp" href="학습_101-a.고등 워드마스터 컴플릿 Day34 확장 (No.1001-1010 관련어 29개).html" target="_blank">
+  <span class="num-badge">101-a</span>
+  <span class="range">확장 · No.1001-1010<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_102.고등 워드마스터 컴플릿 Day34 (No.1011-1020).html" target="_blank">
+  <span class="num-badge">102</span>
+  <span class="range">No.1011-1020</span>
+</a>
+<a class="card card-exp" href="학습_102-a.고등 워드마스터 컴플릿 Day34 확장 (No.1011-1020 관련어 20개).html" target="_blank">
+  <span class="num-badge">102-a</span>
+  <span class="range">확장 · No.1011-1020<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day35</div>
+  <div class="card-grid">
+<a class="card" href="학습_103.고등 워드마스터 컴플릿 Day35 (No.1021-1030).html" target="_blank">
+  <span class="num-badge">103</span>
+  <span class="range">No.1021-1030</span>
+</a>
+<a class="card card-exp" href="학습_103-a.고등 워드마스터 컴플릿 Day35 확장 (No.1021-1030 관련어 37개).html" target="_blank">
+  <span class="num-badge">103-a</span>
+  <span class="range">확장 · No.1021-1030<br><span class='range'>관련어 37개</span></span>
+</a>
+<a class="card" href="학습_104.고등 워드마스터 컴플릿 Day35 (No.1031-1040).html" target="_blank">
+  <span class="num-badge">104</span>
+  <span class="range">No.1031-1040</span>
+</a>
+<a class="card card-exp" href="학습_104-a.고등 워드마스터 컴플릿 Day35 확장 (No.1031-1040 관련어 32개).html" target="_blank">
+  <span class="num-badge">104-a</span>
+  <span class="range">확장 · No.1031-1040<br><span class='range'>관련어 32개</span></span>
+</a>
+<a class="card" href="학습_105.고등 워드마스터 컴플릿 Day35 (No.1041-1050).html" target="_blank">
+  <span class="num-badge">105</span>
+  <span class="range">No.1041-1050</span>
+</a>
+<a class="card card-exp" href="학습_105-a.고등 워드마스터 컴플릿 Day35 확장 (No.1041-1050 관련어 20개).html" target="_blank">
+  <span class="num-badge">105-a</span>
+  <span class="range">확장 · No.1041-1050<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day36</div>
+  <div class="card-grid">
+<a class="card" href="학습_106.고등 워드마스터 컴플릿 Day36 (No.1051-1060).html" target="_blank">
+  <span class="num-badge">106</span>
+  <span class="range">No.1051-1060</span>
+</a>
+<a class="card card-exp" href="학습_106-a.고등 워드마스터 컴플릿 Day36 확장 (No.1051-1060 관련어 35개).html" target="_blank">
+  <span class="num-badge">106-a</span>
+  <span class="range">확장 · No.1051-1060<br><span class='range'>관련어 35개</span></span>
+</a>
+<a class="card" href="학습_107.고등 워드마스터 컴플릿 Day36 (No.1061-1070).html" target="_blank">
+  <span class="num-badge">107</span>
+  <span class="range">No.1061-1070</span>
+</a>
+<a class="card card-exp" href="학습_107-a.고등 워드마스터 컴플릿 Day36 확장 (No.1061-1070 관련어 28개).html" target="_blank">
+  <span class="num-badge">107-a</span>
+  <span class="range">확장 · No.1061-1070<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_108.고등 워드마스터 컴플릿 Day36 (No.1071-1080).html" target="_blank">
+  <span class="num-badge">108</span>
+  <span class="range">No.1071-1080</span>
+</a>
+<a class="card card-exp" href="학습_108-a.고등 워드마스터 컴플릿 Day36 확장 (No.1071-1080 관련어 24개).html" target="_blank">
+  <span class="num-badge">108-a</span>
+  <span class="range">확장 · No.1071-1080<br><span class='range'>관련어 24개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day37</div>
+  <div class="card-grid">
+<a class="card" href="학습_109.고등 워드마스터 컴플릿 Day37 (No.1081-1090).html" target="_blank">
+  <span class="num-badge">109</span>
+  <span class="range">No.1081-1090</span>
+</a>
+<a class="card card-exp" href="학습_109-a.고등 워드마스터 컴플릿 Day37 확장 (No.1081-1090 관련어 34개).html" target="_blank">
+  <span class="num-badge">109-a</span>
+  <span class="range">확장 · No.1081-1090<br><span class='range'>관련어 34개</span></span>
+</a>
+<a class="card" href="학습_110.고등 워드마스터 컴플릿 Day37 (No.1091-1100).html" target="_blank">
+  <span class="num-badge">110</span>
+  <span class="range">No.1091-1100</span>
+</a>
+<a class="card card-exp" href="학습_110-a.고등 워드마스터 컴플릿 Day37 확장 (No.1091-1100 관련어 29개).html" target="_blank">
+  <span class="num-badge">110-a</span>
+  <span class="range">확장 · No.1091-1100<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_111.고등 워드마스터 컴플릿 Day37 (No.1101-1110).html" target="_blank">
+  <span class="num-badge">111</span>
+  <span class="range">No.1101-1110</span>
+</a>
+<a class="card card-exp" href="학습_111-a.고등 워드마스터 컴플릿 Day37 확장 (No.1101-1110 관련어 20개).html" target="_blank">
+  <span class="num-badge">111-a</span>
+  <span class="range">확장 · No.1101-1110<br><span class='range'>관련어 20개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day38</div>
+  <div class="card-grid">
+<a class="card" href="학습_112.고등 워드마스터 컴플릿 Day38 (No.1111-1120).html" target="_blank">
+  <span class="num-badge">112</span>
+  <span class="range">No.1111-1120</span>
+</a>
+<a class="card card-exp" href="학습_112-a.고등 워드마스터 컴플릿 Day38 확장 (No.1111-1120 관련어 28개).html" target="_blank">
+  <span class="num-badge">112-a</span>
+  <span class="range">확장 · No.1111-1120<br><span class='range'>관련어 28개</span></span>
+</a>
+<a class="card" href="학습_113.고등 워드마스터 컴플릿 Day38 (No.1121-1130).html" target="_blank">
+  <span class="num-badge">113</span>
+  <span class="range">No.1121-1130</span>
+</a>
+<a class="card card-exp" href="학습_113-a.고등 워드마스터 컴플릿 Day38 확장 (No.1121-1130 관련어 29개).html" target="_blank">
+  <span class="num-badge">113-a</span>
+  <span class="range">확장 · No.1121-1130<br><span class='range'>관련어 29개</span></span>
+</a>
+<a class="card" href="학습_114.고등 워드마스터 컴플릿 Day38 (No.1131-1140).html" target="_blank">
+  <span class="num-badge">114</span>
+  <span class="range">No.1131-1140</span>
+</a>
+<a class="card card-exp" href="학습_114-a.고등 워드마스터 컴플릿 Day38 확장 (No.1131-1140 관련어 24개).html" target="_blank">
+  <span class="num-badge">114-a</span>
+  <span class="range">확장 · No.1131-1140<br><span class='range'>관련어 24개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day39</div>
+  <div class="card-grid">
+<a class="card" href="학습_115.고등 워드마스터 컴플릿 Day39 (No.1141-1150).html" target="_blank">
+  <span class="num-badge">115</span>
+  <span class="range">No.1141-1150</span>
+</a>
+<a class="card card-exp" href="학습_115-a.고등 워드마스터 컴플릿 Day39 확장 (No.1141-1150 관련어 39개).html" target="_blank">
+  <span class="num-badge">115-a</span>
+  <span class="range">확장 · No.1141-1150<br><span class='range'>관련어 39개</span></span>
+</a>
+<a class="card" href="학습_116.고등 워드마스터 컴플릿 Day39 (No.1151-1160).html" target="_blank">
+  <span class="num-badge">116</span>
+  <span class="range">No.1151-1160</span>
+</a>
+<a class="card card-exp" href="학습_116-a.고등 워드마스터 컴플릿 Day39 확장 (No.1151-1160 관련어 33개).html" target="_blank">
+  <span class="num-badge">116-a</span>
+  <span class="range">확장 · No.1151-1160<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_117.고등 워드마스터 컴플릿 Day39 (No.1161-1170).html" target="_blank">
+  <span class="num-badge">117</span>
+  <span class="range">No.1161-1170</span>
+</a>
+<a class="card card-exp" href="학습_117-a.고등 워드마스터 컴플릿 Day39 확장 (No.1161-1170 관련어 22개).html" target="_blank">
+  <span class="num-badge">117-a</span>
+  <span class="range">확장 · No.1161-1170<br><span class='range'>관련어 22개</span></span>
+</a>
+  </div>
+</div>
+<div class="day-block">
+  <div class="day-title">Day40</div>
+  <div class="card-grid">
+<a class="card" href="학습_118.고등 워드마스터 컴플릿 Day40 (No.1171-1180).html" target="_blank">
+  <span class="num-badge">118</span>
+  <span class="range">No.1171-1180</span>
+</a>
+<a class="card card-exp" href="학습_118-a.고등 워드마스터 컴플릿 Day40 확장 (No.1171-1180 관련어 33개).html" target="_blank">
+  <span class="num-badge">118-a</span>
+  <span class="range">확장 · No.1171-1180<br><span class='range'>관련어 33개</span></span>
+</a>
+<a class="card" href="학습_119.고등 워드마스터 컴플릿 Day40 (No.1181-1190).html" target="_blank">
+  <span class="num-badge">119</span>
+  <span class="range">No.1181-1190</span>
+</a>
+<a class="card card-exp" href="학습_119-a.고등 워드마스터 컴플릿 Day40 확장 (No.1181-1190 관련어 30개).html" target="_blank">
+  <span class="num-badge">119-a</span>
+  <span class="range">확장 · No.1181-1190<br><span class='range'>관련어 30개</span></span>
+</a>
+<a class="card" href="학습_120.고등 워드마스터 컴플릿 Day40 (No.1191-1200).html" target="_blank">
+  <span class="num-badge">120</span>
+  <span class="range">No.1191-1200</span>
+</a>
+<a class="card card-exp" href="학습_120-a.고등 워드마스터 컴플릿 Day40 확장 (No.1191-1200 관련어 23개).html" target="_blank">
+  <span class="num-badge">120-a</span>
+  <span class="range">확장 · No.1191-1200<br><span class='range'>관련어 23개</span></span>
+</a>
+  </div>
+</div>
+</div>
 </body>
 </html>
