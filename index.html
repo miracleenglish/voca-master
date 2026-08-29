@@ -33,7 +33,7 @@
   .guide-inner{background:#fff;border-radius:16px;padding:16px 22px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(35,41,70,.06);font-size:14.5px;font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.6;}
 
   /* 상위탭: 교재 선택 */
-  .series-wrap{max-width:1120px;margin:22px auto 0;padding:0 20px;}
+  .series-wrap{max-width:1120px;margin:22px auto 28px;padding:0 20px;}
   .series-group-label{font-size:13.5px;font-weight:800;color:var(--muted);letter-spacing:1px;margin:24px 0 12px 4px;font-family:'Noto Sans KR',sans-serif;text-transform:uppercase;}
   .series-bar{display:flex;flex-wrap:wrap;gap:12px;padding-bottom:2px;}
   .series-btn{min-width:0;flex:0 1 calc(25% - 9px);}
@@ -74,6 +74,8 @@
   main{max-width:1120px;margin:0 auto;padding:24px 20px 60px;}
   .series-panel{display:none;}
   .series-panel.show{display:block;}
+  .series-panel{background:var(--card);border:1.5px solid var(--border);border-radius:22px;padding:26px 28px 30px;box-shadow:0 6px 22px rgba(35,41,70,.06);}
+  @media (max-width:600px){ .series-panel{padding:20px 18px 24px;border-radius:18px;} }
 
   #hs-basic{--accent:var(--blue);--accent-light:var(--blue-light);}
   #hs-suneung{--accent:var(--green);--accent-light:var(--green-light);}
