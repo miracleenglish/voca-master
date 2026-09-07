@@ -357,7 +357,7 @@ function buildProg(){
   SENTS.forEach(function(_,i){var d=document.createElement('div');d.className='prog-dot';d.id='pd-'+i;p.appendChild(d);});
 }
 
-const AUDIO_PREFIX="audio/set020_s";let __curAudioEl=null;function spk(text,rate){return new Promise(function(res){if(__curAudioEl){__curAudioEl.pause();__curAudioEl.currentTime=0;}var idx=SENTS.indexOf(text);if(idx===-1){res();return;}__curAudioEl=new Audio(AUDIO_PREFIX+(idx+1)+'.mp3');__curAudioEl.playbackRate=userRate(rate);__curAudioEl.onended=res;__curAudioEl.onerror=res;var p=__curAudioEl.play();if(p&&p.catch)p.catch(function(){res();});});}
+const AUDIO_PREFIX="audio/set020_s";let __curAudioEl=null;const AUDIO_PREFIX="audio/set020_s";const AUDIO_RATE_BOOST=0.15;function audioRate(rate){var v=rate+AUDIO_RATE_BOOST+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}let __curAudioEl=null;function spk(text,rate){return new Promise(function(res){if(__curAudioEl){__curAudioEl.pause();__curAudioEl.currentTime=0;}var idx=SENTS.indexOf(text);if(idx===-1){res();return;}__curAudioEl=new Audio(AUDIO_PREFIX+(idx+1)+'.mp3');__curAudioEl.playbackRate=audioRate(rate);__curAudioEl.onended=res;__curAudioEl.onerror=res;var p=__curAudioEl.play();if(p&&p.catch)p.catch(function(){res();});});}
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
 function spkW(w){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);},100);}
 function cleanKo(t){var s = t.replace(/\s*\(cf\.[^)]*\)/gi, '');s = s.replace(/\s*\/\s*/g, ', ');s = s.replace(/\([a-zA-Z][a-zA-Z\s]*\)/g,'');s = s.replace(/\(([^)]*)\)/g,'$1 ');s = s.replace(/[~\u223c\uff5e\u00b7\u2022\u203b\u2192\u2194\u2025\u2026\u2013\u2014]/g,' ');s = s.replace(/\s{2,}/g,' ').replace(/[,\s]+$/,'').trim();return s;}
@@ -401,21 +401,7 @@ function stopAll(){stopReq=true;syn.cancel();['listen','read'].forEach(function(
 function setSpd(rate,btn){spd=rate;document.querySelectorAll('.ctrl-bar .btn-sm').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');}
 function setDspd(rate,key){dspd=rate;['normal','slow'].forEach(function(k){document.getElementById('ds-'+k).classList.remove('sel');});document.getElementById('ds-'+key).classList.add('sel');}
 
-function buildDict(){
-  var con=document.getElementById('dict-list');con.innerHTML='';
-  SENTS.forEach(function(s,i){
-    var card=document.createElement('div');card.className='dict-card';
-    var num=document.createElement('div');num.className='d-num';num.id='dn-'+i;num.textContent=i+1;
-    num.addEventListener('click',function(){
-      document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});
-      num.classList.add('pd');syn.cancel();setTimeout(function(){
-      var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=userRate(dspd);
-      u.onend=function(){num.classList.remove('pd');};syn.speak(u);},100);
-    });
-    var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
-    card.appendChild(num);card.appendChild(hint);con.appendChild(card);
-  });
-}
+function buildDict(){var c=document.getElementById('dict-list');c.innerHTML='';SENTS.forEach(function(s,i){var card=document.createElement('div');card.className='dict-card';var num=document.createElement('div');num.className='d-num';num.id='dn-'+i;num.textContent=i+1;num.onclick=function(){document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});num.classList.add('pd');spk(s,dspd).then(function(){num.classList.remove('pd');});};var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';card.appendChild(num);card.appendChild(hint);c.appendChild(card);});}
 
 function buildMC(){
   var con=document.getElementById('mc-wrap');con.innerHTML='';
