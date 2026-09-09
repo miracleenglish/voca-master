@@ -260,17 +260,9 @@ function spkKo(t){
   },100);
 }
 
-function spk(t,r){return new Promise(function(res){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=userRate(r||0.8);u.onend=res;u.onerror=res;syn.speak(u);},100);});}
+const AUDIO_RATE_BOOST=0.15;function audioRate(rate,boostOverride){var boost=(typeof boostOverride==='number')?boostOverride:AUDIO_RATE_BOOST;var v=rate+boost+ttsOffset;if(v<0.1)v=0.1;if(v>2.5)v=2.5;return v;}let __curAudioEl=null;const SENT_PREFIX="audio/sa02_r";function spk(t,r){return new Promise(function(res){if(__curAudioEl){__curAudioEl.pause();__curAudioEl.currentTime=0;}var idx=FLAT.findIndex(function(x){return x.exA===t;});var suf="_a";if(idx===-1){idx=FLAT.findIndex(function(x){return x.exB===t;});suf="_b";}if(idx===-1){res();return;}__curAudioEl=new Audio(SENT_PREFIX+(idx+1)+suf+".mp3");__curAudioEl.playbackRate=audioRate(r||0.8);__curAudioEl.onended=res;__curAudioEl.onerror=res;var p=__curAudioEl.play();if(p&&p.catch)p.catch(function(){res();});});}
 function spkW(w){syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=userRate(0.85);syn.speak(u);},100);}
-function spkWordThenMeaning(word,meaning){
-  syn.cancel();
-  setTimeout(function(){
-    var u=new SpeechSynthesisUtterance(word);
-    u.lang='en-US';u.rate=userRate(0.85);
-    u.onend=function(){ spkKo(meaning); };
-    syn.speak(u);
-  },100);
-}
+function spkWordThenMeaning(word,meaning){var idx=FLAT.findIndex(function(x){return x.word===word&&x.m===meaning;});if(idx>=0){var a=new Audio(SENT_PREFIX+(idx+1)+"_w.mp3");a.playbackRate=1.0;a.onended=function(){var b=new Audio(SENT_PREFIX+(idx+1)+"_ko.mp3");b.playbackRate=1.0;b.play();};a.play();return;}syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(word);u.lang="en-US";u.rate=userRate(0.85);u.onend=function(){spkKo(meaning);};syn.speak(u);},100);}
 function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
 
 // ===== 탭 전환 =====
@@ -425,19 +417,7 @@ async function playAll(tab){
 }
 
 // ===== ⑤ 받아쓰기 — 정답 단어를 화면에 노출하지 않음 =====
-function buildDict(){
-  var con=document.getElementById('dict-list');con.innerHTML='';
-  var lvl=LVL.dict;
-  FLAT.forEach(function(it,i){
-    var sent=lvl==='A'?it.exA:it.exB;
-    var card=document.createElement('div');card.className='sent-card';
-    var num=document.createElement('div');num.className='s-num';num.id='dn-'+i;num.textContent=i+1;
-    num.addEventListener('click',function(){document.querySelectorAll('.s-num').forEach(function(n){n.classList.remove('playing');});num.classList.add('playing');syn.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(sent);u.lang='en-US';u.rate=userRate(0.8);u.onend=function(){num.classList.remove('playing');};syn.speak(u);},100);});
-    var hint=document.createElement('div');hint.className='s-txt';
-    hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
-    card.appendChild(num);card.appendChild(hint);con.appendChild(card);
-  });
-}
+function buildDict(){var con=document.getElementById('dict-list');con.innerHTML='';var lvl=LVL.dict;FLAT.forEach(function(it,i){var sent=lvl==='A'?it.exA:it.exB;var card=document.createElement('div');card.className='sent-card';var num=document.createElement('div');num.className='s-num';num.id='dn-'+i;num.textContent=i+1;num.addEventListener('click',function(){document.querySelectorAll('.s-num').forEach(function(n){n.classList.remove('playing');});num.classList.add('playing');spk(sent,0.8).then(function(){num.classList.remove('playing');});});var hint=document.createElement('div');hint.className='s-txt';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';card.appendChild(num);card.appendChild(hint);con.appendChild(card);});}
 
 // ===== ⑥⑦ 퀴즈 공용 — 정답/오답 텍스트 해설 포함 =====
 var qState={match:{},form:{}};
