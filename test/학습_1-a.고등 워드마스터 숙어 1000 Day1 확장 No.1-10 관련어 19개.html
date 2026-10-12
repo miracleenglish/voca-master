@@ -204,7 +204,7 @@ function resetTtsOffset(){ttsOffset=0;try{localStorage.setItem("wm_ttsOffset",0)
 
 // ===== 복잡 문장 판별 및 간격 (v13 확정값) =====
 function isComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|while|that|before|after|who|since|throughout|such as)\b/i.test(s);}
-var LISTEN_GAP_A=1500,LISTEN_GAP_B=1200;
+var LISTEN_GAP_A=1200,LISTEN_GAP_B=900;
 function shadowGap(s){return isComplex(s)?2500:1800;}
 function readGap(s,lvl){var g=isComplex(s)?10500:6500;if(lvl==='B')g=Math.max(g,8500);return g;}
 
