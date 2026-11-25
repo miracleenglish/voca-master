@@ -1018,12 +1018,12 @@ function pmTap(b){
   var fi=parseInt(b.getAttribute('data-id'),10),left=b.classList.contains('pm-l');
   window.stopAll();
   if(left){document.querySelectorAll('.pm-tile.pm-l.sel').forEach(function(e){e.classList.remove('sel');});b.classList.add('sel');PM.sel=fi;playUrl(urlW(fi),1.0);}
-  else{document.querySelectorAll('.pm-tile.pm-r.sel').forEach(function(e){e.classList.remove('sel');});b.classList.add('sel');PM.selR=fi;playUrl(KIND==='da'?urlKo(fi):urlMain(gidxOf(fi)),1.0);}
+  else{document.querySelectorAll('.pm-tile.pm-r.sel').forEach(function(e){e.classList.remove('sel');});b.classList.add('sel');PM.selR=fi;if(KIND!=='da')playUrl(urlMain(gidxOf(fi)),1.0);}
   if(PM.sel!==null&&PM.selR!==null)pmCheck();
 }
 async function pmSpeak(l,r){
   window.stopAll();var my=run;
-  if(KIND==='da'){await playUrl(urlW(r),1.0);if(my!==run)return;await wait(300);if(my!==run)return;await playUrl(urlKo(r),1.0);}
+  if(KIND==='da'){await playUrl(urlKo(r),1.0);}
   else{await playUrl(urlW(l),1.0);if(my!==run)return;await wait(300);if(my!==run)return;await playUrl(urlKo(l),1.0);}
 }
 function pmCheck(){
