@@ -111,6 +111,15 @@
   .coming-box .cd{font-size:12.5px;line-height:1.7;}
 
   footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;font-family:'Noto Sans KR',sans-serif;}
+  .to-top{position:fixed;right:16px;bottom:20px;width:60px;height:64px;border-radius:14px;border:2px solid #fff;background:#3a4a8f;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(35,41,70,.45);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:50;padding:0;font-family:inherit}
+  .to-top svg{width:26px;height:26px}
+  .to-top span{font-size:13px;font-weight:800;letter-spacing:.5px;line-height:1}
+  .to-top.show{display:flex}.to-top:hover{background:#ff6fa5;transform:translateY(-2px)}
+
+  .mode-toggle{display:inline-flex;gap:6px;margin-left:12px;vertical-align:middle}
+  .mode-toggle button{border:1.5px solid #cfd6e4;background:#fff;color:#556;border-radius:18px;padding:5px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+  .mode-toggle button.on{background:#2a6db5;color:#fff;border-color:#2a6db5}
+  .mode-toggle button.pg.on{background:#e8890c;border-color:#e8890c}
 </style>
 </head>
 <body>
@@ -163,7 +172,7 @@
 <main>
 <div id="hs-basic" class="series-panel show">
   <div class="series-head">
-    <h2>고등 워드마스터 Basic · No.1~1200</h2>
+    <h2>고등 워드마스터 Basic · No.1~1200</h2><span class="mode-toggle" data-panel="hs-basic"><button class="on" onclick="setMode('hs-basic','study',this)">📖 학습</button><button class="pg" onclick="setMode('hs-basic','play',this)">🎮 스펠링 놀이터</button></span>
   </div>
 
       <div class="day-section">
@@ -799,7 +808,7 @@
 </div>
 <div id="hs-polyext" class="series-panel">
   <div class="series-head">
-    <h2>고등 워드마스터 Basic 다의어확장 · 385개 의미</h2>
+    <h2>고등 워드마스터 Basic 다의어확장 · 385개 의미</h2><span class="mode-toggle" data-panel="hs-polyext"><button class="on" onclick="setMode('hs-polyext','study',this)">📖 학습</button><button class="pg" onclick="setMode('hs-polyext','play',this)">🎮 스펠링 놀이터</button></span>
     <span class="lv">본단어 하나가 여러 의미를 가질 때, 그 의미들을 한 세트로 묶어 학습</span>
   </div>
   <div class="day-section">
@@ -910,7 +919,7 @@
 </div>
 <div id="hs-synant" class="series-panel">
   <div class="series-head">
-    <h2>고등 워드마스터 Basic 동의어·반의어확장 · 287개 관계</h2>
+    <h2>고등 워드마스터 Basic 동의어·반의어확장 · 287개 관계</h2><span class="mode-toggle" data-panel="hs-synant"><button class="on" onclick="setMode('hs-synant','study',this)">📖 학습</button><button class="pg" onclick="setMode('hs-synant','play',this)">🎮 스펠링 놀이터</button></span>
     <span class="lv">본단어의 동의어·반의어를 별도 항목으로 학습 (No.3~1136)</span>
   </div>
   <div class="day-section">
@@ -3539,6 +3548,7 @@
 </div>
 </main>
 
+<button id="toTop" class="to-top" onclick="goTop()" aria-label="맨 위로" title="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg><span>TOP</span></button>
 <footer>미라클 영어 스터디 · 보카 마스터</footer>
 
 <script>
@@ -3548,6 +3558,23 @@ function showSeries(id, btn){
   document.querySelectorAll('.series-panel').forEach(p => p.classList.remove('show'));
   const el = document.getElementById(id);
   if(el) el.classList.add('show');
+}
+function goTop(){try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}}
+window.addEventListener('scroll',function(){var b=document.getElementById('toTop');if(!b)return;var y=window.pageYOffset||document.documentElement.scrollTop||0;b.classList.toggle('show',y>300);});
+function setMode(pid,mode,btn){
+  const panel=document.getElementById(pid); if(!panel) return;
+  btn.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on')); btn.classList.add('on');
+  const EXT=['다의어확장_','동의어반의어확장_'];
+  panel.querySelectorAll('a.card').forEach(a=>{
+    const x=a.getAttribute('href'); if(!x) return;
+    if(mode==='play'){
+      if(x.indexOf('학습_')===0) a.setAttribute('href','놀이터_'+x.slice(3));
+      else if(EXT.some(p=>x.indexOf(p)===0)) a.setAttribute('href','놀이터_'+x);
+    } else if(x.indexOf('놀이터_')===0){
+      const r=x.slice(4);
+      a.setAttribute('href', EXT.some(p=>r.indexOf(p)===0) ? r : '학습_'+r);
+    }
+  });
 }
 </script>
 </body>
