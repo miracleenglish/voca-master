@@ -5,24 +5,235 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>수능2000동의어반의어확장_35.고등 워마 수능2000 확장 (No.1774~1812 — 24개 관계항목).html</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
+<style>*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI','Apple SD Gothic Neo',sans-serif;background:#f0f4f8;color:#2d3a4a;min-height:100vh}
-header{background:#fff;padding:14px 24px;border-bottom:2px solid #d0dcea;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header{background:#fff;padding:14px 24px;border-bottom:2px solid #d0dcea;display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(0,0,0,.07)}
 header h1{font-size:15px;color:#2a6db5;font-weight:700}
-.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 18px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}
-.tts-tune b{color:#5a4400}
-.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}
-.tts-tune button:hover{background:#ffdd80}
-.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}
-.tabs{display:flex;background:#fff;padding:0 10px;gap:2px;border-bottom:2px solid #d0dcea;overflow-x:auto}
-.tab-btn{padding:10px 13px;font-size:13px;font-weight:600;color:#8090a8;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.badge{background:#e8f0fb;color:#5080b0;font-size:12px;padding:3px 10px;border-radius:20px}
+.tabs{display:flex;background:#fff;padding:0 10px;gap:2px;border-bottom:2px solid #d0dcea;overflow-x:auto;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.tab-btn{padding:10px 13px;font-size:13px;font-weight:600;color:#8090a8;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
 .tab-btn:hover{color:#4070b0}
 .tab-btn.active{color:#2a6db5;border-bottom-color:#2a6db5}
 .panel{display:none;padding:20px 18px;max-width:820px;margin:0 auto}
 .panel.active{display:block}
 .panel-title{font-size:17px;font-weight:700;color:#2a6db5;margin-bottom:5px}
 .panel-desc{font-size:13px;color:#8090a8;margin-bottom:16px;line-height:1.6}
+.passage-box{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:22px;margin-bottom:16px;line-height:2.1;font-size:16px;color:#2d3a4a;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.p-title{font-size:13px;color:#8090a8;margin-bottom:10px;font-style:italic;font-weight:600}
+.hl{color:#c05010;font-weight:700}
+.ctrl-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn{padding:9px 18px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-play{background:#2a6db5;color:#fff}.btn-play:hover{background:#3580cc}
+.btn-stop{background:#c0392b;color:#fff}.btn-stop:hover{background:#e74c3c}
+.btn-sm{background:#fff;color:#4070b0;border:1px solid #b0c8e8;padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-sm:hover{background:#e8f0fb}
+.btn-sm.sel{background:#dceeff;border-color:#2a6db5;color:#2a6db5}
+.spd-label{font-size:12px;color:#8090a8}
+.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:16px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}.now-box .now-txt{flex:1}
+.now-box .lbl{color:#5090c0;font-size:12px;font-weight:700;margin-right:8px}
+.sent-list{display:flex;flex-direction:column;gap:8px}
+.sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:border-color .2s}
+.sent-card.playing{border-color:#2a6db5;background:#f0f7ff}
+.s-num{min-width:27px;height:27px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
+.s-num:hover{background:#c0dcf0}
+.s-num.playing{background:#2a6db5;color:#fff}
+.s-txt{font-size:15px;color:#2d3a4a;line-height:1.6;flex:1}
+.shadow-box{background:#fff;border:1px solid #d0dcea;border-radius:14px;padding:44px 24px;text-align:center;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.shadow-box .mic{font-size:52px;margin-bottom:14px}
+.sh-status{font-size:17px;color:#3060a0;font-weight:700}
+.sh-hint{font-size:13px;color:#a0b0c0;margin-top:8px}
+.prog-row{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:#d0dcea;transition:background .3s}
+.prog-dot.done{background:#2a6db5}
+.prog-dot.cur{background:#e07030;transform:scale(1.3)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:11px;margin-bottom:18px}
+.flip-card{height:120px;perspective:800px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .4s}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:13px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.flip-front{background:#fff;border:2px solid #d0dcea}
+.flip-back{background:#2a6db5;color:#fff;transform:rotateY(180deg)}
+.f-word{font-size:16px;font-weight:700;color:#1a3a60}
+.f-pos{font-size:11px;color:#8090a8;margin-top:3px}
+.f-snd{font-size:17px;margin-top:6px;color:#2a6db5;cursor:pointer}
+.f-mean{font-size:13px;font-weight:600}
+.f-ex{font-size:11px;margin-top:5px;color:#cce0ff;line-height:1.4}
+.sec-title{font-size:13px;font-weight:700;color:#5080a0;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid #d0dcea}
+.idiom-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.idiom-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:13px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.idiom-phrase{font-size:15px;font-weight:700;color:#2a6db5}
+.idiom-mean{font-size:14px;color:#3a4a60;margin-top:3px}
+.idiom-ex{font-size:13px;color:#8090a8;font-style:italic;margin-top:4px}
+.dict-list{display:flex;flex-direction:column;gap:10px}
+.dict-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:13px 15px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.d-num{min-width:34px;height:34px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
+.d-num:hover{background:#c0dcf0}
+.d-num.pd{background:#2a6db5;color:#fff}
+.d-hint{font-size:13px;color:#a0b0c0;font-style:italic}
+.quiz-wrap{display:flex;flex-direction:column;gap:16px}
+.q-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.q-num{font-size:13px;font-weight:700;color:#5080a0;margin-bottom:6px}
+.q-text{font-size:15px;color:#2d3a4a;line-height:1.6;margin-bottom:4px}
+.q-ko{font-size:14px;color:#1a2a4a;font-style:italic;font-weight:700;margin-bottom:12px}
+.blank-span{display:inline-block;width:110px;height:1.2em;border-bottom:2.5px solid #2a6db5;vertical-align:middle;margin:0 4px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{background:#f4f8fc;border:1px solid #d0dcea;border-radius:8px;padding:9px 12px;font-size:14px;color:#2d3a4a;cursor:pointer;text-align:left;transition:all .15s}
+.opt:hover{background:#e0f0ff;border-color:#90b8e0}
+.opt.ok{background:#e8f8ee;border-color:#4caf50;color:#1a6030;font-weight:700}
+.opt.ng{background:#fdecea;border-color:#e74c3c;color:#8a1a1a}
+.opt:disabled{cursor:default}
+.exp{display:none;margin-top:11px;background:#f8fafc;border-left:3px solid #2a6db5;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#3a4a60;line-height:1.7}
+.exp.show{display:block}
+.exp-lbl{color:#5060a0;font-style:italic;margin-bottom:3px;font-weight:600}
+.chip-area{display:flex;flex-wrap:wrap;gap:7px;padding:9px;border:1px dashed #b0c8e0;border-radius:8px;min-height:44px;background:#fafcff;margin-bottom:9px}
+.chip{background:#e0ecf8;color:#1a3a60;padding:6px 13px;border-radius:20px;font-size:14px;cursor:pointer;transition:all .15s;user-select:none;font-weight:500}
+.chip:hover{background:#c0d8f0}
+.chip.used{opacity:.3;cursor:default}
+.ans-area{min-height:40px;padding:8px 12px;border:1px solid #c0d8ea;border-radius:8px;margin-bottom:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff}
+.ans-chip{background:#2a6db5;color:#fff;padding:5px 12px;border-radius:20px;font-size:14px;cursor:pointer;font-weight:500}
+.ans-chip:hover{background:#1a5090}
+.ro-result{font-size:13px;font-weight:700;min-height:20px;margin-top:4px}
+.ro-result.ok{color:#27a060}
+.ro-result.ng{color:#c0392b}
+.ro-q{font-size:13px;color:#3a4a60;font-weight:700;margin-bottom:9px}
+.score-bar{background:#fff;border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;border:1px solid #d0dcea;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sc-item{font-size:14px;color:#6080a0}
+.sc-item strong{color:#c05010;font-size:18px}
+.btn-reset{margin-left:auto;background:#e8f0fb;color:#4070b0;border:none;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer}
+.btn-reset:hover{background:#d0e4f8}
+@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}.tts-tune{display:flex;align-items:center;gap:8px;background:#fff8e6;border:1px solid #f0d998;border-radius:10px;padding:8px 12px;margin:10px 0;font-size:13px;color:#7a5c00;flex-wrap:wrap}.tts-tune b{color:#5a4400}.tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}.tts-tune button:hover{background:#ffdd80}.tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}
+/* ===== v2 추가 스타일 ===== */
+.tag-pos{display:inline-block;background:#e8f0fb;color:#2a6db5;border-radius:6px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:4px}
+.modebar{display:flex;gap:8px;max-width:820px;margin:10px auto 0;padding:0 14px}
+.modebar .md{flex:1;text-align:center;padding:11px 8px;border-radius:12px;border:2px solid #d0dcea;background:#fff;color:#4070b0;font-weight:800;font-size:14px;text-decoration:none}
+.modebar .md.on{background:#2a6db5;border-color:#2a6db5;color:#fff}
+.modebar .md.play{border-color:#ff8a3d;color:#e5701f}
+.play-go{display:block;margin:26px auto 8px;max-width:520px;text-align:center;text-decoration:none;background:linear-gradient(135deg,#ff8a3d,#ffb347);color:#fff;border-radius:18px;padding:20px 16px;box-shadow:0 6px 18px rgba(229,112,31,.35);animation:pgpulse 1.8s ease-in-out infinite}
+.play-go b{display:block;font-size:21px;font-weight:900}.play-go span{display:block;font-size:13px;margin-top:4px;opacity:.95}
+@keyframes pgpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.audio-notice{display:none;background:#fff8e6;border:1px solid #f0d998;color:#7a5c00;border-radius:10px;padding:9px 14px;margin:0 0 12px;font-size:12.5px;line-height:1.5}
+.xp-list{display:flex;flex-direction:column;gap:12px}
+.xp-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:15px 17px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.xp-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.xp-no{min-width:26px;height:26px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.xp-word{font-size:19px;font-weight:800;color:#1a3a60}
+.xp-mean{font-size:15px;font-weight:700;color:#c05010;margin-bottom:8px;line-height:1.6}
+.xp-def{font-size:14.5px;color:#2d3a4a;line-height:1.8;background:#f4f8fc;border-radius:8px;padding:9px 12px;margin-bottom:8px}
+.xp-ex{font-size:14px;color:#3a4a60;line-height:1.7}
+.xp-lbl{display:inline-block;background:#2a6db5;color:#fff;border-radius:6px;font-size:11px;font-weight:700;padding:1px 7px;margin-right:4px}
+.xp-ex mark{background:#fff0b8;color:#7a3a00;font-weight:700;padding:0 2px;border-radius:3px}
+.read-card{align-items:flex-start}
+.read-box{flex:1}
+.rd-word{font-size:17px;font-weight:800;color:#1a3a60}
+.rd-sent{font-size:15px;color:#2d3a4a;line-height:1.6;margin-top:2px}
+.rd-mean{display:inline-block;font-size:14px;font-weight:700;color:#c05010;margin-top:5px}
+.rd-ko{font-size:13px;color:#5a6a85;margin-top:2px}
+.kohide{display:none}.read-card.ko-on .kohide{display:block}
+.btn-ko-row{margin-left:auto;flex-shrink:0;background:#fff;border:1.5px solid #c05010;color:#c05010;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.btn-ko-row:hover{background:#fff2e8}
+.read-pair{display:flex;flex-direction:column;gap:5px;margin-bottom:9px}
+.s-num-w{min-width:42px;border-radius:14px;padding:0 6px}
+.btn-ko{background:#fff;border:1.5px solid #c05010;color:#c05010;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
+.btn-ko:hover{background:#fff2e8}
+.dict-re{margin-left:auto;font-size:14px;font-weight:700;padding:10px 14px;background:#3a4a8f;color:#fff;border:0;border-radius:10px}
+.btn-sm.dict-re:hover,.btn-sm.dict-re:focus,.btn-sm.dict-re:active{background:#ff6fa5;color:#fff;border:0;outline:none}
+.dict-foot{margin-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.dict-ans{width:100%;background:#f4f7fc;border:1px solid #d5deee;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.9;color:#2d3a4a}
+.da-n{display:inline-block;min-width:22px;color:#c05010;font-weight:700}.da-ko{color:#5070a0}
+/* 탭 한 화면 */
+.tabs{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;padding:8px 10px;overflow:visible;border-bottom:2px solid #d0dcea}
+.tab-btn{grid-column:span 4;padding:9px 2px;font-size:13px;line-height:1.25;text-align:center;white-space:normal;word-break:keep-all;border:1.5px solid #d0dcea;border-radius:10px;background:#f4f8fd;color:#5a6b86}
+.tab-btn:nth-child(-n+4){grid-column:span 3}
+.tab-btn.active{background:#2a6db5;color:#fff;border-color:#2a6db5}
+.tab-btn:hover{color:#2a6db5}.tab-btn.active:hover{color:#fff}
+header h1{min-width:0;overflow-wrap:anywhere}
+
+/* ===== v3 추가 ===== */
+.q-sec{font-size:14px;font-weight:800;color:#1a3a60;background:#eef4fb;border-left:4px solid #2a6db5;border-radius:6px;padding:9px 12px;margin:6px 0 2px}
+.step-head{display:flex;flex-direction:column;gap:2px;background:#eef4ff;border-left:4px solid #2a6db5;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:6px}
+.step-head b{font-size:15px;color:#1a3a60}.step-head span{font-size:12.5px;color:#5a6a85}
+.q-en{font-size:18px;color:#1a3a60}.mini-snd{cursor:pointer;margin-left:2px}
+.q-sent{font-size:15px;color:#2d3a4a;line-height:1.6;margin:4px 0 8px}.q-sent b{color:#c05010;font-size:18px}
+.exp-sub{color:#6a7a95;font-size:12.5px}
+.to-top{position:fixed;right:16px;bottom:20px;width:60px;height:64px;border-radius:14px;border:2px solid #fff;background:#3a4a8f;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(35,41,70,.45);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:50;padding:0;font-family:inherit}
+.to-top svg{width:26px;height:26px}.to-top span{font-size:13px;font-weight:800;letter-spacing:.5px;line-height:1}
+.to-top.show{display:flex}.to-top:hover{background:#ff6fa5;transform:translateY(-2px)}
+body{padding-bottom:110px}
+@media (max-width:600px){.to-top{width:46px;height:50px;right:10px;bottom:14px;border-radius:12px;border-width:2px}.to-top svg{width:20px;height:20px}.to-top span{font-size:10.5px}.pm-next{right:68px;left:10px;bottom:14px;font-size:16px;padding:13px 8px}}
+.pm-dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 10px}.pm-sep{height:0;border-top:2px dashed #c4d3e6;margin:14px 0}
+.pm-open{display:grid;grid-template-columns:1fr 1fr;gap:9px 10px}.pm-open>.pm-tile,.pm-dgrid>.pm-tile{min-height:74px;height:100%}.pm-tile.pm-s{flex-direction:column;gap:6px}.pm-t-s{font-size:15.5px!important;line-height:1.55}
+.pm-t-w{font-size:22px;font-weight:800;color:#17306b}.pm-tile.done .pm-t-w{color:#fff}
+.pm-hint{border:1.5px solid #c05010;background:#fff;color:#c05010;border-radius:8px;padding:3px 9px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.pm-t-k{display:none;font-size:13px;color:#4a5a78;line-height:1.5;word-break:keep-all}.pm-t-k.show{display:block}
+.pm-tile.done.pm-s .pm-t-s{font-size:14px!important}
+.xp-sense.multi{border-top:1px dashed #d0dcea;padding-top:10px;margin-top:10px}
+.xp-cir{font-weight:800;color:#2a6db5;margin-right:4px}
+.rd-mean{font-weight:800;color:#c05010}.rd-other{color:#7a8aa5;font-size:13px}
+.pm-reset{font-size:16px!important;font-weight:800;padding:10px 18px!important;background:#7b5cc4!important;color:#fff!important;border:0!important;border-radius:12px}
+.pm-status{background:#f4f8fc;border:1px solid #d0dcea;border-radius:12px;padding:11px 14px;font-size:14.5px;color:#2d3a4a;margin-bottom:12px}
+.pm-focus{border-radius:14px;padding:12px;margin-bottom:14px;min-height:84px;display:flex;flex-direction:column;justify-content:center;background:#f6f9fd;border:2px dashed #c4d3e6}
+.pm-focus.ok{background:#f1faf3;border:2px solid #7ccb8a}.pm-focus.bad{background:#fff5f5;border:2px solid #e88}
+.pm-fb{font-size:14.5px;color:#3a4a6a;font-weight:600;text-align:center;line-height:1.6}
+.pm-ok{font-size:13px;font-weight:800;color:#2f9a4e}.pm-cw{font-size:20px;font-weight:800;color:#17306b;margin:2px 0}.pm-cm{color:#c05010;font-size:17px}.pm-ce{font-size:14px;color:#3a4a60;line-height:1.6}.pm-ce b{color:#c05010}
+.pm-fin{margin-top:10px;text-align:center;font-weight:800;color:#7b5cc4}
+.pm-next{display:none;position:fixed;left:16px;right:92px;bottom:20px;z-index:60;font-size:18px;font-weight:800;padding:16px 12px;background:#f08a00;color:#fff;border:3px solid #fff;border-radius:16px;cursor:pointer;box-shadow:0 8px 22px rgba(160,80,0,.5);animation:pmPulse 1.1s ease-in-out infinite}@keyframes pmPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}.pm-next:hover{background:#d97800}
+.pm-hdr{display:flex;gap:10px}.pm-hdr>div{flex:1}.pm-hdr{margin-bottom:8px}
+.pm-col{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0}
+.pm-colh{text-align:center;font-weight:800;font-size:13px;color:#8090a8}
+.pm-tile{min-height:76px;border:2.5px solid #b9c9de;background:#fff;border-radius:14px;padding:9px 8px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;font-family:inherit;word-break:keep-all}
+.pm-tile:hover{border-color:#6f93c8}
+.pm-t-s{font-size:13.5px;line-height:1.5;color:#2d3a4a;word-break:normal}.pm-t-s b{color:#c05010;background:#fff0b8;padding:0 2px;border-radius:3px}
+.pm-t-m{font-size:15px;font-weight:700;color:#17306b;line-height:1.45}
+.pm-tile.sel{border-color:#7b5cc4;background:#f3eefc;box-shadow:0 0 0 3px rgba(123,92,196,.25)}
+.pm-tile.done{cursor:default;background:#2a6db5;border-color:#2a6db5}.pm-tile.done .pm-t-s,.pm-tile.done .pm-t-m{color:#fff}.pm-tile.done .pm-t-s b{background:rgba(255,255,255,.25);color:#fff}.pm-tile.done .tag-pos{background:rgba(255,255,255,.3);color:#fff}
+.pm-tile.bad{animation:pmshake .4s;border-color:#e55;background:#fff2f2}
+@keyframes pmshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ===== 확장 전용 추가 ===== */
+.rel-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;color:#fff;flex-shrink:0;display:inline-block}
+.rel-tag.syn{background:#2E9E5B}.rel-tag.ant{background:#c05010}.rel-tag.der{background:#3f6fd6}.rel-tag.spell{background:#a04500}.rel-tag.mean{background:#7050b0}
+.f-pos .rel-tag{margin-right:3px}
+.s-w{color:#c05010;font-weight:700}
+.lvl-bar{display:flex;gap:8px;margin-bottom:14px}
+.lvl-btn{padding:7px 16px;border-radius:99px;border:1.5px solid #d0dcea;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#5a6a80}
+.lvl-btn.sel{background:#e0ecf8;border-color:#2a6db5;color:#2a6db5}
+.pm-tile.stack{flex-direction:column;gap:3px}
+.pm-t-p{font-size:11px;color:#8090a8}.pm-tile.done .pm-t-p{color:#dbe8ff}
+.q-hint-btn{background:#fff6e0;border:1.5px solid #f0c060;color:#8a5a00;font-size:13px;font-weight:700;border-radius:999px;padding:6px 14px;margin:2px 0 10px;cursor:pointer;font-family:inherit}.q-hint-btn:active{background:#ffe9b0}
+.pm-t-h{font-size:12px;color:#7a8aa0;display:none}.pm-open.hint .pm-t-h{display:block}
+.xp-mean .rel-tag{margin-right:4px;vertical-align:middle}
+.pm-card{border-radius:16px;padding:14px 12px;width:100%}
+.pm-card.rs{background:#eaf2ff;border:2px solid #2a6db5;--c:#2a6db5;--cl:#d6e6ff}.pm-card.ra{background:#fff0e8;border:2px solid #d9531e;--c:#d9531e;--cl:#ffe0d0}
+.vc-plabel{font-size:14px;font-weight:800;margin-bottom:8px}.rs>.vc-plabel{color:#2a6db5}.ra>.vc-plabel{color:#d9531e}
+.vc-cmp{display:flex;align-items:center;justify-content:space-around;gap:6px}
+.vc-side{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}
+.vc-pw{font-size:24px;font-weight:800;color:#17306b;word-break:keep-all}.vc-pw.head{color:#444}
+.vc-pm{font-size:18px;font-weight:700;color:#c05010;line-height:1.35}
+.vc-sym{font-size:34px;font-weight:900;line-height:1}.rs .vc-sym{color:#2a6db5}.ra .vc-sym{color:#d9531e}
+.vc-note{text-align:center;font-size:14px;font-weight:700;margin-top:10px;color:#3a4a6a}
+.vc-ex{background:#f6f9fd;border-radius:14px;padding:14px;text-align:left;margin-top:12px}
+.vc-en{font-size:18px;line-height:1.5;color:#1a2a44;font-weight:600}.vc-en .hl{color:var(--c);font-weight:800;background:var(--cl);padding:0 4px;border-radius:5px}
+.vc-eko{font-size:15px;color:#4a7bb5;margin-top:4px}
+.pm-focus.ok:has(.pm-card){background:#fff;border:0;padding:0}
+.pm-replay{text-align:center;margin-top:8px}
+.pm-logh{display:none;font-size:15px;font-weight:800;color:#1a3a60;margin:20px 0 8px}
+.pm-logrow{margin-bottom:10px}.pm-logrow .pm-card{padding:10px}.pm-logrow .vc-pw{font-size:20px}.pm-logrow .vc-pm{font-size:16px}.pm-logrow .vc-note{margin-top:6px;font-size:13px}.pm-logrow .vc-sym{font-size:26px}
+.pm-tile.stack{min-height:104px;align-items:center;justify-content:center;text-align:center}
+.pm-board,.pm-tile{min-width:0;max-width:100%}.pm-tile .pm-t-w{overflow-wrap:anywhere;word-break:break-word}.pm-tile.stack{padding-left:6px;padding-right:6px}
+.pm-t-q{font-size:12px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:#2a6db5}
+.pm-tile.pm-l.rat .pm-t-q{background:#d9531e}
+.pm-tile.stack .pm-t-m{display:none}.pm-t-m{font-size:14px;color:#c05010;font-weight:700}
+.pm-open.hint .pm-t-m{display:block}
+.pm-tile.done.rs{background:#2a6db5;border-color:#2a6db5}.pm-tile.done.ra{background:#d9531e;border-color:#d9531e}
+.pm-tile.done .pm-t-w,.pm-tile.done .pm-t-m{color:#fff;display:block}.pm-tile.done .pm-t-q{background:rgba(255,255,255,.3)}
+.xp-sense,.xp-sense.multi{border:none;border-left:5px solid #2a6db5;background:#f7faff;border-radius:0 10px 10px 0;padding:10px 12px 10px 14px;margin:12px 0 0}
+.xp-sense .xp-mean{margin-bottom:8px}
+.xp-sense .xp-def,.xp-sense .xp-ex{margin-left:16px}
+#panel-listen .sent-list{gap:9px}
+#panel-listen .sent-card{padding:11px 15px;gap:11px}
+#panel-listen .s-num{font-size:12px}
+#panel-listen .s-txt{font-size:14.5px;line-height:1.55}
+#panel-listen .now-box{font-size:15px}
 .group-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .group-main{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
 .group-main .w{font-size:19px;font-weight:800;color:#1a3a60}
@@ -41,154 +252,132 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 .rel-m{font-size:12.5px;color:#5a6a80;flex-basis:100%;padding-left:2px}
 .play-btn{background:#e0ecf8;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;color:#2a6db5;font-size:12px;flex-shrink:0}
 .play-btn:hover{background:#c0dcf0}
-.sent-card{background:#fff;border:1px solid #d0dcea;border-radius:10px;padding:11px 15px;margin-bottom:9px;display:flex;align-items:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.sent-card.playing{border-color:#2a6db5;background:#f0f7ff}
-.s-txt{font-size:14.5px;color:#2d3a4a;line-height:1.55;flex:1}
-.s-num{min-width:27px;height:27px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
-.s-num.playing{background:#2a6db5;color:#fff}
-.s-w{color:#c05010;font-weight:700}
-.now-box{background:#e8f4ff;border:1px solid #b0d0f0;border-radius:10px;padding:13px 18px;margin-bottom:13px;font-size:15px;color:#1a3a60;line-height:1.7;min-height:52px;display:flex;align-items:center}
-.now-box .now-txt{flex:1}
-.ctrl-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.btn{padding:9px 18px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
-.btn-primary{background:#2a6db5;color:#fff}
-.btn-primary:hover{background:#1e5490}
-.btn-stop{background:#c05010;color:#fff}
-.btn-stop:hover{background:#a04000}
-.spd-label{font-size:12px;color:#8090a8;margin-left:6px}
-.spd-btn{padding:6px 12px;border-radius:6px;border:1.5px solid #d0dcea;background:#fff;font-size:12px;cursor:pointer;color:#4070b0}
-.spd-btn.sel{background:#2a6db5;color:#fff;border-color:#2a6db5}
-.lvl-bar{display:flex;gap:8px;margin-bottom:14px}
-.lvl-btn{padding:7px 16px;border-radius:99px;border:1.5px solid #d0dcea;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#5a6a80}
-.lvl-btn.sel{background:#e0ecf8;border-color:#2a6db5;color:#2a6db5}
-.shadow-box{background:#fff;border:1px solid #d0dcea;border-radius:14px;padding:44px 24px;text-align:center;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.mic{font-size:52px;margin-bottom:14px}
-.sh-status{font-size:17px;color:#3060a0;font-weight:700}
-.sh-hint{font-size:13px;color:#a0b0c0;margin-top:8px}
-.prog-row{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
-.prog-dot{width:12px;height:12px;border-radius:50%;background:#d0dcea;transition:background .3s}
-.prog-dot.cur{background:#e07030;transform:scale(1.3)}
-.prog-dot.done{background:#2a6db5}
-.q-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:18px;margin-bottom:14px}
-.q-num{font-size:12px;color:#8090a8;font-weight:700;margin-bottom:6px}
-.q-text{font-size:15.5px;color:#1a3a60;margin-bottom:4px;font-weight:600}
-.q-ko{font-size:14px;color:#1a2a4a;font-style:italic;font-weight:700;margin-bottom:12px}
-.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.q-opt{padding:10px 14px;border:1.5px solid #d0dcea;border-radius:8px;background:#fff;font-size:13.5px;cursor:pointer;text-align:left;color:#2d3a4a}
-.q-opt:hover{border-color:#4070b0}
-.q-opt.correct{background:#e8f7ef;border-color:#2E9E5B;color:#1E7A44;font-weight:700}
-.q-opt.wrong{background:#fdeee8;border-color:#c05010;color:#a04500}
-.q-feedback{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.7;display:none}
-.q-feedback.show{display:block}
-.q-feedback.ok{background:#e8f7ef;color:#1E7A44;border:1px solid #b8e4c8}
-.q-feedback.no{background:#fdeee8;color:#a04500;border:1px solid #f0c8a8}
-.q-feedback .fb-title{font-weight:800;margin-bottom:4px;font-size:13.5px}
-.score-bar{display:flex;align-items:center;gap:14px;margin-bottom:16px;background:#fff;padding:12px 18px;border-radius:10px;border:1px solid #d0dcea}
-.sc-item{font-size:13px;color:#5a6a80}
-.sc-item strong{color:#2a6db5;font-size:16px}
-.btn-reset{margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid #d0dcea;background:#fff;font-size:12.5px;cursor:pointer;color:#5a6a80}
-</style>
+.modebar{display:flex;gap:8px;max-width:820px;margin:10px auto 0;padding:0 14px}.modebar .md{flex:1;text-align:center;padding:11px 8px;border-radius:12px;border:2px solid #d0dcea;background:#fff;color:#4070b0;font-weight:800;font-size:14px;text-decoration:none}.modebar .md.on{background:#2a6db5;border-color:#2a6db5;color:#fff}.modebar .md.play{border-color:#ff8a3d;color:#e5701f}</style>
 </head>
 <body>
 <header>
-  <h1>고등 워마 수능2000 확장 &nbsp;|&nbsp; 동의어·반의어확장 35번 (No.1774~1812)</h1>
+  <h1>고등 워마 수능2000 &nbsp;|&nbsp; 동의어·반의어확장 35 (No.1774&ndash;1812)</h1>
+  <span class="badge">단어장 · 한글 뜻 풀이 · 짝 맞추기 · 집중듣기 · 따라말하기 · 낭독 · 관계매칭퀴즈 · 빈칸형태고르기 · 문장 받아쓰기 · 단어 받아쓰기</span>
 </header>
-<div class="tts-tune">
-  <b>🔊 내 기기 음성 속도 미세조정</b>
-  <button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button>
-  <span id="ttOffsetLabel">기본</span>
-  <button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button>
-  <button class="tt-reset" onclick="resetTtsOffset()">초기화</button>
-</div>
+<div class="modebar"><a class="md on">📖 학습</a><a class="md play" href="%EB%86%80%EC%9D%B4%ED%84%B0_%EC%88%98%EB%8A%A52000%EB%8F%99%EC%9D%98%EC%96%B4%EB%B0%98%EC%9D%98%EC%96%B4%ED%99%95%EC%9E%A5_35.%EA%B3%A0%EB%93%B1%20%EC%9B%8C%EB%A7%88%20%EC%88%98%EB%8A%A52000%20%ED%99%95%EC%9E%A5%20%28No.1774~1812%20%E2%80%94%2024%EA%B0%9C%20%EA%B4%80%EA%B3%84%ED%95%AD%EB%AA%A9%29.html">🎮 스펠링 놀이터</a></div><div class="tts-tune"><b>🔊 내 기기 음성 속도 미세조정</b><button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button><span id="ttOffsetLabel">기본</span><button onclick="adjustTtsOffset(0.05)">＋ 더 빠르게</button><button class="tt-reset" onclick="resetTtsOffset()">초기화</button></div>
 <div class="tabs">
   <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
-  <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
-  <button class="tab-btn" onclick="goTab('shadow',this)">③ 따라말하기</button>
-  <button class="tab-btn" onclick="goTab('read',this)">④ 낭독</button>
-  <button class="tab-btn" onclick="goTab('dict',this)">⑤ 받아쓰기</button>
-  <button class="tab-btn" onclick="goTab('match',this)">⑥ 관계매칭퀴즈</button>
-  <button class="tab-btn" onclick="goTab('form',this)">⑦ 빈칸형태고르기</button>
+  <button class="tab-btn" onclick="goTab('explain',this)">② 한글 뜻 풀이</button>
+  <button class="tab-btn" onclick="goTab('pair',this)">③ 짝 맞추기</button>
+  <button class="tab-btn" onclick="goTab('listen',this)">④ 집중듣기</button>
+  <button class="tab-btn" onclick="goTab('shadow',this)">⑤ 따라말하기</button>
+  <button class="tab-btn" onclick="goTab('read',this)">⑥ 낭독</button>
+  <button class="tab-btn" onclick="goTab('match',this)">⑦ 관계매칭퀴즈</button>
+  <button class="tab-btn" onclick="goTab('form',this)">⑧ 빈칸형태고르기</button>
+  <button class="tab-btn" onclick="goTab('dict',this)">⑨ 문장 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('wdict',this)">⑩ 단어 받아쓰기</button>
 </div>
+
 <div class="panel active" id="panel-vocab">
 <div class="panel-title">① 단어장 (관계형)</div>
 <div class="panel-desc">본단어를 중심으로 동의어·반의어·파생어·철자주의 단어를 함께 살펴보세요. 🔊를 누르면 영어 단어와 한글 뜻을 순서대로 들을 수 있어요.</div>
 <div id="vocab-list"></div>
 </div>
-<div class="panel" id="panel-listen">
-<div class="panel-title">② 집중듣기</div>
-<div class="panel-desc">관련어별 예문을 들어보세요. 난이도를 선택할 수 있어요.</div>
-<div class="lvl-bar" id="listen-lvl">
-  <button class="lvl-btn sel" onclick="setLvl('listen','A',this)">A (쉬운)</button>
-  <button class="lvl-btn" onclick="setLvl('listen','B',this)">B (심화)</button>
+<div id="panel-explain" class="panel">
+  <div class="panel-title">② 한글 뜻 풀이</div>
+  <div class="panel-desc">한글 뜻이 무슨 말인지 쉬운 말로 풀어 주고, 그 말이 들어간 예문을 보여 줘요. 눈으로 읽으며 한글 뜻을 이해해 보세요.</div>
+  <div class="xp-list" id="ex-list"></div>
 </div>
-<div class="now-box" id="listen-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
-<div class="ctrl-bar">
-  <button class="btn btn-primary" onclick="playAll('listen')">▶ 전체 재생</button>
-  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
-  <span class="spd-label">속도</span>
-  <button class="spd-btn" onclick="setSpd(0.75,this,'listen')">느리게</button>
-  <button class="spd-btn sel" onclick="setSpd(0.8,this,'listen')">보통</button>
-  <button class="spd-btn" onclick="setSpd(1.1,this,'listen')">빠르게</button>
+<div id="panel-pair" class="panel">
+  <div class="panel-title">③ 짝 맞추기</div>
+  <div class="panel-desc">왼쪽 단어를 누르고, 오른쪽 본편 단어 중에서 짝인 <b style="color:#2a6db5">비슷한 말</b> 또는 <b style="color:#d9531e">반대말</b>을 찾아 눌러요. 맞추면 두 단어의 뜻과 관계가 크게 나와요. 다 맞추면 아래 주황색 <b>다음 문제 풀기</b> 버튼을 눌러요.</div>
+  <div class="ctrl-bar"><button class="btn-sm pm-reset" onclick="pmReset()">🔀 처음부터 다시</button><button class="btn-sm" id="pm-hintbtn" onclick="pmToggleHint()">💡 뜻 힌트 켜기</button></div>
+  <div class="pm-status" id="pm-status"></div>
+  <div class="pm-focus" id="pm-focus"></div>
+  <div class="pm-board" id="pm-board"></div>
+  <div class="pm-logh" id="pm-logh">📚 맞춘 짝 정리</div>
+  <div id="pm-log"></div>
+  <button class="pm-next" id="pm-next" onclick="pmNext()">👉 다음 문제 풀기 ▶</button>
 </div>
-<div id="listen-list"></div>
+<div id="panel-listen" class="panel">
+  <div class="panel-title">④ 집중듣기</div>
+  <div class="panel-desc">뜻마다 예문을 하나씩 들어요. 난이도를 고를 수 있어요.</div>
+  <div class="lvl-bar"><button class="lvl-btn sel" onclick="setLvl('listen','A',this)">A (쉬운)</button><button class="lvl-btn" onclick="setLvl('listen','B',this)">B (심화)</button></div>
+  <div class="ctrl-bar">
+    <button class="btn btn-play" onclick="playAll('listen')">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+    <span class="spd-label">속도</span><button class="btn-sm spd-btn" onclick="setSpd(0.75,this,'listen')">느리게</button><button class="btn-sm spd-btn sel" onclick="setSpd(0.8,this,'listen')">보통</button><button class="btn-sm spd-btn" onclick="setSpd(1.1,this,'listen')">빠르게</button>
+  </div>
+  <div class="now-box" id="listen-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
+  <div class="sent-list" id="listen-list"></div>
 </div>
-<div class="panel" id="panel-shadow">
-<div class="panel-title">③ 따라말하기</div>
-<div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
-<div class="lvl-bar" id="shadow-lvl">
-  <button class="lvl-btn sel" onclick="setLvl('shadow','A',this)">A (쉬운)</button>
-  <button class="lvl-btn" onclick="setLvl('shadow','B',this)">B (심화)</button>
+<div id="panel-shadow" class="panel">
+  <div class="panel-title">⑤ 따라말하기</div>
+  <div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
+  <div class="lvl-bar"><button class="lvl-btn sel" onclick="setLvl('shadow','A',this)">A (쉬운)</button><button class="lvl-btn" onclick="setLvl('shadow','B',this)">B (심화)</button></div>
+  <div class="shadow-box">
+    <div class="mic">🎙️</div>
+    <div class="sh-status" id="sh-status">재생 버튼을 눌러 시작하세요</div>
+    <div class="sh-hint" id="sh-hint">문장이 나오는 즉시 바로 따라 말하세요</div>
+    <div class="prog-row" id="sh-prog"></div>
+  </div>
+  <div class="ctrl-bar" style="justify-content:center">
+    <button class="btn btn-play" onclick="playAll('shadow')">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+  </div>
 </div>
-<div class="shadow-box">
-  <div class="mic">🎙️</div>
-  <div class="sh-status" id="sh-status">재생 버튼을 눌러 시작하세요</div>
-  <div class="sh-hint" id="sh-hint">문장이 나오는 즉시 바로 따라 말하세요</div>
-  <div class="prog-row" id="sh-prog"></div>
+<div id="panel-read" class="panel">
+  <div class="panel-title">⑥ 낭독</div>
+  <div class="panel-desc">1-1 번호는 영어 단어와 한글 뜻, 1-2 번호는 예문이에요. 번호를 누르면 그 줄만 들려줘요. 전체 재생은 단어 → 뜻 → 예문 순서로 나와요. 소리를 듣고 따라 말해 보세요. 뜻은 처음에 숨겨져 있고, 줄 오른쪽의 [뜻 보기]를 누르면 그 줄의 뜻이 나와요.</div>
+  <div id="rdNotice" class="audio-notice">🔇 음원을 불러오지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.</div>
+  <div class="lvl-bar"><button class="lvl-btn sel" onclick="setLvl('read','A',this)">A (쉬운)</button><button class="lvl-btn" onclick="setLvl('read','B',this)">B (심화)</button></div>
+  <div class="ctrl-bar">
+    <button class="btn btn-play" onclick="playAllRead()">▶ 전체 재생</button>
+    <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+    <span class="spd-label">속도</span>
+    <button class="btn-sm spd-read" onclick="setRdSpd(0.75,this)">느리게</button>
+    <button class="btn-sm spd-read sel" onclick="setRdSpd(0.8,this)">보통</button>
+    <button class="btn-sm spd-read" onclick="setRdSpd(1.1,this)">빠르게</button>
+    <button class="btn-ko" id="btn-ko-1" onclick="toggleKo(1)">👁 단어 뜻 모두 보기</button>
+    <button class="btn-ko" id="btn-ko-2" onclick="toggleKo(2)">👁 예문 해석 모두 보기</button>
+  </div>
+  <div class="now-box" id="read-now"><span class="lbl">재생중</span><span class="now-txt">–</span></div>
+  <div class="sent-list" id="read-list"></div>
 </div>
-<div class="ctrl-bar" style="justify-content:center">
-  <button class="btn btn-primary" onclick="playAll('shadow')">▶ 전체 재생</button>
-  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
+<div id="panel-match" class="panel">
+  <div class="panel-title">⑦ 관계매칭퀴즈</div>
+  <div class="panel-desc">빈칸에 들어갈 단어와 그 뜻이 알맞게 짝지어진 선택지를 고르세요. 답을 선택하면 해설이 바로 나옵니다.</div>
+  <div class="score-bar"><div class="sc-item">맞은 수 <strong id="match-ok">0</strong></div><div class="sc-item">/ <strong id="match-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('match')">↺ 다시 풀기</button></div>
+  <div class="quiz-wrap" id="match-wrap"></div>
 </div>
+<div id="panel-form" class="panel">
+  <div class="panel-title">⑧ 빈칸형태고르기</div>
+  <div class="panel-desc">빈칸에 들어갈 단어와 그 뜻이 알맞게 짝지어진 선택지를 고르세요. 답을 선택하면 해설이 바로 나옵니다.</div>
+  <div class="score-bar"><div class="sc-item">맞은 수 <strong id="form-ok">0</strong></div><div class="sc-item">/ <strong id="form-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('form')">↺ 다시 풀기</button></div>
+  <div class="quiz-wrap" id="form-wrap"></div>
 </div>
-<div class="panel" id="panel-read">
-<div class="panel-title">④ 낭독</div>
-<div class="panel-desc">한 문장을 듣고 충분한 여백 동안 소리 내어 따라 읽으세요.</div>
-<div class="lvl-bar" id="read-lvl">
-  <button class="lvl-btn sel" onclick="setLvl('read','A',this)">A (쉬운)</button>
-  <button class="lvl-btn" onclick="setLvl('read','B',this)">B (심화)</button>
+<div id="panel-dict" class="panel">
+  <div class="panel-title">⑨ 문장 받아쓰기</div>
+  <div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
+  <div class="lvl-bar"><button class="lvl-btn sel" onclick="setLvl('dict','A',this)">A (쉬운)</button><button class="lvl-btn" onclick="setLvl('dict','B',this)">B (심화)</button></div>
+  <div class="ctrl-bar">
+    <span class="spd-label">재생 속도</span>
+    <button class="btn-sm sel" id="ds-normal" onclick="setDspd(0.9,'normal')">보통</button>
+    <button class="btn-sm" id="ds-slow" onclick="setDspd(0.7,'slow')">느리게</button>
+  </div>
+  <div class="dict-list" id="dict-list"></div>
 </div>
-<div class="now-box" id="read-now"><span class="now-txt">문장을 선택하면 여기에 표시돼요</span></div>
-<div class="ctrl-bar">
-  <button class="btn btn-primary" onclick="playAll('read')">▶ 전체 재생</button>
-  <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
-  <span class="spd-label">속도</span>
-  <button class="spd-btn" onclick="setSpd(0.75,this,'read')">느리게</button>
-  <button class="spd-btn sel" onclick="setSpd(0.8,this,'read')">보통</button>
-  <button class="spd-btn" onclick="setSpd(1.1,this,'read')">빠르게</button>
+<div id="panel-wdict" class="panel">
+  <div class="panel-title">⑩ 단어 받아쓰기</div>
+  <div class="panel-desc">번호를 누르면 영어 단어가 나와요. 노트에 철자를 받아쓰고, 다 쓴 뒤 맨 아래에서 정답을 확인하세요. 한 번 끝나면 순서를 바꿔서 다시 해 볼 수 있어요.</div>
+  <div class="ctrl-bar">
+    <span class="spd-label">재생 속도</span>
+    <button class="btn-sm sel" id="wds-normal" onclick="setWdSpd(1.0,'normal')">보통</button>
+    <button class="btn-sm" id="wds-slow" onclick="setWdSpd(0.85,'slow')">느리게</button>
+    <button class="btn-sm dict-re" onclick="reshuffleWd()">🔀 순서 바꿔서 다시 받아쓰기</button>
+  </div>
+  <div class="dict-list" id="wd-list"></div>
+  <div class="dict-foot">
+    <button class="btn-sm" id="wd-ans-btn" onclick="toggleWdAns()">✅ 받아쓰기 정답 확인하기</button>
+    <div class="dict-ans" id="wd-ans" style="display:none"></div>
+  </div>
 </div>
-<div id="read-list"></div>
-</div>
-<div class="panel" id="panel-dict">
-<div class="panel-title">⑤ 받아쓰기</div>
-<div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
-<div class="lvl-bar" id="dict-lvl">
-  <button class="lvl-btn sel" onclick="setLvl('dict','A',this)">A (쉬운)</button>
-  <button class="lvl-btn" onclick="setLvl('dict','B',this)">B (심화)</button>
-</div>
-<div id="dict-list"></div>
-</div>
-<div class="panel" id="panel-match">
-<div class="panel-title">⑥ 관계 매칭 퀴즈</div>
-<div class="panel-desc">본단어와 관련어의 관계를 정확히 파악했는지 확인해보세요.</div>
-<div class="score-bar"><div class="sc-item">맞은 수 <strong id="match-ok">0</strong></div><div class="sc-item">/ <strong id="match-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('match')">↺ 다시 풀기</button></div>
-<div id="match-wrap"></div>
-</div>
-<div class="panel" id="panel-form">
-<div class="panel-title">⑦ 빈칸 형태 고르기</div>
-<div class="panel-desc">문맥에 맞는 올바른 품사·형태를 골라보세요.</div>
-<div class="score-bar"><div class="sc-item">맞은 수 <strong id="form-ok">0</strong></div><div class="sc-item">/ <strong id="form-tot">0</strong>문항</div><button class="btn-reset" onclick="resetQuiz('form')">↺ 다시 풀기</button></div>
-<div id="form-wrap"></div>
-</div>
+<button id="toTop" class="to-top" onclick="goTop()" aria-label="맨 위로" title="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg><span>TOP</span></button>
 <script>
 
 var WORD_GROUPS=[{"main": "frontier", "pos": "n./a.", "m": "국경 / 국경의, 최첨단의", "mSpeak": "국경 / 국경의, 최첨단의", "orig_no": 1774, "exA": "Investigators searched records along the northern frontier.", "koA": "수사관들은 북쪽 국경을 따라 기록을 조사했다.", "rels": [{"type": "동의어", "word": "border", "pos": "n.", "m": "국경", "shortM": "국경", "exA": "Guards patrolled the border carefully every night.", "koA": "경비병들은 매일 밤 국경을 조심스럽게 순찰했다.", "exB": "Tensions escalated sharply after soldiers were spotted patrolling unusually close to the disputed border between the two nations.", "koB": "병사들이 두 나라 사이의 논쟁이 된 국경에 이례적으로 가까이서 순찰하는 것이 목격된 후 긴장이 급격히 고조되었다."}]}, {"main": "apparatus", "pos": "n.", "m": "장치, 기구, 조직", "mSpeak": "장치, 기구, 조직", "orig_no": 1778, "exA": "Experts examined the recording apparatus used at the scene.", "koA": "전문가들은 현장에서 사용된 녹음 장치를 조사했다.", "rels": [{"type": "동의어", "word": "device", "pos": "n.", "m": "장치", "shortM": "장치", "exA": "The engineer designed a new device to measure pressure.", "koA": "그 엔지니어는 압력을 측정할 새로운 장치를 설계했다.", "exB": "Engineers designed the compact device to monitor patients' vital signs remotely from anywhere in the hospital.", "koB": "엔지니어들은 병원 어디서든 원격으로 환자의 활력 징후를 모니터링하도록 그 소형 장치를 설계했다."}, {"type": "동의어", "word": "organization", "pos": "n.", "m": "조직", "shortM": "조직", "exA": "The charity is a well-respected international organization.", "koA": "그 자선단체는 존경받는 국제 조직이다.", "exB": "The nonprofit organization spent decades quietly funding scholarships for underprivileged students across the region.", "koB": "그 비영리 조직은 몇십 년 동안 조용히 그 지역 전역의 소외된 학생들을 위한 장학금을 지원했다."}]}, {"main": "outburst", "pos": "n.", "m": "분출, 폭발", "mSpeak": "분출, 폭발", "orig_no": 1780, "exA": "An emotional outburst interrupted the quiet courtroom.", "koA": "감정적인 폭발이 조용한 법정을 방해했다.", "rels": [{"type": "동의어", "word": "eruption", "pos": "n.", "m": "분출", "shortM": "분출", "exA": "The sudden eruption of applause surprised the performers.", "koA": "갑작스러운 박수의 폭발은 공연자들을 놀라게 했다.", "exB": "Geologists had warned residents for months about the growing likelihood of a sudden volcanic eruption threatening nearby villages.", "koB": "지질학자들은 몇 달 동안 근처 마을을 위협하는 갑작스러운 화산 폭발 가능성이 커지고 있다고 주민들에게 경고해왔다."}, {"type": "동의어", "word": "explosion", "pos": "n.", "m": "폭발", "shortM": "폭발", "exA": "An explosion of laughter filled the crowded room.", "koA": "웃음의 폭발이 붐비는 방을 가득 채웠다.", "exB": "Investigators worked for months to determine the exact cause of the mysterious explosion that leveled the abandoned warehouse.", "koB": "수사관들은 버려진 창고를 완전히 무너뜨린 불가사의한 폭발의 정확한 원인을 알아내려 몇 달 동안 일했다."}]}, {"main": "firsthand", "pos": "ad./a.", "m": "직접, 바로 / 직접의", "mSpeak": "직접, 바로 / 직접의", "orig_no": 1782, "exA": "She gained firsthand experience reporting on obesity research.", "koA": "그녀는 비만 연구를 취재하며 직접적인 경험을 쌓았다.", "rels": [{"type": "반의어", "word": "secondhand", "pos": "ad./a.", "m": "간접적으로", "shortM": "간접적으로", "exA": "He learned about the accident only secondhand from a friend.", "koA": "그는 친구로부터 그 사고에 대해 간접적으로만 알게 되었다.", "exB": "Rather than relying on secondhand rumors, she insisted on verifying the troubling news through official channels first.", "koB": "그녀는 간접적인 소문에 의존하기보다는 우선 공식 채널을 통해 그 우려스러운 소식을 확인하겠다고 주장했다."}]}, {"main": "outdated", "pos": "a.", "m": "시대에 뒤진, 구식의", "mSpeak": "시대에 뒤진, 구식의", "orig_no": 1787, "exA": "Many older health guidelines seemed dangerously outdated.", "koA": "많은 오래된 건강 지침은 위험할 정도로 시대에 뒤떨어진 것 같았다.", "rels": [{"type": "동의어", "word": "out-of-date", "pos": "a.", "m": "구식의", "shortM": "구식의", "exA": "The map in the guidebook was clearly out-of-date.", "koA": "그 안내서의 지도는 명백히 구식이었다.", "exB": "The library replaced its out-of-date computer systems, allowing patrons to access far faster and more reliable service.", "koB": "그 도서관은 구식 컴퓨터 시스템을 교체하여 이용객들이 훨씬 더 빠르고 신뢰할 수 있는 서비스를 이용할 수 있게 했다."}, {"type": "동의어", "word": "old-fashioned", "pos": "a.", "m": "구식의", "shortM": "구식의", "exA": "She preferred old-fashioned recipes passed down from her grandmother.", "koA": "그녀는 할머니에게서 전해 내려온 구식 조리법을 선호했다.", "exB": "Despite owning the latest technology, she preferred the old-fashioned charm of writing letters by hand.", "koB": "최신 기술을 소유했음에도, 그녀는 손으로 편지를 쓰는 구식의 매력을 선호했다."}, {"type": "동의어", "word": "outmoded", "pos": "a.", "m": "구식의", "shortM": "구식의", "exA": "The factory still used outmoded machinery from decades ago.", "koA": "그 공장은 여전히 수십 년 전의 구식 기계를 사용했다.", "exB": "Critics argued that the factory's outmoded production methods left it unable to compete with more efficient rivals.", "koB": "비평가들은 그 공장의 시대에 뒤떨어진 생산 방식이 더 효율적인 경쟁사와 경쟁할 수 없게 만들었다고 주장했다."}]}, {"main": "outrage", "pos": "v./n.", "m": "화나게 하다 / 분노, 화", "mSpeak": "화나게 하다 / 분노, 화", "orig_no": 1798, "exA": "The public expressed deep outrage over the corruption case.", "koA": "대중은 부패 사건에 대해 깊은 분노를 표했다.", "rels": [{"type": "동의어", "word": "rage", "pos": "n.", "m": "분노", "shortM": "분노", "exA": "He could barely control his rage after hearing the news.", "koA": "그는 그 소식을 들은 후 분노를 거의 억제할 수 없었다.", "exB": "Witnesses described the driver's sudden rage after the minor accident, noting how quickly the situation escalated.", "koB": "목격자들은 사소한 사고 후 운전자의 갑작스러운 분노를 묘사하며, 상황이 얼마나 빨리 확대되었는지 언급했다."}, {"type": "동의어", "word": "anger", "pos": "n.", "m": "분노", "shortM": "분노", "exA": "Her anger grew as the meeting continued.", "koA": "그녀의 분노는 회의가 계속되면서 커졌다.", "exB": "Years of suppressed anger finally surfaced during the heated family gathering, surprising even close relatives.", "koB": "몇 년간 억눌린 분노는 결국 격렬한 가족 모임 동안 표면화되어 가까운 친척들조차 놀라게 했다."}, {"type": "동의어", "word": "fury", "pos": "n.", "m": "분노", "shortM": "분노", "exA": "The crowd's fury was clear from their loud shouting.", "koA": "군중의 분노는 그들의 큰 외침에서 분명히 드러났다.", "exB": "Shareholders expressed unmistakable fury upon learning the executives had approved secret bonuses during the company's financial crisis.", "koB": "주주들은 임원들이 회사의 재정 위기 동안 비밀 보너스를 승인했다는 것을 알고 명백한 분노를 표했다."}, {"type": "동의어", "word": "resentment", "pos": "n.", "m": "분노", "shortM": "분노", "exA": "Years of resentment finally came to the surface.", "koA": "수년간의 원한이 마침내 표면으로 드러났다.", "exB": "Years of perceived unfair treatment gradually bred deep resentment among the factory's longtime workers.", "koB": "불공정한 대우로 인식된 몇 년간의 경험은 공장의 오랜 근로자들 사이에 깊은 원한을 서서히 키웠다."}, {"type": "동의어", "word": "wrath", "pos": "n.", "m": "분노", "shortM": "분노", "exA": "The king's wrath frightened everyone in the court.", "koA": "왕의 분노는 궁정의 모두를 두렵게 했다.", "exB": "The disgraced official faced the full wrath of shareholders during the tense annual meeting following the scandal.", "koB": "그 불명예를 당한 관리는 스캔들 이후 긴장된 연례 회의 동안 주주들의 완전한 분노에 직면했다."}]}, {"main": "distress", "pos": "n./v.", "m": "고민, 고통 / 괴롭히다", "mSpeak": "고민, 고통 / 괴롭히다", "orig_no": 1799, "exA": "Many citizens felt genuine distress about the betrayal.", "koA": "많은 시민들은 그 배신에 대해 진정한 고통을 느꼈다.", "rels": [{"type": "동의어", "word": "suffering", "pos": "n.", "m": "고통", "shortM": "고통", "exA": "The war brought immense suffering to the entire region.", "koA": "그 전쟁은 그 지역 전체에 엄청난 고통을 가져왔다.", "exB": "Volunteers worked tirelessly to ease the suffering of thousands of families displaced by the sudden earthquake.", "koB": "자원봉사자들은 갑작스러운 지진으로 이재민이 된 수천 가구의 고통을 덜어주기 위해 지치지 않고 일했다."}]}, {"main": "encircle", "pos": "v.", "m": "에워싸다, 둘러싸다", "mSpeak": "에워싸다, 둘러싸다", "orig_no": 1801, "exA": "Health workers began to encircle the affected village.", "koA": "보건 요원들은 피해를 입은 마을을 에워싸기 시작했다.", "rels": [{"type": "동의어", "word": "surround", "pos": "v.", "m": "둘러싸다", "shortM": "둘러싸다", "exA": "Tall trees seemed to surround the peaceful cabin.", "koA": "키 큰 나무들이 그 평화로운 오두막을 둘러싸고 있는 것 같았다.", "exB": "Security forces moved quickly to surround the building after receiving reports of a potential threat inside.", "koB": "보안군은 내부에 잠재적 위협이 있다는 신고를 받은 후 신속하게 그 건물을 에워쌌다."}]}, {"main": "disgust", "pos": "n./v.", "m": "혐오감 / 역겹게 하다", "mSpeak": "혐오감 / 역겹게 하다", "orig_no": 1803, "exA": "Inspectors expressed disgust at the unsanitary conditions.", "koA": "조사관들은 비위생적인 환경에 혐오감을 표했다.", "rels": [{"type": "동의어", "word": "loathing", "pos": "n.", "m": "혐오감", "shortM": "혐오감", "exA": "She felt a deep loathing for dishonest behavior.", "koA": "그녀는 부정직한 행동에 깊은 혐오감을 느꼈다.", "exB": "Critics expressed unmistakable loathing for the film's cynical portrayal of everyday working-class struggles.", "koB": "평론가들은 일상적인 노동자 계급의 어려움에 대한 그 영화의 냉소적인 묘사에 명백한 혐오감을 표했다."}]}, {"main": "oversee", "pos": "v.", "m": "감독하다, 감시하다", "mSpeak": "감독하다, 감시하다", "orig_no": 1805, "exA": "A senior doctor was chosen to oversee the entire response.", "koA": "한 선임 의사가 전체 대응을 감독하도록 선정되었다.", "rels": [{"type": "동의어", "word": "supervise", "pos": "v.", "m": "감독하다", "shortM": "감독하다", "exA": "A manager was assigned to supervise the new employees.", "koA": "한 관리자가 신입 직원들을 감독하도록 배정되었다.", "exB": "The experienced foreman was assigned to supervise the construction crew throughout the demanding six-month project.", "koB": "경험 많은 현장 감독은 힘든 6개월 프로젝트 내내 건설 작업조를 감독하도록 배정되었다."}]}, {"main": "contagious", "pos": "a.", "m": "전염성의, 감염성의", "mSpeak": "전염성의, 감염성의", "orig_no": 1808, "exA": "The illness turned out to be highly contagious.", "koA": "그 병은 매우 전염성이 강한 것으로 밝혀졌다.", "rels": [{"type": "동의어", "word": "transmissible", "pos": "a.", "m": "전염성의", "shortM": "전염성의", "exA": "The virus proved to be easily transmissible between people.", "koA": "그 바이러스는 사람들 사이에서 쉽게 전염되는 것으로 밝혀졌다.", "exB": "Researchers confirmed the mutated virus had become far more transmissible than the original strain identified months earlier.", "koB": "연구자들은 그 변이 바이러스가 몇 달 전 확인된 원래 균주보다 훨씬 더 전염성이 강해졌다는 것을 확인했다."}, {"type": "동의어", "word": "infectious", "pos": "a.", "m": "전염성의", "shortM": "전염성의", "exA": "Doctors warned that the disease was highly infectious.", "koA": "의사들은 그 질병이 매우 전염성이 강하다고 경고했다.", "exB": "Public health officials scrambled to contain the rapidly spreading infectious disease before it overwhelmed local hospitals.", "koB": "공중보건 당국은 그 질병이 지역 병원을 압도하기 전에 빠르게 퍼지는 전염병을 억제하려 서둘렀다."}]}, {"main": "janitor", "pos": "n.", "m": "문지기, 관리인, 잡역부", "mSpeak": "문지기, 관리인, 잡역부", "orig_no": 1811, "exA": "The school janitor quietly became a trusted advocate for students.", "koA": "학교 관리인은 조용히 학생들의 신뢰받는 옹호자가 되었다.", "rels": [{"type": "동의어", "word": "doorkeeper", "pos": "n.", "m": "문지기", "shortM": "문지기", "exA": "The old doorkeeper greeted every visitor with a smile.", "koA": "그 나이든 문지기는 모든 방문객을 미소로 맞았다.", "exB": "The elderly doorkeeper greeted every visitor by name, having worked at the same building entrance for over thirty years.", "koB": "그 나이 든 문지기는 같은 건물 입구에서 30년 넘게 일해오며 모든 방문객을 이름으로 맞이했다."}, {"type": "동의어", "word": "doorman", "pos": "n.", "m": "문지기", "shortM": "문지기", "exA": "The doorman held the door open for arriving guests.", "koA": "그 문지기는 도착하는 손님들을 위해 문을 잡아주었다.", "exB": "Residents fondly remembered the friendly doorman who had greeted them warmly every single morning for decades.", "koB": "주민들은 몇십 년 동안 매일 아침 그들을 따뜻하게 맞이해준 친근한 도어맨을 애틋하게 기억했다."}, {"type": "동의어", "word": "gatekeeper", "pos": "n.", "m": "문지기", "shortM": "문지기", "exA": "The gatekeeper checked identification before allowing entry.", "koA": "그 문지기는 입장을 허용하기 전에 신분증을 확인했다.", "exB": "Critics increasingly questioned whether traditional publishers should remain the primary gatekeeper for aspiring young authors.", "koB": "비평가들은 전통적인 출판사들이 야심찬 젊은 작가들을 위한 주요 문지기 역할을 계속해야 하는지에 대해 점점 더 의문을 제기했다."}]}, {"main": "blush", "pos": "v.", "m": "얼굴을 붉히다, 부끄러워하다", "mSpeak": "얼굴을 붉히다, 부끄러워하다", "orig_no": 1812, "exA": "A shy student began to blush after being praised.", "koA": "수줍은 학생은 칭찬받은 후 얼굴을 붉히기 시작했다.", "rels": [{"type": "동의어", "word": "flush", "pos": "v.", "m": "얼굴을 붉히다", "shortM": "얼굴을 붉히다", "exA": "Her cheeks began to flush with embarrassment.", "koA": "그녀의 뺨은 당황해서 붉어지기 시작했다.", "exB": "Embarrassed by the unexpected question during the interview, the usually composed candidate began to flush noticeably.", "koB": "면접 동안 예상치 못한 질문에 당황한, 평소 침착한 지원자는 눈에 띄게 얼굴이 붉어지기 시작했다."}]}];
@@ -479,6 +668,397 @@ buildDict();
 buildQuiz('match',MATCH_MC);
 buildQuiz('form',FORM_MC);
 updateTtOffsetLabel();
+
+
+/* ===== 확장 앱 추가 모듈 v1: 한글 뜻 풀이 · 짝 맞추기 · 단어 받아쓰기 · 오디오 정리 ===== */
+(function(){
+var KIND='sa';var XP=[{"d": "나라와 나라를 가르는 경계예요. frontier(국경)와 비슷해요.", "k": "[[국경]]을 넘어 여행했어요."}, {"d": "어떤 일을 하려고 만든 기구예요. apparatus(장치)와 비슷해요.", "k": "새 [[장치]]를 설치했어요."}, {"d": "여러 사람이 함께 일하는 모임이에요. apparatus(조직)와 비슷해요.", "k": "큰 [[조직]]이 도왔어요."}, {"d": "땅속의 불이나 물이 갑자기 터져 나오는 것이에요. outburst(분출)와 비슷해요.", "k": "화산 [[분출]]을 봤어요."}, {"d": "갑자기 큰 소리로 터지는 것이에요. outburst와 비슷해요.", "k": "큰 [[폭발]] 소리가 났어요."}, {"d": "누구를 거치지 않고 바로 받는 것이에요. firsthand(직접)의 반대말이에요.", "k": "그 이야기는 [[간접적으로]] 들었어요."}, {"d": "지금과 맞지 않고 낡은 것이에요. outdated(구식의)와 비슷해요.", "k": "이 컴퓨터는 [[구식이에요]]."}, {"d": "옛날 스타일이라 요즘과 안 맞는 것이에요. outdated와 비슷해요.", "k": "그의 생각은 [[구식이에요]]."}, {"d": "쓰이지 않아 시대에 뒤진 것이에요. outdated와 비슷해요.", "k": "이 방법은 이미 [[구식이에요]]."}, {"d": "몹시 화가 나는 마음이에요. outrage(분노)와 비슷해요.", "k": "그는 [[분노]]로 소리쳤어요."}, {"d": "마음에 화가 치밀어 오르는 것이에요. outrage와 비슷해요.", "k": "[[화]]가 나서 문을 쾅 닫았어요."}, {"d": "몹시 심한 화예요. outrage와 비슷해요.", "k": "그의 [[분노]]가 폭발했어요."}, {"d": "억울하고 못마땅해서 마음에 쌓인 화예요. outrage와 비슷해요.", "k": "그는 불공평한 대우에 [[분노]]를 느꼈어요."}, {"d": "엄청나게 크게 낸 화예요. outrage와 비슷해요.", "k": "왕의 [[격노]]에 모두 떨었어요."}, {"d": "몸이나 마음이 몹시 아픈 것이에요. distress(고통)와 비슷해요.", "k": "그는 오랫동안 [[고통]]을 겪었어요."}, {"d": "빙 둘러서 가운데에 둔다는 뜻이에요. encircle과 비슷해요.", "k": "친구들이 나를 [[둘러쌌어요]]."}, {"d": "몹시 싫고 역겨운 마음이에요. disgust(혐오감)와 비슷해요.", "k": "그는 벌레를 보고 [[혐오감]]을 느꼈어요."}, {"d": "일이 잘되는지 지켜보며 이끈다는 뜻이에요. oversee(감독하다)와 비슷해요.", "k": "선생님이 실험을 [[감독하셨어요]]."}, {"d": "병이 사람에서 사람으로 옮는 성질이에요. contagious(전염성의)와 비슷해요.", "k": "이 병은 [[전염성이]] 있어요."}, {"d": "병균이 쉽게 퍼지는 성질이에요. contagious와 비슷해요.", "k": "[[전염성]] 질병은 조심해야 해요."}, {"d": "문 앞을 지키는 사람이에요. janitor(문지기)와 비슷해요.", "k": "[[문지기]]가 문을 열어 줬어요."}, {"d": "호텔 문 앞에서 손님을 맞는 사람이에요. janitor와 비슷해요.", "k": "[[도어맨]]이 인사했어요."}, {"d": "들어오고 나가는 곳을 지키는 사람이에요. janitor와 비슷해요.", "k": "성문의 [[문지기]]가 지키고 있어요."}, {"d": "부끄러워 얼굴이 빨개진다는 뜻이에요. blush와 비슷해요.", "k": "칭찬을 듣고 얼굴이 [[붉어졌어요]]."}];
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function clampR(v){return Math.max(0.3,Math.min(2.5,v));}
+function cleanM(m){return String(m).replace(/\s*\([a-zA-Z\s~]+\)/g,'').replace(/^No\.\d+\s*·\s*/,'').trim();}
+function hlKo(t){return esc(t).replace(/\[\[(.*?)\]\]/g,'<mark>$1</mark>');}
+function posTags(p){
+  var M={n:'명',v:'동',adj:'형',adv:'부',prep:'전',conj:'접',pron:'대',a:'형',phr:'구'};
+  var s=String(p||'').replace(/[①-⑳]/g,'').replace(/[0-9.\s]/g,'');
+  var seen={},out=[];
+  s.split('/').forEach(function(x){var k=M[x.toLowerCase()];if(k&&!seen[k]){seen[k]=1;out.push('<span class="tag-pos">'+k+'</span>');}});
+  return out.join('');
+}
+var CIR='①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳';
+function notice(){var el=$('rdNotice');if(el)el.style.display='block';}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+/* ---------- 오디오: 공용 Audio 하나(iOS 대응) ---------- */
+var cur=null,run=0;
+function finishCur(){var r=cur;cur=null;if(r)r();}
+function haltAudio(){
+  var a=null;try{a=__getSharedAudio();}catch(e){}
+  var f=null;
+  if(a){f=a.onended;a.onended=null;a.onerror=null;try{a.pause();}catch(e){}}
+  finishCur();
+  if(typeof f==='function'){try{f();}catch(e){}}
+}
+function playUrl(url,rate){
+  return new Promise(function(res){
+    finishCur();cur=res;
+    var a=__getSharedAudio();a.onended=null;a.onerror=null;try{a.pause();}catch(e){}
+    a.src=url;a.currentTime=0;a.playbackRate=clampR(rate||1.0);
+    a.onended=function(){if(cur===res)cur=null;res();};
+    a.onerror=function(){if(cur===res)cur=null;notice();res();};
+    var p=a.play();if(p&&p.catch)p.catch(function(){if(cur===res)cur=null;res();});
+  });
+}
+var MAIN_PREFIX=SENT_PREFIX;
+function fk(fi){var f=FLAT[fi];return SENT_PREFIX+f.__gIdx+'_r'+f.__rIdx;}
+function urlW(fi){return fk(fi)+'_w.mp3';}
+function urlKo(fi){return fk(fi)+'_ko.mp3';}
+function urlA(fi){return fk(fi)+'_a.mp3';}
+function urlMain(gi){return (typeof MAIN_PREFIX!=='undefined'?MAIN_PREFIX:'')+(gi+1)+'_w.mp3';}
+function primeAudio(url){
+  var a=__getSharedAudio();a.muted=true;a.src=url;
+  var p=a.play();
+  if(p&&p.then){p.then(function(){try{a.pause();a.currentTime=0;}catch(e){}a.muted=false;}).catch(function(){a.muted=false;});}else{a.muted=false;}
+}
+var __stop0=window.stopAll;
+window.stopAll=function(){
+  run++;haltAudio();
+  try{__stop0();}catch(e){}
+  document.querySelectorAll('.d-num.pd').forEach(function(e){e.classList.remove('pd');});
+};
+var __goTab0=window.goTab;
+window.goTab=function(n,b){__goTab0(n,b);try{window.scrollTo(0,0);}catch(e){}};
+/* 단어장 🔊 : 단어 → 뜻 (공용 Audio로 이어 재생) */
+window.spkWordThenMeaning=function(word,meaning){
+  var fi=FLAT.findIndex(function(x){return x.word===word&&x.m===meaning;});
+  var u1=null,u2=null;
+  if(fi>=0){u1=urlW(fi);u2=urlKo(fi);}
+  else if(KIND==='sa'){var gi=WORD_GROUPS.findIndex(function(g){return g.main===word&&g.m===meaning;});if(gi>=0){u1=urlMain(gi);u2=MAIN_PREFIX+(gi+1)+'_ko.mp3';}}
+  if(!u1)return;
+  window.stopAll();var my=run;
+  playUrl(u1,1.0).then(function(){if(my!==run)return;return wait(250).then(function(){if(my!==run)return;return playUrl(u2,1.0);});});
+};
+/* ---------- 한글 뜻 풀이 (본편 형태) ---------- */
+function buildExplain(){
+  var c=$('ex-list');if(!c)return;c.innerHTML='';var fi=0;
+  WORD_GROUPS.forEach(function(g,gi){
+    var d=document.createElement('div');d.className='xp-card';
+    var h='<div class="xp-top"><span class="xp-no">'+(gi+1)+'</span><span class="xp-word">'+esc(g.main)+'</span></div>';
+    var multi=g.rels.length>1;
+    g.rels.forEach(function(r,k){
+      var x=XP[fi]||{d:'',k:''};
+      var lead=(KIND==='da')?'<span class="xp-cir">'+CIR[k]+'</span>'+posTags(r.pos):'<span class="rel-tag '+relTagClass(r.type)+'">'+esc(r.type)+'</span> '+esc(r.word)+' '+posTags(r.pos);
+      h+='<div class="xp-sense'+(multi?' multi':'')+'"><div class="xp-mean">'+lead+(KIND==='da'?'':' &nbsp;')+esc(cleanM(r.m))+'</div>'+
+        '<div class="xp-def">'+esc(x.d)+'</div>'+
+        '<div class="xp-ex"><span class="xp-lbl">예</span> '+hlKo(x.k)+'</div></div>';
+      fi++;
+    });
+    d.innerHTML=h;c.appendChild(d);
+  });
+}
+/* ---------- 문장 받아쓰기 (본편 형태) ---------- */
+var dspd=0.9;
+window.setDspd=function(r,key){dspd=r;['normal','slow'].forEach(function(k){var e=$('ds-'+k);if(e)e.classList.remove('sel');});$('ds-'+key).classList.add('sel');};
+window.buildDict=function(){
+  var con=$('dict-list');con.innerHTML='';var lvl=LVL.dict;
+  FLAT.forEach(function(it,i){
+    var sent=lvl==='A'?it.exA:it.exB;
+    var card=document.createElement('div');card.className='dict-card';
+    var num=document.createElement('div');num.className='d-num';num.textContent=i+1;
+    num.onclick=function(){window.stopAll();document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});num.classList.add('pd');var my=run;spk(sent,dspd).then(function(){if(my===run)num.classList.remove('pd');});};
+    var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문장 '+(i+1)+' — 번호를 클릭해 들으세요';
+    card.appendChild(num);card.appendChild(hint);con.appendChild(card);
+  });
+};
+/* ---------- 퀴즈 (본편 4지선다 형태) ---------- */
+window.buildQuiz=function(tab,data){
+  var wrap=$(tab+'-wrap');wrap.innerHTML='';
+  $(tab+'-tot').textContent=data.length;
+  qState[tab]={answered:{},ok:0};
+  var nums=['①','②','③','④'];
+  data.forEach(function(q,qi){
+    var card=document.createElement('div');card.className='q-card';
+    card.innerHTML='<div class="q-num">['+(qi+1)+'번]</div><div class="q-text">'+esc(q.q).replace('__________','<span class="blank-span"></span>')+'</div><button type="button" class="q-hint-btn">💡 힌트 (문장 해석 보기)</button><div class="q-ko" style="display:none">'+esc(q.ko)+'</div>';
+    var hb=card.querySelector('.q-hint-btn'),kb=card.querySelector('.q-ko');
+    hb.onclick=function(){kb.style.display='block';hb.style.display='none';};
+    var opts=document.createElement('div');opts.className='opts';
+    q.opts.forEach(function(opt,oi){
+      var btn=document.createElement('button');btn.className='opt';btn.textContent=nums[oi]+' '+opt;
+      btn.onclick=function(){
+        if(btn.disabled)return;
+        opts.querySelectorAll('.opt').forEach(function(b){b.disabled=true;});
+        if(oi===q.answer_idx){btn.classList.add('ok');qState[tab].ok++;$(tab+'-ok').textContent=qState[tab].ok;}
+        else{btn.classList.add('ng');opts.querySelectorAll('.opt')[q.answer_idx].classList.add('ok');}
+        card.querySelector('.exp').classList.add('show');
+      };
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    var wrong=q.opts.filter(function(o,i){return i!==q.answer_idx;});
+    var exp=document.createElement('div');exp.className='exp';
+    exp.innerHTML='<div class="exp-lbl">📝 해설</div>정답: <b>'+nums[q.answer_idx]+' '+esc(q.opts[q.answer_idx])+'</b><br>문장 해석: '+esc(q.ko)+'<br><span class="exp-sub">'+esc(wrong.join(', '))+'은(는) 이 빈칸에 어울리지 않아요.</span>';
+    card.appendChild(exp);wrap.appendChild(card);
+  });
+};
+/* ---------- 낭독 (본편 형태: 1-1 단어·뜻 / 1-2 예문) ---------- */
+var rdSpd=0.8,rdLvl='A';
+var WRATE={0.75:0.9,0.8:1.0,1.1:1.15};
+function wRate(){return (WRATE[rdSpd]||1.0)+ttsOffset;}
+function sRate(){return audioRate(rdSpd);}
+function rdComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|so that|although)\b/i.test(s)||(s.match(/[.!?]/g)||[]).length>1;}
+function rdGap(s){return rdComplex(s)?7000:5000;}
+function cid(i,p){return 'read-card-'+i+'-'+p;}
+function rdSent(i){return rdLvl==='A'?FLAT[i].exA:FLAT[i].exB;}
+function rdKo(i){return rdLvl==='A'?FLAT[i].koA:FLAT[i].koB;}
+function urlS(i){return fk(i)+(rdLvl==='A'?'_a':'_b')+'.mp3';}
+async function playLine(i,p,my){
+  if(p===1){await playUrl(urlW(i),wRate());if(my!==run)return;await wait(350);if(my!==run)return;await playUrl(urlKo(i),1.0);}
+  else{await playUrl(urlS(i),sRate());}
+}
+function setRead(i,p,on){var card=$(cid(i,p)),num=$('read-num-'+i+'-'+p);if(!card)return;card.classList.toggle('playing',on);if(num)num.classList.toggle('playing',on);}
+function setReadNow(i,p,txt){var el=$('read-now');if(!el)return;if(i<0){el.innerHTML='<span class="lbl">재생중</span><span class="now-txt">–</span>';return;}el.innerHTML='<span class="lbl">'+(i+1)+'-'+p+'</span><span class="now-txt">'+txt+'</span>';}
+function buildRead(){
+  var c=$('read-list');if(!c)return;c.innerHTML='';
+  FLAT.forEach(function(it,i){
+    var pair=document.createElement('div');pair.className='read-pair';
+    [1,2].forEach(function(p){
+      var card=document.createElement('div');card.className='sent-card read-card rd-p'+p;card.id=cid(i,p);
+      var num=document.createElement('div');num.className='s-num s-num-w';num.id='read-num-'+i+'-'+p;num.textContent=(i+1)+'-'+p;
+      num.onclick=async function(){window.stopAll();var my=run;setRead(i,p,true);setReadNow(i,p,p===1?('🔊 '+esc(it.word)+' → 뜻'):('🗣 '+esc(rdSent(i))));await playLine(i,p,my);if(my===run){setRead(i,p,false);setReadNow(-1);}};
+      var box=document.createElement('div');box.className='read-box';
+      if(p===1){box.innerHTML='<div class="rd-word">'+esc(it.word)+'</div><div class="kohide"><span class="rd-mean">'+posTags(it.pos)+esc(cleanM(it.m))+'</span></div>';}
+      else{box.innerHTML='<div class="rd-sent">'+hlWord(rdSent(i),it.word)+'</div><div class="kohide"><div class="rd-ko">'+esc(rdKo(i))+'</div></div>';}
+      var kb=document.createElement('button');kb.className='btn-ko-row';kb.textContent='뜻 보기';
+      kb.onclick=function(){var on=card.classList.toggle('ko-on');kb.textContent=on?'뜻 숨기기':'뜻 보기';syncKoBtn();};
+      card.appendChild(num);card.appendChild(box);card.appendChild(kb);pair.appendChild(card);
+    });
+    c.appendChild(pair);
+  });
+  syncKoBtn();
+}
+window.playAllRead=async function(){
+  window.stopAll();primeAudio(urlW(0));
+  await wait(150);var my=++run;
+  for(var i=0;i<FLAT.length;i++){
+    if(my!==run)return;
+    var s=rdSent(i);
+    setRead(i,1,true);setReadNow(i,1,'🔊 '+esc(FLAT[i].word)+' → 뜻');
+    await playUrl(urlW(i),wRate());if(my!==run)return;
+    await wait(350);if(my!==run)return;
+    await playUrl(urlKo(i),1.0);if(my!==run)return;
+    await wait(1500);if(my!==run)return;
+    setRead(i,1,false);setRead(i,2,true);setReadNow(i,2,'🗣 따라 읽어요: '+esc(s));
+    await playUrl(urlS(i),sRate());if(my!==run)return;
+    await wait(rdGap(s));if(my!==run)return;
+    setRead(i,2,false);await wait(500);
+  }
+  setReadNow(-1);
+};
+window.setRdSpd=function(r,btn){rdSpd=r;var bar=btn.closest('.ctrl-bar')||document;bar.querySelectorAll('.spd-read').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');};
+var KO_LBL={1:['단어 뜻','btn-ko-1'],2:['예문 해석','btn-ko-2']};
+function syncKoBtn(){[1,2].forEach(function(p){var cards=document.querySelectorAll('.read-card.rd-p'+p),on=document.querySelectorAll('.read-card.rd-p'+p+'.ko-on');var b=$(KO_LBL[p][1]);if(b)b.textContent=(cards.length&&on.length===cards.length)?('🙈 '+KO_LBL[p][0]+' 모두 숨기기'):('👁 '+KO_LBL[p][0]+' 모두 보기');});}
+window.toggleKo=function(p){var cards=document.querySelectorAll('.read-card.rd-p'+p);var allOn=document.querySelectorAll('.read-card.rd-p'+p+'.ko-on').length===cards.length;cards.forEach(function(c){c.classList.toggle('ko-on',!allOn);var k=c.querySelector('.btn-ko-row');if(k)k.textContent=allOn?'뜻 보기':'뜻 숨기기';});syncKoBtn();};
+var __setLvl0=window.setLvl;
+window.setLvl=function(tab,lvl,btn){if(tab==='read'){rdLvl=lvl;var bar=btn.closest('.lvl-bar');bar.querySelectorAll('.lvl-btn').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');window.stopAll();buildRead();return;}__setLvl0(tab,lvl,btn);};
+/* ---------- 단어 받아쓰기 ---------- */
+var wdRate=1.0,wdOrder=null,WD=[];
+function wdItems(){
+  WD=[];
+  if(KIND==='da'){var fi=0;WORD_GROUPS.forEach(function(g){WD.push({w:g.main,fi:fi,sub:g.pos+' · '+g.rels.length+'가지 뜻',m:g.rels.map(function(r){return cleanM(r.m);}).join(' / ')});fi+=g.rels.length;});}
+  else{FLAT.forEach(function(it,i){WD.push({w:it.word,fi:i,sub:it.pos,m:cleanM(it.m)});});}
+}
+function shuffleIdx(n){var a=[];for(var i=0;i<n;i++)a.push(i);for(var t=0;t<50;t++){for(var i=n-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var x=a[i];a[i]=a[j];a[j]=x;}if(n<2||!a.every(function(v,k){return v===k;}))break;}return a;}
+function newWdOrder(){var prev=wdOrder,o=shuffleIdx(WD.length);for(var t=0;t<50&&prev&&o.length>1&&o.every(function(v,k){return v===prev[k];});t++)o=shuffleIdx(WD.length);wdOrder=o;}
+function buildWDict(){
+  if(!WD.length)wdItems();if(!wdOrder)newWdOrder();
+  var c=$('wd-list');c.innerHTML='';
+  wdOrder.forEach(function(wi,k){
+    var it=WD[wi];var card=document.createElement('div');card.className='dict-card';
+    var num=document.createElement('div');num.className='d-num';num.textContent=k+1;
+    num.onclick=function(){window.stopAll();document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});num.classList.add('pd');var my=run;playUrl(urlW(it.fi),wdRate+ttsOffset).then(function(){if(my===run)num.classList.remove('pd');});};
+    var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문제 '+(k+1)+' — 번호를 눌러 들으세요';
+    card.appendChild(num);card.appendChild(hint);c.appendChild(card);
+  });
+  var ans=$('wd-ans');
+  ans.innerHTML=wdOrder.map(function(wi,k){var it=WD[wi];return '<div class="da-row"><span class="da-n">'+(k+1)+'</span><b>'+esc(it.w)+'</b> <span class="da-ko">'+esc(it.m)+'</span></div>';}).join('');
+  ans.style.display='none';$('wd-ans-btn').textContent='✅ 받아쓰기 정답 확인하기';
+}
+window.toggleWdAns=function(){var ans=$('wd-ans'),tb=$('wd-ans-btn');var open=ans.style.display==='none';ans.style.display=open?'block':'none';tb.textContent=open?'▲ 정답 닫기':'✅ 받아쓰기 정답 확인하기';};
+window.reshuffleWd=function(){window.stopAll();newWdOrder();buildWDict();window.scrollTo(0,0);};
+window.setWdSpd=function(r,key){wdRate=r;['normal','slow'].forEach(function(k){$('wds-'+k).classList.remove('sel');});$('wds-'+key).classList.add('sel');};
+/* ---------- 짝 맞추기 ---------- */
+var PM=null;
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function gidxOf(fi){var n=0;for(var g=0;g<WORD_GROUPS.length;g++){n+=WORD_GROUPS[g].rels.length;if(fi<n)return g;}return -1;}
+function hlWord(sent,word){
+  var base=String(word).split(/[\[(]/)[0].trim().split(/\s+/)[0];
+  var stem=base.length>4?base.slice(0,base.length-2):base;
+  var re=new RegExp('\\b('+stem.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[a-z\']*)','i');
+  return esc(sent).replace(re,'<b>$1</b>');
+}
+function pmRounds(){
+  var R=[],fi=0,cu=[],cuG=0;
+  WORD_GROUPS.forEach(function(g){
+    var ids=g.rels.map(function(_,k){return fi+k;});fi+=g.rels.length;
+    var cap=(KIND==='da')?8:6;
+    var soloBig=(KIND==='da'&&cu.length&&cuG===1&&cu.length+ids.length<=12);
+    if(cu.length&&cu.length+ids.length>cap&&!soloBig){R.push({L:cu});cu=[];cuG=0;}
+    cu=cu.concat(ids);cuG++;
+    if(KIND==='sa'&&cu.length>=5){R.push({L:cu});cu=[];cuG=0;}
+  });
+  if(cu.length){if(KIND==='da'&&cuG===1&&R.length&&R[R.length-1].L.length+cu.length<=12){R[R.length-1].L=R[R.length-1].L.concat(cu);}else if(KIND==='sa'&&R.length&&cu.length<3){R[R.length-1].L=R[R.length-1].L.concat(cu);}else R.push({L:cu});}
+  return R;
+}
+function pmGrp(id){return gidxOf(id);}
+function pmMatch(a,b){return KIND==='da'?a===b:pmGrp(a)===pmGrp(b);}
+function pmCost(Lo,Ro){ var n=Lo.length,d=n>=7?2:(n>=4?1:0),c=0;
+  for(var i=0;i<n;i++){for(var j=Math.max(0,i-d);j<=Math.min(Ro.length-1,i+d);j++){if(pmMatch(Lo[i],Ro[j])){c++;break;}}} return c; }
+function pmClimb(Lo,Ro){
+  var cur=pmCost(Lo,Ro);
+  for(var it=0;it<30&&cur>0;it++){
+    var bi=-1,bj=-1,bc=cur;
+    for(var i=0;i<Ro.length;i++)for(var j=i+1;j<Ro.length;j++){var x=Ro[i];Ro[i]=Ro[j];Ro[j]=x;var c=pmCost(Lo,Ro);if(c<bc){bc=c;bi=i;bj=j;}x=Ro[i];Ro[i]=Ro[j];Ro[j]=x;}
+    if(bi<0)break;var y=Ro[bi];Ro[bi]=Ro[bj];Ro[bj]=y;cur=bc;
+  }
+  return cur;
+}
+function pmScatter(all){
+  var bestL=null,bestR=null,bc=1e9;
+  for(var t=0;t<60;t++){
+    var L=(KIND==='sa')?shuf(all):all.slice(),R=shuf(all);var c=pmClimb(L,R);
+    if(R.length>1&&R.every(function(x,k){return x===L[k];}))continue;
+    if(c<bc){bc=c;bestL=L;bestR=R.slice();if(c===0)break;}
+  }
+  return bestL?[bestL,bestR]:[all.slice(),shuf(all)];
+}
+function pmRescatter(){
+  var oL=PM.L.filter(function(c){return !PM.doneL[c];}),slots=[],oR=[];
+  PM.R.forEach(function(c,k){if(!PM.doneR[c]){slots.push(k);oR.push(c);}});
+  if(oL.length<2)return;
+  if(pmCost(oL,oR)===0)return;
+  pmClimb(oL,oR);
+  slots.forEach(function(k,n){PM.R[k]=oR[n];});
+}
+function pmStart(r){
+  PM.round=r;PM.doneL={};PM.doneR={};PM.order=[];PM.sel=null;PM.selR=null;PM.busy=false;
+  var rd=PM.rounds[r];PM.cur=rd;var __sc=pmScatter(rd.L);PM.L=__sc[0];PM.R=__sc[1];
+  $('pm-focus').className='pm-focus';
+  $('pm-focus').innerHTML='<div class="pm-fb">'+(KIND==='da'?'왼쪽 <b>단어</b>를 누르고 알맞은 <b>뜻</b>을 찾아요. 같은 단어가 여러 개면 그 단어의 뜻 중 <b>아무거나</b> 짝지어도 돼요.':'왼쪽 단어를 누르고, 오른쪽 <b>본편 단어</b> 중에서 짝(비슷한 말 또는 반대말)을 찾아 눌러요.')+'</div>';
+  $('pm-next').style.display='none';
+  pmBuild();
+}
+function pmStatus(){
+  var el=$('pm-status');if(!el)return;
+  el.innerHTML='문제 <b>'+(PM.round+1)+'</b> / '+PM.rounds.length+' &nbsp;·&nbsp; 맞춘 짝 <b>'+PM.order.length+'</b> / '+PM.L.length+' &nbsp;·&nbsp; 틀린 횟수 '+PM.wrong;
+}
+function tagOf(fi){var r=FLAT[fi];return '<span class="rel-tag '+relTagClass(r.type)+'">'+esc(r.type)+'</span>';}
+function relCls(fi){return FLAT[fi].type==='반의어'?'ra':'rs';}
+function hlSpan(sent,word){return hlWord(sent,word).replace('<b>','<span class="hl">').replace('</b>','</span>');}
+function saTileL(fi,done){
+  var it=FLAT[fi],c=relCls(fi),ra=c==='ra';
+  return '<button class="pm-tile pm-l stack '+(ra?'rat':'rst')+(done?' done '+c:'')+'" data-id="'+fi+'"><span class="pm-t-w">'+esc(it.word)+'</span><span class="pm-t-q">본편 단어 중 '+(ra?'반대말':'비슷한 말')+' 찾기</span><span class="pm-t-m">'+esc(cleanM(it.m))+'</span></button>';
+}
+function saTileR(fi,done,cfi){
+  var g=WORD_GROUPS[gidxOf(fi)];
+  return '<button class="pm-tile pm-r stack'+(done?' done '+relCls(cfi):'')+'" data-id="'+fi+'"><span class="pm-t-w">'+esc(g.main)+'</span><span class="pm-t-m">'+esc(cleanM(g.m))+'</span></button>';
+}
+function saCard(l,big){
+  var it=FLAT[l],g=WORD_GROUPS[gidxOf(l)],c=relCls(l),ra=c==='ra',sym=ra?'↔':'=';
+  return '<div class="pm-card '+c+(big?' big':'')+'"><div class="vc-plabel">'+(big?'✅ ':'')+(ra?'반의어 · 반대말':'유의어 · 비슷한 말')+'</div><div class="vc-cmp">'+
+    '<div class="vc-side"><div class="vc-pw">'+esc(it.word)+'</div><div class="vc-pm">'+esc(cleanM(it.m))+'</div></div><div class="vc-sym">'+sym+'</div>'+
+    '<div class="vc-side"><div class="vc-pw head">'+esc(g.main)+'</div><div class="vc-pm">'+esc(cleanM(g.m))+'</div></div></div>'+
+    '<div class="vc-note">'+esc(it.word)+' '+sym+' '+esc(g.main)+' : '+(ra?'서로 반대되는 뜻이에요':'서로 비슷한 뜻이에요')+'</div>'+
+    (big?'<div class="vc-ex"><div class="vc-en">'+hlSpan(it.exA,it.word)+'</div><div class="vc-eko">'+esc(it.koA)+'</div></div>':'')+'</div>';
+}
+window.pmReplay=function(l){
+  var g=gidxOf(l);window.stopAll();var my=run;
+  (async function(){
+    await playUrl(urlW(l),1.0);if(my!==run)return;await wait(300);if(my!==run)return;
+    await playUrl(urlKo(l),1.0);if(my!==run)return;await wait(500);if(my!==run)return;
+    await playUrl(urlMain(g),1.0);if(my!==run)return;await wait(300);if(my!==run)return;
+    await playUrl(MAIN_PREFIX+(g+1)+'_ko.mp3',1.0);
+  })();
+};
+function pmTileL(fi,done){
+  if(KIND==='sa')return saTileL(fi,done);
+  var it=FLAT[fi];
+  if(KIND==='da')return '<button class="pm-tile pm-l'+(done?' done':'')+'" data-id="'+fi+'"><span class="pm-t-w">'+esc(it.word)+'</span></button>';
+  return '<button class="pm-tile pm-l stack'+(done?' done':'')+'" data-id="'+fi+'"><span class="pm-t-w">'+esc(it.word)+'</span><span class="pm-t-p">'+esc(it.pos)+'</span>'+(done?'':'<span class="pm-t-h">'+tagOf(fi)+esc(cleanM(it.m))+'</span>')+'</button>';
+}
+function pmTileR(fi,done,cfi){
+  if(KIND==='sa')return saTileR(fi,done,cfi);
+  var it=FLAT[fi];
+  if(KIND==='da')return '<button class="pm-tile pm-r'+(done?' done':'')+'" data-id="'+fi+'"><span class="pm-t-m">'+posTags(it.pos)+esc(cleanM(it.m))+'</span></button>';
+  var g=WORD_GROUPS[gidxOf(fi)];
+  return '<button class="pm-tile pm-r stack'+(done?' done':'')+'" data-id="'+fi+'"><span class="pm-t-w">'+esc(g.main)+'</span><span class="pm-t-p">'+esc(g.pos)+'</span>'+(done?'':'<span class="pm-t-h">'+esc(cleanM(g.m))+'</span>')+'</button>';
+}
+function pmBuild(){
+  var wrap=$('pm-board');if(!wrap)return;var h='';
+  if(PM.order.length){h+='<div class="pm-dgrid">';PM.order.forEach(function(o){h+=pmTileL(o[0],true)+pmTileR(o[1],true,o[0]);});h+='</div><div class="pm-sep"></div>';}
+  pmRescatter();var oL=PM.L.filter(function(c){return !PM.doneL[c];}),oR=PM.R.filter(function(c){return !PM.doneR[c];});
+  if(oL.length){
+    h+='<div class="pm-hdr"><div class="pm-colh">'+(KIND==='da'?'단어':'확장 단어')+'</div><div class="pm-colh">'+(KIND==='da'?'알맞은 뜻':'본편 단어')+'</div></div><div class="pm-open'+(PM.hint?' hint':'')+'">';
+    for(var i=0;i<Math.max(oL.length,oR.length);i++)h+=(i<oL.length?pmTileL(oL[i],false):'<div></div>')+(i<oR.length?pmTileR(oR[i],false):'<div></div>');
+    h+='</div>';
+  }
+  wrap.innerHTML=h;
+  wrap.querySelectorAll('.pm-tile:not(.done)').forEach(function(b){b.onclick=function(e){if(e.target.closest&&e.target.closest('.pm-hint'))return;pmTap(b);};});
+  wrap.querySelectorAll('.pm-hint').forEach(function(b){b.onclick=function(e){e.stopPropagation();var k=$('pmk-'+b.getAttribute('data-h'));if(k){var on=k.classList.toggle('show');b.textContent=on?'🙈 해석 닫기':'💡 해석';}};});
+  if(PM.sel!==null){var e1=wrap.querySelector('.pm-tile.pm-l[data-id="'+PM.sel+'"]');if(e1)e1.classList.add('sel');}
+  if(PM.selR!==null){var e2=wrap.querySelector('.pm-tile.pm-r[data-id="'+PM.selR+'"]');if(e2)e2.classList.add('sel');}
+  pmStatus();
+}
+function pmValid(l,r){
+  if(PM.doneR[r])return false;
+  return gidxOf(l)===gidxOf(r);
+}
+function pmTap(b){
+  if(PM.busy||b.classList.contains('done'))return;
+  var fi=parseInt(b.getAttribute('data-id'),10),left=b.classList.contains('pm-l');
+  window.stopAll();
+  if(left){document.querySelectorAll('.pm-tile.pm-l.sel').forEach(function(e){e.classList.remove('sel');});b.classList.add('sel');PM.sel=fi;playUrl(urlW(fi),1.0);}
+  else{document.querySelectorAll('.pm-tile.pm-r.sel').forEach(function(e){e.classList.remove('sel');});b.classList.add('sel');PM.selR=fi;playUrl(KIND==='da'?urlKo(fi):urlMain(gidxOf(fi)),1.0);}
+  if(PM.sel!==null&&PM.selR!==null)pmCheck();
+}
+async function pmSpeak(l,r){
+  window.stopAll();var my=run;
+  if(KIND==='da'){await playUrl(urlW(r),1.0);if(my!==run)return;await wait(300);if(my!==run)return;await playUrl(urlKo(r),1.0);}
+  else{await playUrl(urlW(l),1.0);if(my!==run)return;await wait(300);if(my!==run)return;await playUrl(urlKo(l),1.0);}
+}
+function pmCheck(){
+  var l=PM.sel,r=PM.selR,fb=$('pm-focus');
+  var bl=document.querySelector('.pm-tile.pm-l[data-id="'+l+'"]'),br=document.querySelector('.pm-tile.pm-r[data-id="'+r+'"]');
+  if(pmValid(l,r)){
+    PM.doneL[l]=true;PM.doneR[r]=true;PM.order.push([l,r]);PM.sel=null;PM.selR=null;pmBuild();
+    var it=FLAT[l],g=WORD_GROUPS[gidxOf(l)],ir=FLAT[r];
+    fb.className='pm-focus ok';
+    if(KIND==='da')fb.innerHTML='<div class="pm-card"><div class="pm-ok">✅ 정답!</div><div class="pm-cw">'+esc(ir.word)+' '+posTags(ir.pos)+' <span class="pm-cm">'+esc(cleanM(ir.m))+'</span></div><div class="pm-ce">'+hlWord(ir.exA,ir.word)+'</div></div>';
+    else{fb.className='pm-focus ok';fb.innerHTML=saCard(l,true)+'<div class="pm-replay"><button class="btn-sm" onclick="pmReplay('+l+')">🔊 다시 듣기</button></div>';
+      var lg=$('pm-log');if(lg){var d=document.createElement('div');d.className='pm-logrow';d.innerHTML=saCard(l,false);lg.insertBefore(d,lg.firstChild);var lh=$('pm-logh');if(lh)lh.style.display='block';}}
+    if(KIND==='da')pmSpeak(l,r);
+    if(PM.order.length===PM.L.length){
+      if(PM.round<PM.rounds.length-1){$('pm-next').style.display='block';fb.innerHTML+='<div class="pm-fb" style="margin-top:8px;color:#c05010;font-weight:800">🎉 이 문제를 다 맞췄어요! 아래 <b>주황색 버튼</b>을 눌러 다음으로 가요 👇</div>';}
+      else fb.innerHTML+='<div class="pm-fin">🎉 모든 문제를 끝냈어요! 틀린 횟수 '+PM.wrong+'번</div>';
+    }
+  }else{
+    PM.wrong++;PM.busy=true;bl.classList.add('bad');br.classList.add('bad');
+    fb.className='pm-focus bad';
+    fb.innerHTML='<div class="pm-fb">🤔 아쉬워요! '+(KIND==='da'?'예문 속 단어의 쓰임을 다시 생각해 보세요.':'짝이 아니에요. 비슷한 말이나 반대말을 다시 찾아보세요.')+'</div>';
+    pmStatus();
+    setTimeout(function(){bl.classList.remove('bad','sel');br.classList.remove('bad','sel');PM.sel=null;PM.selR=null;PM.busy=false;},700);
+  }
+}
+window.__pm={valid:function(l,r){return pmValid(l,r);}};
+window.pmToggleHint=function(){PM.hint=!PM.hint;var b=$('pm-hintbtn');if(b)b.textContent=PM.hint?'💡 뜻 힌트 끄기':'💡 뜻 힌트 켜기';pmBuild();};
+window.pmNext=function(){window.stopAll();pmStart(PM.round+1);window.scrollTo(0,0);};
+window.pmReset=function(){window.stopAll();var lg=$('pm-log');if(lg)lg.innerHTML='';var lh=$('pm-logh');if(lh)lh.style.display='none';var hint=PM&&PM.hint;PM={rounds:pmRounds(),wrong:0,hint:hint};pmStart(0);};
+/* ---------- TOP 버튼 ---------- */
+window.goTop=function(){try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}};
+window.addEventListener('scroll',function(){var b=$('toTop');if(b)b.classList.toggle('show',(window.pageYOffset||document.documentElement.scrollTop)>300);},{passive:true});
+/* ---------- 초기화 ---------- */
+buildExplain();buildRead();window.buildDict();window.buildQuiz('match',MATCH_MC);window.buildQuiz('form',FORM_MC);wdItems();buildWDict();
+PM={rounds:pmRounds(),wrong:0,hint:false};pmStart(0);
+window.__ext={rd:function(){return rdLvl;},PM:function(){return PM;},rounds:pmRounds,wd:function(){return WD;}};
+})();
 
 </script>
 </body></html>

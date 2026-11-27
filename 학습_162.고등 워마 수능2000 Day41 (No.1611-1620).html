@@ -112,13 +112,100 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 .tts-tune button{background:#ffe9a8;border:none;color:#5a4400;padding:5px 10px;border-radius:7px;font-size:13px;cursor:pointer;font-weight:600}
 .tts-tune button:hover{background:#ffdd80}
 .tts-tune .tt-reset{background:#f0e0b0;color:#7a5c00;font-weight:400}
-@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}</style>
+@media(max-width:560px){.opts{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.panel{padding:13px 11px}}
+/* ===== v2 추가 스타일 ===== */
+.tag-pos{display:inline-block;background:#e8f0fb;color:#2a6db5;border-radius:6px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:4px}
+.modebar{display:flex;gap:8px;max-width:820px;margin:10px auto 0;padding:0 14px}
+.modebar .md{flex:1;text-align:center;padding:11px 8px;border-radius:12px;border:2px solid #d0dcea;background:#fff;color:#4070b0;font-weight:800;font-size:14px;text-decoration:none}
+.modebar .md.on{background:#2a6db5;border-color:#2a6db5;color:#fff}
+.modebar .md.play{border-color:#ff8a3d;color:#e5701f}
+.play-go{display:block;margin:26px auto 8px;max-width:520px;text-align:center;text-decoration:none;background:linear-gradient(135deg,#ff8a3d,#ffb347);color:#fff;border-radius:18px;padding:20px 16px;box-shadow:0 6px 18px rgba(229,112,31,.35);animation:pgpulse 1.8s ease-in-out infinite}
+.play-go b{display:block;font-size:21px;font-weight:900}.play-go span{display:block;font-size:13px;margin-top:4px;opacity:.95}
+@keyframes pgpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.audio-notice{display:none;background:#fff8e6;border:1px solid #f0d998;color:#7a5c00;border-radius:10px;padding:9px 14px;margin:0 0 12px;font-size:12.5px;line-height:1.5}
+.xp-list{display:flex;flex-direction:column;gap:12px}
+.xp-card{background:#fff;border:1px solid #d0dcea;border-radius:12px;padding:15px 17px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.xp-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.xp-no{min-width:26px;height:26px;border-radius:50%;background:#e0ecf8;color:#2a6db5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.xp-word{font-size:19px;font-weight:800;color:#1a3a60}
+.xp-mean{font-size:15px;font-weight:700;color:#c05010;margin-bottom:8px;line-height:1.6}
+.xp-def{font-size:14.5px;color:#2d3a4a;line-height:1.8;background:#f4f8fc;border-radius:8px;padding:9px 12px;margin-bottom:8px}
+.xp-ex{font-size:14px;color:#3a4a60;line-height:1.7}
+.xp-lbl{display:inline-block;background:#2a6db5;color:#fff;border-radius:6px;font-size:11px;font-weight:700;padding:1px 7px;margin-right:4px}
+.xp-ex mark{background:#fff0b8;color:#7a3a00;font-weight:700;padding:0 2px;border-radius:3px}
+.read-card{align-items:flex-start}
+.read-box{flex:1}
+.rd-word{font-size:17px;font-weight:800;color:#1a3a60}
+.rd-sent{font-size:15px;color:#2d3a4a;line-height:1.6;margin-top:2px}
+.rd-mean{display:inline-block;font-size:14px;font-weight:700;color:#c05010;margin-top:5px}
+.rd-ko{font-size:13px;color:#5a6a85;margin-top:2px}
+.kohide{display:none}.read-card.ko-on .kohide{display:block}
+.btn-ko-row{margin-left:auto;flex-shrink:0;background:#fff;border:1.5px solid #c05010;color:#c05010;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.btn-ko-row:hover{background:#fff2e8}
+.read-pair{display:flex;flex-direction:column;gap:5px;margin-bottom:9px}
+.s-num-w{min-width:42px;border-radius:14px;padding:0 6px}
+.btn-ko{background:#fff;border:1.5px solid #c05010;color:#c05010;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
+.btn-ko:hover{background:#fff2e8}
+.dict-re{margin-left:auto;font-size:14px;font-weight:700;padding:10px 14px;background:#3a4a8f;color:#fff;border:0;border-radius:10px}
+.btn-sm.dict-re:hover,.btn-sm.dict-re:focus,.btn-sm.dict-re:active{background:#ff6fa5;color:#fff;border:0;outline:none}
+.dict-foot{margin-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.dict-ans{width:100%;background:#f4f7fc;border:1px solid #d5deee;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.9;color:#2d3a4a}
+.da-n{display:inline-block;min-width:22px;color:#c05010;font-weight:700}.da-ko{color:#5070a0}
+/* 탭 한 화면 */
+.tabs{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;padding:8px 10px;overflow:visible;border-bottom:2px solid #d0dcea}
+.tab-btn{grid-column:span 4;padding:9px 2px;font-size:13px;line-height:1.25;text-align:center;white-space:normal;word-break:keep-all;border:1.5px solid #d0dcea;border-radius:10px;background:#f4f8fd;color:#5a6b86}
+.tab-btn.active{background:#2a6db5;color:#fff;border-color:#2a6db5}
+.tab-btn:hover{color:#2a6db5}.tab-btn.active:hover{color:#fff}
+header h1{min-width:0;overflow-wrap:anywhere}
+
+/* ===== v3 추가 ===== */
+.q-sec{font-size:14px;font-weight:800;color:#1a3a60;background:#eef4fb;border-left:4px solid #2a6db5;border-radius:6px;padding:9px 12px;margin:6px 0 2px}
+.step-head{display:flex;flex-direction:column;gap:2px;background:#eef4ff;border-left:4px solid #2a6db5;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:6px}
+.step-head b{font-size:15px;color:#1a3a60}.step-head span{font-size:12.5px;color:#5a6a85}
+.q-en{font-size:18px;color:#1a3a60}.mini-snd{cursor:pointer;margin-left:2px}
+.q-sent{font-size:15px;color:#2d3a4a;line-height:1.6;margin:4px 0 8px}.q-sent b{color:#c05010;font-size:18px}
+.exp-sub{color:#6a7a95;font-size:12.5px}
+.to-top{position:fixed;right:16px;bottom:20px;width:60px;height:64px;border-radius:14px;border:2px solid #fff;background:#3a4a8f;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(35,41,70,.45);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:50;padding:0;font-family:inherit}
+.to-top svg{width:26px;height:26px}.to-top span{font-size:13px;font-weight:800;letter-spacing:.5px;line-height:1}
+.to-top.show{display:flex}.to-top:hover{background:#ff6fa5;transform:translateY(-2px)}
+body{padding-bottom:110px}
+@media (max-width:600px){.to-top{width:46px;height:50px;right:10px;bottom:14px;border-radius:12px;border-width:2px}.to-top svg{width:20px;height:20px}.to-top span{font-size:10.5px}.pm-next{right:68px;left:10px;bottom:14px;font-size:16px;padding:13px 8px}}
+.pm-dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 10px}.pm-sep{height:0;border-top:2px dashed #c4d3e6;margin:14px 0}
+.pm-open{display:grid;grid-template-columns:1fr 1fr;gap:9px 10px}.pm-open>.pm-tile,.pm-dgrid>.pm-tile{min-height:74px;height:100%}.pm-tile.pm-s{flex-direction:column;gap:6px}.pm-t-s{font-size:15.5px!important;line-height:1.55}
+.pm-t-w{font-size:22px;font-weight:800;color:#17306b}.pm-tile.done .pm-t-w{color:#fff}
+.pm-hint{border:1.5px solid #c05010;background:#fff;color:#c05010;border-radius:8px;padding:3px 9px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.pm-t-k{display:none;font-size:13px;color:#4a5a78;line-height:1.5;word-break:keep-all}.pm-t-k.show{display:block}
+.pm-tile.done.pm-s .pm-t-s{font-size:14px!important}
+.xp-sense.multi{border-top:1px dashed #d0dcea;padding-top:10px;margin-top:10px}
+.xp-cir{font-weight:800;color:#2a6db5;margin-right:4px}
+.rd-mean{font-weight:800;color:#c05010}.rd-other{color:#7a8aa5;font-size:13px}
+.pm-reset{font-size:16px!important;font-weight:800;padding:10px 18px!important;background:#7b5cc4!important;color:#fff!important;border:0!important;border-radius:12px}
+.pm-status{background:#f4f8fc;border:1px solid #d0dcea;border-radius:12px;padding:11px 14px;font-size:14.5px;color:#2d3a4a;margin-bottom:12px}
+.pm-focus{border-radius:14px;padding:12px;margin-bottom:14px;min-height:84px;display:flex;flex-direction:column;justify-content:center;background:#f6f9fd;border:2px dashed #c4d3e6}
+.pm-focus.ok{background:#f1faf3;border:2px solid #7ccb8a}.pm-focus.bad{background:#fff5f5;border:2px solid #e88}
+.pm-fb{font-size:14.5px;color:#3a4a6a;font-weight:600;text-align:center;line-height:1.6}
+.pm-ok{font-size:13px;font-weight:800;color:#2f9a4e}.pm-cw{font-size:20px;font-weight:800;color:#17306b;margin:2px 0}.pm-cm{color:#c05010;font-size:17px}.pm-ce{font-size:14px;color:#3a4a60;line-height:1.6}.pm-ce b{color:#c05010}
+.pm-fin{margin-top:10px;text-align:center;font-weight:800;color:#7b5cc4}
+.pm-next{display:none;position:fixed;left:16px;right:92px;bottom:20px;z-index:60;font-size:18px;font-weight:800;padding:16px 12px;background:#f08a00;color:#fff;border:3px solid #fff;border-radius:16px;cursor:pointer;box-shadow:0 8px 22px rgba(160,80,0,.5);animation:pmPulse 1.1s ease-in-out infinite}@keyframes pmPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}.pm-next:hover{background:#d97800}
+.pm-hdr{display:flex;gap:10px}.pm-hdr>div{flex:1}.pm-hdr{margin-bottom:8px}
+.pm-col{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0}
+.pm-colh{text-align:center;font-weight:800;font-size:13px;color:#8090a8}
+.pm-tile{min-height:76px;border:2.5px solid #b9c9de;background:#fff;border-radius:14px;padding:9px 8px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;font-family:inherit;word-break:keep-all}
+.pm-tile:hover{border-color:#6f93c8}
+.pm-t-s{font-size:13.5px;line-height:1.5;color:#2d3a4a;word-break:normal}.pm-t-s b{color:#c05010;background:#fff0b8;padding:0 2px;border-radius:3px}
+.pm-t-m{font-size:15px;font-weight:700;color:#17306b;line-height:1.45}
+.pm-tile.sel{border-color:#7b5cc4;background:#f3eefc;box-shadow:0 0 0 3px rgba(123,92,196,.25)}
+.pm-tile.done{cursor:default;background:#2a6db5;border-color:#2a6db5}.pm-tile.done .pm-t-s,.pm-tile.done .pm-t-m{color:#fff}.pm-tile.done .pm-t-s b{background:rgba(255,255,255,.25);color:#fff}.pm-tile.done .tag-pos{background:rgba(255,255,255,.3);color:#fff}
+.pm-tile.bad{animation:pmshake .4s;border-color:#e55;background:#fff2f2}
+@keyframes pmshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style>
 </head>
 <body>
 <header>
   <h1>고등 워마 수능2000 &nbsp;|&nbsp; Day41 (No.1611&ndash;1620)</h1>
-  <span class="badge">단어장 &middot; 집중듣기 &middot; 따라말하기 &middot; 낭독 &middot; 받아쓰기 &middot; 4지선다 &middot; 재배열</span>
+  <span class="badge">단어장 · 한글 뜻 풀이 · 집중듣기 · 따라말하기 · 낭독 · 4지선다 · 문장재배열 · 문장 받아쓰기 · 단어 받아쓰기</span>
 </header>
+<div class="modebar"><a class="md on">📖 학습</a><a class="md play" href="%EB%86%80%EC%9D%B4%ED%84%B0_162.%EA%B3%A0%EB%93%B1%20%EC%9B%8C%EB%A7%88%20%EC%88%98%EB%8A%A52000%20Day41%20%28No.1611-1620%29.html">🎮 스펠링 놀이터</a></div>
 <div class="tts-tune">
   <b>🔊 내 기기 음성 속도 미세조정</b>
   <button onclick="adjustTtsOffset(-0.05)">－ 더 느리게</button>
@@ -128,12 +215,14 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 </div>
 <div class="tabs">
   <button class="tab-btn active" onclick="goTab('vocab',this)">① 단어장</button>
-  <button class="tab-btn" onclick="goTab('listen',this)">② 집중듣기</button>
-  <button class="tab-btn" onclick="goTab('shadow',this)">③ 따라말하기</button>
-  <button class="tab-btn" onclick="goTab('read',this)">④ 낭독</button>
-  <button class="tab-btn" onclick="goTab('dict',this)">⑤ 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('explain',this)">② 한글 뜻 풀이</button>
+  <button class="tab-btn" onclick="goTab('listen',this)">③ 집중듣기</button>
+  <button class="tab-btn" onclick="goTab('shadow',this)">④ 따라말하기</button>
+  <button class="tab-btn" onclick="goTab('read',this)">⑤ 낭독</button>
   <button class="tab-btn" onclick="goTab('quiz',this)">⑥ 4지선다</button>
   <button class="tab-btn" onclick="goTab('reorder',this)">⑦ 문장재배열</button>
+  <button class="tab-btn" onclick="goTab('dict',this)">⑧ 문장 받아쓰기</button>
+  <button class="tab-btn" onclick="goTab('wdict',this)">⑨ 단어 받아쓰기</button>
 </div>
 <div id="panel-vocab" class="panel active">
   <div class="panel-title">① 단어장</div>
@@ -145,8 +234,14 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   <div class="sec-title">🔗 학습 안내</div>
   <div class="idiom-list" id="idiom-list"></div>
 </div>
+<div id="panel-explain" class="panel">
+  <div class="panel-title">② 한글 뜻 풀이</div>
+  <div class="panel-desc">한글 뜻이 무슨 말인지 쉬운 말로 풀어 주고, 그 말이 들어간 예문을 보여 줘요. 눈으로 읽으며 한글 뜻을 이해해 보세요.</div>
+  <div class="xp-list" id="ex-list"></div>
+</div>
+
 <div id="panel-listen" class="panel">
-  <div class="panel-title">② 집중듣기</div>
+  <div class="panel-title">③ 집중듣기</div>
   <div class="panel-desc">전체 지문을 자연스럽게 들으며 내용을 파악하세요. 본문 뒤에는 동의어 학습 문장이 이어집니다.</div>
   <div class="ctrl-bar">
     <span class="spd-label">지문 난이도</span>
@@ -166,7 +261,7 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   <div class="sent-list" id="listen-list"></div>
 </div>
 <div id="panel-shadow" class="panel">
-  <div class="panel-title">③ 따라말하기</div>
+  <div class="panel-title">④ 따라말하기</div>
   <div class="panel-desc">소리만 듣고 즉시 따라 말하세요.</div>
   <div class="ctrl-bar">
     <span class="spd-label">지문 난이도</span>
@@ -185,26 +280,30 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   </div>
 </div>
 <div id="panel-read" class="panel">
-  <div class="panel-title">④ 낭독</div>
-  <div class="panel-desc">한 문장을 듣고 충분한 여백 동안 소리 내어 따라 읽으세요.</div>
+  <div class="panel-title">⑤ 낭독</div>
+  <div class="panel-desc">1-1 번호는 영어 단어와 한글 뜻, 1-2 번호는 예문이에요. 번호를 누르면 그 줄만 들려줘요. 전체 재생은 단어 → 뜻 → 예문 순서로 나와요. 소리를 듣고 따라 말해 보세요. 뜻은 처음에 숨겨져 있고, 줄 오른쪽의 [뜻 보기]를 누르면 그 줄의 뜻이 나와요.</div>
   <div class="ctrl-bar">
     <span class="spd-label">지문 난이도</span>
     <button class="btn-lv sel" id="lv-A-read" onclick="setLevel('A',this)">A (쉬운 지문)</button>
     <button class="btn-lv" id="lv-B-read" onclick="setLevel('B',this)">B (심화 지문)</button>
   </div>
+  <div id="rdNotice" class="audio-notice">🔇 음원을 불러오지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.</div>
   <div class="ctrl-bar">
-    <button class="btn btn-play" onclick="playAll('read')">▶ 전체 재생</button>
+    <button class="btn btn-play" onclick="playAllRead()">▶ 전체 재생</button>
     <button class="btn btn-stop" onclick="stopAll()">■ 정지</button>
     <span class="spd-label">속도</span>
-    <button class="btn-sm" id="rs-slow" onclick="setReadSpd(0.75,this)">느리게</button>
-    <button class="btn-sm sel" id="rs-normal" onclick="setReadSpd(0.8,this)">보통</button>
-    <button class="btn-sm" id="rs-fast" onclick="setReadSpd(1.1,this)">빠르게</button>
+    <button class="btn-sm spd-read" onclick="setRdSpd(0.75,this)">느리게</button>
+    <button class="btn-sm spd-read sel" onclick="setRdSpd(0.8,this)">보통</button>
+    <button class="btn-sm spd-read" onclick="setRdSpd(1.1,this)">빠르게</button>
+    <button class="btn-ko" id="btn-ko-1" onclick="toggleKo(1)">👁 단어 뜻 모두 보기</button>
+    <button class="btn-ko" id="btn-ko-2" onclick="toggleKo(2)">👁 예문 해석 모두 보기</button>
   </div>
-  <div class="now-box" id="read-now"><span class="lbl">재생중</span>&ndash;</div>
+  <div class="now-box" id="read-now"><span class="lbl">재생중</span><span class="now-txt">–</span></div>
   <div class="sent-list" id="read-list"></div>
 </div>
+
 <div id="panel-dict" class="panel">
-  <div class="panel-title">⑤ 받아쓰기</div>
+  <div class="panel-title">⑧ 문장 받아쓰기</div>
   <div class="panel-desc">번호를 클릭하면 해당 문장이 재생됩니다. 노트에 받아쓴 후 선생님이 주신 지문으로 확인하세요.</div>
   <div class="ctrl-bar">
     <span class="spd-label">지문 난이도</span>
@@ -220,7 +319,7 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
 </div>
 <div id="panel-quiz" class="panel">
   <div class="panel-title">⑥ 4지선다</div>
-  <div class="panel-desc">빈칸에 들어갈 알맞은 단어를 고르세요. 답을 선택하면 해설이 바로 나옵니다.</div>
+  <div class="panel-desc">앞 10문제는 영어 단어의 뜻을, 뒤 10문제는 문장 속 빈칸에 알맞은 단어를 고르세요. 답을 선택하면 해설이 바로 나옵니다.</div>
   <div class="score-bar">
     <div class="sc-item">맞은 수 <strong id="mc-ok">0</strong></div>
     <div class="sc-item">/ <strong id="mc-tot">0</strong>문항</div>
@@ -238,6 +337,23 @@ header h1{font-size:15px;color:#2a6db5;font-weight:700}
   </div>
   <div class="quiz-wrap" id="ro-wrap"></div>
 </div>
+<div id="panel-wdict" class="panel">
+  <div class="panel-title">⑨ 단어 받아쓰기</div>
+  <div class="panel-desc">번호를 누르면 영어 단어가 나와요. 노트에 철자를 받아쓰고, 다 쓴 뒤 맨 아래에서 정답을 확인하세요. 한 번 끝나면 순서를 바꿔서 다시 해 볼 수 있어요.</div>
+  <div class="ctrl-bar">
+    <span class="spd-label">재생 속도</span>
+    <button class="btn-sm sel" id="wds-normal" onclick="setWdSpd(1.0,'normal')">보통</button>
+    <button class="btn-sm" id="wds-slow" onclick="setWdSpd(0.85,'slow')">느리게</button>
+    <button class="btn-sm dict-re" onclick="reshuffleWd()">🔀 순서 바꿔서 다시 받아쓰기</button>
+  </div>
+  <div class="dict-list" id="wd-list"></div>
+  
+  <div class="dict-foot">
+    <button class="btn-sm" id="wd-ans-btn" onclick="toggleWdAns()">✅ 받아쓰기 정답 확인하기</button>
+    <div class="dict-ans" id="wd-ans" style="display:none"></div>
+  </div>
+</div>
+
 <script>
 var TITLE="A Documentary Team Assembles a Story About Wildlife Territory";
 var TARGET=["inherent", "harass", "narrative", "assemble", "spike", "sneak", "sophisticated", "territory", "enlightenment", "cosmetic"];
@@ -293,6 +409,259 @@ function buildRO(){var con=document.getElementById('ro-wrap');con.innerHTML='';d
 function renderRO(si,aa,rs,item){aa.innerHTML='';roAns[si].forEach(function(it,idx){var ac=document.createElement('div');ac.className='ans-chip';ac.textContent=it.w;ac.addEventListener('click',function(){var ch=document.getElementById(it.id);if(ch)ch.classList.remove('used');roAns[si].splice(idx,1);renderRO(si,aa,rs,item);});aa.appendChild(ac);});if(roAns[si].length===item.pieces.length){var ans=roAns[si].map(function(i){return i.w;}).join(' / ');if(ans===item.pieces.join(' / ')){rs.textContent='✓ 정답입니다!';rs.className='ro-result ok';roOk++;document.getElementById('ro-ok').textContent=roOk;}else{rs.innerHTML='✗ 다시 확인해 보세요.<br><span style="color:#5070a0;font-size:12px;">정답: '+item.pieces.join(' ')+'</span>';rs.className='ro-result ng';}}else{rs.textContent='';rs.className='ro-result';}}
 function resetRO(){roOk=0;document.getElementById('ro-ok').textContent=0;buildRO();}
 updateTtOffsetLabel();buildVocab();buildPassage();buildSentList('listen-list','listen');buildSentList('read-list','read');buildProg();buildDict();buildMC();buildRO();
+</script>
+<button id="toTop" class="to-top" onclick="goTop()" aria-label="맨 위로" title="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg><span>TOP</span></button>
+<script>function goTop(){try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}}window.addEventListener('scroll',function(){var b=document.getElementById('toTop');if(!b)return;var y=window.pageYOffset||document.documentElement.scrollTop||0;b.classList.toggle('show',y>300);});</script>
+<script>
+/* ===== 추가 모듈 v2: 한글 뜻 풀이 · 짝 맞추기(다의어) · 낭독 · 4지선다 20 · 재배열 10 · 단어 받아쓰기 ===== */
+(function(){
+var XP=[{"d": "처음부터 안에 들어 있는 것을 '내재하는'이라고 해요.", "k": "아이는 [[타고난]] 호기심이 있어요."}, {"d": "계속 못살게 구는 것을 '괴롭히다'라고 해요.", "k": "동물을 [[괴롭히지]] 마세요."}, {"d": "처음부터 끝까지 풀어 놓은 이야기를 '서술'이라고 해요.", "k": "감동적인 [[이야기]]였어요."}, {"d": "흩어진 것을 한곳에 모으는 것을 '모으다'라고 해요. 부품을 '조립하다'도 뜻해요.", "k": "장난감을 [[조립했어요]]."}, {"d": "크고 굵은 못을 '대못'이라고 해요. 갑자기 늘어나는 것도 뜻해요.", "k": "기온이 [[급등했어요]]."}, {"d": "남이 모르게 살그머니 움직이는 것을 '살금살금 움직이다'라고 해요.", "k": "고양이가 [[살금살금 다가갔어요]]."}, {"d": "멋지고 정교한 것을 '세련된'이라고 해요.", "k": "[[세련된]] 디자인이에요."}, {"d": "한 나라나 무리가 지키는 땅을 '영토'라고 해요.", "k": "늑대는 자기 [[영역]]을 지켜요."}, {"d": "몰랐던 것을 깨우치는 것을 '깨달음'이라고 해요.", "k": "큰 [[깨달음]]을 얻었어요."}, {"d": "얼굴을 예쁘게 꾸미는 것을 '화장품'이라고 해요.", "k": "[[화장품]]을 바르지 않았어요."}];var SKO={"A": ["그 팀은 야생 동물에 대한 타고난 호기심이 있었다.", "영화 제작자들은 야생 동물을 절대 괴롭히지 않도록 조심했다.", "다큐멘터리는 생존에 대한 강력한 이야기를 들려주었다.", "스태프들은 일찍부터 카메라 장비를 조립하기 시작했다.", "자료는 지역 여우 개체 수의 갑작스러운 급증을 보여 주었다.", "그들은 동물을 촬영하려고 조용히 더 가까이 살금살금 다가가야 했다.", "그들은 드문 순간을 담으려고 정교한 카메라를 사용했다.", "각 늑대 무리는 자신의 영역을 조심스럽게 지켰다.", "관객들은 영화를 본 뒤 깨달음의 느낌을 받았다.", "팀은 동물 근처에서 화장품 스프레이 사용을 피했다."], "B": ["열정적인 팀은 야생 동물에 대한 정말 타고난 호기심이 있었다.", "신중한 영화 제작자들은 민감한 야생 동물을 절대 괴롭히지 않도록 늘 조심했다.", "감동적인 다큐멘터리는 조용한 생존에 대한 강력한 이야기를 들려주었다.", "헌신적인 스태프들은 일찍부터 무거운 카메라 장비를 조심스럽게 조립하기 시작했다.", "최근 자료는 지역 여우 개체 수의 갑작스러운 급증을 분명히 보여 주었다.", "그들은 수줍은 동물을 촬영하려고 조용히 더 가까이 조심스럽게 살금살금 다가가야 했다.", "그들은 정말 드문 순간을 담으려고 정교한 카메라를 능숙하게 사용했다.", "자랑스러운 각 늑대 무리는 자신의 넓은 영역을 조심스럽게 지켰다.", "많은 관객들은 영화를 본 뒤 진짜 깨달음의 느낌을 받았다.", "배려심 있는 팀은 동물 근처에서 화장품 스프레이 사용을 조심스럽게 피했다."]};var ITEMS=[{"w": "inherent", "ci": 0, "all": [0], "rep": 0, "si": 0}, {"w": "harass", "ci": 1, "all": [1], "rep": 1, "si": 1}, {"w": "narrative", "ci": 2, "all": [2], "rep": 2, "si": 2}, {"w": "assemble", "ci": 3, "all": [3], "rep": 3, "si": 3}, {"w": "spike", "ci": 4, "all": [4], "rep": 4, "si": 4}, {"w": "sneak", "ci": 5, "all": [5], "rep": 5, "si": 5}, {"w": "sophisticated", "ci": 6, "all": [6], "rep": 6, "si": 6}, {"w": "territory", "ci": 7, "all": [7], "rep": 7, "si": 7}, {"w": "enlightenment", "ci": 8, "all": [8], "rep": 8, "si": 8}, {"w": "cosmetic", "ci": 9, "all": [9], "rep": 9, "si": 9}];var Q1=[{"ci": 6, "q": "sophisticated", "opts": ["견고한, 강건한", "이상적인, 이상", "세련된, 정교한", "외부의, 외부"], "answer_idx": 2, "exp": "sophisticated = 세련된, 정교한. 멋지고 정교한 것을 '세련된'이라고 해요. 오답: ①sturdy(견고한, 강건한) ②ideal(이상적인, 이상) ④external(외부의, 외부)"}, {"ci": 4, "q": "spike", "opts": ["떨림, 떨다", "탐색, 탐구", "대리점", "대못, 대못을 박다"], "answer_idx": 3, "exp": "spike = 대못, 대못을 박다. 크고 굵은 못을 '대못'이라고 해요. 갑자기 늘어나는 것도 뜻해요. 오답: ①shiver(떨림, 떨다) ②quest(탐색, 탐구) ③agency(대리점)"}, {"ci": 3, "q": "assemble", "opts": ["모으다, 조립하다, 소집하다", "중독시키다, 중독자", "나타나다", "권한을 주다"], "answer_idx": 0, "exp": "assemble = 모으다, 조립하다, 소집하다. 흩어진 것을 한곳에 모으는 것을 '모으다'라고 해요. 부품을 '조립하다'도 뜻해요. 오답: ②addict(중독시키다, 중독자) ③appear(나타나다) ④empower(권한을 주다)"}, {"ci": 5, "q": "sneak", "opts": ["으깨다, 밀어 넣다", "살금살금 움직이다, 몰래 움직이다", "선포하다, 선언하다", "꿰뚫다, ~에 구멍을 뚫다"], "answer_idx": 1, "exp": "sneak = 살금살금 움직이다, 몰래 움직이다. 남이 모르게 살그머니 움직이는 것을 '살금살금 움직이다'라고 해요. 오답: ①crush(으깨다, 밀어 넣다) ③declare(선포하다, 선언하다) ④pierce(꿰뚫다, ~에 구멍을 뚫다)"}, {"ci": 9, "q": "cosmetic", "opts": ["조상, 선조", "과수원", "악화, (가치의) 하락", "화장품, 미용의"], "answer_idx": 3, "exp": "cosmetic = 화장품, 미용의. 얼굴을 예쁘게 꾸미는 것을 '화장품'이라고 해요. 오답: ①ancestor(조상, 선조) ②orchard(과수원) ③deterioration(악화, (가치의) 하락)"}, {"ci": 1, "q": "harass", "opts": ["괴롭히다, 희롱하다, 침략하다", "사라지다", "점점 줄어들다, 저하되다", "~할 여유가 있다"], "answer_idx": 0, "exp": "harass = 괴롭히다, 희롱하다, 침략하다. 계속 못살게 구는 것을 '괴롭히다'라고 해요. 오답: ②disappear(사라지다) ③dwindle(점점 줄어들다, 저하되다) ④afford(~할 여유가 있다)"}, {"ci": 7, "q": "territory", "opts": ["해충, 역병, 귀찮은 것", "도구, 실행하다", "영토, 영역", "생물학"], "answer_idx": 2, "exp": "territory = 영토, 영역. 한 나라나 무리가 지키는 땅을 '영토'라고 해요. 오답: ①pest(해충, 역병, 귀찮은 것) ②implement(도구, 실행하다) ④biology(생물학)"}, {"ci": 2, "q": "narrative", "opts": ["변호사", "(실제의) 이야기, 서술, 이야기의", "증식, 급증, 확산", "살인, 살인하다"], "answer_idx": 1, "exp": "narrative = (실제의) 이야기, 서술, 이야기의. 처음부터 끝까지 풀어 놓은 이야기를 '서술'이라고 해요. 오답: ①attorney(변호사) ③proliferation(증식, 급증, 확산) ④murder(살인, 살인하다)"}, {"ci": 0, "q": "inherent", "opts": ["전형적인, 대표적인", "이상한, 홀수의", "내재하는, 타고난, 고유의", "실제의"], "answer_idx": 2, "exp": "inherent = 내재하는, 타고난, 고유의. 처음부터 안에 들어 있는 것을 '내재하는'이라고 해요. 오답: ①typical(전형적인, 대표적인) ②odd(이상한, 홀수의) ④factual(실제의)"}, {"ci": 8, "q": "enlightenment", "opts": ["필수, 필수품, 필요", "수의사", "논리, 논리학", "계몽, 개화, 깨달음"], "answer_idx": 3, "exp": "enlightenment = 계몽, 개화, 깨달음. 몰랐던 것을 깨우치는 것을 '깨달음'이라고 해요. 오답: ①necessity(필수, 필수품, 필요) ②veterinarian(수의사) ③logic(논리, 논리학)"}];var ROX=[{"pieces": ["The team had", "/ an inherent curiosity", "/ about wild animals."], "ko": "그 팀은 야생동물에 대한 타고난 호기심을 가지고 있었다."}, {"pieces": ["Filmmakers were", "/ careful never", "/ to harass the wildlife."], "ko": "영화 제작자들은 야생 동물을 절대 괴롭히지 않도록 조심했다."}, {"pieces": ["The documentary told", "/ a powerful narrative", "/ about survival."], "ko": "그 다큐멘터리는 생존에 관한 강력한 이야기를 전했다."}, {"pieces": ["Crew members began", "/ to assemble their camera", "/ equipment early."], "ko": "스태프들은 일찍부터 카메라 장비를 조립하기 시작했다."}, {"pieces": ["Data showed a sudden spike", "/ in the local", "/ fox population."], "ko": "자료는 지역 여우 개체 수의 갑작스러운 급증을 보여 주었다."}, {"pieces": ["They had", "/ to sneak quietly closer", "/ to film the animals."], "ko": "그들은 동물을 촬영하려고 조용히 더 가까이 살금살금 다가가야 했다."}, {"pieces": ["They used sophisticated cameras", "/ to capture", "/ rare moments."], "ko": "그들은 희귀한 순간을 포착하기 위해 정교한 카메라를 사용했다."}, {"pieces": ["Each wolf pack carefully protected", "/ its own", "/ territory."], "ko": "각 늑대 무리는 자신의 영역을 조심스럽게 지켰다."}, {"pieces": ["Viewers felt a sense of enlightenment", "/ after watching", "/ the film."], "ko": "시청자들은 영화를 본 후 깨달음을 느꼈다."}, {"pieces": ["The team avoided", "/ using cosmetic sprays", "/ near the animals."], "ko": "팀은 동물 근처에서 화장품 스프레이 사용을 피했다."}];var MS=false;var Q1SEC="영어 단어의 알맞은 뜻을 고르세요.";var MCKEEP=[];var PMS=[];var EXKO={};var PMSET={};PMS.forEach(function(c){PMSET[c]=1;});
+var NW=ITEMS.length;
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function clampR(v){return Math.max(0.3,Math.min(2.5,v));}
+var CIR='①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳';
+function posTags(p){
+  var M={n:'명',v:'동',adj:'형',adv:'부',prep:'전',conj:'접',pron:'대',a:'형'};
+  var s=String(p||'').replace(/[①-⑳]/g,'').replace(/[0-9.\s]/g,'');
+  var seen={},out=[];
+  s.split('/').forEach(function(x){var k=M[x.toLowerCase()];if(k&&!seen[k]){seen[k]=1;out.push('<span class="tag-pos">'+k+'</span>');}});
+  return out.join('');
+}
+function cleanM(m){return String(m).replace(/\s*\([a-zA-Z\s~]+\)/g,'').trim();}
+/* ---------- 오디오 엔진 (공용 Audio 하나 사용: iOS 대응) ---------- */
+var cur=null,rdRun=0;
+function finishCur(){var r=cur;cur=null;if(r)r();}
+function haltAudio(){
+  var a=null;try{a=__getSharedAudio();}catch(e){}
+  if(a){a.onended=null;a.onerror=null;try{a.pause();}catch(e){}}
+  finishCur();
+}
+function notice(){var el=$('rdNotice');if(el)el.style.display='block';}
+function playUrl(url,rate){
+  return new Promise(function(res){
+    finishCur();cur=res;
+    var a=__getSharedAudio();a.onended=null;a.onerror=null;try{a.pause();}catch(e){}
+    a.src=url;a.currentTime=0;a.playbackRate=clampR(rate);
+    a.onended=function(){if(cur===res)cur=null;res();};
+    a.onerror=function(){if(cur===res)cur=null;notice();res();};
+    var p=a.play();if(p&&p.catch)p.catch(function(){if(cur===res)cur=null;res();});
+  });
+}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+function urlW(ci){return WORD_PREFIX+(ci+1)+'.mp3';}
+function urlKo(ci){return WORD_PREFIX+(ci+1)+'_ko.mp3';}
+function urlS(si){return SENT_PREFIX+(curLevel==='A'?'_sA':'_sB')+(si+1)+'.mp3';}
+function primeAudio(url){
+  var a=__getSharedAudio();a.muted=true;a.src=url;
+  var p=a.play();
+  if(p&&p.then){p.then(function(){try{a.pause();a.currentTime=0;}catch(e){}a.muted=false;}).catch(function(){a.muted=false;});}else{a.muted=false;}
+}
+var __stop0=window.stopAll;
+window.stopAll=function(){
+  rdRun++;haltAudio();
+  try{__stop0();}catch(e){}
+  document.querySelectorAll('.read-card.playing,.d-num.pd,.s-num-w.playing').forEach(function(e){e.classList.remove('playing');e.classList.remove('pd');});
+  setReadNow(-1);
+};
+/* ---------- 한글 뜻 풀이 ---------- */
+function hlKo(t){return esc(t).replace(/\[\[(.*?)\]\]/g,'<mark>$1</mark>');}
+function buildExplain(){
+  var c=$('ex-list');if(!c)return;c.innerHTML='';
+  ITEMS.forEach(function(it,n){
+    var d=document.createElement('div');d.className='xp-card';
+    var h='<div class="xp-top"><span class="xp-no">'+(n+1)+'</span><span class="xp-word">'+esc(it.w)+'</span></div>';
+    var multi=it.all.length>1;
+    it.all.forEach(function(ci,k){
+      var w=VOCAB_CORE[ci],x=XP[ci]||{d:'',k:''};
+      h+='<div class="xp-sense'+(multi?' multi':'')+'">'+
+        '<div class="xp-mean">'+(multi?'<span class="xp-cir">'+CIR[k]+'</span>':'')+posTags(w.pos)+esc(w.m)+'</div>'+
+        '<div class="xp-def">'+esc(x.d)+'</div>'+
+        '<div class="xp-ex"><span class="xp-lbl">예</span> '+hlKo(x.k)+'</div></div>';
+    });
+    d.innerHTML=h;c.appendChild(d);
+  });
+}
+/* ---------- 낭독 (1-1 단어·뜻 / 1-2 예문) ---------- */
+var rdSpd=0.8;
+var WRATE={0.75:0.9,0.8:1.0,1.1:1.15};
+function wRate(){return (WRATE[rdSpd]||1.0)+ttsOffset;}
+function sRate(){return audioRate(rdSpd);}
+function rdComplex(s){return /,/.test(s)||/\b(but|when|if|as|because|so that|although)\b/i.test(s)||(s.match(/[.!?]/g)||[]).length>1;}
+function rdGap(s){return readGap(s);}
+function cid(i,p){return 'read-card-'+i+'-'+p;}
+function sentHtml(it){var s=SENTS()[it.si];return (typeof hl==='function')?hl(s):esc(s);}
+function meanHtml(it){
+  var rep=VOCAB_CORE[it.rep],others=it.all.filter(function(c){return c!==it.rep;}).map(function(c){return esc(cleanM(VOCAB_CORE[c].m));});
+  return '<span class="rd-mean">'+esc(cleanM(rep.m))+'</span>'+(others.length?' <span class="rd-other">('+others.join(' · ')+')</span>':'');
+}
+async function playLine(i,p,my){
+  var it=ITEMS[i];
+  if(p===1){await playUrl(urlW(it.ci),wRate());if(my!==rdRun)return;await wait(350);if(my!==rdRun)return;await playUrl(urlKo(it.rep),1.0);}
+  else{await playUrl(urlS(it.si),sRate());}
+}
+function setRead(i,p,on){
+  var card=$(cid(i,p)),num=$('read-num-'+i+'-'+p);
+  if(!card)return;card.classList.toggle('playing',on);if(num)num.classList.toggle('playing',on);
+}
+function setReadNow(i,p,txt){
+  var el=$('read-now');if(!el)return;
+  if(i<0){el.innerHTML='<span class="lbl">재생중</span><span class="now-txt">–</span>';return;}
+  el.innerHTML='<span class="lbl">'+(i+1)+'-'+p+'</span><span class="now-txt">'+txt+'</span>';
+}
+function buildRead(){
+  var c=$('read-list');if(!c)return;c.innerHTML='';
+  ITEMS.forEach(function(it,i){
+    var pair=document.createElement('div');pair.className='read-pair';
+    [1,2].forEach(function(p){
+      var card=document.createElement('div');card.className='sent-card read-card rd-p'+p;card.id=cid(i,p);
+      var num=document.createElement('div');num.className='s-num s-num-w';num.id='read-num-'+i+'-'+p;num.textContent=(i+1)+'-'+p;
+      num.onclick=async function(){
+        window.stopAll();var my=rdRun;setRead(i,p,true);
+        setReadNow(i,p,p===1?('🔊 '+esc(it.w)+' → 뜻'):('🗣 '+esc(SENTS()[it.si])));
+        await playLine(i,p,my);
+        if(my===rdRun){setRead(i,p,false);setReadNow(-1);}
+      };
+      var box=document.createElement('div');box.className='read-box';
+      if(p===1){box.innerHTML='<div class="rd-word">'+esc(it.w)+'</div><div class="kohide">'+meanHtml(it)+'</div>';}
+      else{box.innerHTML='<div class="rd-sent">'+sentHtml(it)+'</div><div class="kohide"><div class="rd-ko">'+esc((SKO[curLevel]||[])[it.si]||'')+'</div></div>';}
+      var kb=document.createElement('button');kb.className='btn-ko-row';kb.textContent='뜻 보기';
+      kb.onclick=function(){var on=card.classList.toggle('ko-on');kb.textContent=on?'뜻 숨기기':'뜻 보기';syncKoBtn();};
+      card.appendChild(num);card.appendChild(box);card.appendChild(kb);pair.appendChild(card);
+    });
+    c.appendChild(pair);
+  });
+}
+window.playAllRead=async function(){
+  window.stopAll();
+  primeAudio(urlW(ITEMS[0].ci));
+  await wait(150);var my=++rdRun;
+  for(var i=0;i<NW;i++){
+    if(my!==rdRun)return;
+    var it=ITEMS[i],s=SENTS()[it.si];
+    setRead(i,1,true);setReadNow(i,1,'🔊 '+esc(it.w)+' → 뜻');
+    await playUrl(urlW(it.ci),wRate());if(my!==rdRun)return;
+    await wait(350);if(my!==rdRun)return;
+    await playUrl(urlKo(it.rep),1.0);if(my!==rdRun)return;
+    await wait(1500);if(my!==rdRun)return;
+    setRead(i,1,false);setRead(i,2,true);setReadNow(i,2,'🗣 따라 읽어요: '+esc(s));
+    await playUrl(urlS(it.si),sRate());if(my!==rdRun)return;
+    await wait(rdGap(s));if(my!==rdRun)return;
+    setRead(i,2,false);await wait(500);
+  }
+  setReadNow(-1);
+};
+window.setRdSpd=function(r,btn){
+  rdSpd=r;var bar=btn.closest('.ctrl-bar')||document;
+  bar.querySelectorAll('.spd-read').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');
+};
+var KO_LBL={1:['단어 뜻','btn-ko-1'],2:['예문 해석','btn-ko-2']};
+function syncKoBtn(){
+  [1,2].forEach(function(p){
+    var cards=document.querySelectorAll('.read-card.rd-p'+p),on=document.querySelectorAll('.read-card.rd-p'+p+'.ko-on');
+    var b=$(KO_LBL[p][1]);
+    if(b)b.textContent=(cards.length&&on.length===cards.length)?('🙈 '+KO_LBL[p][0]+' 모두 숨기기'):('👁 '+KO_LBL[p][0]+' 모두 보기');
+  });
+}
+window.toggleKo=function(p){
+  var cards=document.querySelectorAll('.read-card.rd-p'+p);
+  var allOn=document.querySelectorAll('.read-card.rd-p'+p+'.ko-on').length===cards.length;
+  cards.forEach(function(c){c.classList.toggle('ko-on',!allOn);var k=c.querySelector('.btn-ko-row');if(k)k.textContent=allOn?'뜻 보기':'뜻 숨기기';});
+  syncKoBtn();
+};
+/* ---------- 단어 받아쓰기 ---------- */
+var wdRate=1.0,wdOrder=null;
+function shuffleIdx(n){
+  var a=[];for(var i=0;i<n;i++)a.push(i);
+  for(var t=0;t<50;t++){
+    for(var i=n-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var x=a[i];a[i]=a[j];a[j]=x;}
+    if(!a.every(function(v,k){return v===k;})||n<2)break;
+  }
+  return a;
+}
+function newWdOrder(){
+  var prev=wdOrder,o=shuffleIdx(NW);
+  for(var t=0;t<50&&prev&&o.every(function(v,k){return v===prev[k];});t++)o=shuffleIdx(NW);
+  wdOrder=o;
+}
+function buildWDict(){
+  if(!wdOrder)newWdOrder();
+  var c=$('wd-list');if(!c)return;c.innerHTML='';
+  wdOrder.forEach(function(wi,k){
+    var it=ITEMS[wi];
+    var card=document.createElement('div');card.className='dict-card';
+    var num=document.createElement('div');num.className='d-num';num.textContent=k+1;
+    num.onclick=function(){
+      window.stopAll();document.querySelectorAll('.d-num').forEach(function(n){n.classList.remove('pd');});
+      num.classList.add('pd');var my=rdRun;
+      playUrl(urlW(it.ci),wdRate+ttsOffset).then(function(){if(my===rdRun)num.classList.remove('pd');});
+    };
+    var hint=document.createElement('div');hint.className='d-hint';hint.textContent='문제 '+(k+1)+' — 번호를 눌러 들으세요';
+    card.appendChild(num);card.appendChild(hint);c.appendChild(card);
+  });
+  var ans=$('wd-ans');
+  ans.innerHTML=wdOrder.map(function(wi,k){
+    var it=ITEMS[wi];
+    return '<div class="da-row"><span class="da-n">'+(k+1)+'</span><b>'+esc(it.w)+'</b> <span class="da-ko">'+esc(cleanM(VOCAB_CORE[it.rep].m))+'</span></div>';
+  }).join('');
+  ans.style.display='none';
+  $('wd-ans-btn').textContent='✅ 받아쓰기 정답 확인하기';
+}
+window.toggleWdAns=function(){
+  var ans=$('wd-ans'),tb=$('wd-ans-btn');var open=ans.style.display==='none';
+  ans.style.display=open?'block':'none';tb.textContent=open?'▲ 정답 닫기':'✅ 받아쓰기 정답 확인하기';
+};
+window.reshuffleWd=function(){window.stopAll();newWdOrder();buildWDict();window.scrollTo(0,0);};
+window.setWdSpd=function(r,key){
+  wdRate=r;['normal','slow'].forEach(function(k){$('wds-'+k).classList.remove('sel');});$('wds-'+key).classList.add('sel');
+};
+/* ---------- 4지선다: 앞 10문제(뜻 고르기) + 기존 10문제(빈칸) ---------- */
+if(MCKEEP.length){var __k=MCKEEP.map(function(i){return MC[i];});MC.length=0;__k.forEach(function(q){MC.push(q);});}
+if(Q1.length){Q1.slice().reverse().forEach(function(q){MC.unshift(q);});}
+var NQ1=Q1.length;
+window.buildMC=function(){
+  var c=$('mc-wrap');c.innerHTML='';
+  $('mc-tot').textContent=MC.length;
+  var nums=['①','②','③','④'];
+  function head(t,d){var h=document.createElement('div');h.className='step-head';h.innerHTML='<b>'+t+'</b><span>'+d+'</span>';c.appendChild(h);}
+  MC.forEach(function(q,qi){
+    if(qi===0&&NQ1)head('1단계 · 단어 뜻 찾기',Q1SEC+' (1~'+NQ1+'번)');
+    if(qi===NQ1)head('2단계 · 빈칸 채우기','한글 해석을 보고 빈칸에 알맞은 단어를 골라요 ('+(NQ1+1)+'~'+MC.length+'번)');
+    var card=document.createElement('div');card.className='q-card';
+    var isM=(qi<NQ1);
+    if(isM){
+      card.innerHTML='<div class="q-num">['+(qi+1)+'번]</div>'+(MS?
+        '<div class="q-text">다음 문장에서 굵게 쓰인 단어의 뜻은? <span class="mini-snd">🔊</span></div><div class="q-sent">'+q.q+'</div>':
+        '<div class="q-text">다음 단어의 뜻은? &nbsp; <b class="q-en">'+q.q+'</b> <span class="mini-snd">🔊</span></div>');
+      card.querySelector('.mini-snd').onclick=function(){window.stopAll();playUrl(urlW(q.ci),1.0);};
+    }else{
+      card.innerHTML='<div class="q-num">['+(qi+1)+'번]</div><div class="q-text">'+q.q.replace('__________','<span class="blank-span"></span>')+'</div><div class="q-ko">'+q.ko+'</div>';
+    }
+    var opts=document.createElement('div');opts.className='opts';
+    q.opts.forEach(function(opt,oi){
+      var btn=document.createElement('button');btn.className='opt';
+      btn.innerHTML=nums[oi]+' '+opt;
+      btn.onclick=function(){
+        if(btn.disabled)return;
+        opts.querySelectorAll('.opt').forEach(function(b){b.disabled=true;});
+        if(oi===q.answer_idx){btn.classList.add('ok');mcOk++;$('mc-ok').textContent=mcOk;}
+        else{btn.classList.add('ng');opts.querySelectorAll('.opt')[q.answer_idx].classList.add('ok');}
+        card.querySelector('.exp').classList.add('show');
+      };
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    var exp=document.createElement('div');exp.className='exp';
+    exp.innerHTML='<div class="exp-lbl">📝 해설</div>'+q.exp;
+    card.appendChild(exp);c.appendChild(card);
+  });
+};
+/* ---------- 문장재배열: 10문제 ---------- */
+if(ROX.length){RO.length=0;ROX.forEach(function(r){RO.push(r);});}
+/* ---------- 레벨(A/B) 변경 시 낭독 목록도 다시 만들기 ---------- */
+var __sl0=window.setLevel;window.setLevel=function(lv,btn){__sl0(lv,btn);buildRead();};
+buildExplain();buildRead();buildWDict();window.buildMC();buildRO();
+})();
 </script>
 </body>
 </html>
